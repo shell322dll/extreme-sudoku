@@ -475,3 +475,6 @@ tests → `validate_production_database.py` (при ошибке сборка п
 `data/production/puzzles.json`.
 
 Подробности, измерения и ограничения: [docs/PHASE8_RELEASE_0_1_REPORT.md](docs/PHASE8_RELEASE_0_1_REPORT.md).
+
+Фактический деплой Release 0.1.0: репозиторий https://github.com/shell322dll/extreme-sudoku, ветка main, Pages (источник - GitHub Actions) публикуется workflow `pages.yml`: https://shell322dll.github.io/extreme-sudoku/. Источник данных - `data/production/puzzles.json` (1 задача, CERTIFIED_EXTREME). Файлы `*.py` хранятся без нормализации окончаний строк (`.gitattributes`): fingerprint сертификации хэширует их байты.
+
