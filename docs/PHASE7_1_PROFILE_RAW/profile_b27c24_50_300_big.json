@@ -1,0 +1,556 @@
+{
+ "pid": "puzzle-ca88d658a18eafb27c24",
+ "threshold": 50.0,
+ "budget_s": 300.0,
+ "big_budget": true,
+ "config": {
+  "node_budget": 1000000,
+  "state_budget": 1000000
+ },
+ "root_candidates": 236,
+ "status": "INCONCLUSIVE_BUDGET",
+ "limit_reasons_final": [
+  "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+  "ALS Chain:ALS_NODE_LIMIT",
+  "ALS Chain:ALS_SIZE_LIMIT",
+  "ALS-XY-Wing:ALS_NODE_LIMIT",
+  "ALS-XY-Wing:ALS_SIZE_LIMIT",
+  "ALS-XZ:ALS_SIZE_LIMIT",
+  "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+  "Forcing Chain:FORCING_START_LIMIT",
+  "Forcing Chain:TIME_LIMIT",
+  "Grouped AIC:CHAIN_LENGTH_LIMIT",
+  "Grouped AIC:CHAIN_NODE_LIMIT",
+  "TIME_LIMIT"
+ ],
+ "elapsed_s": 300.003,
+ "states_explored": 659,
+ "states_generated": 1459,
+ "cache_hits_product": 7958,
+ "proof_seconds_product": 7.435,
+ "mirror": {
+  "unique_states": 1459,
+  "pops": 659,
+  "stale_pops": 0,
+  "expanded_unique": 659,
+  "reexpansions": 0,
+  "pushes": 1459,
+  "children_total": 9416,
+  "child_new": 1458,
+  "child_transposition_hit": 7958,
+  "child_depth_improved_repush": 0,
+  "child_state_limit_drop": 0,
+  "frontier_peak": 820,
+  "frontier_end": 803
+ },
+ "transposition_hit_rate": {
+  "child_level": 0.8452,
+  "pop_level_stale": 0.0,
+  "overall_product_cache_hits_over_lookups": 0.7899
+ },
+ "enumerate_calls": 659,
+ "enumerations_of_same_signature_max": 1,
+ "enumerations_repeated": 0,
+ "branching": {
+  "raw_before_outer_canonical_avg": 14.31,
+  "raw_before_outer_canonical_max": 154,
+  "after_canonical_avg": 14.31,
+  "after_canonical_max": 154,
+  "distinct_effect_ignoring_rating_avg": 5.44,
+  "distinct_effect_ignoring_rating_max": 110,
+  "children_per_expanded_avg": 14.33,
+  "distinct_child_states_per_expanded_avg": 5.45,
+  "steps_with_child_state_equal_to_sibling_total": 5833,
+  "techniques_per_effect_hist": {
+   "1": 1556,
+   "2": 713,
+   "3": 535,
+   "4": 134,
+   "5": 423,
+   "6": 25,
+   "7": 8,
+   "8": 8,
+   "10": 100,
+   "11": 83,
+   "12": 1
+  },
+  "top_multi_technique_effects": [
+   [
+    "Forcing Chain+Hidden Single+Naked Single",
+    394
+   ],
+   [
+    "AIC+ALS Chain+ALS-XY-Wing+ALS-XZ+Forcing Chain",
+    323
+   ],
+   [
+    "ALS Chain+ALS-XY-Wing",
+    320
+   ],
+   [
+    "AIC+Forcing Chain",
+    129
+   ],
+   [
+    "AIC+ALS-XZ+Forcing Chain+Locked Candidates",
+    102
+   ],
+   [
+    "2-String Kite+AIC+ALS-XY-Wing+Empty Rectangle+Forcing Chain+Locked Candidates+Nice Loop+Skyscraper+Turbot Fish+X-Chain",
+    100
+   ],
+   [
+    "ALS-XZ+Locked Candidates",
+    87
+   ],
+   [
+    "AIC+Forcing Chain+Grouped AIC",
+    84
+   ],
+   [
+    "2-String Kite+AIC+ALS Chain+ALS-XY-Wing+Empty Rectangle+Forcing Chain+Locked Candidates+Nice Loop+Skyscraper+Turbot Fish+X-Chain",
+    83
+   ],
+   [
+    "AIC+ALS-XZ+Forcing Chain+Grouped AIC+Locked Candidates",
+    76
+   ],
+   [
+    "Forcing Chain+Hidden Single",
+    63
+   ],
+   [
+    "ALS-XZ+Forcing Chain",
+    35
+   ]
+  ]
+ },
+ "time_s": {
+  "SudokuState.validate": 13.2878,
+  "apply_step": 7.758,
+  "canonical_inner": 18.9788,
+  "canonical_outer": 1.2799,
+  "canonical_search": 1.2666,
+  "enumerate_total": 283.2763,
+  "heap": 0.0028,
+  "signature": 0.0062,
+  "validate_step": 7.4244
+ },
+ "calls": {
+  "SudokuState.validate": 67838,
+  "apply_step": 9416,
+  "canonical_inner": 5931,
+  "canonical_outer": 659,
+  "canonical_search": 659,
+  "enumerate_total": 659,
+  "heappop": 659,
+  "heappush": 1459,
+  "signature": 10076,
+  "validate_step": 9416
+ },
+ "time_per_technique_s": {
+  "Forcing Chain": 69.8555,
+  "ALS Chain": 63.1144,
+  "Grouped AIC": 54.56,
+  "ALS-XY-Wing": 39.1074,
+  "ALS-XZ": 26.8176,
+  "AIC": 17.6825,
+  "Nice Loop": 4.3807,
+  "X-Chain": 2.2141,
+  "XY-Chain": 0.5794,
+  "Locked Candidates": 0.566,
+  "Empty Rectangle": 0.3261,
+  "Hidden Quad": 0.3231,
+  "Hidden Triple": 0.3042,
+  "Turbot Fish": 0.278,
+  "Hidden Pair": 0.2664,
+  "Skyscraper": 0.2248,
+  "W-Wing": 0.2206,
+  "2-String Kite": 0.2141,
+  "Hidden Single": 0.1938,
+  "Jellyfish": 0.176,
+  "Swordfish": 0.1391,
+  "X-Wing": 0.116,
+  "Naked Quad": 0.0618,
+  "Naked Triple": 0.0542,
+  "Naked Pair": 0.034,
+  "XYZ-Wing": 0.03,
+  "XY-Wing": 0.025,
+  "Full House": 0.0106,
+  "Naked Single": 0.0059
+ },
+ "calls_per_technique": {
+  "Full House": 659,
+  "Naked Single": 659,
+  "Hidden Single": 659,
+  "Locked Candidates": 659,
+  "Naked Pair": 659,
+  "Hidden Pair": 659,
+  "Naked Triple": 659,
+  "Hidden Triple": 659,
+  "Naked Quad": 659,
+  "Hidden Quad": 659,
+  "X-Wing": 659,
+  "Skyscraper": 659,
+  "2-String Kite": 659,
+  "Turbot Fish": 659,
+  "Empty Rectangle": 659,
+  "Swordfish": 659,
+  "XY-Wing": 659,
+  "XYZ-Wing": 659,
+  "W-Wing": 659,
+  "Jellyfish": 659,
+  "X-Chain": 659,
+  "XY-Chain": 659,
+  "AIC": 659,
+  "Nice Loop": 659,
+  "Grouped AIC": 659,
+  "ALS-XZ": 659,
+  "ALS-XY-Wing": 659,
+  "ALS Chain": 659,
+  "Forcing Chain": 659
+ },
+ "time_per_family_s": {
+  "forcing:Forcing Chain": 69.8555,
+  "als:ALS Chain": 63.1144,
+  "chain:Grouped AIC": 54.56,
+  "als:ALS-XY-Wing": 39.1074,
+  "als:ALS-XZ": 26.8176,
+  "chain:AIC": 17.6825,
+  "chain:Nice Loop": 4.3807,
+  "basic": 3.3594,
+  "chain:X-Chain": 2.2141,
+  "chain:XY-Chain": 0.5794,
+  "singles": 0.2103
+ },
+ "steps_per_technique_after_inner_canonical": {
+  "Full House": 0,
+  "Naked Single": 394,
+  "Hidden Single": 461,
+  "Locked Candidates": 513,
+  "Naked Pair": 5,
+  "Hidden Pair": 30,
+  "Naked Triple": 22,
+  "Hidden Triple": 5,
+  "Naked Quad": 53,
+  "Hidden Quad": 3,
+  "X-Wing": 0,
+  "Skyscraper": 183,
+  "2-String Kite": 183,
+  "Turbot Fish": 195,
+  "Empty Rectangle": 183,
+  "Swordfish": 4,
+  "XY-Wing": 5,
+  "XYZ-Wing": 14,
+  "W-Wing": 0,
+  "Jellyfish": 7,
+  "X-Chain": 195,
+  "XY-Chain": 12,
+  "AIC": 984,
+  "Nice Loop": 202,
+  "Grouped AIC": 204,
+  "ALS-XZ": 760,
+  "ALS-XY-Wing": 976,
+  "ALS Chain": 809,
+  "Forcing Chain": 3031
+ },
+ "raw_representations_per_technique": {
+  "Full House": 0,
+  "Naked Single": 394,
+  "Hidden Single": 461,
+  "Locked Candidates": 513,
+  "Naked Pair": 5,
+  "Hidden Pair": 30,
+  "Naked Triple": 22,
+  "Hidden Triple": 5,
+  "Naked Quad": 53,
+  "Hidden Quad": 3,
+  "X-Wing": 0,
+  "Skyscraper": 183,
+  "2-String Kite": 183,
+  "Turbot Fish": 195,
+  "Empty Rectangle": 183,
+  "Swordfish": 4,
+  "XY-Wing": 5,
+  "XYZ-Wing": 14,
+  "W-Wing": 0,
+  "Jellyfish": 7,
+  "X-Chain": 3684,
+  "XY-Chain": 24,
+  "AIC": 23314,
+  "Nice Loop": 814,
+  "Grouped AIC": 4293,
+  "ALS-XZ": 2107,
+  "ALS-XY-Wing": 6356,
+  "ALS Chain": 12508,
+  "Forcing Chain": 93049
+ },
+ "technique_limit_reasons": {
+  "Grouped AIC:CHAIN_NODE_LIMIT": 659,
+  "ALS-XZ:ALS_SIZE_LIMIT": 659,
+  "ALS-XY-Wing:ALS_SIZE_LIMIT": 659,
+  "ALS Chain:ALS_SIZE_LIMIT": 659,
+  "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT": 659,
+  "Grouped AIC:CHAIN_LENGTH_LIMIT": 658,
+  "ALS Chain:ALS_CHAIN_LENGTH_LIMIT": 658,
+  "ALS Chain:ALS_NODE_LIMIT": 656,
+  "Forcing Chain:FORCING_START_LIMIT": 10,
+  "ALS-XY-Wing:ALS_NODE_LIMIT": 3,
+  "Forcing Chain:TIME_LIMIT": 1
+ },
+ "enumerate_limit_reasons": {
+  "ALS Chain:ALS_SIZE_LIMIT": 659,
+  "ALS-XY-Wing:ALS_SIZE_LIMIT": 659,
+  "ALS-XZ:ALS_SIZE_LIMIT": 659,
+  "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT": 659,
+  "Grouped AIC:CHAIN_NODE_LIMIT": 659,
+  "Grouped AIC:CHAIN_LENGTH_LIMIT": 658,
+  "ALS Chain:ALS_CHAIN_LENGTH_LIMIT": 658,
+  "ALS Chain:ALS_NODE_LIMIT": 656,
+  "Forcing Chain:FORCING_START_LIMIT": 10,
+  "ALS-XY-Wing:ALS_NODE_LIMIT": 3,
+  "Forcing Chain:TIME_LIMIT": 1,
+  "TIME_LIMIT": 1
+ },
+ "enumerate_calls_with_any_limit": 659,
+ "harness_overhead_s": 0.055,
+ "rss_peak_mb": 54.2,
+ "rss_end_mb": 50.6,
+ "series": [
+  {
+   "t": 21.784,
+   "pops": 25,
+   "expanded": 25,
+   "unique_states": 844,
+   "frontier": 820,
+   "rss_mb": 47.1,
+   "min_frontier_cands": 132
+  },
+  {
+   "t": 30.956,
+   "pops": 50,
+   "expanded": 50,
+   "unique_states": 860,
+   "frontier": 811,
+   "rss_mb": 47.2,
+   "min_frontier_cands": 135
+  },
+  {
+   "t": 40.518,
+   "pops": 75,
+   "expanded": 75,
+   "unique_states": 882,
+   "frontier": 808,
+   "rss_mb": 47.5,
+   "min_frontier_cands": 136
+  },
+  {
+   "t": 50.549,
+   "pops": 100,
+   "expanded": 100,
+   "unique_states": 904,
+   "frontier": 805,
+   "rss_mb": 47.6,
+   "min_frontier_cands": 137
+  },
+  {
+   "t": 61.044,
+   "pops": 125,
+   "expanded": 125,
+   "unique_states": 934,
+   "frontier": 810,
+   "rss_mb": 47.1,
+   "min_frontier_cands": 136
+  },
+  {
+   "t": 71.645,
+   "pops": 150,
+   "expanded": 150,
+   "unique_states": 958,
+   "frontier": 809,
+   "rss_mb": 47.2,
+   "min_frontier_cands": 135
+  },
+  {
+   "t": 82.538,
+   "pops": 175,
+   "expanded": 175,
+   "unique_states": 974,
+   "frontier": 800,
+   "rss_mb": 47.5,
+   "min_frontier_cands": 138
+  },
+  {
+   "t": 93.864,
+   "pops": 200,
+   "expanded": 200,
+   "unique_states": 997,
+   "frontier": 798,
+   "rss_mb": 47.5,
+   "min_frontier_cands": 137
+  },
+  {
+   "t": 104.536,
+   "pops": 225,
+   "expanded": 225,
+   "unique_states": 1032,
+   "frontier": 808,
+   "rss_mb": 47.9,
+   "min_frontier_cands": 136
+  },
+  {
+   "t": 114.696,
+   "pops": 250,
+   "expanded": 250,
+   "unique_states": 1055,
+   "frontier": 806,
+   "rss_mb": 47.9,
+   "min_frontier_cands": 135
+  },
+  {
+   "t": 125.24,
+   "pops": 275,
+   "expanded": 275,
+   "unique_states": 1074,
+   "frontier": 800,
+   "rss_mb": 48.1,
+   "min_frontier_cands": 138
+  },
+  {
+   "t": 136.261,
+   "pops": 300,
+   "expanded": 300,
+   "unique_states": 1095,
+   "frontier": 796,
+   "rss_mb": 48.1,
+   "min_frontier_cands": 137
+  },
+  {
+   "t": 147.675,
+   "pops": 325,
+   "expanded": 325,
+   "unique_states": 1127,
+   "frontier": 803,
+   "rss_mb": 48.5,
+   "min_frontier_cands": 136
+  },
+  {
+   "t": 159.44,
+   "pops": 350,
+   "expanded": 350,
+   "unique_states": 1147,
+   "frontier": 798,
+   "rss_mb": 48.5,
+   "min_frontier_cands": 137
+  },
+  {
+   "t": 171.572,
+   "pops": 375,
+   "expanded": 375,
+   "unique_states": 1169,
+   "frontier": 795,
+   "rss_mb": 48.7,
+   "min_frontier_cands": 138
+  },
+  {
+   "t": 184.152,
+   "pops": 400,
+   "expanded": 400,
+   "unique_states": 1185,
+   "frontier": 786,
+   "rss_mb": 48.8,
+   "min_frontier_cands": 143
+  },
+  {
+   "t": 193.53,
+   "pops": 425,
+   "expanded": 425,
+   "unique_states": 1234,
+   "frontier": 810,
+   "rss_mb": 49.1,
+   "min_frontier_cands": 136
+  },
+  {
+   "t": 203.047,
+   "pops": 450,
+   "expanded": 450,
+   "unique_states": 1256,
+   "frontier": 807,
+   "rss_mb": 49.6,
+   "min_frontier_cands": 137
+  },
+  {
+   "t": 212.802,
+   "pops": 475,
+   "expanded": 475,
+   "unique_states": 1272,
+   "frontier": 798,
+   "rss_mb": 49.6,
+   "min_frontier_cands": 140
+  },
+  {
+   "t": 222.349,
+   "pops": 500,
+   "expanded": 500,
+   "unique_states": 1308,
+   "frontier": 809,
+   "rss_mb": 49.8,
+   "min_frontier_cands": 135
+  },
+  {
+   "t": 232.126,
+   "pops": 525,
+   "expanded": 525,
+   "unique_states": 1327,
+   "frontier": 803,
+   "rss_mb": 49.8,
+   "min_frontier_cands": 138
+  },
+  {
+   "t": 243.937,
+   "pops": 550,
+   "expanded": 550,
+   "unique_states": 1360,
+   "frontier": 811,
+   "rss_mb": 50.1,
+   "min_frontier_cands": 135
+  },
+  {
+   "t": 255.962,
+   "pops": 575,
+   "expanded": 575,
+   "unique_states": 1376,
+   "frontier": 802,
+   "rss_mb": 50.2,
+   "min_frontier_cands": 138
+  },
+  {
+   "t": 268.553,
+   "pops": 600,
+   "expanded": 600,
+   "unique_states": 1398,
+   "frontier": 799,
+   "rss_mb": 50.3,
+   "min_frontier_cands": 139
+  },
+  {
+   "t": 281.431,
+   "pops": 625,
+   "expanded": 625,
+   "unique_states": 1426,
+   "frontier": 802,
+   "rss_mb": 50.4,
+   "min_frontier_cands": 136
+  },
+  {
+   "t": 294.946,
+   "pops": 650,
+   "expanded": 650,
+   "unique_states": 1452,
+   "frontier": 803,
+   "rss_mb": 50.6,
+   "min_frontier_cands": 137
+  }
+ ],
+ "sampled_states": []
+}

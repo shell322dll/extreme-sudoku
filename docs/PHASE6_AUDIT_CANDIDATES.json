@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-29T14:03:06Z",
+  "generatorVersion": "0.5.0",
+  "puzzles": [
+    {
+      "id": "puzzle-f197179f12c6533697b1",
+      "puzzle": "050000700000028000090600000670000009000300006900010250200040010030000005700050030",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 23,
+      "difficulty": "Extreme",
+      "rating": 49.188293657571215,
+      "unique": true,
+      "minimal": true,
+      "hardestTechnique": "Grouped AIC",
+      "difficultyData": {
+        "hardestRating": 35.0,
+        "totalScore": 11882.861423024402,
+        "advancedSteps": 13,
+        "trueBottlenecks": 9,
+        "longestChain": 19
+      },
+      "techniques": {
+        "2-String Kite": 2,
+        "AIC": 11,
+        "Full House": 20,
+        "Grouped AIC": 1,
+        "Hidden Single": 15,
+        "Locked Candidates": 6,
+        "Naked Single": 23,
+        "X-Wing": 2,
+        "XY-Wing": 1
+      },
+      "techniquesUsed": [
+        "2-String Kite",
+        "AIC",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Single",
+        "X-Wing",
+        "XY-Wing"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Grouped AIC",
+        "observedHardestRating": 35.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 0
+      }
+    },
+    {
+      "id": "puzzle-f23734d386d6cc1e2328",
+      "puzzle": "050000700100028000090600000070000009000300076900010250205040010030000005700050030",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 25,
+      "difficulty": "Ultra Extreme",
+      "rating": 71.32494316138512,
+      "unique": true,
+      "minimal": false,
+      "hardestTechnique": "Nishio",
+      "difficultyData": {
+        "hardestRating": 55.0,
+        "totalScore": 46602.53212202193,
+        "advancedSteps": 29,
+        "trueBottlenecks": 8,
+        "longestChain": 19
+      },
+      "techniques": {
+        "2-String Kite": 1,
+        "AIC": 6,
+        "ALS Chain": 1,
+        "ALS-XY-Wing": 2,
+        "ALS-XZ": 3,
+        "Forcing Chain": 4,
+        "Full House": 21,
+        "Grouped AIC": 4,
+        "Hidden Pair": 2,
+        "Hidden Single": 13,
+        "Locked Candidates": 7,
+        "Naked Single": 22,
+        "Naked Triple": 1,
+        "Nishio": 5,
+        "X-Wing": 2,
+        "XY-Chain": 2,
+        "XY-Wing": 1,
+        "XYZ-Wing": 1
+      },
+      "techniquesUsed": [
+        "2-String Kite",
+        "AIC",
+        "ALS Chain",
+        "ALS-XY-Wing",
+        "ALS-XZ",
+        "Forcing Chain",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Pair",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Single",
+        "Naked Triple",
+        "Nishio",
+        "X-Wing",
+        "XY-Chain",
+        "XY-Wing",
+        "XYZ-Wing"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Nishio",
+        "observedHardestRating": 55.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 7
+      }
+    },
+    {
+      "id": "puzzle-03122df59ac468dbf09d",
+      "puzzle": "050000000000028000090600000671000009000300006900010250200040010030007005700050030",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 24,
+      "difficulty": "Ultra Extreme",
+      "rating": 69.0623113819888,
+      "unique": true,
+      "minimal": true,
+      "hardestTechnique": "Nishio",
+      "difficultyData": {
+        "hardestRating": 55.0,
+        "totalScore": 24911.22236087901,
+        "advancedSteps": 15,
+        "trueBottlenecks": 7,
+        "longestChain": 13
+      },
+      "techniques": {
+        "2-String Kite": 1,
+        "AIC": 2,
+        "ALS Chain": 1,
+        "Empty Rectangle": 1,
+        "Forcing Chain": 1,
+        "Full House": 20,
+        "Grouped AIC": 3,
+        "Hidden Pair": 1,
+        "Hidden Single": 10,
+        "Locked Candidates": 5,
+        "Naked Pair": 2,
+        "Naked Single": 27,
+        "Nishio": 4,
+        "XY-Chain": 4
+      },
+      "techniquesUsed": [
+        "2-String Kite",
+        "AIC",
+        "ALS Chain",
+        "Empty Rectangle",
+        "Forcing Chain",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Pair",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Pair",
+        "Naked Single",
+        "Nishio",
+        "XY-Chain"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Nishio",
+        "observedHardestRating": 55.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 4
+      }
+    },
+    {
+      "id": "puzzle-b4d935b1bf18e438b282",
+      "puzzle": "030900000409000003001003540000062000020000008900070000004100026700006900300050780",
+      "solution": "236945817459718263871623549187362495623594178945871632594187326718236954362459781",
+      "clues": 26,
+      "difficulty": "Ultra Extreme",
+      "rating": 65.9565823430902,
+      "unique": true,
+      "minimal": false,
+      "hardestTechnique": "Forcing Chain",
+      "difficultyData": {
+        "hardestRating": 50.0,
+        "totalScore": 23524.105073434952,
+        "advancedSteps": 24,
+        "trueBottlenecks": 9,
+        "longestChain": 15
+      },
+      "techniques": {
+        "2-String Kite": 1,
+        "AIC": 17,
+        "ALS-XZ": 2,
+        "Forcing Chain": 1,
+        "Full House": 20,
+        "Grouped AIC": 1,
+        "Hidden Pair": 3,
+        "Hidden Single": 10,
+        "Locked Candidates": 11,
+        "Naked Single": 25,
+        "W-Wing": 1,
+        "X-Chain": 1,
+        "XY-Chain": 1
+      },
+      "techniquesUsed": [
+        "2-String Kite",
+        "AIC",
+        "ALS-XZ",
+        "Forcing Chain",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Pair",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Single",
+        "W-Wing",
+        "X-Chain",
+        "XY-Chain"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Forcing Chain",
+        "observedHardestRating": 50.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 9
+      }
+    },
+    {
+      "id": "puzzle-bcf460fc20aeeee740c2",
+      "puzzle": "050000000000028000090600000670000009008300006900010250000040010030000005700050030",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 22,
+      "difficulty": "Ultra Extreme",
+      "rating": 45.915331428305535,
+      "unique": true,
+      "minimal": true,
+      "hardestTechnique": "ALS-XY-Wing",
+      "difficultyData": {
+        "hardestRating": 39.0,
+        "totalScore": 9444.694262480743,
+        "advancedSteps": 10,
+        "trueBottlenecks": 5,
+        "longestChain": 9
+      },
+      "techniques": {
+        "2-String Kite": 2,
+        "AIC": 2,
+        "ALS-XY-Wing": 2,
+        "Full House": 21,
+        "Grouped AIC": 3,
+        "Hidden Single": 7,
+        "Locked Candidates": 5,
+        "Naked Pair": 1,
+        "Naked Single": 31,
+        "Naked Triple": 1,
+        "XY-Wing": 3
+      },
+      "techniquesUsed": [
+        "2-String Kite",
+        "AIC",
+        "ALS-XY-Wing",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Pair",
+        "Naked Single",
+        "Naked Triple",
+        "XY-Wing"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "ALS-XY-Wing",
+        "observedHardestRating": 39.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 4
+      }
+    }
+  ],
+  "stats": {
+    "total": 5,
+    "byDifficulty": {
+      "Extreme": 1,
+      "Ultra Extreme": 4
+    }
+  }
+}

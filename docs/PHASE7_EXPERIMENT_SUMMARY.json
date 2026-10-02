@@ -1,0 +1,119 @@
+{
+  "timestampUTC": "2026-10-01T13:09:06.200227+00:00",
+  "pilot": false,
+  "command": "python docs/PHASE7_EXPERIMENT_RUN.py --final",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.17763-SP0"
+  },
+  "config": {
+    "time_budget": 60.0,
+    "node_budget": 10000,
+    "state_budget": 10000,
+    "max_path_depth": 256,
+    "max_alternative_steps_per_state": 512,
+    "max_chain_length": 19,
+    "max_als_size": 4,
+    "max_chain_search_nodes": 100000,
+    "max_als_search_nodes": 30000,
+    "max_als_chain_length": 5,
+    "max_forcing_depth": 12,
+    "max_forcing_nodes": 2000,
+    "max_forcing_starts": 160,
+    "extreme_threshold": 30.0,
+    "ultra_threshold": 36.0,
+    "required_bottlenecks_extreme": 2,
+    "required_bottlenecks_ultra": 3,
+    "minimum_advanced_steps": 3,
+    "ultra_minimum_advanced_steps": 5,
+    "ultra_minimum_chain": 8,
+    "ultra_minimum_distributed_bins": 2,
+    "advanced_threshold": 12.0,
+    "bottleneck_threshold": 12.0,
+    "extreme_step_threshold": 22.0,
+    "distribution_bins": 4,
+    "late_fraction": 0.65,
+    "require_minimal": false
+  },
+  "sourceCounts": {
+    "docs/PHASE6_CANDIDATES.json": 4,
+    "docs/PHASE6_AUDIT_CANDIDATES.json": 5,
+    "docs/PHASE6_PROFILE.json#selected_population": 1
+  },
+  "sourceSHA256": {
+    "docs/PHASE6_CANDIDATES.json": "dba40291d3d82e6391a7113a31a8790929ba298123eb3c37b67abec3adf2e9ca",
+    "docs/PHASE6_AUDIT_CANDIDATES.json": "4cb83648bf9b3fd69e4c9f4074ab1407cffef115430e0db76bf3bf762a2c9caf",
+    "docs/PHASE6_PROFILE.json": "746b67e01aa101863d52e0ba5938c300f1f30d860251dd7553da11d3b8758f57"
+  },
+  "sourcesUnchanged": true,
+  "algorithmFingerprintBefore": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "algorithmFingerprintAfter": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "inputIDs": [
+    "puzzle-8e2b144cecb50551d96b",
+    "puzzle-f197179f12c6533697b1",
+    "puzzle-bcf460fc20aeeee740c2",
+    "puzzle-ca88d658a18eafb27c24",
+    "puzzle-03122df59ac468dbf09d",
+    "puzzle-55684dd4bac9cb6a200f",
+    "puzzle-310fab8b8581c087bc8a",
+    "puzzle-f23734d386d6cc1e2328",
+    "puzzle-b4d935b1bf18e438b282"
+  ],
+  "inputCount": 9,
+  "byPreliminaryLabel": {
+    "Extreme": {
+      "CERTIFICATION_TIMEOUT": 2
+    },
+    "Ultra Extreme": {
+      "CERTIFICATION_TIMEOUT": 7
+    }
+  },
+  "byStatus": {
+    "CERTIFICATION_TIMEOUT": 9
+  },
+  "wallSeconds": 541.4306153000798,
+  "averageSeconds": 60.08392405551341,
+  "worstSeconds": 60.6753148001153,
+  "stageSecondsInclusive": {
+    "format": 0.10680399998091161,
+    "uniqueness": 0.04101970000192523,
+    "minimality": 0.19906110013835132,
+    "human_replay": 48.97678459994495,
+    "proof_validation": 0.5934135997667909,
+    "alternative_search": 490.7335746998433,
+    "search_proof_validation": 16.43905282812193
+  },
+  "statesExplored": {
+    "total": 2205,
+    "byID": {
+      "puzzle-8e2b144cecb50551d96b": 945,
+      "puzzle-f197179f12c6533697b1": 522,
+      "puzzle-bcf460fc20aeeee740c2": 171,
+      "puzzle-ca88d658a18eafb27c24": 105,
+      "puzzle-03122df59ac468dbf09d": 80,
+      "puzzle-55684dd4bac9cb6a200f": 81,
+      "puzzle-310fab8b8581c087bc8a": 91,
+      "puzzle-f23734d386d6cc1e2328": 118,
+      "puzzle-b4d935b1bf18e438b282": 92
+    }
+  },
+  "transpositionCacheHits": {
+    "total": 18854,
+    "byID": {
+      "puzzle-8e2b144cecb50551d96b": 7650,
+      "puzzle-f197179f12c6533697b1": 3154,
+      "puzzle-bcf460fc20aeeee740c2": 2120,
+      "puzzle-ca88d658a18eafb27c24": 1493,
+      "puzzle-03122df59ac468dbf09d": 1276,
+      "puzzle-55684dd4bac9cb6a200f": 974,
+      "puzzle-310fab8b8581c087bc8a": 777,
+      "puzzle-f23734d386d6cc1e2328": 562,
+      "puzzle-b4d935b1bf18e438b282": 848
+    }
+  },
+  "productionCount": 0,
+  "productionIDs": [],
+  "minimumCertifiedClues": null,
+  "maximumCertifiedRequiredRating": null,
+  "maximumCertifiedBottlenecks": null
+}

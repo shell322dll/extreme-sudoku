@@ -1,0 +1,30 @@
+[
+  {
+    "id": "basic-classic",
+    "puzzle": "530070000600195000098000060800060003400803001700020006060000280000419005000080079",
+    "source": "Existing Phase 1 HumanSolver fixture",
+    "solved": true, "minimum_tier": "TRIVIAL", "minimum_profile": "Basic",
+    "difficulty_class": "Easy", "hardest_required_level": 1.0, "minimum_bottlenecks": 0
+  },
+  {
+    "id": "intermediate-seed-21",
+    "puzzle": "728000000000000500000409000640070020900000000000645009201000870090380000000000040",
+    "source": "Existing Phase 2 seed 21; ascending threshold verification: Turbot Fish=10",
+    "solved": true, "minimum_tier": "INTERMEDIATE", "minimum_profile": "Intermediate",
+    "difficulty_class": "Hard", "hardest_required_level": 10.0, "minimum_bottlenecks": 0
+  },
+  {
+    "id": "advanced-seed-3",
+    "puzzle": "710000004800000020090000830004700000050040200007800000040002500000094702001380090",
+    "source": "Existing Phase 2 seed 3; ascending threshold verification: XY-Wing=14",
+    "solved": true, "minimum_tier": "ADVANCED", "minimum_profile": "Advanced",
+    "difficulty_class": "Expert", "hardest_required_level": 14.0, "minimum_bottlenecks": 1
+  },
+  {
+    "id": "extreme-seed-4",
+    "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+    "source": "Existing Phase 3 seed 4; bounded required AIC-level=30, not AIC-specific necessity",
+    "solved": true, "minimum_tier": "EXTREME", "minimum_profile": "Extreme",
+    "difficulty_class": "Extreme", "hardest_required_level": 30.0, "minimum_bottlenecks": 2
+  }
+]

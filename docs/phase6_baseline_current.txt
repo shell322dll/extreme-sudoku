@@ -1,0 +1,9 @@
+Current baseline (includes existing Phase 6 implementation; not historical Phase 1-5 baseline)
+Command: python -m unittest discover -s generator/tests -v
+Environment: Python 3.11.9, Windows, C:\Develop\Extreme Sudoku
+Result: OK, 260 tests, exit code 0
+Unittest elapsed: 85.199 seconds
+Wall elapsed: 85.7493192 seconds
+Collected Phase 1-5 (excluding test_evolution*): 230 tests
+Collected Phase 6: 30 tests (test_evolution_core=19; test_evolution_engine=11)
+Historical baseline artifacts were preserved.

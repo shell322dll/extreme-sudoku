@@ -1,0 +1,83 @@
+{
+  "puzzle_id": "puzzle-ca88d658a18eafb27c24",
+  "puzzle": "050000000000028000090600000601000009000004006003010200200940010000007005700050030",
+  "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+  "clues": 22,
+  "status": "CERTIFICATION_TIMEOUT",
+  "unique": true,
+  "minimal": true,
+  "human_solved": true,
+  "proof_valid": true,
+  "reproducible": true,
+  "search_status": "INCONCLUSIVE_BUDGET",
+  "minimum_required_rating": null,
+  "minimum_required_tier": null,
+  "certified_bottlenecks": 0,
+  "certified_path": [],
+  "threshold_results": [
+    {
+      "threshold": 50.0,
+      "status": "INCONCLUSIVE_BUDGET",
+      "path": [],
+      "states_explored": 128,
+      "states_generated": 937,
+      "limit_reasons": [
+        "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+        "ALS Chain:ALS_NODE_LIMIT",
+        "ALS Chain:ALS_SIZE_LIMIT",
+        "ALS Chain:TIME_LIMIT",
+        "ALS-XY-Wing:ALS_NODE_LIMIT",
+        "ALS-XY-Wing:ALS_SIZE_LIMIT",
+        "ALS-XZ:ALS_SIZE_LIMIT",
+        "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+        "Forcing Chain:FORCING_START_LIMIT",
+        "Grouped AIC:CHAIN_LENGTH_LIMIT",
+        "Grouped AIC:CHAIN_NODE_LIMIT",
+        "TIME_LIMIT"
+      ],
+      "elapsed_seconds": 53.53199000004679,
+      "error": null,
+      "proof_seconds": 2.0146308017428964,
+      "cache_hits": 1715
+    }
+  ],
+  "bottlenecks": [],
+  "late_game_bottlenecks": 0,
+  "max_trivial_gap": 0,
+  "advanced_steps": 0,
+  "longest_chain": 0,
+  "distributed_bins": 0,
+  "states_explored": 128,
+  "elapsed_seconds": 60.0028111001011,
+  "failure_reasons": [
+    "SEARCH_TIMEOUT"
+  ],
+  "diagnostics": [
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS Chain:TIME_LIMIT",
+    "ALS-XY-Wing:ALS_NODE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "TIME_LIMIT"
+  ],
+  "stage_seconds": {
+    "format": 0.008434700081124902,
+    "uniqueness": 0.028576300013810396,
+    "minimality": 0.01857980014756322,
+    "human_replay": 6.3331748999189585,
+    "proof_validation": 0.06646230001933873,
+    "alternative_search": 53.53469630004838
+  },
+  "config_fingerprint": "10cb06ffe34a9c65237d99a2918cffcfa0565e803cdff16ee823bc01f158899c",
+  "algorithm_fingerprint": "23707b40e5cb07c4e5c08c49145378e577ce010099f72e28966b67abe8140ade",
+  "certification_version": "1",
+  "fresh": true,
+  "cache_hits": 1715,
+  "scope": "All implemented pattern rules, simple candidate chains, disjoint ALS chains, and single-assumption clause propagation; budgets never count as exhaustive failure."
+}

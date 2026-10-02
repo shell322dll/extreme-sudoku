@@ -1,0 +1,56 @@
+{
+  "started_utc": "2026-09-30T16:16:34.596014+00:00",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "platform": "Windows-10-10.0.17763-SP0",
+  "source_sha256": "a62f701f7e089a4efecc7b4f1fa317b7eaf7a567854e283ad945df12a5747d4b",
+  "git_directory_present": false,
+  "environment_overrides": {
+    "PYTHONPATH": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages",
+    "PLAYWRIGHT_BROWSERS_PATH": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\browsers"
+  },
+  "runs": [
+    {
+      "label": "PYTHON",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "generator/tests",
+        "-v"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 85.68989060004242,
+      "log": "docs/PHASE7_BASELINE_PYTHON.log"
+    },
+    {
+      "label": "FRONTEND",
+      "command": [
+        "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages\\playwright\\driver\\node.exe",
+        "--test",
+        "web/tests/game.test.js"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 1.1351503999903798,
+      "log": "docs/PHASE7_BASELINE_FRONTEND.log"
+    },
+    {
+      "label": "BROWSER",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import runpy; from pathlib import Path; m = runpy.run_path('web/tests/browser_regression.py'); m['main'].__globals__['ARTIFACTS'] = Path('docs/PHASE7_BASELINE_BROWSER'); m['main']()"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 42.773313499987125,
+      "log": "docs/PHASE7_BASELINE_BROWSER.log"
+    }
+  ],
+  "baseline_files_changed_during_run": [],
+  "finished_utc": "2026-09-30T16:18:44.309096+00:00"
+}

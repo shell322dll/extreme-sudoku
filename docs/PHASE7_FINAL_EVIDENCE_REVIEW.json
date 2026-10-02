@@ -1,0 +1,116 @@
+{
+  "reviewedUTC": "2026-10-01T13:09:17.278327+00:00",
+  "result": "PASS",
+  "algorithmFingerprint": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "regressionSourceSHA256": "20644ec1a53851181cbd1de02877350ec51277c13a053785798e7a8a76a8831e",
+  "regressionSourceStillMatches": true,
+  "pythonTests": 350,
+  "frontendTests": 16,
+  "browserGroups": 14,
+  "responsiveChecks": 56,
+  "inputCount": 9,
+  "uniqueIDsAndPuzzleStrings": true,
+  "sourceArchivesUnchanged": true,
+  "individualReportsMatchResearch": true,
+  "summaryStatisticsRecomputed": true,
+  "independentSolutionCounts": [
+    {
+      "id": "puzzle-8e2b144cecb50551d96b",
+      "preliminaryLabel": "Extreme",
+      "clues": 22,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-f197179f12c6533697b1",
+      "preliminaryLabel": "Extreme",
+      "clues": 23,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-bcf460fc20aeeee740c2",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 22,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-ca88d658a18eafb27c24",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 22,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-03122df59ac468dbf09d",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 24,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-55684dd4bac9cb6a200f",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 24,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-310fab8b8581c087bc8a",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 25,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-f23734d386d6cc1e2328",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 25,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    },
+    {
+      "id": "puzzle-b4d935b1bf18e438b282",
+      "preliminaryLabel": "Ultra Extreme",
+      "clues": 26,
+      "independentSolutionCount": 1,
+      "status": "CERTIFICATION_TIMEOUT",
+      "humanSolved": true,
+      "proofValid": true,
+      "minimumRequiredRating": null
+    }
+  ],
+  "productionCount": 0,
+  "productionSchemaAndGatesValidated": true,
+  "positiveRealProductionRoundtripEstablished": false,
+  "limitations": [
+    "No real positive default-policy Extreme/Ultra certificate; empty production cannot supply frontend content.",
+    "No repeated heavy threshold certification performed by final evidence reviewer.",
+    "Wall-clock timeout frontier and timing counters are not reproducibility claims."
+  ]
+}

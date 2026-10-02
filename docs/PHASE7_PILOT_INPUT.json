@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "puzzles": [
+    {
+      "id": "puzzle-f197179f12c6533697b1",
+      "puzzle": "050000700000028000090600000670000009000300006900010250200040010030000005700050030",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 23,
+      "difficulty": "Extreme",
+      "rating": 49.188293657571215,
+      "unique": true,
+      "minimal": true,
+      "hardestTechnique": "Grouped AIC",
+      "difficultyData": {
+        "hardestRating": 35.0,
+        "totalScore": 11882.861423024402,
+        "advancedSteps": 13,
+        "trueBottlenecks": 9,
+        "longestChain": 19
+      },
+      "techniques": {
+        "2-String Kite": 2,
+        "AIC": 11,
+        "Full House": 20,
+        "Grouped AIC": 1,
+        "Hidden Single": 15,
+        "Locked Candidates": 6,
+        "Naked Single": 23,
+        "X-Wing": 2,
+        "XY-Wing": 1
+      },
+      "techniquesUsed": [
+        "2-String Kite",
+        "AIC",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Single",
+        "X-Wing",
+        "XY-Wing"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Grouped AIC",
+        "observedHardestRating": 35.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 0
+      },
+      "phase7Sources": [
+        "docs/PHASE6_CANDIDATES.json",
+        "docs/PHASE6_AUDIT_CANDIDATES.json"
+      ]
+    },
+    {
+      "id": "puzzle-ca88d658a18eafb27c24",
+      "puzzle": "050000000000028000090600000601000009000004006003010200200940010000007005700050030",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 22,
+      "difficulty": "Ultra Extreme",
+      "rating": 71.53844068419743,
+      "unique": true,
+      "minimal": true,
+      "hardestTechnique": "Nishio",
+      "difficultyData": {
+        "hardestRating": 55.0,
+        "totalScore": 32350.214507962733,
+        "advancedSteps": 19,
+        "trueBottlenecks": 8,
+        "longestChain": 17
+      },
+      "techniques": {
+        "AIC": 8,
+        "ALS-XY-Wing": 2,
+        "Empty Rectangle": 1,
+        "Forcing Chain": 4,
+        "Full House": 20,
+        "Grouped AIC": 2,
+        "Hidden Single": 18,
+        "Locked Candidates": 9,
+        "Naked Single": 21,
+        "Nishio": 3
+      },
+      "techniquesUsed": [
+        "AIC",
+        "ALS-XY-Wing",
+        "Empty Rectangle",
+        "Forcing Chain",
+        "Full House",
+        "Grouped AIC",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Single",
+        "Nishio"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Nishio",
+        "observedHardestRating": 55.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 8
+      },
+      "phase7Sources": [
+        "docs/PHASE6_CANDIDATES.json"
+      ]
+    }
+  ],
+  "sourceCounts": {
+    "docs/PHASE6_CANDIDATES.json": 4,
+    "docs/PHASE6_AUDIT_CANDIDATES.json": 5,
+    "docs/PHASE6_PROFILE.json#selected_population": 1
+  },
+  "sourceSHA256": {
+    "docs/PHASE6_CANDIDATES.json": "dba40291d3d82e6391a7113a31a8790929ba298123eb3c37b67abec3adf2e9ca",
+    "docs/PHASE6_AUDIT_CANDIDATES.json": "4cb83648bf9b3fd69e4c9f4074ab1407cffef115430e0db76bf3bf762a2c9caf",
+    "docs/PHASE6_PROFILE.json": "746b67e01aa101863d52e0ba5938c300f1f30d860251dd7553da11d3b8758f57"
+  }
+}

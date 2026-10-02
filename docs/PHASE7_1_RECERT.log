@@ -1,0 +1,41 @@
+[2026-10-02 15:25:28] stage recert use_stuck_state_lemma=True budget=60 s, 9 candidates, sequential
+[2026-10-02 15:25:30]   puzzle-8e2b144cecb50551d96b -> CERTIFIED_EXTREME fail=[] elapsed=1.999s (proc 2.2s) states=0 upper=35.0 min=35.0 | T=32.0:PROVEN_UNSOLVABLE_WITHIN_MODEL/STUCK_STATE_SUPERSET_LEMMA/0st/0.319s
+[2026-10-02 15:26:31]   puzzle-f197179f12c6533697b1 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=1018 upper=35.0 min=None | T=32.0:INCONCLUSIVE_BUDGET/None/1018st/58.808s
+[2026-10-02 15:27:31]   puzzle-bcf460fc20aeeee740c2 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=402 upper=39.0 min=None | T=36.0:INCONCLUSIVE_BUDGET/None/402st/58.753s
+[2026-10-02 15:28:31]   puzzle-ca88d658a18eafb27c24 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=144 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/144st/52.205s
+[2026-10-02 15:29:31]   puzzle-03122df59ac468dbf09d -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=102 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/102st/53.24s
+[2026-10-02 15:30:32]   puzzle-55684dd4bac9cb6a200f -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.003s (proc 60.3s) states=85 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/85st/48.709s
+[2026-10-02 15:31:32]   puzzle-310fab8b8581c087bc8a -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.001s (proc 60.3s) states=90 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/90st/47.362s
+[2026-10-02 15:32:32]   puzzle-f23734d386d6cc1e2328 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.003s (proc 60.3s) states=106 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/106st/46.916s
+[2026-10-02 15:33:33]   puzzle-b4d935b1bf18e438b282 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.001s (proc 60.4s) states=89 upper=50.0 min=None | T=42.0:INCONCLUSIVE_BUDGET/None/89st/54.89s
+[2026-10-02 15:33:33] stage recert use_stuck_state_lemma=False budget=60 s, 9 candidates, sequential
+[2026-10-02 15:34:33]   puzzle-8e2b144cecb50551d96b -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.004s (proc 60.3s) states=1684 upper=35.0 min=None | T=32.0:INCONCLUSIVE_BUDGET/None/1684st/58.349s
+[2026-10-02 15:35:33]   puzzle-f197179f12c6533697b1 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.003s (proc 60.3s) states=848 upper=35.0 min=None | T=32.0:INCONCLUSIVE_BUDGET/None/848st/58.65s
+[2026-10-02 15:36:33]   puzzle-bcf460fc20aeeee740c2 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.008s (proc 60.3s) states=391 upper=39.0 min=None | T=36.0:INCONCLUSIVE_BUDGET/None/391st/58.586s
+[2026-10-02 15:37:34]   puzzle-ca88d658a18eafb27c24 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.003s (proc 60.3s) states=118 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/118st/51.584s
+[2026-10-02 15:38:34]   puzzle-03122df59ac468dbf09d -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=91 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/91st/52.056s
+[2026-10-02 15:39:34]   puzzle-55684dd4bac9cb6a200f -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=100 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/100st/49.712s
+[2026-10-02 15:40:35]   puzzle-310fab8b8581c087bc8a -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.001s (proc 60.3s) states=102 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/102st/49.287s
+[2026-10-02 15:41:35]   puzzle-f23734d386d6cc1e2328 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.001s (proc 60.3s) states=116 upper=55.0 min=None | T=50.0:INCONCLUSIVE_BUDGET/None/116st/48.285s
+[2026-10-02 15:42:35]   puzzle-b4d935b1bf18e438b282 -> CERTIFICATION_TIMEOUT fail=['SEARCH_TIMEOUT'] elapsed=60.002s (proc 60.3s) states=95 upper=50.0 min=None | T=42.0:INCONCLUSIVE_BUDGET/None/95st/54.833s
+[2026-10-02 15:42:35] stage benchmark threshold_search 60 s: baseline / new SSL off / new SSL on
+[2026-10-02 15:43:35]   bench puzzle-8e2b144cecb50551d96b T=32 baseline ssl=0: INCONCLUSIVE_BUDGET 942 st, 63.7 ms/st, hit 0.8438, rss 29.1 MB
+[2026-10-02 15:44:36]   bench puzzle-8e2b144cecb50551d96b T=32 new ssl=0: INCONCLUSIVE_BUDGET 2116 st, 28.36 ms/st, hit 0.7853, rss 73.7 MB
+[2026-10-02 15:45:36]   bench puzzle-8e2b144cecb50551d96b T=32 new ssl=1: INCONCLUSIVE_BUDGET 1853 st, 32.38 ms/st, hit 0.781, rss 68.2 MB
+[2026-10-02 15:46:36]   bench puzzle-ca88d658a18eafb27c24 T=50 baseline ssl=0: INCONCLUSIVE_BUDGET 109 st, 550.48 ms/st, hit 0.6322, rss 52.5 MB
+[2026-10-02 15:47:36]   bench puzzle-ca88d658a18eafb27c24 T=50 new ssl=0: INCONCLUSIVE_BUDGET 171 st, 350.88 ms/st, hit 0.2756, rss 45.7 MB
+[2026-10-02 15:48:37]   bench puzzle-ca88d658a18eafb27c24 T=50 new ssl=1: INCONCLUSIVE_BUDGET 170 st, 352.95 ms/st, hit 0.2729, rss 45.2 MB
+[2026-10-02 15:48:37] driver done: ssl,nossl,bench
+[2026-10-02 15:49:14] stage benchmark (uninstrumented, product telemetry only) 60 s: baseline / new SSL off / new SSL on
+[2026-10-02 15:50:15]   plain puzzle-8e2b144cecb50551d96b T=32 baseline ssl=0: INCONCLUSIVE_BUDGET kind=None ssl_outcome=None 990 st, 60.002 s, 60.61 ms/st, rss 29.3 MB
+[2026-10-02 15:51:15]   plain puzzle-8e2b144cecb50551d96b T=32 new ssl=0: INCONCLUSIVE_BUDGET kind=None ssl_outcome=None 2203 st, 60.001 s, 27.24 ms/st, rss 74.7 MB
+[2026-10-02 15:51:15]   plain puzzle-8e2b144cecb50551d96b T=32 new ssl=1: PROVEN_UNSOLVABLE_WITHIN_MODEL kind=STUCK_STATE_SUPERSET_LEMMA ssl_outcome=PROVEN 0 st, 0.288 s, None ms/st, rss 24.9 MB
+[2026-10-02 15:52:16]   plain puzzle-ca88d658a18eafb27c24 T=50 baseline ssl=0: INCONCLUSIVE_BUDGET kind=None ssl_outcome=None 123 st, 60.0 s, 487.81 ms/st, rss 52.2 MB
+[2026-10-02 15:53:16]   plain puzzle-ca88d658a18eafb27c24 T=50 new ssl=0: INCONCLUSIVE_BUDGET kind=None ssl_outcome=None 171 st, 60.001 s, 350.88 ms/st, rss 45.1 MB
+[2026-10-02 15:54:16]   plain puzzle-ca88d658a18eafb27c24 T=50 new ssl=1: INCONCLUSIVE_BUDGET kind=None ssl_outcome=FALLBACK 170 st, 60.001 s, 352.95 ms/st, rss 46.1 MB
+[2026-10-02 15:54:16] stage scaling probe (ANALYSIS ONLY) puzzle-f197179f12c6533697b1 budget=300 s ssl=1
+[2026-10-02 15:59:17]   probe puzzle-f197179f12c6533697b1 -> CERTIFICATION_TIMEOUT states=5581 elapsed=300.007s T=32.0:INCONCLUSIVE_BUDGET/5581st
+[2026-10-02 15:59:17] driver done: benchplain,probe:puzzle-f197179f12c6533697b1:1
+[note] Runs above were strictly sequential, one fresh subprocess per candidate/run. A code-review agent ran the test suite once concurrently during this window; timings may be slightly affected.
+[note] Instrumented benchmark rows "new ssl=1" (15:45:36, 15:48:37) are INVALID for SSL: the light instrumentation replaced StepEnumerator.enumerate, so audited_enumerator() refused the lemma (fail-closed, by design). Valid SSL-on numbers are the uninstrumented "plain" rows.
+[note] Raw JSONL: scratchpad p71_out/{recert_ssl,recert_nossl,bench,bench_plain,probe}.jsonl; aggregated into docs/PHASE7_1_RECERT_SUMMARY.json and docs/PHASE7_1_BENCHMARK.json.

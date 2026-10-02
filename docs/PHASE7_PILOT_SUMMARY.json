@@ -1,0 +1,90 @@
+{
+  "timestampUTC": "2026-09-30T22:18:21.285378+00:00",
+  "pilot": true,
+  "command": "python docs/PHASE7_EXPERIMENT_RUN.py --pilot",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.17763-SP0"
+  },
+  "config": {
+    "time_budget": 60.0,
+    "node_budget": 10000,
+    "state_budget": 10000,
+    "max_path_depth": 256,
+    "max_alternative_steps_per_state": 512,
+    "max_chain_length": 19,
+    "max_als_size": 4,
+    "max_chain_search_nodes": 100000,
+    "max_als_search_nodes": 30000,
+    "max_als_chain_length": 5,
+    "max_forcing_depth": 12,
+    "max_forcing_nodes": 2000,
+    "max_forcing_starts": 160,
+    "extreme_threshold": 30.0,
+    "ultra_threshold": 36.0,
+    "required_bottlenecks_extreme": 2,
+    "required_bottlenecks_ultra": 3,
+    "minimum_advanced_steps": 3,
+    "ultra_minimum_advanced_steps": 5,
+    "ultra_minimum_chain": 8,
+    "ultra_minimum_distributed_bins": 2,
+    "advanced_threshold": 12.0,
+    "bottleneck_threshold": 12.0,
+    "extreme_step_threshold": 22.0,
+    "distribution_bins": 4,
+    "late_fraction": 0.65,
+    "require_minimal": false
+  },
+  "sourceCounts": {
+    "docs/PHASE6_CANDIDATES.json": 4,
+    "docs/PHASE6_AUDIT_CANDIDATES.json": 5,
+    "docs/PHASE6_PROFILE.json#selected_population": 1
+  },
+  "sourceSHA256": {
+    "docs/PHASE6_CANDIDATES.json": "dba40291d3d82e6391a7113a31a8790929ba298123eb3c37b67abec3adf2e9ca",
+    "docs/PHASE6_AUDIT_CANDIDATES.json": "4cb83648bf9b3fd69e4c9f4074ab1407cffef115430e0db76bf3bf762a2c9caf",
+    "docs/PHASE6_PROFILE.json": "746b67e01aa101863d52e0ba5938c300f1f30d860251dd7553da11d3b8758f57"
+  },
+  "sourcesUnchanged": true,
+  "algorithmFingerprintBefore": "33a378ecd0f74e5d6ab01840740bd0be5e27448d9830c09b243d5b4c8a8fe98d",
+  "algorithmFingerprintAfter": "7731debb2f35911bf983d80f5f5391407206b42e119ca1a37d3ebfdbeb677d33",
+  "inputIDs": [
+    "puzzle-f197179f12c6533697b1",
+    "puzzle-ca88d658a18eafb27c24"
+  ],
+  "inputCount": 2,
+  "byPreliminaryLabel": {
+    "Extreme": {
+      "CERTIFICATION_TIMEOUT": 1
+    },
+    "Ultra Extreme": {
+      "CERTIFICATION_TIMEOUT": 1
+    }
+  },
+  "byStatus": {
+    "CERTIFICATION_TIMEOUT": 2
+  },
+  "wallSeconds": 120.05252550006844,
+  "averageSeconds": 60.00211949995719,
+  "worstSeconds": 60.0028111001011,
+  "stageSecondsInclusive": {
+    "format": 0.01637439988553524,
+    "uniqueness": 0.03021880006417632,
+    "minimality": 0.03479440021328628,
+    "human_replay": 7.296377399936318,
+    "proof_validation": 0.1247282000258565,
+    "alternative_search": 112.48127490002662
+  },
+  "statesExplored": {
+    "total": 723,
+    "byID": {
+      "puzzle-f197179f12c6533697b1": 595,
+      "puzzle-ca88d658a18eafb27c24": 128
+    }
+  },
+  "productionCount": 0,
+  "productionIDs": [],
+  "minimumCertifiedClues": null,
+  "maximumCertifiedRequiredRating": null,
+  "maximumCertifiedBottlenecks": null
+}

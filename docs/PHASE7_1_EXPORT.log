@@ -1,0 +1,57 @@
+[1/9] Puzzle: puzzle-8e2b144cecb50551d96b
+Unique: True | Minimal: True | Proof validation: True
+Alternative path search: SOLVED
+Minimum required rating: 35.0
+Certified bottlenecks: 3
+Certification: CERTIFIED_EXTREME
+[2/9] Puzzle: puzzle-f197179f12c6533697b1
+Unique: True | Minimal: True | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[3/9] Puzzle: puzzle-bcf460fc20aeeee740c2
+Unique: True | Minimal: True | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[4/9] Puzzle: puzzle-ca88d658a18eafb27c24
+Unique: True | Minimal: True | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[5/9] Puzzle: puzzle-03122df59ac468dbf09d
+Unique: True | Minimal: True | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[6/9] Puzzle: puzzle-55684dd4bac9cb6a200f
+Unique: True | Minimal: False | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[7/9] Puzzle: puzzle-310fab8b8581c087bc8a
+Unique: True | Minimal: False | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[8/9] Puzzle: puzzle-f23734d386d6cc1e2328
+Unique: True | Minimal: False | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+[9/9] Puzzle: puzzle-b4d935b1bf18e438b282
+Unique: True | Minimal: False | Proof validation: True
+Alternative path search: INCONCLUSIVE_BUDGET
+Minimum required rating: None
+Certified bottlenecks: 0
+Certification: CERTIFICATION_TIMEOUT
+Certification summary: {"byStatus": {"CERTIFICATION_TIMEOUT": 8, "CERTIFIED_EXTREME": 1}, "certified": 1, "input": 9}
+Production: data\production\puzzles.json | Research: data\candidates.json | Reports: reports\certification
+EXIT=0 WALL=482.85928893089294

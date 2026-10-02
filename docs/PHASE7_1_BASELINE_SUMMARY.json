@@ -1,0 +1,80 @@
+{
+  "started_utc": "2026-10-02T10:12:35.669174+00:00",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "node_executable": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages\\playwright\\driver\\node.exe",
+  "platform": "Windows-10-10.0.17763-SP0",
+  "env": {
+    "PYTHONPATH": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages",
+    "PLAYWRIGHT_BROWSERS_PATH": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\browsers"
+  },
+  "note_rerun": "First attempt without PYTHONPATH/PLAYWRIGHT_BROWSERS_PATH failed BROWSER with ModuleNotFoundError playwright; rerun with Phase 7 env (as in docs/PHASE7_FINAL_CHECKS.py).",
+  "runs": [
+    {
+      "label": "PYTHON",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "generator/tests",
+        "-v"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 99.49508100003004,
+      "log": "docs\\PHASE7_1_BASELINE_PYTHON.log",
+      "tests": 350,
+      "unittest_seconds": 99.17,
+      "result_line": "OK"
+    },
+    {
+      "label": "FRONTEND",
+      "command": [
+        "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages\\playwright\\driver\\node.exe",
+        "--test",
+        "web/tests/game.test.js",
+        "web/tests/certification.test.js"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 0.22255549998953938,
+      "log": "docs\\PHASE7_1_BASELINE_FRONTEND.log",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "label": "BROWSER",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import runpy;from pathlib import Path;m=runpy.run_path('web/tests/browser_regression.py');m['main'].__globals__['ARTIFACTS']=Path('docs/PHASE7_1_BASELINE_BROWSER');m['main']()"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 41.465862000128254,
+      "log": "docs\\PHASE7_1_BASELINE_BROWSER.log",
+      "browser_results": "docs\\PHASE7_1_BASELINE_BROWSER\\browser-results.json",
+      "browsers": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.12"
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6"
+        }
+      ],
+      "groups": 14,
+      "groups_passed": 14,
+      "responsive_checks": 56
+    }
+  ],
+  "source_files_changed_during_run": [],
+  "note": "Concurrent CPU-heavy profiling by another agent may have been running; wall times are as measured.",
+  "finished_utc": "2026-10-02T10:14:56.865808+00:00"
+}

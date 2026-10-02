@@ -1,0 +1,751 @@
+{
+  "timestamp_utc": "2026-09-29T08:46:37Z",
+  "command": "python -m generator.tests.profile_phase6 --seed 42 --population 4 --offspring 4 --generations 1 --max-seconds 60 --mode extreme --output docs/PHASE6_SMOKE_PROFILE.json --database docs/PHASE6_SMOKE_CANDIDATES.json --snapshot docs/PHASE6_SMOKE_SNAPSHOT.json",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "platform": "Windows-10-10.0.17763-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD"
+  },
+  "seed": 42,
+  "config": {
+    "seed": 42,
+    "population_size": 4,
+    "elite_size": 1,
+    "offspring_count": 4,
+    "random_injection_count": 3,
+    "injection_interval": 5,
+    "max_generations": 1,
+    "solution_count": 4,
+    "min_clues": 17,
+    "max_clues": 21,
+    "search_max_clues": 32,
+    "tournament_size": 5,
+    "crossover_rate": 0.1,
+    "multi_swap_sizes": [
+      2,
+      3
+    ],
+    "mutation_weights": [
+      [
+        "remove",
+        0.15
+      ],
+      [
+        "add",
+        0.1
+      ],
+      [
+        "swap",
+        0.35
+      ],
+      [
+        "multi_swap",
+        0.2
+      ],
+      [
+        "region",
+        0.1
+      ],
+      [
+        "guided",
+        0.1
+      ]
+    ],
+    "repair_limit": 5,
+    "repair_strategy": "coverage",
+    "deep_fraction": 0.05,
+    "deep_candidates_per_generation": 2,
+    "local_search_candidates": 1,
+    "local_search_budget": 3,
+    "stagnation_generations": 8,
+    "near_duplicate_distance": 4,
+    "near_duplicate_penalty": 0.02,
+    "cache_size": 4096,
+    "archive_size": 100,
+    "initialization_attempt_factor": 20,
+    "offspring_attempt_factor": 10,
+    "reduce_after_repair": false,
+    "max_seconds": 60.0,
+    "mode": "extreme",
+    "fitness_config": {
+      "required_level_weight": 10000.0,
+      "required_rating_weight": 1000.0,
+      "bottleneck_weight": 100.0,
+      "advanced_step_weight": 20.0,
+      "extreme_step_weight": 10.0,
+      "total_score_weight": 1.0,
+      "chain_weight": 5.0,
+      "longest_chain_weight": 1.0,
+      "als_weight": 2.0,
+      "forcing_weight": 3.0,
+      "clue_bonus": 0.1,
+      "minimality_bonus": 0.1
+    },
+    "difficulty_config": {
+      "registry": [
+        {
+          "name": "Full House",
+          "tier": "TRIVIAL",
+          "base_rating": 0.5,
+          "weight": 0.5
+        },
+        {
+          "name": "Naked Single",
+          "tier": "TRIVIAL",
+          "base_rating": 1.0,
+          "weight": 1.0
+        },
+        {
+          "name": "Hidden Single",
+          "tier": "TRIVIAL",
+          "base_rating": 1.2,
+          "weight": 1.2
+        },
+        {
+          "name": "Locked Candidates",
+          "tier": "BASIC",
+          "base_rating": 2.0,
+          "weight": 2.0
+        },
+        {
+          "name": "Naked Pair",
+          "tier": "BASIC",
+          "base_rating": 3.0,
+          "weight": 3.0
+        },
+        {
+          "name": "Hidden Pair",
+          "tier": "BASIC",
+          "base_rating": 3.2,
+          "weight": 3.2
+        },
+        {
+          "name": "Naked Triple",
+          "tier": "BASIC",
+          "base_rating": 5.0,
+          "weight": 5.0
+        },
+        {
+          "name": "Hidden Triple",
+          "tier": "BASIC",
+          "base_rating": 5.2,
+          "weight": 5.2
+        },
+        {
+          "name": "Naked Quad",
+          "tier": "INTERMEDIATE",
+          "base_rating": 7.0,
+          "weight": 7.0
+        },
+        {
+          "name": "Hidden Quad",
+          "tier": "INTERMEDIATE",
+          "base_rating": 7.2,
+          "weight": 7.2
+        },
+        {
+          "name": "X-Wing",
+          "tier": "INTERMEDIATE",
+          "base_rating": 8.0,
+          "weight": 8.0
+        },
+        {
+          "name": "Skyscraper",
+          "tier": "INTERMEDIATE",
+          "base_rating": 9.0,
+          "weight": 9.0
+        },
+        {
+          "name": "2-String Kite",
+          "tier": "INTERMEDIATE",
+          "base_rating": 9.2,
+          "weight": 9.2
+        },
+        {
+          "name": "Turbot Fish",
+          "tier": "INTERMEDIATE",
+          "base_rating": 10.0,
+          "weight": 10.0
+        },
+        {
+          "name": "Empty Rectangle",
+          "tier": "INTERMEDIATE",
+          "base_rating": 11.0,
+          "weight": 11.0
+        },
+        {
+          "name": "Swordfish",
+          "tier": "ADVANCED",
+          "base_rating": 12.0,
+          "weight": 12.0
+        },
+        {
+          "name": "XY-Wing",
+          "tier": "ADVANCED",
+          "base_rating": 14.0,
+          "weight": 14.0
+        },
+        {
+          "name": "XYZ-Wing",
+          "tier": "ADVANCED",
+          "base_rating": 16.0,
+          "weight": 16.0
+        },
+        {
+          "name": "W-Wing",
+          "tier": "ADVANCED",
+          "base_rating": 17.0,
+          "weight": 17.0
+        },
+        {
+          "name": "Jellyfish",
+          "tier": "ADVANCED",
+          "base_rating": 18.0,
+          "weight": 18.0
+        },
+        {
+          "name": "X-Chain",
+          "tier": "EXTREME",
+          "base_rating": 22.0,
+          "weight": 22.0
+        },
+        {
+          "name": "XY-Chain",
+          "tier": "EXTREME",
+          "base_rating": 25.0,
+          "weight": 25.0
+        },
+        {
+          "name": "AIC",
+          "tier": "EXTREME",
+          "base_rating": 30.0,
+          "weight": 30.0
+        },
+        {
+          "name": "Nice Loop",
+          "tier": "EXTREME",
+          "base_rating": 32.0,
+          "weight": 32.0
+        },
+        {
+          "name": "Grouped AIC",
+          "tier": "EXTREME",
+          "base_rating": 35.0,
+          "weight": 35.0
+        },
+        {
+          "name": "ALS-XZ",
+          "tier": "EXTREME",
+          "base_rating": 36.0,
+          "weight": 36.0
+        },
+        {
+          "name": "ALS-XY-Wing",
+          "tier": "EXTREME",
+          "base_rating": 39.0,
+          "weight": 39.0
+        },
+        {
+          "name": "ALS Chain",
+          "tier": "EXTREME",
+          "base_rating": 42.0,
+          "weight": 42.0
+        },
+        {
+          "name": "Forcing Chain",
+          "tier": "EXTREME",
+          "base_rating": 50.0,
+          "weight": 50.0
+        },
+        {
+          "name": "Nishio",
+          "tier": "EXTREME",
+          "base_rating": 55.0,
+          "weight": 55.0
+        }
+      ],
+      "search": {
+        "max_x_chain_length": 15,
+        "max_xy_chain_length": 19,
+        "max_aic_length": 19,
+        "max_grouped_aic_length": 19,
+        "max_chain_search_nodes": 100000,
+        "max_als_size": 4,
+        "max_als_chain_length": 5,
+        "max_als_search_nodes": 30000,
+        "max_forcing_depth": 12,
+        "max_forcing_nodes": 2000,
+        "max_forcing_starts": 160
+      },
+      "score_exponent": 2.0,
+      "chain_length_factor": 1.5,
+      "grouped_node_factor": 2.0,
+      "branching_factor": 1.0,
+      "als_bonus": 4.0,
+      "forcing_bonus": 8.0,
+      "search_complexity_factor": 0.01,
+      "advanced_threshold": 12.0,
+      "extreme_step_threshold": 22.0,
+      "bottleneck_threshold": 12.0,
+      "extreme_threshold": 30.0,
+      "ultra_threshold": 36.0,
+      "minimum_advanced_steps": 3,
+      "minimum_bottlenecks": 2,
+      "ultra_minimum_advanced_steps": 5,
+      "ultra_minimum_bottlenecks": 3,
+      "ultra_minimum_chain": 8,
+      "ultra_minimum_distributed_bins": 2,
+      "late_fraction": 0.65,
+      "distribution_bins": 4,
+      "total_rating_factor": 0.1,
+      "bottleneck_rating_factor": 0.05,
+      "distribution_rating_factor": 0.1,
+      "classification_thresholds": [
+        [
+          "Easy",
+          0.0
+        ],
+        [
+          "Medium",
+          2.0
+        ],
+        [
+          "Hard",
+          7.0
+        ],
+        [
+          "Expert",
+          12.0
+        ]
+      ],
+      "cache_size": 512
+    },
+    "target": {
+      "required_rating": 30.0,
+      "bottlenecks": 2,
+      "advanced_steps": 3,
+      "longest_chain": 0,
+      "reject_intermediate": true,
+      "prefer_minimal": true
+    }
+  },
+  "generations": 1,
+  "evolution_seconds": 2.073017700109631,
+  "timed_out": false,
+  "stop_reason": "max_generations",
+  "initial": {
+    "puzzle": "050000001060008090000600080000200309000090000043000050200940600030067800700000000",
+    "clues": 23,
+    "fitness": 12010.105449341954,
+    "fresh_deep_seconds": 0.4191577001474798,
+    "rating": {
+      "mode": "deep",
+      "solved": true,
+      "invalid": false,
+      "difficulty_class": "Medium",
+      "rating": 2.410544934195421,
+      "hardest_technique": "Locked Candidates",
+      "hardest_rating": 2.0,
+      "hardest_required_technique": "Locked Candidates",
+      "hardest_required_rating": 2.0,
+      "required_level_verified": true,
+      "total_score": 59.66999999999999,
+      "true_bottleneck_count": 0,
+      "advanced_steps": 0,
+      "extreme_steps": 0,
+      "chain_complexity": 0.0,
+      "longest_chain": 0,
+      "als_steps": 0,
+      "forcing_steps": 0,
+      "is_extreme_candidate": false,
+      "is_ultra_extreme_candidate": false,
+      "profile_statuses": {
+        "Basic": "SOLVED",
+        "Intermediate": "SOLVED",
+        "Advanced": "SOLVED",
+        "Extreme": "SOLVED"
+      },
+      "used_backtracking": false,
+      "guesses": 0,
+      "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+    }
+  },
+  "final": {
+    "puzzle": "050000001060008090000600080000200309000090000043000050200940600030067800700000000",
+    "clues": 23,
+    "fitness": 12010.105449341954,
+    "fresh_deep_seconds": 0.4170415000990033,
+    "rating": {
+      "mode": "deep",
+      "solved": true,
+      "invalid": false,
+      "difficulty_class": "Medium",
+      "rating": 2.410544934195421,
+      "hardest_technique": "Locked Candidates",
+      "hardest_rating": 2.0,
+      "hardest_required_technique": "Locked Candidates",
+      "hardest_required_rating": 2.0,
+      "required_level_verified": true,
+      "total_score": 59.66999999999999,
+      "true_bottleneck_count": 0,
+      "advanced_steps": 0,
+      "extreme_steps": 0,
+      "chain_complexity": 0.0,
+      "longest_chain": 0,
+      "als_steps": 0,
+      "forcing_steps": 0,
+      "is_extreme_candidate": false,
+      "is_ultra_extreme_candidate": false,
+      "profile_statuses": {
+        "Basic": "SOLVED",
+        "Intermediate": "SOLVED",
+        "Advanced": "SOLVED",
+        "Extreme": "SOLVED"
+      },
+      "used_backtracking": false,
+      "guesses": 0,
+      "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+    }
+  },
+  "comparison": {
+    "comparable": true,
+    "same_puzzle": true,
+    "deltas": {
+      "hardest_required_rating": 0.0,
+      "true_bottleneck_count": 0,
+      "total_score": 0.0,
+      "advanced_steps": 0,
+      "longest_chain": 0,
+      "clues": 0
+    },
+    "note": "Both endpoints use fresh Deep with the identical configured detector budgets."
+  },
+  "stage_seconds": {
+    "uniqueness": 0.35179320187307894,
+    "seed_construction": 0.13872209982946515,
+    "quick_rating": 0.7450462002307177,
+    "deep_rating": 0.8059579997789115,
+    "mutation": 0.00047610001638531685,
+    "repair": 0.035648100078105927,
+    "minimality": 0.17984070000238717
+  },
+  "stage_calls": {
+    "uniqueness": 364,
+    "seed_construction": 4,
+    "quick_rating": 8,
+    "deep_rating": 2,
+    "mutation": 7,
+    "repair": 5,
+    "minimality": 1
+  },
+  "stage_fraction_of_sum": {
+    "uniqueness": 0.15583416726652324,
+    "seed_construction": 0.06144985972806686,
+    "quick_rating": 0.330033819783503,
+    "deep_rating": 0.35701597722360834,
+    "mutation": 0.00021089847442746032,
+    "repair": 0.01579107259812695,
+    "minimality": 0.07966420492574412
+  },
+  "counters": {
+    "evaluated": 9,
+    "operator_multi_swap": 2,
+    "crossover_attempts": 0,
+    "repair_attempts": 5,
+    "repair_successes": 3,
+    "repair_added_clues": 17,
+    "operator_swap": 2,
+    "operator_remove": 1,
+    "quick_cache_hits": 1,
+    "duplicate_rejections": 1,
+    "operator_add": 1,
+    "operator_region": 1,
+    "uniqueness_rejections": 3,
+    "local_attempts": 3
+  },
+  "generations_stats": [
+    {
+      "generation": 0,
+      "best_fitness": 12010.105449341954,
+      "median_fitness": 1209.6993197917805,
+      "best_required_rating": 2.0,
+      "best_bottlenecks": 0,
+      "best_clue_count": 23,
+      "unique_population_size": 4,
+      "deep_rated_count": 1,
+      "diversity": 34.166666666666664,
+      "attempted": 0,
+      "accepted": 0,
+      "injections": 0,
+      "stagnated": false,
+      "elapsed_seconds": 0.964268600102514,
+      "generation_seconds": 0.964269099989906
+    },
+    {
+      "generation": 1,
+      "best_fitness": 12010.105449341954,
+      "median_fitness": 6609.782521334458,
+      "best_required_rating": 2.0,
+      "best_bottlenecks": 0,
+      "best_clue_count": 23,
+      "unique_population_size": 4,
+      "deep_rated_count": 2,
+      "diversity": 30.166666666666668,
+      "attempted": 7,
+      "accepted": 4,
+      "injections": 0,
+      "stagnated": false,
+      "elapsed_seconds": 2.049345900071785,
+      "generation_seconds": 1.0809923999477178
+    }
+  ],
+  "population_count": 4,
+  "archive_count": 1,
+  "population": [
+    {
+      "puzzle": "050000001060008090000600080000200309000090000043000050200940600030067800700000000",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clue_mask": "5775438892387864233218",
+      "clues": 23,
+      "unique": true,
+      "minimal": true,
+      "status": "DEEP_RATED",
+      "fitness": 12010.105449341954,
+      "fitness_vector": [
+        2.0,
+        0,
+        0,
+        0.0,
+        59.66999999999999,
+        -23
+      ],
+      "generation": 0,
+      "operator": "seed",
+      "rating": {
+        "mode": "deep",
+        "solved": true,
+        "difficulty": "Medium",
+        "required_rating": 2.0,
+        "required_technique": "Locked Candidates",
+        "required_level_verified": true,
+        "observed_rating": 2.0,
+        "total_score": 59.66999999999999,
+        "bottlenecks": 0,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "longest_chain": 0,
+        "chain_complexity": 0.0,
+        "als_steps": 0,
+        "forcing_steps": 0,
+        "profile_statuses": {
+          "Basic": "SOLVED",
+          "Intermediate": "SOLVED",
+          "Advanced": "SOLVED",
+          "Extreme": "SOLVED"
+        },
+        "preliminary": true,
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+      }
+    },
+    {
+      "puzzle": "050000001060008090000600080000200309000090000043000050280940600030067800700000000",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clue_mask": "5775474921184883197186",
+      "clues": 24,
+      "unique": true,
+      "minimal": false,
+      "status": "DEEP_RATED",
+      "fitness": 12009.822490458453,
+      "fitness_vector": [
+        2.0,
+        0,
+        0,
+        0.0,
+        54.83999999999999,
+        -24
+      ],
+      "generation": 1,
+      "operator": "add",
+      "rating": {
+        "mode": "deep",
+        "solved": true,
+        "difficulty": "Medium",
+        "required_rating": 2.0,
+        "required_technique": "Locked Candidates",
+        "required_level_verified": true,
+        "observed_rating": 2.0,
+        "total_score": 54.83999999999999,
+        "bottlenecks": 0,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "longest_chain": 0,
+        "chain_complexity": 0.0,
+        "als_steps": 0,
+        "forcing_steps": 0,
+        "profile_statuses": {
+          "Basic": "SOLVED",
+          "Intermediate": "SOLVED",
+          "Advanced": "SOLVED",
+          "Extreme": "SOLVED"
+        },
+        "preliminary": true,
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+      }
+    },
+    {
+      "puzzle": "200047000006050008000900000628000090000000000000860704700000009030000270805200403",
+      "solution": "289647351476351928513928647628734195347195862951862734762413589134589276895276413",
+      "clue_mask": "1574342014774600739727409",
+      "clues": 25,
+      "unique": true,
+      "minimal": true,
+      "status": "QUICK_RATED",
+      "fitness": 1209.742552210463,
+      "fitness_vector": [
+        1.2,
+        0,
+        0,
+        0.0,
+        50.550000000000004,
+        -25
+      ],
+      "generation": 0,
+      "operator": "seed",
+      "rating": {
+        "mode": "quick",
+        "solved": true,
+        "difficulty": "Easy",
+        "required_rating": null,
+        "required_technique": null,
+        "required_level_verified": false,
+        "observed_rating": 1.2,
+        "total_score": 50.550000000000004,
+        "bottlenecks": 0,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "longest_chain": 0,
+        "chain_complexity": 0.0,
+        "als_steps": 0,
+        "forcing_steps": 0,
+        "profile_statuses": {},
+        "preliminary": true,
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+      }
+    },
+    {
+      "puzzle": "200900800400710063800003040007360005000000100000000030504100000000006000060409080",
+      "solution": "236945817459718263871623549187362495623594178945871632594187326718236954362459781",
+      "clue_mask": "803097688688235496550985",
+      "clues": 25,
+      "unique": true,
+      "minimal": true,
+      "status": "QUICK_RATED",
+      "fitness": 1209.6560873730978,
+      "fitness_vector": [
+        1.2,
+        0,
+        0,
+        0.0,
+        46.28,
+        -25
+      ],
+      "generation": 0,
+      "operator": "seed",
+      "rating": {
+        "mode": "quick",
+        "solved": true,
+        "difficulty": "Easy",
+        "required_rating": null,
+        "required_technique": null,
+        "required_level_verified": false,
+        "observed_rating": 1.2,
+        "total_score": 46.28,
+        "bottlenecks": 0,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "longest_chain": 0,
+        "chain_complexity": 0.0,
+        "als_steps": 0,
+        "forcing_steps": 0,
+        "profile_statuses": {},
+        "preliminary": true,
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+      }
+    }
+  ],
+  "archive": [
+    {
+      "puzzle": "050000001060008090000600080000200309000090000043000050200940600030067800700000000",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clue_mask": "5775438892387864233218",
+      "clues": 23,
+      "unique": true,
+      "minimal": true,
+      "status": "DEEP_RATED",
+      "fitness": 12010.105449341954,
+      "fitness_vector": [
+        2.0,
+        0,
+        0,
+        0.0,
+        59.66999999999999,
+        -23
+      ],
+      "generation": 0,
+      "operator": "seed",
+      "rating": {
+        "mode": "deep",
+        "solved": true,
+        "difficulty": "Medium",
+        "required_rating": 2.0,
+        "required_technique": "Locked Candidates",
+        "required_level_verified": true,
+        "observed_rating": 2.0,
+        "total_score": 59.66999999999999,
+        "bottlenecks": 0,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "longest_chain": 0,
+        "chain_complexity": 0.0,
+        "als_steps": 0,
+        "forcing_steps": 0,
+        "profile_statuses": {
+          "Basic": "SOLVED",
+          "Intermediate": "SOLVED",
+          "Advanced": "SOLVED",
+          "Extreme": "SOLVED"
+        },
+        "preliminary": true,
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof"
+      }
+    }
+  ],
+  "minimum_clues": 23,
+  "maximum_required_rating": 2.0,
+  "maximum_genuine_bottlenecks": 0,
+  "maximum_longest_chain": 0,
+  "extreme_candidates": 0,
+  "ultra_candidates": 0,
+  "configured_target_matches": 0,
+  "extreme_17_to_21_target_matches": 0,
+  "monster_17_to_21_target_matches": 0,
+  "exported_ids": [
+    "puzzle-a6e09da58a1362da2998"
+  ],
+  "independent_validation": [
+    {
+      "id": "puzzle-a6e09da58a1362da2998",
+      "unique": true,
+      "minimal": true
+    }
+  ],
+  "notes": [
+    "Real search starts from newly generated solutions and masks; no stored difficult fixtures.",
+    "Summary extrema and target counts deduplicate overlapping population/archive by solution and mask.",
+    "Fresh Deep endpoint diagnostics and export validation are outside evolution time budget.",
+    "Budget checked between bounded actions; an in-flight solver call can exceed wall budget.",
+    "Ratings are preliminary bounded human evidence, never Phase 7 minimax certification.",
+    "Stage fractions use the sum of measured stages, not exclusive CPU shares: seed_construction and minimality include uniqueness; repair includes its exact alternative-solution calls."
+  ]
+}

@@ -1,0 +1,128 @@
+{"index": 1, "total": 9, "id": "puzzle-8e2b144cecb50551d96b", "sourceLabel": "Extreme", "clues": 22, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.00914580002427, "states": 945, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": true, "humanSolved": true, "proofValid": true, "observedUpperRating": 35.0, "stage_seconds": {"format": 0.011539600091055036, "uniqueness": 0.00188770005479455, "minimality": 0.023155000060796738, "human_replay": 1.223509200150147, "proof_validation": 0.06233989982865751, "alternative_search": 58.67827399983071, "search_proof_validation": 5.518667510477826}, "diagnostics": ["TIME_LIMIT"]}
+{"index": 2, "total": 9, "id": "puzzle-f197179f12c6533697b1", "sourceLabel": "Extreme", "clues": 23, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.049911899957806, "states": 522, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": true, "humanSolved": true, "proofValid": true, "observedUpperRating": 35.0, "stage_seconds": {"format": 0.011984199983999133, "uniqueness": 0.0016764998435974121, "minimality": 0.01802810002118349, "human_replay": 0.9476739999372512, "proof_validation": 0.05956050008535385, "alternative_search": 59.00284849992022, "search_proof_validation": 2.374582205200568}, "diagnostics": ["AIC:CHAIN_LENGTH_LIMIT", "AIC:CHAIN_NODE_LIMIT", "AIC:TIME_LIMIT", "Nice Loop:CHAIN_LENGTH_LIMIT", "TIME_LIMIT"]}
+{"index": 3, "total": 9, "id": "puzzle-bcf460fc20aeeee740c2", "sourceLabel": "Ultra Extreme", "clues": 22, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.6753148001153, "states": 171, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": true, "humanSolved": true, "proofValid": true, "observedUpperRating": 39.0, "stage_seconds": {"format": 0.011680100113153458, "uniqueness": 0.0007069001439958811, "minimality": 0.007770400028675795, "human_replay": 1.1507373000495136, "proof_validation": 0.05445659998804331, "alternative_search": 59.44491730001755, "search_proof_validation": 1.7810738985426724}, "diagnostics": ["ALS-XZ:ALS_SIZE_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "TIME_LIMIT"]}
+{"index": 4, "total": 9, "id": "puzzle-ca88d658a18eafb27c24", "sourceLabel": "Ultra Extreme", "clues": 22, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.0102625999134, "states": 105, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": true, "humanSolved": true, "proofValid": true, "observedUpperRating": 55.0, "stage_seconds": {"format": 0.011913199909031391, "uniqueness": 0.028381200041621923, "minimality": 0.019745100056752563, "human_replay": 6.361685200128704, "proof_validation": 0.06862969999201596, "alternative_search": 53.50384010002017, "search_proof_validation": 1.846547502791509}, "diagnostics": ["ALS Chain:ALS_CHAIN_LENGTH_LIMIT", "ALS Chain:ALS_NODE_LIMIT", "ALS Chain:ALS_SIZE_LIMIT", "ALS-XY-Wing:ALS_NODE_LIMIT", "ALS-XY-Wing:ALS_SIZE_LIMIT", "ALS-XZ:ALS_SIZE_LIMIT", "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT", "Forcing Chain:FORCING_START_LIMIT", "Forcing Chain:TIME_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "TIME_LIMIT"]}
+{"index": 5, "total": 9, "id": "puzzle-03122df59ac468dbf09d", "sourceLabel": "Ultra Extreme", "clues": 24, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.00224639987573, "states": 80, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": true, "humanSolved": true, "proofValid": true, "observedUpperRating": 55.0, "stage_seconds": {"format": 0.011609199922531843, "uniqueness": 0.0015728999860584736, "minimality": 0.029392100172117352, "human_replay": 6.738126100040972, "proof_validation": 0.061202399898320436, "alternative_search": 53.14894489990547, "search_proof_validation": 1.4769616990815848}, "diagnostics": ["AIC:CHAIN_LENGTH_LIMIT", "AIC:CHAIN_NODE_LIMIT", "AIC:TIME_LIMIT", "ALS Chain:ALS_CHAIN_LENGTH_LIMIT", "ALS Chain:ALS_NODE_LIMIT", "ALS Chain:ALS_SIZE_LIMIT", "ALS-XY-Wing:ALS_NODE_LIMIT", "ALS-XY-Wing:ALS_SIZE_LIMIT", "ALS-XZ:ALS_SIZE_LIMIT", "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT", "Forcing Chain:FORCING_START_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "Nice Loop:CHAIN_LENGTH_LIMIT", "Nice Loop:CHAIN_NODE_LIMIT", "TIME_LIMIT"]}
+{"index": 6, "total": 9, "id": "puzzle-55684dd4bac9cb6a200f", "sourceLabel": "Ultra Extreme", "clues": 24, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.0030231999699, "states": 81, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": false, "humanSolved": true, "proofValid": true, "observedUpperRating": 55.0, "stage_seconds": {"format": 0.012077899882569909, "uniqueness": 0.0014991001226007938, "minimality": 0.01908879983238876, "human_replay": 8.399759499821812, "proof_validation": 0.06399090006016195, "alternative_search": 51.49450629996136, "search_proof_validation": 1.145325798774138}, "diagnostics": ["AIC:CHAIN_LENGTH_LIMIT", "AIC:CHAIN_NODE_LIMIT", "ALS Chain:ALS_CHAIN_LENGTH_LIMIT", "ALS Chain:ALS_NODE_LIMIT", "ALS Chain:ALS_SIZE_LIMIT", "ALS-XY-Wing:ALS_SIZE_LIMIT", "ALS-XY-Wing:TIME_LIMIT", "ALS-XZ:ALS_SIZE_LIMIT", "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT", "Forcing Chain:FORCING_START_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "Nice Loop:CHAIN_LENGTH_LIMIT", "Nice Loop:CHAIN_NODE_LIMIT", "TIME_LIMIT"]}
+{"index": 7, "total": 9, "id": "puzzle-310fab8b8581c087bc8a", "sourceLabel": "Ultra Extreme", "clues": 25, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.00141800008714, "states": 91, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": false, "humanSolved": true, "proofValid": true, "observedUpperRating": 55.0, "stage_seconds": {"format": 0.012098000152036548, "uniqueness": 0.0018897000700235367, "minimality": 0.024788100039586425, "human_replay": 9.719032099936157, "proof_validation": 0.07770189992152154, "alternative_search": 50.150350800016895, "search_proof_validation": 0.9101363071240485}, "diagnostics": ["AIC:CHAIN_NODE_LIMIT", "AIC:TIME_LIMIT", "ALS Chain:ALS_CHAIN_LENGTH_LIMIT", "ALS Chain:ALS_NODE_LIMIT", "ALS Chain:ALS_SIZE_LIMIT", "ALS-XY-Wing:ALS_NODE_LIMIT", "ALS-XY-Wing:ALS_SIZE_LIMIT", "ALS-XZ:ALS_SIZE_LIMIT", "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT", "Forcing Chain:FORCING_START_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "TIME_LIMIT"]}
+{"index": 8, "total": 9, "id": "puzzle-f23734d386d6cc1e2328", "sourceLabel": "Ultra Extreme", "clues": 25, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.00156049989164, "states": 118, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": false, "humanSolved": true, "proofValid": true, "observedUpperRating": 55.0, "stage_seconds": {"format": 0.012069399934262037, "uniqueness": 0.002079299883916974, "minimality": 0.03926360001787543, "human_replay": 10.66517599998042, "proof_validation": 0.07608220004476607, "alternative_search": 49.19010860007256, "search_proof_validation": 0.5972214038483799}, "diagnostics": ["AIC:TIME_LIMIT", "ALS Chain:ALS_CHAIN_LENGTH_LIMIT", "ALS Chain:ALS_SIZE_LIMIT", "ALS-XY-Wing:ALS_SIZE_LIMIT", "ALS-XZ:ALS_SIZE_LIMIT", "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT", "Forcing Chain:FORCING_START_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "TIME_LIMIT"]}
+{"index": 9, "total": 9, "id": "puzzle-b4d935b1bf18e438b282", "sourceLabel": "Ultra Extreme", "clues": 26, "status": "CERTIFICATION_TIMEOUT", "seconds": 60.00243329978548, "states": 92, "reasons": ["SEARCH_TIMEOUT"], "unique": true, "minimal": false, "humanSolved": true, "proofValid": true, "observedUpperRating": 50.0, "stage_seconds": {"format": 0.011832399992272258, "uniqueness": 0.0013263998553156853, "minimality": 0.017829899908974767, "human_replay": 3.7710851998999715, "proof_validation": 0.06944949994795024, "alternative_search": 56.119784200098366, "search_proof_validation": 0.7885365022812039}, "diagnostics": ["AIC:CHAIN_LENGTH_LIMIT", "AIC:CHAIN_NODE_LIMIT", "ALS Chain:ALS_CHAIN_LENGTH_LIMIT", "ALS Chain:ALS_NODE_LIMIT", "ALS Chain:ALS_SIZE_LIMIT", "ALS-XY-Wing:ALS_NODE_LIMIT", "ALS-XY-Wing:ALS_SIZE_LIMIT", "ALS-XY-Wing:TIME_LIMIT", "ALS-XZ:ALS_SIZE_LIMIT", "Grouped AIC:CHAIN_LENGTH_LIMIT", "Grouped AIC:CHAIN_NODE_LIMIT", "Nice Loop:CHAIN_LENGTH_LIMIT", "TIME_LIMIT"]}
+{
+  "timestampUTC": "2026-10-01T13:09:06.200227+00:00",
+  "pilot": false,
+  "command": "python docs/PHASE7_EXPERIMENT_RUN.py --final",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.17763-SP0"
+  },
+  "config": {
+    "time_budget": 60.0,
+    "node_budget": 10000,
+    "state_budget": 10000,
+    "max_path_depth": 256,
+    "max_alternative_steps_per_state": 512,
+    "max_chain_length": 19,
+    "max_als_size": 4,
+    "max_chain_search_nodes": 100000,
+    "max_als_search_nodes": 30000,
+    "max_als_chain_length": 5,
+    "max_forcing_depth": 12,
+    "max_forcing_nodes": 2000,
+    "max_forcing_starts": 160,
+    "extreme_threshold": 30.0,
+    "ultra_threshold": 36.0,
+    "required_bottlenecks_extreme": 2,
+    "required_bottlenecks_ultra": 3,
+    "minimum_advanced_steps": 3,
+    "ultra_minimum_advanced_steps": 5,
+    "ultra_minimum_chain": 8,
+    "ultra_minimum_distributed_bins": 2,
+    "advanced_threshold": 12.0,
+    "bottleneck_threshold": 12.0,
+    "extreme_step_threshold": 22.0,
+    "distribution_bins": 4,
+    "late_fraction": 0.65,
+    "require_minimal": false
+  },
+  "sourceCounts": {
+    "docs/PHASE6_CANDIDATES.json": 4,
+    "docs/PHASE6_AUDIT_CANDIDATES.json": 5,
+    "docs/PHASE6_PROFILE.json#selected_population": 1
+  },
+  "sourceSHA256": {
+    "docs/PHASE6_CANDIDATES.json": "dba40291d3d82e6391a7113a31a8790929ba298123eb3c37b67abec3adf2e9ca",
+    "docs/PHASE6_AUDIT_CANDIDATES.json": "4cb83648bf9b3fd69e4c9f4074ab1407cffef115430e0db76bf3bf762a2c9caf",
+    "docs/PHASE6_PROFILE.json": "746b67e01aa101863d52e0ba5938c300f1f30d860251dd7553da11d3b8758f57"
+  },
+  "sourcesUnchanged": true,
+  "algorithmFingerprintBefore": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "algorithmFingerprintAfter": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "inputIDs": [
+    "puzzle-8e2b144cecb50551d96b",
+    "puzzle-f197179f12c6533697b1",
+    "puzzle-bcf460fc20aeeee740c2",
+    "puzzle-ca88d658a18eafb27c24",
+    "puzzle-03122df59ac468dbf09d",
+    "puzzle-55684dd4bac9cb6a200f",
+    "puzzle-310fab8b8581c087bc8a",
+    "puzzle-f23734d386d6cc1e2328",
+    "puzzle-b4d935b1bf18e438b282"
+  ],
+  "inputCount": 9,
+  "byPreliminaryLabel": {
+    "Extreme": {
+      "CERTIFICATION_TIMEOUT": 2
+    },
+    "Ultra Extreme": {
+      "CERTIFICATION_TIMEOUT": 7
+    }
+  },
+  "byStatus": {
+    "CERTIFICATION_TIMEOUT": 9
+  },
+  "wallSeconds": 541.4306153000798,
+  "averageSeconds": 60.08392405551341,
+  "worstSeconds": 60.6753148001153,
+  "stageSecondsInclusive": {
+    "format": 0.10680399998091161,
+    "uniqueness": 0.04101970000192523,
+    "minimality": 0.19906110013835132,
+    "human_replay": 48.97678459994495,
+    "proof_validation": 0.5934135997667909,
+    "alternative_search": 490.7335746998433,
+    "search_proof_validation": 16.43905282812193
+  },
+  "statesExplored": {
+    "total": 2205,
+    "byID": {
+      "puzzle-8e2b144cecb50551d96b": 945,
+      "puzzle-f197179f12c6533697b1": 522,
+      "puzzle-bcf460fc20aeeee740c2": 171,
+      "puzzle-ca88d658a18eafb27c24": 105,
+      "puzzle-03122df59ac468dbf09d": 80,
+      "puzzle-55684dd4bac9cb6a200f": 81,
+      "puzzle-310fab8b8581c087bc8a": 91,
+      "puzzle-f23734d386d6cc1e2328": 118,
+      "puzzle-b4d935b1bf18e438b282": 92
+    }
+  },
+  "transpositionCacheHits": {
+    "total": 18854,
+    "byID": {
+      "puzzle-8e2b144cecb50551d96b": 7650,
+      "puzzle-f197179f12c6533697b1": 3154,
+      "puzzle-bcf460fc20aeeee740c2": 2120,
+      "puzzle-ca88d658a18eafb27c24": 1493,
+      "puzzle-03122df59ac468dbf09d": 1276,
+      "puzzle-55684dd4bac9cb6a200f": 974,
+      "puzzle-310fab8b8581c087bc8a": 777,
+      "puzzle-f23734d386d6cc1e2328": 562,
+      "puzzle-b4d935b1bf18e438b282": 848
+    }
+  },
+  "productionCount": 0,
+  "productionIDs": [],
+  "minimumCertifiedClues": null,
+  "maximumCertifiedRequiredRating": null,
+  "maximumCertifiedBottlenecks": null
+}

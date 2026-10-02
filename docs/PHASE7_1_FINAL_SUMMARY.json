@@ -1,0 +1,102 @@
+{
+  "started_utc": "2026-10-02T13:27:24.435791+00:00",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "node_executable": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages\\playwright\\driver\\node.exe",
+  "platform": "Windows-10-10.0.17763-SP0",
+  "env": {
+    "PYTHONPATH": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages",
+    "PLAYWRIGHT_BROWSERS_PATH": "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\browsers"
+  },
+  "source_sha256_scope": "generator/, web/, data/ files excluding __pycache__ and *.pyc; aggregate = sha256 of sorted JSON {relpath: sha256}",
+  "source_files_count_before": 188,
+  "source_sha256_before": "d3e4423c9b1e3ad6dba3307e76b77684e5f4c49854dc7c4b15cea558ce5f2bd4",
+  "runs": [
+    {
+      "label": "PYTHON",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "generator/tests",
+        "-v"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 155.75872409995645,
+      "log": "docs\\PHASE7_1_FINAL_PYTHON.log",
+      "tests": 413,
+      "unittest_seconds": 155.329,
+      "result_line": "OK"
+    },
+    {
+      "label": "FRONTEND",
+      "command": [
+        "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages\\playwright\\driver\\node.exe",
+        "--test",
+        "web/tests/game.test.js",
+        "web/tests/certification.test.js"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 0.3763834999408573,
+      "log": "docs\\PHASE7_1_FINAL_FRONTEND.log",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "label": "BROWSER",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import runpy;from pathlib import Path;m=runpy.run_path('web/tests/browser_regression.py');m['main'].__globals__['ARTIFACTS']=Path('docs/PHASE7_1_FINAL_BROWSER');m['main']()"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 41.975017100106925,
+      "log": "docs\\PHASE7_1_FINAL_BROWSER.log",
+      "browser_results": "docs\\PHASE7_1_FINAL_BROWSER\browser-results.json",
+      "browsers": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.12"
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6"
+        }
+      ],
+      "groups": 14,
+      "groups_passed": 14,
+      "responsive_checks": 56
+    }
+  ],
+  "source_files_count_after": 188,
+  "source_sha256_after": "d3e4423c9b1e3ad6dba3307e76b77684e5f4c49854dc7c4b15cea558ce5f2bd4",
+  "source_unchanged": true,
+  "source_files_changed_during_run": [],
+  "finished_utc": "2026-10-02T13:30:42.725693+00:00",
+  "comparison_to_baseline": {
+    "python_tests": {
+      "baseline": 350,
+      "final": 413
+    },
+    "frontend_tests": {
+      "baseline": 16,
+      "final": 16
+    },
+    "browser_groups": {
+      "baseline": 14,
+      "final": 14
+    },
+    "responsive_checks": {
+      "baseline": 56,
+      "final": 56
+    }
+  }
+}

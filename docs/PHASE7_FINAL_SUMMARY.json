@@ -1,0 +1,66 @@
+{
+  "started_utc": "2026-10-01T06:11:37.998322+00:00",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "platform": "Windows-10-10.0.17763-SP0",
+  "source_sha256": "20644ec1a53851181cbd1de02877350ec51277c13a053785798e7a8a76a8831e",
+  "runs": [
+    {
+      "label": "PYTHON",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "generator/tests",
+        "-v"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 99.61927989986725,
+      "log": "docs\\PHASE7_FINAL_PYTHON.log",
+      "tests": 350,
+      "unittest_seconds": 99.244
+    },
+    {
+      "label": "FRONTEND",
+      "command": [
+        "C:\\Users\\IGNATE~1\\AppData\\Local\\Temp\\extreme-sudoku-qa\\packages\\playwright\\driver\\node.exe",
+        "--test",
+        "web/tests/game.test.js",
+        "web/tests/certification.test.js"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 0.25760149979032576,
+      "log": "docs\\PHASE7_FINAL_FRONTEND.log"
+    },
+    {
+      "label": "BROWSER",
+      "command": [
+        "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import runpy;from pathlib import Path;m=runpy.run_path('web/tests/browser_regression.py');m['main'].__globals__['ARTIFACTS']=Path('docs/PHASE7_FINAL_BROWSER');m['main']()"
+      ],
+      "cwd": "C:\\Develop\\Extreme Sudoku",
+      "exit_code": 0,
+      "wall_seconds": 40.93765529990196,
+      "log": "docs\\PHASE7_FINAL_BROWSER.log",
+      "groups": 14,
+      "responsive_checks": 56,
+      "browsers": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.12"
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6"
+        }
+      ]
+    }
+  ],
+  "source_files_changed_during_run": [],
+  "finished_utc": "2026-10-01T06:13:58.949045+00:00"
+}

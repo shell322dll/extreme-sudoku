@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-29T08:46:37Z",
+  "generatorVersion": "0.5.0",
+  "puzzles": [
+    {
+      "id": "puzzle-a6e09da58a1362da2998",
+      "puzzle": "050000001060008090000600080000200309000090000043000050200940600030067800700000000",
+      "solution": "852439761167528493394671582671285349528394176943716258285943617439167825716852934",
+      "clues": 23,
+      "difficulty": "Medium",
+      "rating": 2.410544934195421,
+      "unique": true,
+      "minimal": true,
+      "hardestTechnique": "Locked Candidates",
+      "difficultyData": {
+        "hardestRating": 2.0,
+        "totalScore": 59.66999999999999,
+        "advancedSteps": 0,
+        "trueBottlenecks": 0,
+        "longestChain": 0
+      },
+      "techniques": {
+        "Full House": 19,
+        "Hidden Single": 18,
+        "Locked Candidates": 2,
+        "Naked Single": 21
+      },
+      "techniquesUsed": [
+        "Full House",
+        "Hidden Single",
+        "Locked Candidates",
+        "Naked Single"
+      ],
+      "generatorSeed": 42,
+      "ratingMetadata": {
+        "mode": "deep",
+        "scope": "deterministic bounded human solver; no exhaustive alternative-path proof",
+        "preliminary": true,
+        "requiredLevelVerified": true,
+        "observedHardestTechnique": "Locked Candidates",
+        "observedHardestRating": 2.0
+      },
+      "generationMetadata": {
+        "attemptSeed": 42,
+        "attempt": 0
+      }
+    }
+  ],
+  "stats": {
+    "total": 1,
+    "byDifficulty": {
+      "Medium": 1
+    }
+  }
+}

@@ -1,0 +1,343 @@
+{
+ "timestampUTC": "2026-10-02T13:39:29.224065+00:00",
+ "kind": "Phase 7.1 official production export (existing Phase 7 exporter)",
+ "command": "python -m generator certify --input docs/PHASE7_EXPERIMENT_INPUT.json --fresh --output data/production/puzzles.json --research-output data/candidates.json --reports-dir reports/certification",
+ "exit_code": 0,
+ "wall_seconds": 482.86,
+ "log": "docs/PHASE7_1_EXPORT.log",
+ "environment": {
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.17763-SP0"
+ },
+ "inputCount": 9,
+ "researchCount": 9,
+ "researchStats": {
+  "input": 9,
+  "certified": 1,
+  "byStatus": {
+   "CERTIFICATION_TIMEOUT": 8,
+   "CERTIFIED_EXTREME": 1
+  }
+ },
+ "byStatus": {
+  "CERTIFICATION_TIMEOUT": 8,
+  "CERTIFIED_EXTREME": 1
+ },
+ "byStatus_phase7": {
+  "CERTIFICATION_TIMEOUT": 9
+ },
+ "productionSize": 1,
+ "productionStats": {
+  "total": 1,
+  "byDifficulty": {
+   "Extreme": 1
+  }
+ },
+ "productionDatasetKind": "production-certified",
+ "certified": [
+  {
+   "id": "puzzle-8e2b144cecb50551d96b",
+   "clues": 22,
+   "difficulty": "Extreme",
+   "rating": 35.0,
+   "status": "CERTIFIED_EXTREME",
+   "requiredRating": 35.0,
+   "requiredTier": "EXTREME",
+   "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+   "searchConclusive": true,
+   "proofValidated": true,
+   "unique": true,
+   "minimal": true
+  }
+ ],
+ "minCluesAmongCertified": 22,
+ "bestCertifiedRating": 35.0,
+ "validate_production_database": {
+  "ok": true,
+  "error": null,
+  "seconds": 1.7927457001060247
+ },
+ "algorithm_fingerprint": [
+  "3ccb7aa047be7ecb90b09da5e40e080e99727c85970e94463b5d697169cee805"
+ ],
+ "algorithm_fingerprint_current_code": "3ccb7aa047be7ecb90b09da5e40e080e99727c85970e94463b5d697169cee805",
+ "config_fingerprint": [
+  "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1"
+ ],
+ "config_fingerprint_default": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+ "reports": {
+  "count": 9,
+  "expected_names_match": true,
+  "report_ids_match": true,
+  "phase7_reports_same_names_overwritten": [
+   "000001-f03e4908d351dc789510.json",
+   "000002-a4f0721c0d8a5a30a211.json",
+   "000003-7e17a4d46805c1df0a34.json",
+   "000004-595a989b6ebcbbff42eb.json",
+   "000005-5db09d732b49649d569c.json",
+   "000006-516b658e555cec0a3443.json",
+   "000007-44225018daf8af8d4e1e.json",
+   "000008-52ecdd181cb3f8cf9738.json",
+   "000009-9238c6b39b7043add568.json"
+  ],
+  "phase7_reports_unchanged_bytes": [],
+  "stale_reports_remaining": []
+ },
+ "candidates": [
+  {
+   "id": "puzzle-8e2b144cecb50551d96b",
+   "clues": 22,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFIED_EXTREME",
+   "search_status": "SOLVED",
+   "elapsed_seconds": 1.7198930999729782,
+   "states_explored": 0,
+   "minimum_required_rating": 35.0,
+   "negative_proof_kind": "STUCK_STATE_SUPERSET_LEMMA",
+   "observed_upper_rating": 35.0,
+   "failure_reasons": [],
+   "diagnostics": [],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-f197179f12c6533697b1",
+   "clues": 23,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.001632699975744,
+   "states_explored": 1126,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 35.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "AIC:CHAIN_LENGTH_LIMIT",
+    "AIC:CHAIN_NODE_LIMIT",
+    "Nice Loop:CHAIN_LENGTH_LIMIT",
+    "TIME_LIMIT",
+    "X-Chain:TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-bcf460fc20aeeee740c2",
+   "clues": 22,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.00276780012064,
+   "states_explored": 464,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 39.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "Grouped AIC:TIME_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-ca88d658a18eafb27c24",
+   "clues": 22,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.00256450008601,
+   "states_explored": 151,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 55.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_NODE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:TIME_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-03122df59ac468dbf09d",
+   "clues": 24,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.001693200087175,
+   "states_explored": 119,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 55.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "AIC:CHAIN_LENGTH_LIMIT",
+    "AIC:CHAIN_NODE_LIMIT",
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_NODE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "ALS-XZ:TIME_LIMIT",
+    "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "Nice Loop:CHAIN_LENGTH_LIMIT",
+    "Nice Loop:CHAIN_NODE_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-55684dd4bac9cb6a200f",
+   "clues": 24,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.001772300107405,
+   "states_explored": 117,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 55.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "AIC:CHAIN_LENGTH_LIMIT",
+    "AIC:CHAIN_NODE_LIMIT",
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS Chain:TIME_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "Nice Loop:CHAIN_LENGTH_LIMIT",
+    "Nice Loop:CHAIN_NODE_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-310fab8b8581c087bc8a",
+   "clues": 25,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.00193089991808,
+   "states_explored": 121,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 55.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "AIC:CHAIN_NODE_LIMIT",
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_NODE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Forcing Chain:TIME_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-f23734d386d6cc1e2328",
+   "clues": 25,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.00104509992525,
+   "states_explored": 143,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 55.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:TIME_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Forcing Chain:FORCING_DEPTH_OR_NODE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  },
+  {
+   "id": "puzzle-b4d935b1bf18e438b282",
+   "clues": 26,
+   "phase7_status": "CERTIFICATION_TIMEOUT",
+   "new_status": "CERTIFICATION_TIMEOUT",
+   "search_status": "INCONCLUSIVE_BUDGET",
+   "elapsed_seconds": 60.0015904000029,
+   "states_explored": 119,
+   "minimum_required_rating": null,
+   "negative_proof_kind": null,
+   "observed_upper_rating": 50.0,
+   "failure_reasons": [
+    "SEARCH_TIMEOUT"
+   ],
+   "diagnostics": [
+    "AIC:CHAIN_LENGTH_LIMIT",
+    "AIC:CHAIN_NODE_LIMIT",
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_NODE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "ALS-XZ:TIME_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "Nice Loop:CHAIN_LENGTH_LIMIT",
+    "TIME_LIMIT"
+   ],
+   "production_eligible": null
+  }
+ ],
+ "notes": [
+  "All 9 Phase 7 reports (same filenames) were overwritten by this run; no stale reports remain.",
+  "Phase 7 statuses taken from data/candidates.json as it was before this run (Phase 7 export, 2026-10-01: 9x CERTIFICATION_TIMEOUT).",
+  "algorithm_fingerprint 3ccb7aa0... differs from docs/PHASE7_1_RECERT_SUMMARY.json (85753039...): generator code changed after the re-certification run; this export and validation use the current code (matches algorithm_fingerprint_current_code).",
+  "Regression (docs/PHASE7_1_FINAL_SUMMARY.json) ran before this export with unchanged generator/web/data aggregate d3e4423c...",
+  "Root PHASE7_1_RECERT.log did not exist at run time; nothing deleted or moved."
+ ]
+}

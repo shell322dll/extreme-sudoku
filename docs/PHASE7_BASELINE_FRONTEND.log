@@ -1,0 +1,23 @@
+✔ all current exported puzzles satisfy the frontend exchange contract (2.139ms)
+✔ invalid or duplicate entries do not discard good entries; schema is enforced (0.9895ms)
+✔ given cells cannot be overwritten, erased, annotated or revealed (0.4345ms)
+✔ nine distinct notes toggle at stable candidate positions and undo atomically (0.3469ms)
+✔ a value removes matching peer notes as one undo group, preserving unrelated notes (0.5141ms)
+✔ auto removal setting preserves peer candidates and notes cannot overwrite values (0.1783ms)
+✔ immediate mistakes count changed incorrect entries only and survive undo (0.1545ms)
+✔ completion checking catches a wrong full board and off mode suppresses mistakes (1.1672ms)
+✔ timer uses real time, explicit pause freezes it, restore resumes saved duration (0.4547ms)
+✔ correct completion freezes timer; undo reopens game; completed progress restores (1.8525ms)
+✔ restoration preserves notes, selection and history without allowing clue tampering (0.267ms)
+✔ foreign saves, malformed notes and malicious undo frames are rejected (0.2483ms)
+✔ hint reveals selected correct value, groups notes removal and tracks lifetime hints (0.2068ms)
+✔ localStorage failures and malformed JSON do not interrupt gameplay (0.5135ms)
+✔ loader resolves data relative to a nested GitHub Pages project path (0.6795ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 947.5317

@@ -1,0 +1,8642 @@
+{
+  "puzzle_id": "puzzle-b4d935b1bf18e438b282",
+  "puzzle": "030900000409000003001003540000062000020000008900070000004100026700006900300050780",
+  "solution": "236945817459718263871623549187362495623594178945871632594187326718236954362459781",
+  "clues": 26,
+  "status": "CERTIFICATION_TIMEOUT",
+  "unique": true,
+  "minimal": false,
+  "human_solved": true,
+  "proof_valid": true,
+  "reproducible": true,
+  "search_status": "INCONCLUSIVE_BUDGET",
+  "minimum_required_rating": null,
+  "minimum_required_tier": null,
+  "certified_bottlenecks": 0,
+  "certified_path": [],
+  "observed_path": [
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          60,
+          3
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          60,
+          [
+            3
+          ]
+        ]
+      ],
+      "explanation": "r7c7 has only candidate 3.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          26,
+          9
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        [
+          9,
+          [
+            26
+          ]
+        ]
+      ],
+      "explanation": "Only r3c9 can hold 9 in row 3.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          34,
+          9
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        [
+          9,
+          [
+            34
+          ]
+        ]
+      ],
+      "explanation": "Only r4c8 can hold 9 in row 4.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          59,
+          7
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ],
+        [
+          7,
+          [
+            59
+          ]
+        ]
+      ],
+      "explanation": "Only r7c6 can hold 7 in row 7.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          2,
+          2
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          0,
+          9,
+          18,
+          27,
+          36,
+          45,
+          54,
+          63,
+          72
+        ],
+        [
+          0,
+          1,
+          2,
+          9,
+          10,
+          11,
+          18,
+          19,
+          20
+        ],
+        2,
+        [
+          0,
+          18
+        ]
+      ],
+      "explanation": "Claiming: 2 in column 1 is confined to box 1; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          28,
+          1
+        ],
+        [
+          46,
+          1
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          0,
+          9,
+          18,
+          27,
+          36,
+          45,
+          54,
+          63,
+          72
+        ],
+        [
+          27,
+          28,
+          29,
+          36,
+          37,
+          38,
+          45,
+          46,
+          47
+        ],
+        1,
+        [
+          27,
+          36
+        ]
+      ],
+      "explanation": "Claiming: 1 in column 1 is confined to box 4; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          35,
+          4
+        ],
+        [
+          53,
+          4
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          6,
+          15,
+          24,
+          33,
+          42,
+          51,
+          60,
+          69,
+          78
+        ],
+        [
+          33,
+          34,
+          35,
+          42,
+          43,
+          44,
+          51,
+          52,
+          53
+        ],
+        4,
+        [
+          33,
+          42,
+          51
+        ]
+      ],
+      "explanation": "Claiming: 4 in column 7 is confined to box 6; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          64,
+          5
+        ],
+        [
+          65,
+          5
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ],
+        [
+          54,
+          55,
+          56,
+          63,
+          64,
+          65,
+          72,
+          73,
+          74
+        ],
+        5,
+        [
+          54,
+          55
+        ]
+      ],
+      "explanation": "Claiming: 5 in row 7 is confined to box 7; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Pair",
+      "rating": 3.2,
+      "placements": [],
+      "eliminations": [
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          21,
+          8
+        ]
+      ],
+      "premises": [
+        [
+          3,
+          12,
+          21,
+          30,
+          39,
+          48,
+          57,
+          66,
+          75
+        ],
+        [
+          [
+            6,
+            [
+              12,
+              21
+            ]
+          ],
+          [
+            7,
+            [
+              12,
+              21
+            ]
+          ]
+        ]
+      ],
+      "explanation": "(6, 7) occur only in r2c4, r3c4 in column 4; remove the other candidates from those cells.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          41,
+          5
+        ],
+        [
+          50,
+          5
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          3,
+          12,
+          21,
+          30,
+          39,
+          48,
+          57,
+          66,
+          75
+        ],
+        [
+          30,
+          31,
+          32,
+          39,
+          40,
+          41,
+          48,
+          49,
+          50
+        ],
+        5,
+        [
+          30,
+          39,
+          48
+        ]
+      ],
+      "explanation": "Claiming: 5 in column 4 is confined to box 5; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          67,
+          2
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          3,
+          12,
+          21,
+          30,
+          39,
+          48,
+          57,
+          66,
+          75
+        ],
+        [
+          57,
+          58,
+          59,
+          66,
+          67,
+          68,
+          75,
+          76,
+          77
+        ],
+        2,
+        [
+          66,
+          75
+        ]
+      ],
+      "explanation": "Claiming: 2 in column 4 is confined to box 8; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "2-String Kite",
+      "rating": 9.2,
+      "placements": [],
+      "eliminations": [
+        [
+          2,
+          7
+        ]
+      ],
+      "premises": [
+        7,
+        [
+          4,
+          [
+            38,
+            43
+          ]
+        ],
+        [
+          17,
+          [
+            8,
+            35
+          ]
+        ],
+        [
+          43,
+          35
+        ],
+        [
+          38,
+          8
+        ]
+      ],
+      "explanation": "2-String Kite: 7 has exactly two positions in row 5 and column 9. r5c8 and r4c9 see each other, so r5c3 or r1c9 must contain 7. Remove it from cells seeing both outer endpoints.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          16,
+          7
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          6,
+          7,
+          8,
+          15,
+          16,
+          17,
+          24,
+          25,
+          26
+        ],
+        7,
+        [
+          7,
+          8
+        ]
+      ],
+      "explanation": "Claiming: 7 in row 1 is confined to box 3; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          28,
+          7
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          2,
+          11,
+          20,
+          29,
+          38,
+          47,
+          56,
+          65,
+          74
+        ],
+        [
+          27,
+          28,
+          29,
+          36,
+          37,
+          38,
+          45,
+          46,
+          47
+        ],
+        7,
+        [
+          29,
+          38
+        ]
+      ],
+      "explanation": "Claiming: 7 in column 3 is confined to box 4; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          4,
+          2
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            22
+          ],
+          "digit": 2
+        },
+        {
+          "cells": [
+            4
+          ],
+          "digit": 4
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 5216,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              22
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              22
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              4
+            ],
+            "digit": 4
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              22
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              58
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                58
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              77
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                4
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              0
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          4,
+          8
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            4
+          ],
+          "digit": 4
+        },
+        {
+          "cells": [
+            58
+          ],
+          "digit": 8
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 935,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              4
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 8
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                4
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              0
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              77
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                58
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              58
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          5,
+          8
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            22
+          ],
+          "digit": 8
+        },
+        {
+          "cells": [
+            6
+          ],
+          "digit": 8
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 4924,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              22
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              22
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              6
+            ],
+            "digit": 8
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              22
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              15
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                6
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              15
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          40,
+          4
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            4
+          ],
+          "digit": 4
+        },
+        {
+          "cells": [
+            40
+          ],
+          "digit": 9
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 979,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              4
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 9
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                4
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              0
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              77
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          5,
+          4
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            4
+          ],
+          "digit": 4
+        },
+        {
+          "cells": [
+            77
+          ],
+          "digit": 4
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 1259,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              4
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              67
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              67
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              77
+            ],
+            "digit": 4
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                4
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                67
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                67
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                67
+              ],
+              "digit": 3
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              67
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                67
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 3
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              40
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                77
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                77
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              77
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          4,
+          4
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          4,
+          [
+            4
+          ]
+        ]
+      ],
+      "explanation": "Only r1c5 can hold 4 in row 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          27,
+          5
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            27
+          ],
+          "digit": 1
+        },
+        {
+          "cells": [
+            54
+          ],
+          "digit": 5
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 7756,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              27
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              36
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              14
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              10
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              55
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              54
+            ],
+            "digit": 5
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              9
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              5
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                14
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                14
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                10
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                10
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                55
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                55
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                54
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              6
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          46,
+          5
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            10
+          ],
+          "digit": 5
+        },
+        {
+          "cells": [
+            46
+          ],
+          "digit": 4
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 3061,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              10
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              14
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              36
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              27
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              28
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              46
+            ],
+            "digit": 4
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                10
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                14
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                14
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              5
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              9
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              33
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                28
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                28
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                46
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              10
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          46,
+          8
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            27
+          ],
+          "digit": 8
+        },
+        {
+          "cells": [
+            46
+          ],
+          "digit": 4
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 7762,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              27
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              27
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              28
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              46
+            ],
+            "digit": 4
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                27
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              27
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              33
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                28
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                28
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                46
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              10
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          53,
+          1
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            53
+          ],
+          "digit": 2
+        },
+        {
+          "cells": [
+            80
+          ],
+          "digit": 1
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 15223,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              53
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              0
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              18
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              22
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              22
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              55
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              73
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              73
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              80
+            ],
+            "digit": 1
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                53
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              17
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                0
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                0
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                18
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              9
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                18
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              22
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              58
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                58
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                55
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                55
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                73
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              10
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                73
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                73
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              73
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                73
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                80
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              8
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Grouped AIC",
+      "rating": 35.0,
+      "placements": [],
+      "eliminations": [
+        [
+          50,
+          4
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            39,
+            41
+          ],
+          "digit": 4
+        },
+        {
+          "cells": [
+            50
+          ],
+          "digit": 1
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 29487,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              39,
+              41
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              42
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              51,
+              52
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              50
+            ],
+            "digit": 1
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                39,
+                41
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                42
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "partition",
+              4,
+              [
+                39,
+                41,
+                42
+              ]
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                42
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              33
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                51,
+                52
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                51,
+                52
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                50
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "partition",
+              5,
+              [
+                50,
+                51,
+                52
+              ]
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [
+        {
+          "cells": [
+            39,
+            41
+          ],
+          "digit": 4
+        },
+        {
+          "cells": [
+            51,
+            52
+          ],
+          "digit": 1
+        }
+      ],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Pair",
+      "rating": 3.2,
+      "placements": [],
+      "eliminations": [
+        [
+          41,
+          1
+        ]
+      ],
+      "premises": [
+        [
+          5,
+          14,
+          23,
+          32,
+          41,
+          50,
+          59,
+          68,
+          77
+        ],
+        [
+          [
+            4,
+            [
+              41,
+              77
+            ]
+          ],
+          [
+            9,
+            [
+              41,
+              77
+            ]
+          ]
+        ]
+      ],
+      "explanation": "(4, 9) occur only in r5c6, r9c6 in column 6; remove the other candidates from those cells.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "ALS-XZ",
+      "rating": 36.0,
+      "placements": [],
+      "eliminations": [
+        [
+          35,
+          1
+        ]
+      ],
+      "premises": [
+        [
+          [
+            [
+              33,
+              42,
+              51
+            ],
+            [
+              1,
+              2,
+              4,
+              6
+            ]
+          ],
+          [
+            [
+              53,
+              71,
+              80
+            ],
+            [
+              1,
+              2,
+              4,
+              5
+            ]
+          ]
+        ],
+        [
+          2
+        ]
+      ],
+      "explanation": "Disjoint ALS chain {r4c7,r5c7,r6c7} -> {r6c9,r8c9,r9c9}, RCCs (2,). If the first ALS lacks an endpoint digit, each RCC forces the next ALS to lack that RCC and contain all its other digits. Therefore at least one endpoint contains the eliminated digit; targets see every occurrence of that digit in both endpoints.",
+      "search_complexity": 17501,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              33,
+              42,
+              51
+            ],
+            "masks": [
+              9,
+              41,
+              43
+            ]
+          },
+          {
+            "cells": [
+              53,
+              71,
+              80
+            ],
+            "masks": [
+              18,
+              25,
+              9
+            ]
+          }
+        ],
+        "links": [
+          {
+            "first": {
+              "cells": [
+                33,
+                42,
+                51
+              ],
+              "masks": [
+                9,
+                41,
+                43
+              ]
+            },
+            "second": {
+              "cells": [
+                53,
+                71,
+                80
+              ],
+              "masks": [
+                18,
+                25,
+                9
+              ]
+            },
+            "digit": 2
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [
+        {
+          "cells": [
+            33,
+            42,
+            51
+          ],
+          "masks": [
+            9,
+            41,
+            43
+          ]
+        },
+        {
+          "cells": [
+            53,
+            71,
+            80
+          ],
+          "masks": [
+            18,
+            25,
+            9
+          ]
+        }
+      ],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "ALS-XZ",
+      "rating": 36.0,
+      "placements": [],
+      "eliminations": [
+        [
+          47,
+          8
+        ]
+      ],
+      "premises": [
+        [
+          [
+            [
+              2,
+              65,
+              74
+            ],
+            [
+              2,
+              5,
+              6,
+              8
+            ]
+          ],
+          [
+            [
+              5,
+              41,
+              50,
+              77
+            ],
+            [
+              1,
+              4,
+              5,
+              8,
+              9
+            ]
+          ]
+        ],
+        [
+          5
+        ]
+      ],
+      "explanation": "Disjoint ALS chain {r1c3,r8c3,r9c3} -> {r1c6,r5c6,r6c6,r9c6}, RCCs (5,). If the first ALS lacks an endpoint digit, each RCC forces the next ALS to lack that RCC and contain all its other digits. Therefore at least one endpoint contains the eliminated digit; targets see every occurrence of that digit in both endpoints.",
+      "search_complexity": 17286,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              2,
+              65,
+              74
+            ],
+            "masks": [
+              176,
+              130,
+              34
+            ]
+          },
+          {
+            "cells": [
+              5,
+              41,
+              50,
+              77
+            ],
+            "masks": [
+              17,
+              264,
+              129,
+              264
+            ]
+          }
+        ],
+        "links": [
+          {
+            "first": {
+              "cells": [
+                2,
+                65,
+                74
+              ],
+              "masks": [
+                176,
+                130,
+                34
+              ]
+            },
+            "second": {
+              "cells": [
+                5,
+                41,
+                50,
+                77
+              ],
+              "masks": [
+                17,
+                264,
+                129,
+                264
+              ]
+            },
+            "digit": 5
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [
+        {
+          "cells": [
+            2,
+            65,
+            74
+          ],
+          "masks": [
+            176,
+            130,
+            34
+          ]
+        },
+        {
+          "cells": [
+            5,
+            41,
+            50,
+            77
+          ],
+          "masks": [
+            17,
+            264,
+            129,
+            264
+          ]
+        }
+      ],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          30,
+          8
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53
+        ],
+        [
+          30,
+          31,
+          32,
+          39,
+          40,
+          41,
+          48,
+          49,
+          50
+        ],
+        8,
+        [
+          48,
+          50
+        ]
+      ],
+      "explanation": "Claiming: 8 in row 6 is confined to box 5; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          48,
+          4
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            46
+          ],
+          "digit": 4
+        },
+        {
+          "cells": [
+            48
+          ],
+          "digit": 8
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 13178,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              46
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              28
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              27
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              36
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              50
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              50
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              48
+            ],
+            "digit": 8
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                46
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                28
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              10
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                28
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              33
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              9
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                50
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              22
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                50
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                50
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              50
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                50
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                48
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              5
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Forcing Chain",
+      "rating": 50.0,
+      "placements": [],
+      "eliminations": [
+        [
+          8,
+          1
+        ]
+      ],
+      "premises": [
+        [
+          58,
+          8
+        ]
+      ],
+      "explanation": "Both assumptions for r7c5=8 imply (8, 1) is False; the common conclusion is unconditional.",
+      "search_complexity": 152,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [
+        {
+          "assumption": [
+            58,
+            8,
+            true
+          ],
+          "inferences": [
+            {
+              "candidate": [
+                58,
+                8
+              ],
+              "value": true,
+              "depth": 0,
+              "rule": "assumption",
+              "clause": [],
+              "parents": []
+            },
+            {
+              "candidate": [
+                13,
+                8
+              ],
+              "value": false,
+              "depth": 1,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  13,
+                  8
+                ],
+                [
+                  22,
+                  8
+                ],
+                [
+                  58,
+                  8
+                ],
+                [
+                  67,
+                  8
+                ]
+              ],
+              "parents": [
+                0
+              ]
+            },
+            {
+              "candidate": [
+                22,
+                8
+              ],
+              "value": false,
+              "depth": 1,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  13,
+                  8
+                ],
+                [
+                  22,
+                  8
+                ],
+                [
+                  58,
+                  8
+                ],
+                [
+                  67,
+                  8
+                ]
+              ],
+              "parents": [
+                0
+              ]
+            },
+            {
+              "candidate": [
+                14,
+                8
+              ],
+              "value": true,
+              "depth": 2,
+              "rule": "last-support",
+              "clause": [
+                [
+                  13,
+                  8
+                ],
+                [
+                  14,
+                  8
+                ],
+                [
+                  22,
+                  8
+                ]
+              ],
+              "parents": [
+                1,
+                2
+              ]
+            },
+            {
+              "candidate": [
+                14,
+                5
+              ],
+              "value": false,
+              "depth": 3,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  14,
+                  1
+                ],
+                [
+                  14,
+                  5
+                ],
+                [
+                  14,
+                  8
+                ]
+              ],
+              "parents": [
+                3
+              ]
+            },
+            {
+              "candidate": [
+                15,
+                8
+              ],
+              "value": false,
+              "depth": 3,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  10,
+                  8
+                ],
+                [
+                  13,
+                  8
+                ],
+                [
+                  14,
+                  8
+                ],
+                [
+                  15,
+                  8
+                ]
+              ],
+              "parents": [
+                3
+              ]
+            },
+            {
+              "candidate": [
+                10,
+                5
+              ],
+              "value": true,
+              "depth": 4,
+              "rule": "last-support",
+              "clause": [
+                [
+                  10,
+                  5
+                ],
+                [
+                  14,
+                  5
+                ]
+              ],
+              "parents": [
+                4
+              ]
+            },
+            {
+              "candidate": [
+                6,
+                8
+              ],
+              "value": true,
+              "depth": 4,
+              "rule": "last-support",
+              "clause": [
+                [
+                  6,
+                  8
+                ],
+                [
+                  15,
+                  8
+                ]
+              ],
+              "parents": [
+                5
+              ]
+            },
+            {
+              "candidate": [
+                2,
+                5
+              ],
+              "value": false,
+              "depth": 5,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  10,
+                  5
+                ]
+              ],
+              "parents": [
+                6
+              ]
+            },
+            {
+              "candidate": [
+                2,
+                8
+              ],
+              "value": false,
+              "depth": 5,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  0,
+                  8
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  6,
+                  8
+                ]
+              ],
+              "parents": [
+                7
+              ]
+            },
+            {
+              "candidate": [
+                2,
+                6
+              ],
+              "value": true,
+              "depth": 6,
+              "rule": "last-support",
+              "clause": [
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  8
+                ]
+              ],
+              "parents": [
+                8,
+                9
+              ]
+            },
+            {
+              "candidate": [
+                74,
+                6
+              ],
+              "value": false,
+              "depth": 7,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  2,
+                  6
+                ],
+                [
+                  38,
+                  6
+                ],
+                [
+                  47,
+                  6
+                ],
+                [
+                  74,
+                  6
+                ]
+              ],
+              "parents": [
+                10
+              ]
+            },
+            {
+              "candidate": [
+                73,
+                6
+              ],
+              "value": true,
+              "depth": 8,
+              "rule": "last-support",
+              "clause": [
+                [
+                  73,
+                  6
+                ],
+                [
+                  74,
+                  6
+                ]
+              ],
+              "parents": [
+                11
+              ]
+            },
+            {
+              "candidate": [
+                73,
+                1
+              ],
+              "value": false,
+              "depth": 9,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  73,
+                  1
+                ],
+                [
+                  73,
+                  6
+                ],
+                [
+                  73,
+                  9
+                ]
+              ],
+              "parents": [
+                12
+              ]
+            },
+            {
+              "candidate": [
+                80,
+                1
+              ],
+              "value": true,
+              "depth": 10,
+              "rule": "last-support",
+              "clause": [
+                [
+                  73,
+                  1
+                ],
+                [
+                  80,
+                  1
+                ]
+              ],
+              "parents": [
+                13
+              ]
+            },
+            {
+              "candidate": [
+                8,
+                1
+              ],
+              "value": false,
+              "depth": 11,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  8,
+                  1
+                ],
+                [
+                  71,
+                  1
+                ],
+                [
+                  80,
+                  1
+                ]
+              ],
+              "parents": [
+                14
+              ]
+            }
+          ],
+          "contradiction": [],
+          "limited": true
+        },
+        {
+          "assumption": [
+            58,
+            8,
+            false
+          ],
+          "inferences": [
+            {
+              "candidate": [
+                58,
+                8
+              ],
+              "value": false,
+              "depth": 0,
+              "rule": "assumption",
+              "clause": [],
+              "parents": []
+            },
+            {
+              "candidate": [
+                58,
+                9
+              ],
+              "value": true,
+              "depth": 1,
+              "rule": "last-support",
+              "clause": [
+                [
+                  58,
+                  8
+                ],
+                [
+                  58,
+                  9
+                ]
+              ],
+              "parents": [
+                0
+              ]
+            },
+            {
+              "candidate": [
+                55,
+                9
+              ],
+              "value": false,
+              "depth": 2,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  55,
+                  9
+                ],
+                [
+                  58,
+                  9
+                ]
+              ],
+              "parents": [
+                1
+              ]
+            },
+            {
+              "candidate": [
+                73,
+                9
+              ],
+              "value": true,
+              "depth": 3,
+              "rule": "last-support",
+              "clause": [
+                [
+                  55,
+                  9
+                ],
+                [
+                  73,
+                  9
+                ]
+              ],
+              "parents": [
+                2
+              ]
+            },
+            {
+              "candidate": [
+                73,
+                1
+              ],
+              "value": false,
+              "depth": 4,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  73,
+                  1
+                ],
+                [
+                  73,
+                  6
+                ],
+                [
+                  73,
+                  9
+                ]
+              ],
+              "parents": [
+                3
+              ]
+            },
+            {
+              "candidate": [
+                80,
+                1
+              ],
+              "value": true,
+              "depth": 5,
+              "rule": "last-support",
+              "clause": [
+                [
+                  73,
+                  1
+                ],
+                [
+                  80,
+                  1
+                ]
+              ],
+              "parents": [
+                4
+              ]
+            },
+            {
+              "candidate": [
+                8,
+                1
+              ],
+              "value": false,
+              "depth": 6,
+              "rule": "exclusion",
+              "clause": [
+                [
+                  8,
+                  1
+                ],
+                [
+                  71,
+                  1
+                ],
+                [
+                  80,
+                  1
+                ]
+              ],
+              "parents": [
+                5
+              ]
+            }
+          ],
+          "contradiction": [],
+          "limited": false
+        }
+      ],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          70,
+          1
+        ]
+      ],
+      "premises": [
+        "Claiming",
+        [
+          8,
+          17,
+          26,
+          35,
+          44,
+          53,
+          62,
+          71,
+          80
+        ],
+        [
+          60,
+          61,
+          62,
+          69,
+          70,
+          71,
+          78,
+          79,
+          80
+        ],
+        1,
+        [
+          71,
+          80
+        ]
+      ],
+      "explanation": "Claiming: 1 in column 9 is confined to box 9; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          70,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          70,
+          [
+            5
+          ]
+        ]
+      ],
+      "explanation": "r8c8 has only candidate 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          30,
+          4
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            30
+          ],
+          "digit": 3
+        },
+        {
+          "cells": [
+            33
+          ],
+          "digit": 4
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 10264,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              30
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              35
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              36
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              27
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              33
+            ],
+            "digit": 4
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                30
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 3
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              29
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              8
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              9
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                27
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                33
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                33
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              33
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Locked Candidates",
+      "rating": 2.0,
+      "placements": [],
+      "eliminations": [
+        [
+          42,
+          4
+        ]
+      ],
+      "premises": [
+        "Pointing",
+        [
+          30,
+          31,
+          32,
+          39,
+          40,
+          41,
+          48,
+          49,
+          50
+        ],
+        [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ],
+        4,
+        [
+          39,
+          41
+        ]
+      ],
+      "explanation": "Pointing: 4 in box 5 is confined to row 5; remove it elsewhere in that unit.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "W-Wing",
+      "rating": 17.0,
+      "placements": [],
+      "eliminations": [
+        [
+          6,
+          6
+        ],
+        [
+          15,
+          6
+        ],
+        [
+          43,
+          6
+        ],
+        [
+          52,
+          6
+        ]
+      ],
+      "premises": [
+        [
+          16,
+          [
+            1,
+            6
+          ]
+        ],
+        [
+          42,
+          [
+            1,
+            6
+          ]
+        ],
+        [
+          [
+            4,
+            13,
+            22,
+            31,
+            40,
+            49,
+            58,
+            67,
+            76
+          ],
+          1,
+          [
+            13,
+            40
+          ]
+        ],
+        [
+          [
+            16,
+            13
+          ],
+          [
+            42,
+            40
+          ]
+        ]
+      ],
+      "explanation": "r2c8 and r5c7 both have (1, 6). In column 5, 1 occurs only at r2c5 and r5c5, seen by the respective wings. Both wings cannot be 1, because that would remove both bridge supports. At least one wing is 6; remove 6 from cells seeing both wings.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          39,
+          3
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            30
+          ],
+          "digit": 3
+        },
+        {
+          "cells": [
+            39
+          ],
+          "digit": 4
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 11333,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              30
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              35
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 4
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                30
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 3
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              29
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              8
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              40
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              41
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          40,
+          3
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            30
+          ],
+          "digit": 3
+        },
+        {
+          "cells": [
+            40
+          ],
+          "digit": 1
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 11292,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              30
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 3
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              35
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                30
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 3
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 3
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              29
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              8
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          67,
+          3
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          4,
+          13,
+          22,
+          31,
+          40,
+          49,
+          58,
+          67,
+          76
+        ],
+        [
+          3,
+          [
+            67
+          ]
+        ]
+      ],
+      "explanation": "Only r8c5 can hold 3 in column 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Pair",
+      "rating": 3.2,
+      "placements": [],
+      "eliminations": [
+        [
+          38,
+          5
+        ],
+        [
+          38,
+          6
+        ],
+        [
+          43,
+          1
+        ]
+      ],
+      "premises": [
+        [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ],
+        [
+          [
+            3,
+            [
+              38,
+              43
+            ]
+          ],
+          [
+            7,
+            [
+              38,
+              43
+            ]
+          ]
+        ]
+      ],
+      "explanation": "(3, 7) occur only in r5c3, r5c8 in row 5; remove the other candidates from those cells.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          0,
+          5
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            36
+          ],
+          "digit": 5
+        },
+        {
+          "cells": [
+            5
+          ],
+          "digit": 5
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 16285,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              36
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 5
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                39
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              39
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              41
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              40
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              5
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          0,
+          8
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            0
+          ],
+          "digit": 2
+        },
+        {
+          "cells": [
+            54
+          ],
+          "digit": 8
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 144,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              0
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              18
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              22
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              36
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              54
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              54
+            ],
+            "digit": 8
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                0
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                18
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              9
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                18
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              40
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              41
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              39
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                39
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                36
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                54
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                54
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                54
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              54
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          2,
+          8
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            2
+          ],
+          "digit": 5
+        },
+        {
+          "cells": [
+            6
+          ],
+          "digit": 8
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 725,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              2
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              10
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              55
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              54
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              36
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              39
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 4
+          },
+          {
+            "cells": [
+              41
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 9
+          },
+          {
+            "cells": [
+              40
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              13
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              15
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              6
+            ],
+            "digit": 8
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                2
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                10
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              18
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                10
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                55
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                55
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                54
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              6
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                54
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                36
+              ],
+              "digit": 5
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                36
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                39
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              39
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                39
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 4
+            },
+            "target": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              41
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                41
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              4
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 9
+            },
+            "target": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              40
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                40
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              13
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                13
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              1
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                15
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              15
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                15
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                6
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              15
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          6,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          8,
+          [
+            6
+          ]
+        ]
+      ],
+      "explanation": "Only r1c7 can hold 8 in row 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "XY-Chain",
+      "rating": 25.0,
+      "placements": [],
+      "eliminations": [
+        [
+          29,
+          5
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            2
+          ],
+          "digit": 5
+        },
+        {
+          "cells": [
+            35
+          ],
+          "digit": 5
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 35,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              2
+            ],
+            "digit": 5
+          },
+          {
+            "cells": [
+              2
+            ],
+            "digit": 6
+          },
+          {
+            "cells": [
+              0
+            ],
+            "digit": 6
+          },
+          {
+            "cells": [
+              0
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 2
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              35
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              35
+            ],
+            "digit": 5
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                2
+              ],
+              "digit": 5
+            },
+            "target": {
+              "cells": [
+                2
+              ],
+              "digit": 6
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              2
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                2
+              ],
+              "digit": 6
+            },
+            "target": {
+              "cells": [
+                0
+              ],
+              "digit": 6
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                0
+              ],
+              "digit": 6
+            },
+            "target": {
+              "cells": [
+                0
+              ],
+              "digit": 2
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              0
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                0
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 2
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              8
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                35
+              ],
+              "digit": 5
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              35
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "AIC",
+      "rating": 30.0,
+      "placements": [],
+      "eliminations": [
+        [
+          7,
+          6
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            7
+          ],
+          "digit": 1
+        },
+        {
+          "cells": [
+            7
+          ],
+          "digit": 7
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 3536,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              7
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              5
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              50
+            ],
+            "digit": 1
+          },
+          {
+            "cells": [
+              50
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              48
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              66
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              65
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              35
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              8
+            ],
+            "digit": 7
+          },
+          {
+            "cells": [
+              7
+            ],
+            "digit": 7
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                7
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              0
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                5
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                50
+              ],
+              "digit": 1
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                50
+              ],
+              "digit": 1
+            },
+            "target": {
+              "cells": [
+                50
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "cell",
+              50
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                50
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                48
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                48
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                66
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              12
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                66
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                65
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                65
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              11
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "cell",
+              29
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                29
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              3
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                35
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                8
+              ],
+              "digit": 7
+            },
+            "target": {
+              "cells": [
+                7
+              ],
+              "digit": 7
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              0
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          16,
+          6
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          6,
+          7,
+          8,
+          15,
+          16,
+          17,
+          24,
+          25,
+          26
+        ],
+        [
+          6,
+          [
+            16
+          ]
+        ]
+      ],
+      "explanation": "Only r2c8 can hold 6 in box 3.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          12,
+          7
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          12,
+          [
+            7
+          ]
+        ]
+      ],
+      "explanation": "r2c4 has only candidate 7.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          21,
+          6
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          21,
+          [
+            6
+          ]
+        ]
+      ],
+      "explanation": "r3c4 has only candidate 6.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          19,
+          7
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          1,
+          2,
+          9,
+          10,
+          11,
+          18,
+          19,
+          20
+        ],
+        [
+          7,
+          [
+            19
+          ]
+        ]
+      ],
+      "explanation": "Only r3c2 can hold 7 in box 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "X-Chain",
+      "rating": 22.0,
+      "placements": [],
+      "eliminations": [
+        [
+          27,
+          8
+        ]
+      ],
+      "premises": [
+        {
+          "cells": [
+            18
+          ],
+          "digit": 8
+        },
+        {
+          "cells": [
+            29
+          ],
+          "digit": 8
+        }
+      ],
+      "explanation": "Alternating strong/weak implications prove at least one endpoint true; each removed candidate conflicts with both.",
+      "search_complexity": 313,
+      "chain": {
+        "nodes": [
+          {
+            "cells": [
+              18
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              22
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              58
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              66
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              65
+            ],
+            "digit": 8
+          },
+          {
+            "cells": [
+              29
+            ],
+            "digit": 8
+          }
+        ],
+        "links": [
+          {
+            "source": {
+              "cells": [
+                18
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              2
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                22
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                58
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                66
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              25
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                66
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                65
+              ],
+              "digit": 8
+            },
+            "kind": "weak",
+            "reason": [
+              "visibility"
+            ]
+          },
+          {
+            "source": {
+              "cells": [
+                65
+              ],
+              "digit": 8
+            },
+            "target": {
+              "cells": [
+                29
+              ],
+              "digit": 8
+            },
+            "kind": "strong",
+            "reason": [
+              "unit",
+              11
+            ]
+          }
+        ],
+        "closed": false
+      },
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          27,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          27,
+          [
+            1
+          ]
+        ]
+      ],
+      "explanation": "r4c1 has only candidate 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          33,
+          4
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          33,
+          [
+            4
+          ]
+        ]
+      ],
+      "explanation": "r4c7 has only candidate 4.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          46,
+          4
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          1,
+          10,
+          19,
+          28,
+          37,
+          46,
+          55,
+          64,
+          73
+        ],
+        [
+          4,
+          [
+            46
+          ]
+        ]
+      ],
+      "explanation": "Only r6c2 can hold 4 in column 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Hidden Single",
+      "rating": 1.2,
+      "placements": [
+        [
+          73,
+          6
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          1,
+          10,
+          19,
+          28,
+          37,
+          46,
+          55,
+          64,
+          73
+        ],
+        [
+          6,
+          [
+            73
+          ]
+        ]
+      ],
+      "explanation": "Only r9c2 can hold 6 in column 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          74,
+          2
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          74,
+          [
+            2
+          ]
+        ]
+      ],
+      "explanation": "r9c3 has only candidate 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          65,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          65,
+          [
+            8
+          ]
+        ]
+      ],
+      "explanation": "r8c3 has only candidate 8.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          54,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          54,
+          [
+            5
+          ]
+        ]
+      ],
+      "explanation": "r7c1 has only candidate 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          36,
+          6
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          36,
+          [
+            6
+          ]
+        ]
+      ],
+      "explanation": "r5c1 has only candidate 6.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          0,
+          2
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ],
+      "explanation": "r1c1 has only candidate 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          18,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          9,
+          18,
+          27,
+          36,
+          45,
+          54,
+          63,
+          72
+        ]
+      ],
+      "explanation": "column 1 has one empty cell: r3c1 = 8.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          22,
+          2
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      ],
+      "explanation": "row 3 has one empty cell: r3c5 = 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          8,
+          7
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          8,
+          [
+            7
+          ]
+        ]
+      ],
+      "explanation": "r1c9 has only candidate 7.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          7,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          7,
+          [
+            1
+          ]
+        ]
+      ],
+      "explanation": "r1c8 has only candidate 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          15,
+          2
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          6,
+          7,
+          8,
+          15,
+          16,
+          17,
+          24,
+          25,
+          26
+        ]
+      ],
+      "explanation": "box 3 has one empty cell: r2c7 = 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          5,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          5,
+          [
+            5
+          ]
+        ]
+      ],
+      "explanation": "r1c6 has only candidate 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          2,
+          6
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      ],
+      "explanation": "row 1 has one empty cell: r1c3 = 6.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          10,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          0,
+          1,
+          2,
+          9,
+          10,
+          11,
+          18,
+          19,
+          20
+        ]
+      ],
+      "explanation": "box 1 has one empty cell: r2c2 = 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          28,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          28,
+          [
+            8
+          ]
+        ]
+      ],
+      "explanation": "r4c2 has only candidate 8.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          35,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          35,
+          [
+            5
+          ]
+        ]
+      ],
+      "explanation": "r4c9 has only candidate 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          30,
+          3
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          30,
+          [
+            3
+          ]
+        ]
+      ],
+      "explanation": "r4c4 has only candidate 3.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          29,
+          7
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      ],
+      "explanation": "row 4 has one empty cell: r4c3 = 7.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          38,
+          3
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          38,
+          [
+            3
+          ]
+        ]
+      ],
+      "explanation": "r5c3 has only candidate 3.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          47,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          2,
+          11,
+          20,
+          29,
+          38,
+          47,
+          56,
+          65,
+          74
+        ]
+      ],
+      "explanation": "column 3 has one empty cell: r6c3 = 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          42,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          42,
+          [
+            1
+          ]
+        ]
+      ],
+      "explanation": "r5c7 has only candidate 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          51,
+          6
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          6,
+          15,
+          24,
+          33,
+          42,
+          51,
+          60,
+          69,
+          78
+        ]
+      ],
+      "explanation": "column 7 has one empty cell: r6c7 = 6.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          40,
+          9
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          40,
+          [
+            9
+          ]
+        ]
+      ],
+      "explanation": "r5c5 has only candidate 9.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          41,
+          4
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          41,
+          [
+            4
+          ]
+        ]
+      ],
+      "explanation": "r5c6 has only candidate 4.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          39,
+          5
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          39,
+          [
+            5
+          ]
+        ]
+      ],
+      "explanation": "r5c4 has only candidate 5.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          43,
+          7
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ]
+      ],
+      "explanation": "row 5 has one empty cell: r5c8 = 7.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          52,
+          3
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          7,
+          16,
+          25,
+          34,
+          43,
+          52,
+          61,
+          70,
+          79
+        ]
+      ],
+      "explanation": "column 8 has one empty cell: r6c8 = 3.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          53,
+          2
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          33,
+          34,
+          35,
+          42,
+          43,
+          44,
+          51,
+          52,
+          53
+        ]
+      ],
+      "explanation": "box 6 has one empty cell: r6c9 = 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          48,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          48,
+          [
+            8
+          ]
+        ]
+      ],
+      "explanation": "r6c4 has only candidate 8.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          50,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          30,
+          31,
+          32,
+          39,
+          40,
+          41,
+          48,
+          49,
+          50
+        ]
+      ],
+      "explanation": "box 5 has one empty cell: r6c6 = 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          14,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          14,
+          [
+            8
+          ]
+        ]
+      ],
+      "explanation": "r2c6 has only candidate 8.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          13,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          3,
+          4,
+          5,
+          12,
+          13,
+          14,
+          21,
+          22,
+          23
+        ]
+      ],
+      "explanation": "box 2 has one empty cell: r2c5 = 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          58,
+          8
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          4,
+          13,
+          22,
+          31,
+          40,
+          49,
+          58,
+          67,
+          76
+        ]
+      ],
+      "explanation": "column 5 has one empty cell: r7c5 = 8.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          55,
+          9
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ]
+      ],
+      "explanation": "row 7 has one empty cell: r7c2 = 9.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          64,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          1,
+          10,
+          19,
+          28,
+          37,
+          46,
+          55,
+          64,
+          73
+        ]
+      ],
+      "explanation": "column 2 has one empty cell: r8c2 = 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          77,
+          9
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          5,
+          14,
+          23,
+          32,
+          41,
+          50,
+          59,
+          68,
+          77
+        ]
+      ],
+      "explanation": "column 6 has one empty cell: r9c6 = 9.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Naked Single",
+      "rating": 1.0,
+      "placements": [
+        [
+          71,
+          4
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          71,
+          [
+            4
+          ]
+        ]
+      ],
+      "explanation": "r8c9 has only candidate 4.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          66,
+          2
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71
+        ]
+      ],
+      "explanation": "row 8 has one empty cell: r8c4 = 2.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          75,
+          4
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          3,
+          12,
+          21,
+          30,
+          39,
+          48,
+          57,
+          66,
+          75
+        ]
+      ],
+      "explanation": "column 4 has one empty cell: r9c4 = 4.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    },
+    {
+      "technique": "Full House",
+      "rating": 0.5,
+      "placements": [
+        [
+          80,
+          1
+        ]
+      ],
+      "eliminations": [],
+      "premises": [
+        [
+          60,
+          61,
+          62,
+          69,
+          70,
+          71,
+          78,
+          79,
+          80
+        ]
+      ],
+      "explanation": "box 9 has one empty cell: r9c9 = 1.",
+      "search_complexity": 0.0,
+      "chain": null,
+      "grouped_nodes": [],
+      "als": [],
+      "assumptions": [],
+      "contradiction": []
+    }
+  ],
+  "observed_upper_rating": 50.0,
+  "threshold_results": [
+    {
+      "threshold": 42.0,
+      "status": "INCONCLUSIVE_BUDGET",
+      "path": [],
+      "states_explored": 92,
+      "states_generated": 418,
+      "limit_reasons": [
+        "AIC:CHAIN_LENGTH_LIMIT",
+        "AIC:CHAIN_NODE_LIMIT",
+        "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+        "ALS Chain:ALS_NODE_LIMIT",
+        "ALS Chain:ALS_SIZE_LIMIT",
+        "ALS-XY-Wing:ALS_NODE_LIMIT",
+        "ALS-XY-Wing:ALS_SIZE_LIMIT",
+        "ALS-XY-Wing:TIME_LIMIT",
+        "ALS-XZ:ALS_SIZE_LIMIT",
+        "Grouped AIC:CHAIN_LENGTH_LIMIT",
+        "Grouped AIC:CHAIN_NODE_LIMIT",
+        "Nice Loop:CHAIN_LENGTH_LIMIT",
+        "TIME_LIMIT"
+      ],
+      "elapsed_seconds": 56.118495099944994,
+      "error": null,
+      "proof_seconds": 0.7885365022812039,
+      "cache_hits": 848
+    }
+  ],
+  "bottlenecks": [],
+  "late_game_bottlenecks": 0,
+  "max_trivial_gap": 0,
+  "advanced_steps": 0,
+  "longest_chain": 0,
+  "distributed_bins": 0,
+  "states_explored": 92,
+  "elapsed_seconds": 60.00243329978548,
+  "failure_reasons": [
+    "SEARCH_TIMEOUT"
+  ],
+  "diagnostics": [
+    "AIC:CHAIN_LENGTH_LIMIT",
+    "AIC:CHAIN_NODE_LIMIT",
+    "ALS Chain:ALS_CHAIN_LENGTH_LIMIT",
+    "ALS Chain:ALS_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_NODE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:TIME_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Grouped AIC:CHAIN_LENGTH_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "Nice Loop:CHAIN_LENGTH_LIMIT",
+    "TIME_LIMIT"
+  ],
+  "stage_seconds": {
+    "format": 0.011832399992272258,
+    "uniqueness": 0.0013263998553156853,
+    "minimality": 0.017829899908974767,
+    "human_replay": 3.7710851998999715,
+    "proof_validation": 0.06944949994795024,
+    "alternative_search": 56.119784200098366,
+    "search_proof_validation": 0.7885365022812039
+  },
+  "config_fingerprint": "10cb06ffe34a9c65237d99a2918cffcfa0565e803cdff16ee823bc01f158899c",
+  "algorithm_fingerprint": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "certification_version": "1",
+  "fresh": true,
+  "cache_hits": 848,
+  "scope": "All implemented pattern rules, simple candidate chains, disjoint ALS chains, and single-assumption clause propagation; budgets never count as exhaustive failure."
+}

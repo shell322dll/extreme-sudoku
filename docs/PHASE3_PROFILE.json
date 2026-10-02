@@ -1,0 +1,740 @@
+{
+  "timestamp_utc": "2026-09-27T12:17:54.059407+00:00",
+  "command": "python -m generator.tests.profile_phase3",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.17763-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD"
+  },
+  "config": {
+    "max_x_chain_length": 15,
+    "max_xy_chain_length": 19,
+    "max_aic_length": 19,
+    "max_grouped_aic_length": 19,
+    "max_chain_search_nodes": 100000,
+    "max_als_size": 4,
+    "max_als_chain_length": 5,
+    "max_als_search_nodes": 30000,
+    "max_forcing_depth": 12,
+    "max_forcing_nodes": 2000,
+    "max_forcing_starts": 160
+  },
+  "notes": [
+    "One wall-clock sample per operation; no timing assertions.",
+    "Unique puzzles are profiled once; target repertoires separately.",
+    "Candidate links, ALS RCC edges and forcing dependency depth are distinct units.",
+    "search_complexity is proof discovery work, not full detector elapsed work.",
+    "Graph building and search are finite; emitted deductions are representative, not exhaustive."
+  ],
+  "puzzles": [
+    {
+      "seed": 4,
+      "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+      "phase2_seconds": 0.043493,
+      "phase2_step_count": 17,
+      "remaining_candidates": 143,
+      "inference_graphs": {
+        "x": {
+          "build_seconds": 0.002489,
+          "nodes": 143,
+          "strong_edges": 31,
+          "weak_edges": 410
+        },
+        "xy": {
+          "build_seconds": 0.000725,
+          "nodes": 28,
+          "strong_edges": 14,
+          "weak_edges": 16
+        },
+        "aic": {
+          "build_seconds": 0.002423,
+          "nodes": 143,
+          "strong_edges": 45,
+          "weak_edges": 580
+        },
+        "grouped_aic": {
+          "build_seconds": 0.006776,
+          "nodes": 234,
+          "strong_edges": 125,
+          "weak_edges": 903
+        }
+      },
+      "detectors": {
+        "X-Chain": {
+          "seconds": 0.002555,
+          "emitted_steps": 2,
+          "maximum_reported_search_complexity": 307,
+          "maximum_candidate_chain_links": 5,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "XY-Chain": {
+          "seconds": 0.00096,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "AIC": {
+          "seconds": 0.015774,
+          "emitted_steps": 11,
+          "maximum_reported_search_complexity": 9604,
+          "maximum_candidate_chain_links": 7,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Nice Loop": {
+          "seconds": 0.005223,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Grouped AIC": {
+          "seconds": 0.054402,
+          "emitted_steps": 20,
+          "maximum_reported_search_complexity": 34428,
+          "maximum_candidate_chain_links": 15,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XZ": {
+          "seconds": 0.043672,
+          "emitted_steps": 3,
+          "maximum_reported_search_complexity": 7925,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 1,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XY-Wing": {
+          "seconds": 0.059403,
+          "emitted_steps": 5,
+          "maximum_reported_search_complexity": 14505,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 2,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS Chain": {
+          "seconds": 0.108705,
+          "emitted_steps": 6,
+          "maximum_reported_search_complexity": 33530,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 3,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Forcing Chain": {
+          "seconds": 0.097494,
+          "emitted_steps": 9,
+          "maximum_reported_search_complexity": 129,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 11
+        },
+        "Nishio": {
+          "seconds": 0.100854,
+          "emitted_steps": 81,
+          "maximum_reported_search_complexity": 121,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 12
+        }
+      },
+      "als_graph": {
+        "build_seconds": 0.038704,
+        "nodes": 122,
+        "rcc_edges": 367,
+        "pair_checks": 7381,
+        "truncated": false
+      },
+      "default_solve": {
+        "seconds": 0.17052,
+        "solved": true,
+        "step_count": 71,
+        "advanced_steps": 5,
+        "technique_counts": {
+          "Hidden Single": 12,
+          "Naked Single": 25,
+          "Locked Candidates": 6,
+          "2-String Kite": 2,
+          "X-Chain": 2,
+          "AIC": 3,
+          "Naked Pair": 1,
+          "Full House": 20
+        },
+        "maximum_candidate_chain_links": 7,
+        "maximum_als_rcc_links": 0,
+        "maximum_forcing_dependency_depth": 0
+      }
+    },
+    {
+      "seed": 29,
+      "puzzle": "008050000126300000000100007070000120504000008000008009000094010001000045050060800",
+      "phase2_seconds": 0.038117,
+      "phase2_step_count": 19,
+      "remaining_candidates": 120,
+      "inference_graphs": {
+        "x": {
+          "build_seconds": 0.001767,
+          "nodes": 120,
+          "strong_edges": 37,
+          "weak_edges": 304
+        },
+        "xy": {
+          "build_seconds": 0.000557,
+          "nodes": 24,
+          "strong_edges": 12,
+          "weak_edges": 10
+        },
+        "aic": {
+          "build_seconds": 0.002008,
+          "nodes": 120,
+          "strong_edges": 49,
+          "weak_edges": 424
+        },
+        "grouped_aic": {
+          "build_seconds": 0.005368,
+          "nodes": 186,
+          "strong_edges": 115,
+          "weak_edges": 603
+        }
+      },
+      "detectors": {
+        "X-Chain": {
+          "seconds": 0.002433,
+          "emitted_steps": 3,
+          "maximum_reported_search_complexity": 77,
+          "maximum_candidate_chain_links": 5,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "XY-Chain": {
+          "seconds": 0.000785,
+          "emitted_steps": 1,
+          "maximum_reported_search_complexity": 64,
+          "maximum_candidate_chain_links": 7,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "AIC": {
+          "seconds": 0.0232,
+          "emitted_steps": 28,
+          "maximum_reported_search_complexity": 20095,
+          "maximum_candidate_chain_links": 13,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Nice Loop": {
+          "seconds": 0.007148,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Grouped AIC": {
+          "seconds": 0.106478,
+          "emitted_steps": 83,
+          "maximum_reported_search_complexity": 90401,
+          "maximum_candidate_chain_links": 19,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XZ": {
+          "seconds": 0.077063,
+          "emitted_steps": 2,
+          "maximum_reported_search_complexity": 12568,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 1,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XY-Wing": {
+          "seconds": 0.095768,
+          "emitted_steps": 4,
+          "maximum_reported_search_complexity": 16616,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 2,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS Chain": {
+          "seconds": 0.167563,
+          "emitted_steps": 12,
+          "maximum_reported_search_complexity": 41576,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 4,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Forcing Chain": {
+          "seconds": 0.084548,
+          "emitted_steps": 1,
+          "maximum_reported_search_complexity": 117,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 9
+        },
+        "Nishio": {
+          "seconds": 0.088306,
+          "emitted_steps": 96,
+          "maximum_reported_search_complexity": 111,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 12
+        }
+      },
+      "als_graph": {
+        "build_seconds": 0.068645,
+        "nodes": 155,
+        "rcc_edges": 429,
+        "pair_checks": 11935,
+        "truncated": false
+      },
+      "default_solve": {
+        "seconds": 0.101446,
+        "solved": true,
+        "step_count": 66,
+        "advanced_steps": 3,
+        "technique_counts": {
+          "Naked Single": 14,
+          "Hidden Single": 22,
+          "Locked Candidates": 6,
+          "2-String Kite": 1,
+          "X-Chain": 2,
+          "XY-Chain": 1,
+          "Full House": 20
+        },
+        "maximum_candidate_chain_links": 7,
+        "maximum_als_rcc_links": 0,
+        "maximum_forcing_dependency_depth": 0
+      }
+    },
+    {
+      "seed": 193,
+      "puzzle": "000800000008041030010020807020000049004203000500400000003007004001630008000000002",
+      "phase2_seconds": 0.064535,
+      "phase2_step_count": 31,
+      "remaining_candidates": 96,
+      "inference_graphs": {
+        "x": {
+          "build_seconds": 0.001896,
+          "nodes": 96,
+          "strong_edges": 29,
+          "weak_edges": 220
+        },
+        "xy": {
+          "build_seconds": 0.000551,
+          "nodes": 26,
+          "strong_edges": 13,
+          "weak_edges": 11
+        },
+        "aic": {
+          "build_seconds": 0.00167,
+          "nodes": 96,
+          "strong_edges": 42,
+          "weak_edges": 311
+        },
+        "grouped_aic": {
+          "build_seconds": 0.004068,
+          "nodes": 141,
+          "strong_edges": 106,
+          "weak_edges": 395
+        }
+      },
+      "detectors": {
+        "X-Chain": {
+          "seconds": 0.002076,
+          "emitted_steps": 1,
+          "maximum_reported_search_complexity": 173,
+          "maximum_candidate_chain_links": 5,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "XY-Chain": {
+          "seconds": 0.000834,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "AIC": {
+          "seconds": 0.015296,
+          "emitted_steps": 17,
+          "maximum_reported_search_complexity": 7455,
+          "maximum_candidate_chain_links": 9,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Nice Loop": {
+          "seconds": 0.00491,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Grouped AIC": {
+          "seconds": 0.065952,
+          "emitted_steps": 55,
+          "maximum_reported_search_complexity": 59873,
+          "maximum_candidate_chain_links": 17,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XZ": {
+          "seconds": 0.064984,
+          "emitted_steps": 1,
+          "maximum_reported_search_complexity": 9332,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 1,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XY-Wing": {
+          "seconds": 0.086154,
+          "emitted_steps": 4,
+          "maximum_reported_search_complexity": 11278,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 2,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS Chain": {
+          "seconds": 0.148385,
+          "emitted_steps": 12,
+          "maximum_reported_search_complexity": 31824,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 3,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Forcing Chain": {
+          "seconds": 0.07015,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Nishio": {
+          "seconds": 0.074973,
+          "emitted_steps": 80,
+          "maximum_reported_search_complexity": 90,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 12
+        }
+      },
+      "als_graph": {
+        "build_seconds": 0.056731,
+        "nodes": 137,
+        "rcc_edges": 441,
+        "pair_checks": 9316,
+        "truncated": false
+      },
+      "default_solve": {
+        "seconds": 0.104311,
+        "solved": true,
+        "step_count": 69,
+        "advanced_steps": 1,
+        "technique_counts": {
+          "Hidden Single": 23,
+          "Locked Candidates": 7,
+          "XYZ-Wing": 1,
+          "Skyscraper": 1,
+          "Empty Rectangle": 1,
+          "W-Wing": 1,
+          "X-Chain": 1,
+          "Swordfish": 1,
+          "Naked Single": 12,
+          "Full House": 21
+        },
+        "maximum_candidate_chain_links": 5,
+        "maximum_als_rcc_links": 0,
+        "maximum_forcing_dependency_depth": 0
+      }
+    },
+    {
+      "seed": 48,
+      "puzzle": "090000005001040060060200700700080000002070040000300900000800500015004082000090006",
+      "phase2_seconds": 0.011955,
+      "phase2_step_count": 6,
+      "remaining_candidates": 178,
+      "inference_graphs": {
+        "x": {
+          "build_seconds": 0.002702,
+          "nodes": 178,
+          "strong_edges": 25,
+          "weak_edges": 619
+        },
+        "xy": {
+          "build_seconds": 0.000652,
+          "nodes": 18,
+          "strong_edges": 9,
+          "weak_edges": 7
+        },
+        "aic": {
+          "build_seconds": 0.003535,
+          "nodes": 178,
+          "strong_edges": 34,
+          "weak_edges": 864
+        },
+        "grouped_aic": {
+          "build_seconds": 0.009258,
+          "nodes": 299,
+          "strong_edges": 132,
+          "weak_edges": 1432
+        }
+      },
+      "detectors": {
+        "X-Chain": {
+          "seconds": 0.00293,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "XY-Chain": {
+          "seconds": 0.000724,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "AIC": {
+          "seconds": 0.011939,
+          "emitted_steps": 3,
+          "maximum_reported_search_complexity": 5492,
+          "maximum_candidate_chain_links": 7,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Nice Loop": {
+          "seconds": 0.004691,
+          "emitted_steps": 0,
+          "maximum_reported_search_complexity": 0,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Grouped AIC": {
+          "seconds": 0.044825,
+          "emitted_steps": 3,
+          "maximum_reported_search_complexity": 22908,
+          "maximum_candidate_chain_links": 9,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XZ": {
+          "seconds": 0.022293,
+          "emitted_steps": 2,
+          "maximum_reported_search_complexity": 4092,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 1,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS-XY-Wing": {
+          "seconds": 0.023971,
+          "emitted_steps": 5,
+          "maximum_reported_search_complexity": 5308,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 2,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "ALS Chain": {
+          "seconds": 0.026903,
+          "emitted_steps": 2,
+          "maximum_reported_search_complexity": 7325,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 3,
+          "maximum_forcing_dependency_depth": 0
+        },
+        "Forcing Chain": {
+          "seconds": 0.09984,
+          "emitted_steps": 7,
+          "maximum_reported_search_complexity": 134,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 12
+        },
+        "Nishio": {
+          "seconds": 0.100089,
+          "emitted_steps": 35,
+          "maximum_reported_search_complexity": 143,
+          "maximum_candidate_chain_links": 0,
+          "maximum_als_rcc_links": 0,
+          "maximum_forcing_dependency_depth": 12
+        }
+      },
+      "als_graph": {
+        "build_seconds": 0.020106,
+        "nodes": 90,
+        "rcc_edges": 142,
+        "pair_checks": 4005,
+        "truncated": false
+      },
+      "default_solve": {
+        "seconds": 1.870182,
+        "solved": true,
+        "step_count": 98,
+        "advanced_steps": 25,
+        "technique_counts": {
+          "Naked Single": 28,
+          "Full House": 21,
+          "Hidden Single": 8,
+          "AIC": 7,
+          "Grouped AIC": 7,
+          "ALS-XZ": 3,
+          "ALS-XY-Wing": 2,
+          "Locked Candidates": 7,
+          "Naked Pair": 1,
+          "ALS Chain": 1,
+          "Hidden Pair": 3,
+          "2-String Kite": 2,
+          "XYZ-Wing": 1,
+          "Naked Triple": 1,
+          "XY-Chain": 4,
+          "X-Chain": 1,
+          "X-Wing": 1
+        },
+        "maximum_candidate_chain_links": 17,
+        "maximum_als_rcc_links": 3,
+        "maximum_forcing_dependency_depth": 0
+      }
+    }
+  ],
+  "target_repertoires": [
+    {
+      "id": "seed-4-aic",
+      "seconds": 0.182603,
+      "solved": true,
+      "step_count": 72,
+      "advanced_steps": 5,
+      "technique_counts": {
+        "Hidden Single": 12,
+        "Naked Single": 25,
+        "Locked Candidates": 7,
+        "2-String Kite": 2,
+        "AIC": 5,
+        "Naked Pair": 1,
+        "Full House": 20
+      },
+      "maximum_candidate_chain_links": 7,
+      "maximum_als_rcc_links": 0,
+      "maximum_forcing_dependency_depth": 0
+    },
+    {
+      "id": "seed-4-als-xz",
+      "seconds": 0.177366,
+      "solved": true,
+      "step_count": 68,
+      "advanced_steps": 2,
+      "technique_counts": {
+        "Hidden Single": 12,
+        "Naked Single": 25,
+        "Locked Candidates": 6,
+        "2-String Kite": 2,
+        "ALS-XZ": 2,
+        "Naked Pair": 1,
+        "Full House": 20
+      },
+      "maximum_candidate_chain_links": 0,
+      "maximum_als_rcc_links": 1,
+      "maximum_forcing_dependency_depth": 0
+    },
+    {
+      "id": "seed-4-forcing-chain",
+      "seconds": 0.381626,
+      "solved": true,
+      "step_count": 70,
+      "advanced_steps": 3,
+      "technique_counts": {
+        "Hidden Single": 12,
+        "Naked Single": 25,
+        "Locked Candidates": 7,
+        "2-String Kite": 2,
+        "Forcing Chain": 3,
+        "Naked Pair": 1,
+        "Full House": 20
+      },
+      "maximum_candidate_chain_links": 0,
+      "maximum_als_rcc_links": 0,
+      "maximum_forcing_dependency_depth": 9
+    },
+    {
+      "id": "seed-4-nishio",
+      "seconds": 0.183527,
+      "solved": true,
+      "step_count": 66,
+      "advanced_steps": 1,
+      "technique_counts": {
+        "Hidden Single": 11,
+        "Naked Single": 26,
+        "Locked Candidates": 5,
+        "2-String Kite": 3,
+        "Nishio": 1,
+        "Full House": 20
+      },
+      "maximum_candidate_chain_links": 0,
+      "maximum_als_rcc_links": 0,
+      "maximum_forcing_dependency_depth": 11
+    },
+    {
+      "id": "seed-29-xy-chain",
+      "seconds": 0.080375,
+      "solved": true,
+      "step_count": 64,
+      "advanced_steps": 1,
+      "technique_counts": {
+        "Naked Single": 15,
+        "Hidden Single": 20,
+        "Locked Candidates": 6,
+        "2-String Kite": 1,
+        "XY-Chain": 1,
+        "Full House": 21
+      },
+      "maximum_candidate_chain_links": 7,
+      "maximum_als_rcc_links": 0,
+      "maximum_forcing_dependency_depth": 0
+    },
+    {
+      "id": "seed-193-x-chain",
+      "seconds": 0.103601,
+      "solved": true,
+      "step_count": 69,
+      "advanced_steps": 1,
+      "technique_counts": {
+        "Hidden Single": 23,
+        "Locked Candidates": 7,
+        "XYZ-Wing": 1,
+        "Skyscraper": 1,
+        "Empty Rectangle": 1,
+        "W-Wing": 1,
+        "X-Chain": 1,
+        "Swordfish": 1,
+        "Naked Single": 12,
+        "Full House": 21
+      },
+      "maximum_candidate_chain_links": 5,
+      "maximum_als_rcc_links": 0,
+      "maximum_forcing_dependency_depth": 0
+    }
+  ],
+  "summary": {
+    "unique_puzzles": 4,
+    "fixture_entries": 7,
+    "default_solves_seconds": 2.246459,
+    "detectors_seconds_by_name": {
+      "ALS Chain": 0.451556,
+      "Nishio": 0.364222,
+      "Forcing Chain": 0.352032,
+      "Grouped AIC": 0.271657,
+      "ALS-XY-Wing": 0.265296,
+      "ALS-XZ": 0.208012,
+      "AIC": 0.066209,
+      "Nice Loop": 0.021972,
+      "X-Chain": 0.009994,
+      "XY-Chain": 0.003303
+    },
+    "slowest_detector": "ALS Chain"
+  }
+}

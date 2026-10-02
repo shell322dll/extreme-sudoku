@@ -1,0 +1,163 @@
+[
+  {
+    "id": "seed-4-aic",
+    "seed": 4,
+    "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "Phase 2 + target technique",
+    "target_longest_chain": 7,
+    "default_techniques": {
+      "Hidden Single": 12,
+      "Naked Single": 25,
+      "Locked Candidates": 6,
+      "2-String Kite": 2,
+      "X-Chain": 2,
+      "AIC": 3,
+      "Naked Pair": 1,
+      "Full House": 20
+    },
+    "solution": "259671834671348925348259167837924516924165783165837492786493251512786349493512678",
+    "target_technique": "AIC",
+    "target_steps": 5
+  },
+  {
+    "id": "seed-4-als-xz",
+    "seed": 4,
+    "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "Phase 2 + target technique",
+    "target_longest_chain": 1,
+    "default_techniques": {
+      "Hidden Single": 12,
+      "Naked Single": 25,
+      "Locked Candidates": 6,
+      "2-String Kite": 2,
+      "X-Chain": 2,
+      "AIC": 3,
+      "Naked Pair": 1,
+      "Full House": 20
+    },
+    "solution": "259671834671348925348259167837924516924165783165837492786493251512786349493512678",
+    "target_technique": "ALS-XZ",
+    "target_steps": 2
+  },
+  {
+    "id": "seed-4-forcing-chain",
+    "seed": 4,
+    "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "Phase 2 + target technique",
+    "target_longest_chain": 9,
+    "default_techniques": {
+      "Hidden Single": 12,
+      "Naked Single": 25,
+      "Locked Candidates": 6,
+      "2-String Kite": 2,
+      "X-Chain": 2,
+      "AIC": 3,
+      "Naked Pair": 1,
+      "Full House": 20
+    },
+    "solution": "259671834671348925348259167837924516924165783165837492786493251512786349493512678",
+    "target_technique": "Forcing Chain",
+    "target_steps": 3
+  },
+  {
+    "id": "seed-4-nishio",
+    "seed": 4,
+    "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "Phase 2 + target technique",
+    "target_longest_chain": 11,
+    "default_techniques": {
+      "Hidden Single": 12,
+      "Naked Single": 25,
+      "Locked Candidates": 6,
+      "2-String Kite": 2,
+      "X-Chain": 2,
+      "AIC": 3,
+      "Naked Pair": 1,
+      "Full House": 20
+    },
+    "solution": "259671834671348925348259167837924516924165783165837492786493251512786349493512678",
+    "target_technique": "Nishio",
+    "target_steps": 1
+  },
+  {
+    "id": "seed-29-xy-chain",
+    "seed": 29,
+    "puzzle": "008050000126300000000100007070000120504000008000008009000094010001000045050060800",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "Phase 2 + target technique",
+    "target_longest_chain": 7,
+    "default_techniques": {
+      "Naked Single": 14,
+      "Hidden Single": 22,
+      "Locked Candidates": 6,
+      "2-String Kite": 1,
+      "X-Chain": 2,
+      "XY-Chain": 1,
+      "Full House": 20
+    },
+    "solution": "738459261126387594945126387873945126594612738612738459387594612261873945459261873",
+    "target_technique": "XY-Chain",
+    "target_steps": 1
+  },
+  {
+    "id": "seed-193-x-chain",
+    "seed": 193,
+    "puzzle": "000800000008041030010020807020000049004203000500400000003007004001630008000000002",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "Phase 2 + target technique",
+    "target_longest_chain": 5,
+    "default_techniques": {
+      "Hidden Single": 23,
+      "Locked Candidates": 7,
+      "XYZ-Wing": 1,
+      "Skyscraper": 1,
+      "Empty Rectangle": 1,
+      "W-Wing": 1,
+      "X-Chain": 1,
+      "Swordfish": 1,
+      "Naked Single": 12,
+      "Full House": 21
+    },
+    "solution": "632875491758941236419326857326758149194263785587419623263587914941632578875194362",
+    "target_technique": "X-Chain",
+    "target_steps": 1
+  },
+  {
+    "id": "seed-48-mixed-advanced",
+    "seed": 48,
+    "puzzle": "090000005001040060060200700700080000002070040000300900000800500015004082000090006",
+    "source": "minimize_puzzle(generate_solution(seed=n), seed=n)",
+    "target_repertoire": "default",
+    "target_longest_chain": 17,
+    "default_techniques": {
+      "Naked Single": 28,
+      "Full House": 21,
+      "Hidden Single": 8,
+      "AIC": 7,
+      "Grouped AIC": 7,
+      "ALS-XZ": 3,
+      "ALS-XY-Wing": 2,
+      "Locked Candidates": 7,
+      "Naked Pair": 1,
+      "ALS Chain": 1,
+      "Hidden Pair": 3,
+      "2-String Kite": 2,
+      "XYZ-Wing": 1,
+      "Naked Triple": 1,
+      "XY-Chain": 4,
+      "X-Chain": 1,
+      "X-Wing": 1
+    },
+    "solution": "497638125521947863368251794759486231132579648846312957674823519915764382283195476",
+    "target_techniques": [
+      "Grouped AIC",
+      "ALS-XZ",
+      "ALS-XY-Wing",
+      "ALS Chain"
+    ]
+  }
+]

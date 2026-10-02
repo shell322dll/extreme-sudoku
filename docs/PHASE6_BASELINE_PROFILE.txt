@@ -1,0 +1,22 @@
+smoke: attempts=1 accepted=1/1 Easy/1.34095
+sample: attempts=1 accepted=1/8 Medium/3.42077
+sample: attempts=2 accepted=2/8 Easy/1.59451
+sample: attempts=3 accepted=3/8 Easy/1.5786
+sample: attempts=4 accepted=4/8 Easy/1.5983
+sample: attempts=5 accepted=5/8 Medium/3.42772
+sample: attempts=6 accepted=6/8 Easy/1.57986
+sample: attempts=7 accepted=7/8 Medium/2.40644
+sample: attempts=8 accepted=8/8 Expert/19.4247
+default-range: attempts=1 accepted=1/8 Medium/3.42077
+default-range: attempts=2 accepted=1/8 rejected
+default-range: attempts=3 accepted=1/8 rejected
+default-range: attempts=4 accepted=2/8 Easy/1.5983
+default-range: attempts=5 accepted=2/8 rejected
+default-range: attempts=6 accepted=2/8 rejected
+default-range: attempts=7 accepted=2/8 rejected
+default-range: attempts=8 accepted=2/8 rejected
+cold puzzle-e4c65a691a4fdf026061: quick=0.066s deep=0.248s minimalize=0.016s
+cold puzzle-f2a1e331cba6509d1546: quick=0.149s deep=1.402s minimalize=0.010s
+Profile: docs\PHASE6_BASELINE_PROFILE.json; database: docs\PHASE6_BASELINE_DATABASE.json
+
+COMMAND_EXIT=0 WALL_SECONDS=6.7536467

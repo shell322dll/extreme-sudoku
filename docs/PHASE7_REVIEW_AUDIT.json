@@ -1,0 +1,29 @@
+{
+  "static_files_checked": 19,
+  "registry_names_and_ratings_matched": 30,
+  "independent_als_counts_by_size": {
+    "1": 4,
+    "2": 3,
+    "3": 1,
+    "8": 243
+  },
+  "both_forcing_families_report_omitted_propagation": true,
+  "exact_api_aliases_trapped": 5,
+  "independent_families": 30,
+  "out_of_range_premise_mutations_rejected": 337,
+  "human_replay_steps_with_exact_trapped": 71,
+  "threshold_search_with_exact_trapped": "PROVEN_UNSOLVABLE_WITHIN_MODEL",
+  "enumerated_proofs_with_exact_trapped": 6,
+  "enumeration_limit_reasons": [
+    "AIC:CHAIN_NODE_LIMIT",
+    "ALS Chain:ALS_SIZE_LIMIT",
+    "ALS-XY-Wing:ALS_SIZE_LIMIT",
+    "ALS-XZ:ALS_SIZE_LIMIT",
+    "Forcing Chain:FORCING_START_LIMIT",
+    "Grouped AIC:CHAIN_NODE_LIMIT",
+    "Nishio:FORCING_START_LIMIT"
+  ],
+  "late_empty_frontier_clock_check": "INCONCLUSIVE_BUDGET",
+  "algorithmFingerprint": "166aecc4915355c17af29d79b881acb1cd13fc0cd43576b8230f8102e5c96e76",
+  "sourceUnchangedDuringAudit": true
+}

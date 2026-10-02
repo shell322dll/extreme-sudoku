@@ -1,0 +1,29 @@
+[
+  {
+    "id": "xy_wing_seed_3",
+    "puzzle": "710000004800000020090000830004700000050040200007800000040002500000094702001380090",
+    "required_technique": "XY-Wing",
+    "seed": 3,
+    "provenance": "Locally generated: minimize_puzzle(generate_solution(seed=3), seed=3). Selected by a bounded sequential seed scan, without evolutionary search.",
+    "phase1_status": "STUCK",
+    "phase2_status": "SOLVED"
+  },
+  {
+    "id": "x_wing_seed_21",
+    "puzzle": "728000000000000500000409000640070020900000000000645009201000870090380000000000040",
+    "required_technique": "X-Wing",
+    "seed": 21,
+    "provenance": "Locally generated: minimize_puzzle(generate_solution(seed=21), seed=21). Selected by a bounded sequential seed scan, without evolutionary search.",
+    "phase1_status": "STUCK",
+    "phase2_status": "SOLVED"
+  },
+  {
+    "id": "swordfish_seed_227",
+    "puzzle": "700060000650200000010004000082900006040000002006000479400500800000021700000000065",
+    "required_technique": "Swordfish",
+    "seed": 227,
+    "provenance": "Locally generated: minimize_puzzle(generate_solution(seed=227), seed=227). Selected by a bounded sequential seed scan, without evolutionary search.",
+    "phase1_status": "STUCK",
+    "phase2_status": "SOLVED"
+  }
+]

@@ -1,0 +1,700 @@
+{
+  "timestamp_utc": "2026-09-28T00:48:38.159259+00:00",
+  "command": "python -m generator.tests.profile_phase4 --repeats 3",
+  "environment": {
+    "executable": "C:\\Users\\ignatevsu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.17763-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD"
+  },
+  "config": {
+    "registry": [
+      {
+        "name": "Full House",
+        "tier": "TRIVIAL",
+        "base_rating": 0.5,
+        "weight": 0.5
+      },
+      {
+        "name": "Naked Single",
+        "tier": "TRIVIAL",
+        "base_rating": 1.0,
+        "weight": 1.0
+      },
+      {
+        "name": "Hidden Single",
+        "tier": "TRIVIAL",
+        "base_rating": 1.2,
+        "weight": 1.2
+      },
+      {
+        "name": "Locked Candidates",
+        "tier": "BASIC",
+        "base_rating": 2.0,
+        "weight": 2.0
+      },
+      {
+        "name": "Naked Pair",
+        "tier": "BASIC",
+        "base_rating": 3.0,
+        "weight": 3.0
+      },
+      {
+        "name": "Hidden Pair",
+        "tier": "BASIC",
+        "base_rating": 3.2,
+        "weight": 3.2
+      },
+      {
+        "name": "Naked Triple",
+        "tier": "BASIC",
+        "base_rating": 5.0,
+        "weight": 5.0
+      },
+      {
+        "name": "Hidden Triple",
+        "tier": "BASIC",
+        "base_rating": 5.2,
+        "weight": 5.2
+      },
+      {
+        "name": "Naked Quad",
+        "tier": "INTERMEDIATE",
+        "base_rating": 7.0,
+        "weight": 7.0
+      },
+      {
+        "name": "Hidden Quad",
+        "tier": "INTERMEDIATE",
+        "base_rating": 7.2,
+        "weight": 7.2
+      },
+      {
+        "name": "X-Wing",
+        "tier": "INTERMEDIATE",
+        "base_rating": 8.0,
+        "weight": 8.0
+      },
+      {
+        "name": "Skyscraper",
+        "tier": "INTERMEDIATE",
+        "base_rating": 9.0,
+        "weight": 9.0
+      },
+      {
+        "name": "2-String Kite",
+        "tier": "INTERMEDIATE",
+        "base_rating": 9.2,
+        "weight": 9.2
+      },
+      {
+        "name": "Turbot Fish",
+        "tier": "INTERMEDIATE",
+        "base_rating": 10.0,
+        "weight": 10.0
+      },
+      {
+        "name": "Empty Rectangle",
+        "tier": "INTERMEDIATE",
+        "base_rating": 11.0,
+        "weight": 11.0
+      },
+      {
+        "name": "Swordfish",
+        "tier": "ADVANCED",
+        "base_rating": 12.0,
+        "weight": 12.0
+      },
+      {
+        "name": "XY-Wing",
+        "tier": "ADVANCED",
+        "base_rating": 14.0,
+        "weight": 14.0
+      },
+      {
+        "name": "XYZ-Wing",
+        "tier": "ADVANCED",
+        "base_rating": 16.0,
+        "weight": 16.0
+      },
+      {
+        "name": "W-Wing",
+        "tier": "ADVANCED",
+        "base_rating": 17.0,
+        "weight": 17.0
+      },
+      {
+        "name": "Jellyfish",
+        "tier": "ADVANCED",
+        "base_rating": 18.0,
+        "weight": 18.0
+      },
+      {
+        "name": "X-Chain",
+        "tier": "EXTREME",
+        "base_rating": 22.0,
+        "weight": 22.0
+      },
+      {
+        "name": "XY-Chain",
+        "tier": "EXTREME",
+        "base_rating": 25.0,
+        "weight": 25.0
+      },
+      {
+        "name": "AIC",
+        "tier": "EXTREME",
+        "base_rating": 30.0,
+        "weight": 30.0
+      },
+      {
+        "name": "Nice Loop",
+        "tier": "EXTREME",
+        "base_rating": 32.0,
+        "weight": 32.0
+      },
+      {
+        "name": "Grouped AIC",
+        "tier": "EXTREME",
+        "base_rating": 35.0,
+        "weight": 35.0
+      },
+      {
+        "name": "ALS-XZ",
+        "tier": "EXTREME",
+        "base_rating": 36.0,
+        "weight": 36.0
+      },
+      {
+        "name": "ALS-XY-Wing",
+        "tier": "EXTREME",
+        "base_rating": 39.0,
+        "weight": 39.0
+      },
+      {
+        "name": "ALS Chain",
+        "tier": "EXTREME",
+        "base_rating": 42.0,
+        "weight": 42.0
+      },
+      {
+        "name": "Forcing Chain",
+        "tier": "EXTREME",
+        "base_rating": 50.0,
+        "weight": 50.0
+      },
+      {
+        "name": "Nishio",
+        "tier": "EXTREME",
+        "base_rating": 55.0,
+        "weight": 55.0
+      }
+    ],
+    "search": {
+      "max_x_chain_length": 15,
+      "max_xy_chain_length": 19,
+      "max_aic_length": 19,
+      "max_grouped_aic_length": 19,
+      "max_chain_search_nodes": 100000,
+      "max_als_size": 4,
+      "max_als_chain_length": 5,
+      "max_als_search_nodes": 30000,
+      "max_forcing_depth": 12,
+      "max_forcing_nodes": 2000,
+      "max_forcing_starts": 160
+    },
+    "score_exponent": 2.0,
+    "chain_length_factor": 1.5,
+    "grouped_node_factor": 2.0,
+    "branching_factor": 1.0,
+    "als_bonus": 4.0,
+    "forcing_bonus": 8.0,
+    "search_complexity_factor": 0.01,
+    "advanced_threshold": 12.0,
+    "extreme_step_threshold": 22.0,
+    "bottleneck_threshold": 12.0,
+    "extreme_threshold": 30.0,
+    "ultra_threshold": 36.0,
+    "minimum_advanced_steps": 3,
+    "minimum_bottlenecks": 2,
+    "ultra_minimum_advanced_steps": 5,
+    "ultra_minimum_bottlenecks": 3,
+    "ultra_minimum_chain": 8,
+    "ultra_minimum_distributed_bins": 2,
+    "late_fraction": 0.65,
+    "distribution_bins": 4,
+    "total_rating_factor": 0.1,
+    "bottleneck_rating_factor": 0.05,
+    "distribution_rating_factor": 0.1,
+    "classification_thresholds": [
+      [
+        "Easy",
+        0.0
+      ],
+      [
+        "Medium",
+        2.0
+      ],
+      [
+        "Hard",
+        7.0
+      ],
+      [
+        "Expert",
+        12.0
+      ]
+    ],
+    "cache_size": 512
+  },
+  "repeats": 3,
+  "notes": [
+    "Wall-clock measurements; medians and raw samples; no timing assertions.",
+    "Run with no competing test suites or CPU-heavy processes.",
+    "Cold means a new analyzer, not a new Python process or empty OS cache.",
+    "Warm Deep caches state analyses; threshold and profile solves still run.",
+    "Quick has no threshold solves, alternative enumeration or uniqueness check.",
+    "Deep includes a separate exact uniqueness check for preliminary certification.",
+    "Analysis validates emitted steps; raw HumanSolver enumeration does not.",
+    "All necessity evidence is bounded; no exhaustive logical-path minimum proof.",
+    "Optional seed 48 is omitted unless --include-expensive is supplied."
+  ],
+  "puzzles": [
+    {
+      "id": "basic",
+      "puzzle": "530070000600195000098000060800060003400803001700020006060000280000419005000080079",
+      "source": "test_human_solver.PUZZLE",
+      "normal": {
+        "samples_seconds": [
+          0.04486,
+          0.044017,
+          0.043907
+        ],
+        "median_seconds": 0.044017,
+        "steps": 51,
+        "hardest_rating": 1.0
+      },
+      "quick": {
+        "samples_seconds": [
+          0.077326,
+          0.076737,
+          0.076823
+        ],
+        "median_seconds": 0.076823,
+        "difficulty_class": "Easy",
+        "rating": 1.3590439381300685,
+        "hardest_rating": 1.0,
+        "hardest_required_rating": null,
+        "minimum_tier": null,
+        "step_count": 51,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "true_bottleneck_count": 0,
+        "longest_chain": 0,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {},
+        "unique": null
+      },
+      "deep_cold": {
+        "samples_seconds": [
+          0.288538,
+          0.287768,
+          0.286648
+        ],
+        "median_seconds": 0.287768,
+        "difficulty_class": "Easy",
+        "rating": 1.3590439381300685,
+        "hardest_rating": 1.0,
+        "hardest_required_rating": 1.0,
+        "minimum_tier": "TRIVIAL",
+        "step_count": 51,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "true_bottleneck_count": 0,
+        "longest_chain": 0,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {
+          "Basic": "SOLVED",
+          "Intermediate": "SOLVED",
+          "Advanced": "SOLVED",
+          "Extreme": "SOLVED"
+        },
+        "unique": true
+      },
+      "deep_warm": {
+        "samples_seconds": [
+          0.2877,
+          0.287195,
+          0.286426
+        ],
+        "median_seconds": 0.287195,
+        "cache_hits": 0,
+        "cache_misses": 0
+      },
+      "deep_to_normal_ratio": 6.538
+    },
+    {
+      "id": "seed_21",
+      "puzzle": "728000000000000500000409000640070020900000000000645009201000870090380000000000040",
+      "source": "existing Phase 2/3 regression fixture",
+      "seed": 21,
+      "normal": {
+        "samples_seconds": [
+          0.074373,
+          0.073307,
+          0.073044
+        ],
+        "median_seconds": 0.073307,
+        "steps": 63,
+        "hardest_rating": 10.0
+      },
+      "quick": {
+        "samples_seconds": [
+          0.116115,
+          0.116838,
+          0.116764
+        ],
+        "median_seconds": 0.116764,
+        "difficulty_class": "Hard",
+        "rating": 10.549995123437437,
+        "hardest_rating": 10.0,
+        "hardest_required_rating": null,
+        "minimum_tier": null,
+        "step_count": 63,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "true_bottleneck_count": 0,
+        "longest_chain": 0,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {},
+        "unique": null
+      },
+      "deep_cold": {
+        "samples_seconds": [
+          0.901316,
+          0.902366,
+          0.899088
+        ],
+        "median_seconds": 0.901316,
+        "difficulty_class": "Hard",
+        "rating": 10.549995123437437,
+        "hardest_rating": 10.0,
+        "hardest_required_rating": 10.0,
+        "minimum_tier": "INTERMEDIATE",
+        "step_count": 63,
+        "advanced_steps": 0,
+        "extreme_steps": 0,
+        "true_bottleneck_count": 0,
+        "longest_chain": 0,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {
+          "Basic": "STUCK",
+          "Intermediate": "SOLVED",
+          "Advanced": "SOLVED",
+          "Extreme": "SOLVED"
+        },
+        "unique": true
+      },
+      "deep_warm": {
+        "samples_seconds": [
+          0.905504,
+          0.901743,
+          0.903105
+        ],
+        "median_seconds": 0.903105,
+        "cache_hits": 0,
+        "cache_misses": 0
+      },
+      "deep_to_normal_ratio": 12.295
+    },
+    {
+      "id": "seed_3",
+      "puzzle": "710000004800000020090000830004700000050040200007800000040002500000094702001380090",
+      "source": "existing Phase 2/3 regression fixture",
+      "seed": 3,
+      "normal": {
+        "samples_seconds": [
+          0.076904,
+          0.07672,
+          0.076613
+        ],
+        "median_seconds": 0.07672,
+        "steps": 64,
+        "hardest_rating": 14.0
+      },
+      "quick": {
+        "samples_seconds": [
+          0.124996,
+          0.124399,
+          0.124578
+        ],
+        "median_seconds": 0.124578,
+        "difficulty_class": "Expert",
+        "rating": 14.561782508747866,
+        "hardest_rating": 14.0,
+        "hardest_required_rating": null,
+        "minimum_tier": null,
+        "step_count": 64,
+        "advanced_steps": 1,
+        "extreme_steps": 0,
+        "true_bottleneck_count": 0,
+        "longest_chain": 0,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {},
+        "unique": null
+      },
+      "deep_cold": {
+        "samples_seconds": [
+          1.116273,
+          1.122646,
+          1.117095
+        ],
+        "median_seconds": 1.117095,
+        "difficulty_class": "Expert",
+        "rating": 15.361782508747865,
+        "hardest_rating": 14.0,
+        "hardest_required_rating": 14.0,
+        "minimum_tier": "ADVANCED",
+        "step_count": 64,
+        "advanced_steps": 1,
+        "extreme_steps": 0,
+        "true_bottleneck_count": 1,
+        "longest_chain": 0,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {
+          "Basic": "STUCK",
+          "Intermediate": "STUCK",
+          "Advanced": "SOLVED",
+          "Extreme": "SOLVED"
+        },
+        "unique": true
+      },
+      "deep_warm": {
+        "samples_seconds": [
+          1.110201,
+          1.113817,
+          1.112318
+        ],
+        "median_seconds": 1.112318,
+        "cache_hits": 7,
+        "cache_misses": 1
+      },
+      "deep_to_normal_ratio": 14.561
+    },
+    {
+      "id": "seed_4",
+      "puzzle": "009000830001340020040050000030900006024100000000007090080000050002700049000000600",
+      "source": "existing Phase 2/3 regression fixture",
+      "seed": 4,
+      "normal": {
+        "samples_seconds": [
+          0.171406,
+          0.169951,
+          0.171549
+        ],
+        "median_seconds": 0.171406,
+        "steps": 71,
+        "hardest_rating": 30.0
+      },
+      "quick": {
+        "samples_seconds": [
+          0.223517,
+          0.223439,
+          0.223661
+        ],
+        "median_seconds": 0.223517,
+        "difficulty_class": "Expert",
+        "rating": 30.828385205449656,
+        "hardest_rating": 30.0,
+        "hardest_required_rating": null,
+        "minimum_tier": null,
+        "step_count": 71,
+        "advanced_steps": 5,
+        "extreme_steps": 5,
+        "true_bottleneck_count": 0,
+        "longest_chain": 7,
+        "is_extreme_candidate": false,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {},
+        "unique": null
+      },
+      "deep_cold": {
+        "samples_seconds": [
+          1.327254,
+          1.327723,
+          1.341776
+        ],
+        "median_seconds": 1.327723,
+        "difficulty_class": "Extreme",
+        "rating": 34.02838520544966,
+        "hardest_rating": 30.0,
+        "hardest_required_rating": 30.0,
+        "minimum_tier": "EXTREME",
+        "step_count": 71,
+        "advanced_steps": 5,
+        "extreme_steps": 5,
+        "true_bottleneck_count": 2,
+        "longest_chain": 7,
+        "is_extreme_candidate": true,
+        "is_ultra_extreme_candidate": false,
+        "profile_statuses": {
+          "Basic": "STUCK",
+          "Intermediate": "STUCK",
+          "Advanced": "STUCK",
+          "Extreme": "SOLVED"
+        },
+        "unique": true
+      },
+      "deep_warm": {
+        "samples_seconds": [
+          1.350725,
+          1.23042,
+          1.225726
+        ],
+        "median_seconds": 1.23042,
+        "cache_hits": 35,
+        "cache_misses": 5
+      },
+      "deep_to_normal_ratio": 7.746
+    }
+  ],
+  "bottleneck_state": {
+    "fixture": "seed_4",
+    "path_step_index": 19,
+    "next_technique": "AIC",
+    "remaining_candidates": 139,
+    "minimum_rating": 30.0,
+    "available_steps": 138,
+    "minimum_only_cold": {
+      "samples_seconds": [
+        0.030764,
+        0.030011,
+        0.030609
+      ],
+      "median_seconds": 0.030609
+    },
+    "full_analysis_cold": {
+      "samples_seconds": [
+        0.634711,
+        0.641749,
+        0.67166
+      ],
+      "median_seconds": 0.641749
+    },
+    "human_all_available_steps": {
+      "samples_seconds": [
+        0.628536,
+        0.527704,
+        0.530199
+      ],
+      "median_seconds": 0.530199
+    },
+    "full_analysis_cache_hit": {
+      "samples_seconds": [
+        0.000214,
+        0.000203,
+        0.000202
+      ],
+      "median_seconds": 0.000203
+    },
+    "cache_hits": 3,
+    "cache_misses": 1,
+    "detectors": {
+      "ALS Chain": {
+        "samples_seconds": [
+          0.126706,
+          0.126211,
+          0.127697
+        ],
+        "median_seconds": 0.126706,
+        "emitted_steps": 5
+      },
+      "Nishio": {
+        "samples_seconds": [
+          0.098464,
+          0.098875,
+          0.099744
+        ],
+        "median_seconds": 0.098875,
+        "emitted_steps": 88
+      },
+      "Forcing Chain": {
+        "samples_seconds": [
+          0.09383,
+          0.094079,
+          0.095366
+        ],
+        "median_seconds": 0.094079,
+        "emitted_steps": 5
+      },
+      "ALS-XY-Wing": {
+        "samples_seconds": [
+          0.070734,
+          0.06988,
+          0.071048
+        ],
+        "median_seconds": 0.070734,
+        "emitted_steps": 5
+      },
+      "Grouped AIC": {
+        "samples_seconds": [
+          0.06166,
+          0.062972,
+          0.064711
+        ],
+        "median_seconds": 0.062972,
+        "emitted_steps": 25
+      },
+      "ALS-XZ": {
+        "samples_seconds": [
+          0.050222,
+          0.050013,
+          0.050773
+        ],
+        "median_seconds": 0.050222,
+        "emitted_steps": 3
+      },
+      "AIC": {
+        "samples_seconds": [
+          0.015785,
+          0.015459,
+          0.015443
+        ],
+        "median_seconds": 0.015459,
+        "emitted_steps": 7
+      },
+      "Nice Loop": {
+        "samples_seconds": [
+          0.005247,
+          0.005333,
+          0.005249
+        ],
+        "median_seconds": 0.005249,
+        "emitted_steps": 0
+      },
+      "X-Chain": {
+        "samples_seconds": [
+          0.00243,
+          0.002369,
+          0.002326
+        ],
+        "median_seconds": 0.002369,
+        "emitted_steps": 0
+      },
+      "XY-Chain": {
+        "samples_seconds": [
+          0.00095,
+          0.000938,
+          0.000924
+        ],
+        "median_seconds": 0.000938,
+        "emitted_steps": 0
+      }
+    }
+  }
+}

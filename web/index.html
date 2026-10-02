@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="puzzle-database" content="../data/production/puzzles.json">
+  <meta name="theme-color" content="#f5f5f0">
+  <meta name="description" content="A quiet place for challenging Sudoku. Play, take notes, and pick up where you left off.">
+  <title>Extreme Sudoku</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23286349'/%3E%3Cpath d='M11 5v22M21 5v22M5 11h22M5 21h22' stroke='%23fff' stroke-width='2' opacity='.85'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#board">Skip to puzzle</a>
+  <main class="app">
+    <header class="header">
+      <h1><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Extreme <span class="brand-light">Sudoku</span></h1>
+      <button id="menu-button" class="icon-button" aria-label="Game menu" aria-haspopup="dialog" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button>
+    </header>
+    <section id="load-state" class="load-state" role="status"><span class="loading-dot"></span><p lang="ru">Загрузка…</p></section>
+    <noscript><p class="load-state">Extreme Sudoku requires JavaScript.</p></noscript>
+    <section id="game" class="game" aria-label="Sudoku game" hidden>
+      <div class="game-info">
+        <div class="puzzle-meta"><button id="cert-badge" class="cert-badge" aria-haspopup="dialog"><span class="cert-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span id="cert-prefix">Certified&nbsp;</span><span id="difficulty" class="difficulty"></span></span></button><span class="meta-dot" aria-hidden="true">·</span><span id="clues"></span></div>
+        <div class="time-group"><span id="timer" class="timer" aria-label="Elapsed time">00:00</span><button id="pause-button" class="icon-button small" aria-label="Pause game"></button></div>
+      </div>
+      <div class="board-wrap">
+        <div id="board" class="board" role="grid" aria-label="Sudoku puzzle" aria-rowcount="9" aria-colcount="9"></div>
+        <div id="pause-overlay" class="pause-overlay" hidden><span class="eyebrow">TAKE YOUR TIME</span><h2>On pause.</h2><p>Your puzzle will be here.</p><button id="resume-button" class="primary">Resume game</button></div>
+      </div>
+      <aside class="controls" aria-label="Game controls">
+        <div class="panel-heading"><span class="eyebrow">A MOMENT TO FOCUS</span><h2>One cell at a time.</h2><p>Find your rhythm. Follow the logic.</p></div>
+        <div class="input-status"><span id="input-mode">Enter a number</span><span id="selection-label">r1 · c1</span></div>
+        <div id="number-pad" class="number-pad" role="group" aria-label="Number pad"></div>
+        <div class="actions" role="group" aria-label="Puzzle actions">
+          <button id="undo-button" class="action-button" title="Undo (Ctrl or ⌘ Z)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14" transform="translate(0 -2)"/></svg><span>Undo</span></button>
+          <button id="erase-button" class="action-button" title="Erase (Backspace)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 3 7 7-10 11H7l-5-5L14 3Zm-8 9 8 8M11 21h11"/></svg><span>Erase</span></button>
+          <button id="notes-button" class="action-button" aria-pressed="false" title="Toggle notes (N)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 3 5 5L9 20l-6 1 1-6L16 3ZM13 6l5 5"/></svg><span id="notes-label">Notes</span></button>
+          <button id="hint-button" class="action-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7H8Zm0 3h8m-6 3h4"/></svg><span>Hint</span></button>
+        </div>
+        <div class="game-foot"><span id="mistakes">Mistakes 0</span><span id="save-status">Saved on this device</span></div>
+        <button id="desktop-new" class="secondary desktop-new">New Game <span aria-hidden="true">↗</span></button>
+        <p class="keyboard-help">1–9 to enter · N for notes · ↑ ↓ ← → to move</p>
+      </aside>
+    </section>
+    <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  </main>
+  <dialog id="sheet" aria-labelledby="sheet-title">
+    <div class="sheet-header"><h2 id="sheet-title"></h2><button id="close-sheet" class="icon-button" aria-label="Close dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div id="sheet-content" class="sheet-content"></div>
+  </dialog>
+</body>
+</html>
