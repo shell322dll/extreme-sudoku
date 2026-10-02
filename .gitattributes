@@ -1,0 +1,2 @@
+# The certification algorithm fingerprint hashes raw .py bytes; never rewrite line endings.
+*.py -text
