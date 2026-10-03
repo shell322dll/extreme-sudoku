@@ -243,11 +243,34 @@ The manager ran the merge only after explicit user approval.
 
 ## GitHub Pages deploy result
 
-PENDING — filled in after push
+* **Push:** commit `de7b89e` pushed to `origin/main` (`eb1b9b6..de7b89e`).
+* **Workflow:** "Deploy to GitHub Pages", run `37100316306`, **success in 43 s**.
+  * Build job, 28 s: `npm test` → `validate_production_database` → `build_pages`.
+  * Deploy job, 10 s.
+* No generation or certification runs in CI.
+* Annotations: only Node 20 actions deprecation warnings.
 
 ## Public smoke result
 
-PENDING — filled in after push
+* **URL:** `https://shell322dll.github.io/extreme-sudoku/` answers 301 to the custom domain `http://extreme.onedesire.ru/`.
+* **Published `index.html`** references:
+  * `./data/production/puzzles.json?v=441c6e8efb465801`, which matches the local build.
+  * `./app.js` / `styles.css` `?v=add42edb364b8bbc`. The local Windows build gave `605a430835a8f766`; the difference is
+    line endings only (see Known limitations).
+* **Published JSON:**
+  * 10 puzzles, exactly the 10 production IDs, all `CERTIFIED_EXTREME`.
+  * 8e2b: 22 clues, rating 35.
+  * The SHA-256 prefix matches the `?v` value, and the ETag is the same with and without the query.
+  * `Cache-Control: max-age=600`.
+* **Playwright on the public URL:** Chromium 153 and WebKit 26.6, at 390×844 and 1440×900, in fresh contexts.
+  * **4 / 4 runs passed**, with no console errors and no failed requests; load 0.34–0.77 s.
+  * New Game ×10 showed all 10 distinct puzzles in every run ("Extreme 9 available").
+  * Puzzle Details was checked on all 10 puzzles per run, 40 checks in total: ID, Certified Extreme, clues, rating,
+    bottlenecks, hardest step, certification version 1, app 0.2.0.
+  * Progress isolation: puzzle A with progress → New Game → puzzle B with progress → reload. The two states stayed
+    separate.
+  * Example New Game sequence (Chromium, phone): `44ce36d8`, `08800747`, `f4357690`, `82d7ba97`, `8e2b144c`, `1f8654f0`,
+    `fba1027e`, `72ebea8b`, `402277f3`, `ef75603e`.
 
 ## Known limitations
 
@@ -267,6 +290,14 @@ PENDING — filled in after push
   preference needs `--bands`/`--min-per-band` to get a rating mix.
 * **Test coverage gap.** The browser suite's multi-puzzle group runs on a fixture that is mostly rehearsal puzzles;
   the real DB flow was checked by a one-off Playwright run, not by the committed suite.
+* **HTTPS on the custom domain is not available yet.** The GitHub Pages API reports
+  `https_certificate.state: "new"` ("certificate request process will begin shortly") and `https_enforced: false`.
+  `https://extreme.onedesire.ru` currently fails TLS (`SEC_E_WRONG_PRINCIPAL`). This is a Pages configuration issue,
+  not Phase 9 code. It resolves once GitHub issues the certificate; then enable "Enforce HTTPS".
+* **App cache-busting hash depends on line endings.** `build_pages.mjs` hashes the source bytes of
+  `app.js`/`styles.css`. The Windows working tree has CRLF (`core.autocrlf`), while CI checks out LF, so the local and
+  published `?v` values differ (`605a430835a8f766` vs `add42edb364b8bbc`) although the content is the same. This is
+  harmless. A later phase could normalize CRLF→LF before hashing. The database hash is not affected (that file is LF).
 * **Unmerged certified candidates.** Four certified Deep-30 candidates remain unmerged in the archive. A later merge
   re-certifies them anyway.
 
