@@ -1,2 +1,4 @@
 # The certification algorithm fingerprint hashes raw .py bytes; never rewrite line endings.
 *.py -text
+# Frozen byte copy of the production DB used by Phase 9 tests (SHA-256 checked).
+generator/tests/fixtures/production_baseline.json -text

@@ -5,19 +5,27 @@ import { parseProductionDatabase, loadProductionPuzzles, certificationLabel, har
 import { SudokuGame } from '../lib/game.js';
 import { STORAGE_KEYS, STORAGE_SCHEMA_VERSION, loadSave, saveGame, activePuzzleId, reconcileStorage } from '../lib/storage.js';
 
-const production = JSON.parse(await readFile(new URL('../../data/production/puzzles.json', import.meta.url), 'utf8'));
+// EXTREME_SUDOKU_PRODUCTION_DB lets a candidate database (e.g. a merge rehearsal) be checked without touching data/.
+const productionPath = process.env.EXTREME_SUDOKU_PRODUCTION_DB || new URL('../../data/production/puzzles.json', import.meta.url);
+const production = JSON.parse((await readFile(productionPath, 'utf8')).replace(/^﻿/, ''));
 const demo = JSON.parse(await readFile(new URL('../../data/puzzles.json', import.meta.url), 'utf8'));
-const real = production.puzzles[0];
+// Looked up by ID: the export sort may move it once the database holds several puzzles.
+const REAL_ID = 'puzzle-8e2b144cecb50551d96b';
+const real = production.puzzles.find(p => p.id === REAL_ID);
 const quiet = () => {};
 const withStatus = (status, id = 'x-' + status) => ({ ...real, id, certification: { ...real.certification, status } });
 const db = (puzzles, extra = {}) => ({ ...production, puzzles, ...extra });
 
-test('the production file loads and its puzzle is the certified Extreme record', () => {
+test('the production file loads every record; the original puzzle is the certified Extreme record', () => {
   const puzzles = parseProductionDatabase(production, quiet);
-  assert.equal(puzzles.length, production.puzzles.length);
-  assert.equal(real.id, 'puzzle-8e2b144cecb50551d96b');
-  assert.equal(certificationLabel(puzzles[0]), 'Certified Extreme');
-  assert.equal(puzzles[0].clues, 22);
+  assert.ok(puzzles.length >= 1);
+  assert.equal(puzzles.length, production.puzzles.length, 'every production record must be playable');
+  assert.equal(new Set(puzzles.map(p => p.id)).size, puzzles.length);
+  const original = puzzles.find(p => p.id === REAL_ID);
+  assert.ok(original, `${REAL_ID} must stay in production`);
+  assert.equal(certificationLabel(original), 'Certified Extreme');
+  assert.equal(original.clues, 22);
+  for (const puzzle of puzzles) assert.match(certificationLabel(puzzle), /^Certified (Ultra )?Extreme$/);
 });
 
 test('only CERTIFIED_EXTREME / CERTIFIED_ULTRA_EXTREME records are accepted', () => {
@@ -57,7 +65,7 @@ test('loader: fetch errors reject, bad schema rejects, valid JSON loads; there i
   const original = globalThis.fetch;
   try {
     globalThis.fetch = async () => ({ ok: true, json: async () => production });
-    assert.equal((await loadProductionPuzzles(new URL('https://u.github.io/repo/data/production/puzzles.json'), quiet)).length, 1);
+    assert.equal((await loadProductionPuzzles(new URL('https://u.github.io/repo/data/production/puzzles.json'), quiet)).length, production.puzzles.length);
     globalThis.fetch = async () => ({ ok: false, status: 503 });
     await assert.rejects(loadProductionPuzzles(new URL('https://u.github.io/x.json')), /503/);
     globalThis.fetch = async () => { throw new TypeError('offline'); };
@@ -72,7 +80,7 @@ test('loader: fetch errors reject, bad schema rejects, valid JSON loads; there i
 test('slimDatabase drops proof evidence/config and keeps a compact hardest step', () => {
   assert.deepEqual(hardestStep(real.certification), { technique: 'Grouped AIC', rating: 35 });
   const slim = slimDatabase(production);
-  const cert = slim.puzzles[0].certification;
+  const cert = slim.puzzles.find(p => p.id === REAL_ID).certification;
   assert.equal(slim.derived, true);
   assert.equal(production.derived, undefined);
   assert.equal(cert.evidence, undefined);
@@ -80,8 +88,9 @@ test('slimDatabase drops proof evidence/config and keeps a compact hardest step'
   assert.deepEqual(cert.hardestStep, { technique: 'Grouped AIC', rating: 35 });
   assert.equal(cert.genuineBottlenecks, real.certification.genuineBottlenecks);
   assert.ok(JSON.stringify(slim).length < JSON.stringify(production).length / 20);
-  assert.equal(parseProductionDatabase(slim, quiet).length, 1);
-  assert.notEqual(production.puzzles[0].certification.evidence, undefined, 'input must not be mutated');
+  assert.equal(parseProductionDatabase(slim, quiet).length, production.puzzles.length);
+  assert.ok(slim.puzzles.every(p => p.certification.evidence === undefined && hardestStep(p.certification)));
+  assert.notEqual(real.certification.evidence, undefined, 'input must not be mutated');
 });
 
 test('the real puzzle is solved only by its exact solution; clues never change', () => {
@@ -99,10 +108,10 @@ test('the real puzzle is solved only by its exact solution; clues never change',
   assert.equal(game.state.values.join(''), real.solution);
 });
 
-test('version comes from package.json only (0.1.0)', async () => {
+test('version comes from package.json only (0.2.0)', async () => {
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
-  assert.equal(pkg.version, '0.1.0');
-  for (const file of ['../app.js', '../index.html', '../lib/data.js', '../lib/game.js', '../lib/storage.js']) {
+  assert.equal(pkg.version, '0.2.0');
+  for (const file of ['../app.js', '../index.html', '../lib/data.js', '../lib/game.js', '../lib/storage.js', '../lib/selection.js']) {
     assert.doesNotMatch(await readFile(new URL(file, import.meta.url), 'utf8'), /\b[01]\.\d+\.\d+\b(?!\.)/, `${file} hardcodes a version`);
   }
 });

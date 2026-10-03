@@ -95,6 +95,11 @@ export function saveGame(snapshot) {
   return writeStore(store);
 }
 
+/** IDs of every puzzle with saved progress on this device (in progress or completed). */
+export function startedPuzzleIds() {
+  return Object.keys(readStore().games);
+}
+
 export function setActivePuzzle(puzzleId) {
   const store = readStore();
   store.activePuzzleId = typeof puzzleId === 'string' ? puzzleId : null;

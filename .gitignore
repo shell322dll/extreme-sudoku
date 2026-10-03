@@ -3,3 +3,9 @@ __pycache__/
 .coverage
 htmlcov/
 dist/
+# Phase 9 production tooling: local-only artifacts (reports and real merge reports stay committable)
+data/research/phase9/backups/
+data/research/phase9/runs/*/checkpoints/
+data/research/phase9/merges/*.dry-run.json
+data/research/*.lock
+data/research/**/*.lock

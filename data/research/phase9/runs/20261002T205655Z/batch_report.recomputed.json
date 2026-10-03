@@ -1,0 +1,457 @@
+{
+  "kind": "phase9-batch-report",
+  "reportVersion": 2,
+  "counterDefinitions": "docs/DATA_FORMAT.md section 57",
+  "runId": "20261002T205655Z",
+  "finishedAt": "2026-10-02T21:04:28Z",
+  "command": [
+    "python",
+    "-m",
+    "generator",
+    "production-batch",
+    "--seeds",
+    "9101,9102,9103,9104",
+    "--per-seed-count",
+    "12",
+    "--min-clues",
+    "22",
+    "--max-clues",
+    "30",
+    "--generation-seconds",
+    "600",
+    "--probe-seconds",
+    "15",
+    "--shortlist",
+    "20",
+    "--target-new",
+    "9",
+    "--runtime-budget",
+    "3600",
+    "--archive",
+    "data/research/phase9_candidates.json"
+  ],
+  "gitHead": "eb1b9b66e9df6ed9dbe45d28ef443c3d14069968",
+  "python": "3.11.9",
+  "options": {
+    "seeds": [
+      9101,
+      9102,
+      9103,
+      9104
+    ],
+    "archive": "data\\research\\phase9_candidates.json",
+    "run_dir": null,
+    "production": "data\\production\\puzzles.json",
+    "per_seed_count": 12,
+    "difficulty": "Extreme",
+    "min_clues": 22,
+    "max_clues": 30,
+    "minimal": true,
+    "generation_seconds": 600.0,
+    "max_attempts": 100000,
+    "probe_seconds": 15.0,
+    "shortlist": 20,
+    "target_new": 9,
+    "runtime_budget": 3600.0,
+    "resume": false,
+    "retry_timeouts": false,
+    "include_high": false,
+    "archive_attempt_rejections": true,
+    "slow_fraction": 0.25,
+    "run_id": null
+  },
+  "runDir": "data\\research\\phase9\\runs\\20261002T205655Z",
+  "archive": "data\\research\\phase9_candidates.json",
+  "certificationConfigFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+  "probeConfigFingerprint": "c97715cfb99bb29200e4e7ad8bb9352e0d515d61659f7e0c4b1c389a2a7b3e6f",
+  "algorithmFingerprint": "3ccb7aa047be7ecb90b09da5e40e080e99727c85970e94463b5d697169cee805",
+  "slowCertificateLimitSeconds": 15.0,
+  "perSeed": [
+    {
+      "seed": 9101,
+      "generated": 155,
+      "unique": 154,
+      "rated": 154,
+      "deepRated": 36,
+      "reusedFromArchive": 0,
+      "extremeCandidates": 14,
+      "inBand30to35": 12,
+      "duplicatesInRun": 0,
+      "alreadyArchived": 0,
+      "eligible": 12,
+      "shortlisted": 5,
+      "probed": 3,
+      "probeCertified": 2,
+      "certificationAttempts": 3,
+      "certified": 2,
+      "inconclusive": 1,
+      "timeouts": 1,
+      "selected": 2,
+      "rejected": {
+        "CERTIFICATION_TIMEOUT": 1,
+        "NOT_SELECTED_TARGET_REACHED": 2,
+        "NOT_SHORTLISTED": 7,
+        "OUTSIDE_CLUE_RANGE": 1,
+        "OUT_OF_CONCLUSIVE_SCOPE": 2,
+        "TOO_EASY": 140
+      },
+      "rejectedByStage": {
+        "generation": 141,
+        "prefilter": 9,
+        "certification": 3
+      },
+      "generationYield": 0.012903225806451613,
+      "certificationYield": 0.6666666666666666,
+      "fromCheckpoint": false,
+      "timedOut": false,
+      "complete": true,
+      "generationSeconds": 108.429
+    },
+    {
+      "seed": 9102,
+      "generated": 101,
+      "unique": 98,
+      "rated": 98,
+      "deepRated": 31,
+      "reusedFromArchive": 0,
+      "extremeCandidates": 15,
+      "inBand30to35": 12,
+      "duplicatesInRun": 0,
+      "alreadyArchived": 0,
+      "eligible": 12,
+      "shortlisted": 5,
+      "probed": 2,
+      "probeCertified": 2,
+      "certificationAttempts": 2,
+      "certified": 2,
+      "inconclusive": 0,
+      "timeouts": 0,
+      "selected": 2,
+      "rejected": {
+        "NOT_SELECTED_TARGET_REACHED": 3,
+        "NOT_SHORTLISTED": 7,
+        "OUTSIDE_CLUE_RANGE": 3,
+        "OUT_OF_CONCLUSIVE_SCOPE": 3,
+        "TOO_EASY": 83
+      },
+      "rejectedByStage": {
+        "generation": 86,
+        "prefilter": 10,
+        "certification": 3
+      },
+      "generationYield": 0.019801980198019802,
+      "certificationYield": 1.0,
+      "fromCheckpoint": false,
+      "timedOut": false,
+      "complete": true,
+      "generationSeconds": 123.91
+    },
+    {
+      "seed": 9103,
+      "generated": 147,
+      "unique": 147,
+      "rated": 147,
+      "deepRated": 47,
+      "reusedFromArchive": 0,
+      "extremeCandidates": 14,
+      "inBand30to35": 12,
+      "duplicatesInRun": 0,
+      "alreadyArchived": 0,
+      "eligible": 12,
+      "shortlisted": 4,
+      "probed": 3,
+      "probeCertified": 2,
+      "certificationAttempts": 3,
+      "certified": 2,
+      "inconclusive": 1,
+      "timeouts": 1,
+      "selected": 2,
+      "rejected": {
+        "CERTIFICATION_TIMEOUT": 1,
+        "NOT_SELECTED_TARGET_REACHED": 1,
+        "NOT_SHORTLISTED": 8,
+        "OUT_OF_CONCLUSIVE_SCOPE": 2,
+        "TOO_EASY": 133
+      },
+      "rejectedByStage": {
+        "generation": 133,
+        "prefilter": 10,
+        "certification": 2
+      },
+      "generationYield": 0.013605442176870748,
+      "certificationYield": 0.6666666666666666,
+      "fromCheckpoint": false,
+      "timedOut": false,
+      "complete": true,
+      "generationSeconds": 100.621
+    },
+    {
+      "seed": 9104,
+      "generated": 97,
+      "unique": 97,
+      "rated": 97,
+      "deepRated": 26,
+      "reusedFromArchive": 0,
+      "extremeCandidates": 14,
+      "inBand30to35": 12,
+      "duplicatesInRun": 0,
+      "alreadyArchived": 0,
+      "eligible": 12,
+      "shortlisted": 6,
+      "probed": 3,
+      "probeCertified": 3,
+      "certificationAttempts": 3,
+      "certified": 3,
+      "inconclusive": 0,
+      "timeouts": 0,
+      "selected": 3,
+      "rejected": {
+        "NOT_SELECTED_TARGET_REACHED": 3,
+        "NOT_SHORTLISTED": 6,
+        "OUT_OF_CONCLUSIVE_SCOPE": 2,
+        "TOO_EASY": 83
+      },
+      "rejectedByStage": {
+        "generation": 83,
+        "prefilter": 8,
+        "certification": 3
+      },
+      "generationYield": 0.030927835051546393,
+      "certificationYield": 1.0,
+      "fromCheckpoint": false,
+      "timedOut": false,
+      "complete": true,
+      "generationSeconds": 72.779
+    }
+  ],
+  "total": {
+    "generated": 500,
+    "unique": 496,
+    "rated": 496,
+    "deepRated": 140,
+    "reusedFromArchive": 0,
+    "extremeCandidates": 57,
+    "inBand30to35": 48,
+    "duplicatesInRun": 0,
+    "alreadyArchived": 0,
+    "eligible": 48,
+    "shortlisted": 20,
+    "probed": 11,
+    "probeCertified": 9,
+    "certificationAttempts": 11,
+    "certified": 9,
+    "inconclusive": 2,
+    "timeouts": 2,
+    "selected": 9,
+    "rejected": {
+      "CERTIFICATION_TIMEOUT": 2,
+      "NOT_SELECTED_TARGET_REACHED": 9,
+      "NOT_SHORTLISTED": 28,
+      "OUTSIDE_CLUE_RANGE": 4,
+      "OUT_OF_CONCLUSIVE_SCOPE": 9,
+      "TOO_EASY": 439
+    },
+    "rejectedByStage": {
+      "generation": 443,
+      "prefilter": 37,
+      "certification": 11
+    },
+    "generationYield": 0.018,
+    "certificationYield": 0.8181818181818182,
+    "runtimeSeconds": {
+      "archive": 0.285,
+      "certification": 8.596,
+      "generation": 405.785,
+      "prefilter": 0.025,
+      "probe": 38.51,
+      "total": 453.297
+    }
+  },
+  "selected": [
+    {
+      "id": "puzzle-82d7ba971f8d1d590d21",
+      "puzzle": "970040200400060009001070003126500000000000000008000905700083010000000800000610000",
+      "solution": "975348261483261759261975483126597348597834126348126975759483612612759834834612597",
+      "clues": 24,
+      "seed": 9102,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 1.245,
+      "warnings": []
+    },
+    {
+      "id": "puzzle-44ce36d87f6b23932fd1",
+      "puzzle": "000030900002700080000600104090000050007000060035900000080090400010350600000107008",
+      "solution": "471835926962714385358629174296471853147583269835962741583296417714358692629147538",
+      "clues": 25,
+      "seed": 9103,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 0.866,
+      "warnings": []
+    },
+    {
+      "id": "puzzle-32b58e5e2bea86b099cf",
+      "puzzle": "800040005000600800000380400006000020703000600009010008010030000000900510040000007",
+      "solution": "837249165294651873561387492156873924783492651429516738615738249378924516942165387",
+      "clues": 23,
+      "seed": 9104,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 1.393,
+      "warnings": []
+    },
+    {
+      "id": "puzzle-a60ef3350d0c5162839b",
+      "puzzle": "005030402900000000030000065100800040070001000000000206500000901090360070000102000",
+      "solution": "615738492942516387837249165126853749479621538358974216563487921291365874784192653",
+      "clues": 24,
+      "seed": 9103,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 0.673,
+      "warnings": []
+    },
+    {
+      "id": "puzzle-72ebea8bd07cdf09c006",
+      "puzzle": "007000600290050000000010030000001420800090000000700018010030504020040060450006080",
+      "solution": "187923645293654871564817932675381429831492756942765318716238594328549167459176283",
+      "clues": 26,
+      "seed": 9104,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 0.912,
+      "warnings": []
+    },
+    {
+      "id": "puzzle-ef75603e05a5a50595b3",
+      "puzzle": "003025000000480000800009050600000020005708000000030007068000030900000001700000560",
+      "solution": "193625874256487193874319256687941325325768419419532687568174932932856741741293568",
+      "clues": 23,
+      "seed": 9101,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 0.851,
+      "warnings": []
+    },
+    {
+      "id": "puzzle-a42bc89365f9d2c8e15f",
+      "puzzle": "002008000400070500000006071000800009590100000008050034000005700600713902100000000",
+      "solution": "712598346463271598985346271341827659596134827278659134829465713654713982137982465",
+      "clues": 26,
+      "seed": 9101,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 0.809,
+      "warnings": [
+        "technique profile cosine 0.992 with puzzle-72ebea8bd07cdf09c006 (selected), same clue count"
+      ]
+    },
+    {
+      "id": "puzzle-f435769013cf93d845d9",
+      "puzzle": "005000004007800000640001000800200709002030800090000015200097000006000007000004050",
+      "solution": "125973684937846521648521973864215739512739846793468215251397468486152397379684152",
+      "clues": 24,
+      "seed": 9104,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 0.816,
+      "warnings": [
+        "technique profile cosine 0.988 with puzzle-a60ef3350d0c5162839b (selected), same clue count"
+      ]
+    },
+    {
+      "id": "puzzle-7d168f0b529cfef39cce",
+      "puzzle": "000078300700000501000012007000630002009020000100004006300000800470300000051040000",
+      "solution": "512478369784963521963512487847639152639125748125784936396251874478396215251847693",
+      "clues": 25,
+      "seed": 9102,
+      "minimumRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "elapsed": 1.029,
+      "warnings": []
+    }
+  ],
+  "diversity": {
+    "selectedSameSolutionPairs": 0,
+    "minSameSolutionMaskDistance": null,
+    "selectedByRating": {
+      "30.0": 9
+    }
+  },
+  "suitabilityCalibration": [
+    [
+      107.0,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      106.3,
+      30.0,
+      "CERTIFICATION_TIMEOUT",
+      null
+    ],
+    [
+      106.15,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.916667,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.9,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.866667,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.6,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.516667,
+      30.0,
+      "CERTIFICATION_TIMEOUT",
+      null
+    ],
+    [
+      105.516667,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.416667,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ],
+    [
+      105.216667,
+      30.0,
+      "CERTIFIED_EXTREME",
+      "CERTIFIED_EXTREME"
+    ]
+  ],
+  "note": "Research report. Selected candidates still need production-merge (fresh default certification).",
+  "recomputedAt": "2026-10-02T21:19:53Z",
+  "recomputedFrom": {
+    "report": "data\\research\\phase9\\runs\\20261002T205655Z\\batch_report.json",
+    "archive": "data\\research\\phase9_candidates.json",
+    "note": "Counters recomputed from checkpoints + current archive state; runtime copied from the original report."
+  }
+}

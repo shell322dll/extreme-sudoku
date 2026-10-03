@@ -1,0 +1,307 @@
+{
+  "kind": "phase9-production-qc",
+  "createdAt": "2026-10-03T05:26:55+00:00",
+  "production": "data\\production\\puzzles.json",
+  "productionSha256": "859e581c3f7c03e285acd87880f3aeceb42bbb55d59157916237e7a9a2ff28c1",
+  "productionBytes": 3138983,
+  "baselineBlockSha256": {
+    "production": "49582ca4e64a8a491a0f62b1799135ded01d75f35e216d6b8e4527bc136febcc",
+    "fixture": "49582ca4e64a8a491a0f62b1799135ded01d75f35e216d6b8e4527bc136febcc"
+  },
+  "globalChecks": {
+    "recordCount10": true,
+    "statsTotalMatches": true,
+    "uniqueIds": true,
+    "uniquePuzzles": true,
+    "uniqueSolutions": true,
+    "baselineStatusCertifiedExtreme": true,
+    "baselineClues22": true,
+    "baselineRating35": true,
+    "baselineParsedEqual": true,
+    "baselineBlockByteIdentical": true
+  },
+  "records": [
+    {
+      "id": "puzzle-402277f36b14d1f25b38",
+      "clues": 22,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "bottlenecks": 6,
+      "hardestStep": {
+        "technique": "Grouped AIC",
+        "rating": 35.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9102,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-8e2b144cecb50551d96b",
+      "clues": 22,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "bottlenecks": 3,
+      "hardestStep": {
+        "technique": "Grouped AIC",
+        "rating": 35.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": null,
+      "origin": "pre-phase9 baseline",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-1f8654f0383f0475e8a9",
+      "clues": 25,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "bottlenecks": 13,
+      "hardestStep": {
+        "technique": "Grouped AIC",
+        "rating": 35.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9104,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-fba1027eee1fe3122fba",
+      "clues": 25,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "bottlenecks": 3,
+      "hardestStep": {
+        "technique": "Grouped AIC",
+        "rating": 35.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9103,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-0880074738584f4bafaf",
+      "clues": 27,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "bottlenecks": 2,
+      "hardestStep": {
+        "technique": "Grouped AIC",
+        "rating": 35.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9103,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-ef75603e05a5a50595b3",
+      "clues": 23,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "bottlenecks": 7,
+      "hardestStep": {
+        "technique": "AIC",
+        "rating": 30.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9101,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-82d7ba971f8d1d590d21",
+      "clues": 24,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "bottlenecks": 8,
+      "hardestStep": {
+        "technique": "AIC",
+        "rating": 30.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9102,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-f435769013cf93d845d9",
+      "clues": 24,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "bottlenecks": 5,
+      "hardestStep": {
+        "technique": "AIC",
+        "rating": 30.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9104,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-44ce36d87f6b23932fd1",
+      "clues": 25,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "bottlenecks": 6,
+      "hardestStep": {
+        "technique": "AIC",
+        "rating": 30.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9103,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    },
+    {
+      "id": "puzzle-72ebea8bd07cdf09c006",
+      "clues": 26,
+      "difficulty": "Extreme",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "bottlenecks": 5,
+      "hardestStep": {
+        "technique": "AIC",
+        "rating": 30.0
+      },
+      "certificationVersion": "1",
+      "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+      "seed": 9104,
+      "origin": "phase9-archive",
+      "checks": {
+        "puzzleFormat": true,
+        "solutionValid": true,
+        "givensMatchSolution": true,
+        "clueCount": true,
+        "certifiedStatus": true,
+        "difficultyMatchesStatus": true,
+        "ratingMatchesCertification": true,
+        "evidenceConsistent": true,
+        "uniqueSolution": true
+      },
+      "ok": true
+    }
+  ],
+  "failures": [],
+  "ok": true
+}

@@ -1,0 +1,2 @@
+Production batch failed: Archive is locked by another production-batch/production-merge: data\research\phase9_candidates.json.lock ({"pid": 13936, "host": "WS-MSK13-2313", "since": "2026-10-02T21:19:58Z", "command": "python -m generator production-batch --reuse-archive --bands 35 --shortlist 12 --target-new 4 --probe-seconds 15 --runtime-budget 1800"}). If no such process is running the lock is stale: delete the file and retry.
+EXIT=2

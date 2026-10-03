@@ -16,6 +16,7 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
+import re
 import threading
 
 from playwright.sync_api import sync_playwright
@@ -23,16 +24,46 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[2]
 ARTIFACTS = ROOT / "web" / "artifacts"
-PRODUCTION = json.loads((ROOT / "data" / "production" / "puzzles.json").read_text(encoding="utf-8-sig"))
-REAL = PRODUCTION["puzzles"][0]
+PRODUCTION_PATH = ROOT / "data" / "production" / "puzzles.json"
+REAL_ID = "puzzle-8e2b144cecb50551d96b"
+APP_VERSION = json.loads((ROOT / "web" / "package.json").read_text(encoding="utf-8"))["version"]
+# Compact multi-puzzle fixture (slim copies of certified records) for the multi-puzzle E2E; never production input.
+MULTI = json.loads((ROOT / "web" / "tests" / "fixtures" / "production_multi.json").read_text(encoding="utf-8"))
 STORE = "extreme-sudoku.progress.v2"
-DB_ROUTE = "**/data/production/puzzles.json"
+# Matches the dev URL and the built URL with its content-hash query (?v=...).
+DB_ROUTE = re.compile(r".*/data/production/puzzles\.json(\?.*)?$")
 PREFIX = "/extreme-sudoku"
 DIST = ROOT / "dist"
+PRODUCTION = REAL = None
+
+
+def use_production(path):
+    """Load the production database the dev page will be served (data/production by default)."""
+    global PRODUCTION_PATH, PRODUCTION, REAL
+    PRODUCTION_PATH = Path(path)
+    PRODUCTION = json.loads(PRODUCTION_PATH.read_text(encoding="utf-8-sig"))
+    # Looked up by ID: with several puzzles the export order may change.
+    REAL = next(p for p in PRODUCTION["puzzles"] if p["id"] == REAL_ID)
+
+
+use_production(PRODUCTION_PATH)
 
 
 def production_payload(*puzzles):
     return {**{k: v for k, v in PRODUCTION.items() if k != "puzzles"}, "puzzles": list(puzzles)}
+
+
+def pin_real():
+    """Init script: on a fresh profile, make the original puzzle the active (unstarted) game so flows that need
+    its cells work with any number of production puzzles. Never overwrites existing storage."""
+    store = {"storageSchemaVersion": 2, "activePuzzleId": REAL["id"], "games": {REAL["id"]: saved_snapshot_template(elapsed_ms=0)}}
+    return f"try{{if(!localStorage.getItem('{STORE}'))localStorage.setItem('{STORE}', {json.dumps(json.dumps(store))});}}catch(e){{}}"
+
+
+def single_database(context, puzzle=None):
+    """Serve a one-record production database: for checks of the single-puzzle New Game wording."""
+    body = json.dumps(production_payload(puzzle or REAL))
+    context.route(DB_ROUTE, lambda route: route.fulfill(content_type='application/json', body=body))
 
 
 def seed(state, settings=None):
@@ -67,6 +98,8 @@ class Handler(SimpleHTTPRequestHandler):
             return str(DIST / path[len("/repo-name/"):].split("?")[0]) if DIST.exists() else str(ROOT / "__missing__")
         if path.startswith("/extreme-sudoku/"):
             path = path[len("/extreme-sudoku"):]
+        if path.split("?")[0] == "/data/production/puzzles.json":
+            return str(PRODUCTION_PATH)
         return super().translate_path(path)
 
     def log_message(self, format, *args):
@@ -179,6 +212,7 @@ def dense_notes(page):
 
 def run_browser(browser, origin, engine, results):
     context = browser.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
+    context.add_init_script(pin_real())
     page = context.new_page()
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
@@ -187,9 +221,11 @@ def run_browser(browser, origin, engine, results):
     context.close()
     extended_checks(browser, origin, engine, results)
     production_checks(browser, origin, engine, results)
+    multi_puzzle_checks(browser, origin, engine, results)
 
     for theme in ('light', 'dark'):
         context = browser.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2, color_scheme=theme)
+        context.add_init_script(pin_real())
         page = context.new_page()
         page.on('pageerror', lambda error: errors.append(str(error)))
         load(page, origin + '/web/')
@@ -220,6 +256,7 @@ def modal_fits(page):
 def extended_checks(browser, origin, engine, results):
     chosen_difficulty = REAL['difficulty']
     context = browser.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True)
+    single_database(context)
     page = context.new_page()
     load(page, origin + '/web/')
     page.locator('#menu-button').tap()
@@ -430,8 +467,11 @@ CORRECT_PATH_MESSAGES = {
 }
 
 
-def phone(browser, **kwargs):
-    return browser.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2, **kwargs)
+def phone(browser, pin=True, **kwargs):
+    context = browser.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2, **kwargs)
+    if pin:
+        context.add_init_script(pin_real())
+    return context
 
 
 def real_cells():
@@ -453,7 +493,7 @@ def production_checks(browser, origin, engine, results):
     page.on('console', lambda m: messages.append((m.type, m.text)))
     page.on('requestfinished', lambda r: requests.append(r.url))
     load(page, origin + '/web/')
-    check(any(u.endswith('/data/production/puzzles.json') for u in requests), 'production JSON not requested')
+    check(any(DB_ROUTE.match(u) for u in requests), 'production JSON not requested')
     check(not any(u.endswith('/data/puzzles.json') for u in requests), 'legacy demo database was requested')
     check(saved(page)['puzzleId'] == 'puzzle-8e2b144cecb50551d96b', 'wrong puzzle loaded')
     check(' '.join(page.locator('#cert-badge').inner_text().split()) == 'Certified Extreme', 'badge text')
@@ -463,7 +503,7 @@ def production_checks(browser, origin, engine, results):
     page.locator('#cert-badge').tap()
     modal_fits(page)
     details = page.locator('#sheet-content').inner_text()
-    for needle in ('puzzle-8e2b144cecb50551d96b', 'Extreme', 'Certified Extreme', '22', '35', 'Grouped AIC', 'Genuine bottlenecks', '3', 'Certification version', '0.1.0',
+    for needle in ('puzzle-8e2b144cecb50551d96b', 'Extreme', 'Certified Extreme', '22', '35', 'Grouped AIC', 'Genuine bottlenecks', '3', 'Certification version', APP_VERSION,
                    'Эта задача прошла проверку уникальности, логических доказательств и альтернативных путей в текущей версии системы Extreme Sudoku.', 'Naked Single'):
         check(needle in details, f'details missing {needle!r}')
     check('hardest in the world' not in details.lower(), 'marketing claim')
@@ -537,8 +577,9 @@ def production_checks(browser, origin, engine, results):
     check(not any(saved(page)['notes']) and saved(page)['values'] == [int(d) for d in REAL['puzzle']] and saved(page)['elapsedMs'] < 1500, 'restart')
     context.close()
 
-    # --- Completion: only the exact solution completes; givens immutable ----------------------
+    # --- Completion: only the exact solution completes; givens immutable (single-puzzle wording) --
     context = phone(browser)
+    single_database(context)
     page = context.new_page()
     load(page, origin + '/web/')
     page.evaluate("localStorage.setItem('extreme-sudoku.settings.v1', JSON.stringify({errorMode: 'completion'}))")
@@ -621,7 +662,7 @@ def production_checks(browser, origin, engine, results):
 
     # --- Error / empty databases -------------------------------------------------------------
     def with_payload(payload, status=200):
-        ctx = phone(browser)
+        ctx = phone(browser, pin=False)
         pg = ctx.new_page()
         logs = []
         pg.on('console', lambda m: logs.append((m.type, m.text)))
@@ -660,9 +701,10 @@ def production_checks(browser, origin, engine, results):
     ctx.add_init_script(seed({**saved_snapshot_template(), 'puzzleId': 'old-demo-puzzle'}) + "localStorage.setItem('extreme-sudoku.game.v1', JSON.stringify({version: 1, puzzleId: 'old-demo-puzzle', values: []}));")
     pg = ctx.new_page()
     load(pg, origin + '/web/')
-    check(saved(pg)['puzzleId'] == REAL['id'], 'unknown-ID save not replaced')
+    started = saved(pg)['puzzleId']
+    check(started in {p['id'] for p in PRODUCTION['puzzles']}, 'unknown-ID save not replaced by a production puzzle')
     check(pg.evaluate("localStorage.getItem('extreme-sudoku.game.v1')") is None, 'legacy save not cleaned up')
-    check(sorted(pg.evaluate("Object.keys(JSON.parse(localStorage.getItem('" + STORE + "')).games)")) == sorted([REAL['id'], 'old-demo-puzzle']), 'unknown-ID save must be kept')
+    check(sorted(pg.evaluate("Object.keys(JSON.parse(localStorage.getItem('" + STORE + "')).games)")) == sorted([started, 'old-demo-puzzle']), 'unknown-ID save must be kept')
     check(pg.evaluate("JSON.parse(localStorage.getItem('" + STORE + "')).storageSchemaVersion") == 2, 'schema version')
     ctx.close()
     results['checks'].append({'browser': engine, 'test': 'storage-unknown-legacy-puzzle-ids', 'status': 'passed'})
@@ -679,13 +721,17 @@ def production_checks(browser, origin, engine, results):
     pg.locator('#board [data-index]').nth(80).wait_for()
     check(saved(pg)['puzzleId'] == REAL['id'] and pg.locator('#cert-badge').is_visible(), 'dist app did not start')
     check(not failures, f'dist failing requests {failures}')
-    check(any(u.endswith('/repo-name/data/production/puzzles.json') for u in urls), 'dist JSON path')
+    check(any(re.search(r'/repo-name/data/production/puzzles\.json\?v=[0-9a-f]{16}$', u) for u in urls), 'dist JSON path (with content-hash query)')
     check(all('/repo-name/' in u for u in urls), f'dist request escaped the sub-path {urls}')
+    assets = [u for u in urls if re.search(r'\.(js|css|json)(\?|$)', u)]
+    check(len(assets) >= 7 and all(re.search(r'\?v=[0-9a-f]{16}$', u) for u in assets), f'dist assets without content hash {assets}')
+    check(len({u.split('?')[0] for u in assets}) == len(assets), f'a dist module was loaded twice {assets}')
     check(not [l for l in logs if l[0] in ('error',)], f'dist console errors {logs}')
     pg.locator('#cert-badge').tap()
-    check('0.1.0' in pg.locator('#sheet-content').inner_text() and 'Grouped AIC' in pg.locator('#sheet-content').inner_text(), 'dist details (slim JSON + version)')
-    size = pg.evaluate("performance.getEntriesByType('resource').find(e => e.name.endsWith('puzzles.json')).transferSize")
-    check(size < 20000, f'published JSON too large: {size}')
+    check(APP_VERSION in pg.locator('#sheet-content').inner_text() and 'Grouped AIC' in pg.locator('#sheet-content').inner_text(), 'dist details (slim JSON + version)')
+    size = pg.evaluate("performance.getEntriesByType('resource').find(e => e.name.includes('puzzles.json')).transferSize")
+    published = len(json.loads((DIST / 'data' / 'production' / 'puzzles.json').read_text(encoding='utf-8'))['puzzles'])
+    check(size < max(20000, 2500 * published), f'published JSON too large: {size} bytes for {published} puzzle(s)')
     results.setdefault('dist', {})[engine] = {'jsonTransferBytes': size, 'requests': len(urls)}
     ctx.close()
     results['checks'].append({'browser': engine, 'test': 'dist-served-from-project-subpath', 'status': 'passed'})
@@ -718,10 +764,156 @@ def production_checks(browser, origin, engine, results):
     ctx.close()
 
 
-def saved_snapshot_template():
-    return {'version': 1, 'puzzleFingerprint': REAL['puzzle'], 'values': [int(d) for d in REAL['puzzle']],
-            'notes': [[] for _ in range(81)], 'selectedCell': 0, 'notesMode': False, 'elapsedMs': 1000,
-            'status': 'playing', 'mistakes': 0, 'hintsUsed': 0, 'history': []}
+def multi_puzzle_checks(browser, origin, engine, results):
+    """Several certified puzzles (fixture served in place of the production JSON): New Game, isolation, details."""
+    records = MULTI['puzzles']
+    check(len(records) >= 4 and len({p['id'] for p in records}) == len(records), 'multi-puzzle fixture')
+    a, b = records[0], records[1]
+    store = lambda page: page.evaluate("JSON.parse(localStorage.getItem('" + STORE + "'))")
+    current = lambda page: saved(page)['puzzleId']
+    empties = lambda p: [i for i, d in enumerate(p['puzzle']) if d == '0']
+    only = lambda p, i: [int(p['solution'][k]) if k == i else int(d) for k, d in enumerate(p['puzzle'])]
+
+    def context_for(puzzles, init=None):
+        ctx = phone(browser, pin=False)
+        body = json.dumps({**MULTI, 'puzzles': puzzles})
+        ctx.route(DB_ROUTE, lambda route: route.fulfill(content_type='application/json', body=body))
+        # Deterministic start (first record); New Game must avoid the current puzzle for any random value.
+        ctx.add_init_script("Math.random = () => 0;" + (init or ''))
+        return ctx
+
+    def enter(page, p, nth=0):
+        i = empties(p)[nth]
+        page.locator(f'.cell[data-index="{i}"]').tap()
+        page.locator(f'.number-button[data-digit="{p["solution"][i]}"]').tap()
+        check(saved(page)['values'][i] == int(p['solution'][i]), f'entry in {p["id"]}')
+        return i
+
+    def new_game(page, expect_available=None):
+        page.locator('#menu-button').tap()
+        page.locator('[data-menu="new"]').tap()
+        check(page.locator('[data-difficulty]').count() == 1, 'all-Extreme database offers one difficulty')
+        if expect_available is not None:
+            text = page.locator('[data-difficulty]').inner_text()
+            check(f'{expect_available} available' in text, f'available count {text!r}')
+        page.locator('#start-game').tap()
+        page.locator('#sheet').wait_for(state='hidden')
+
+    def board_is(page, p):
+        check(current(page) == p['id'], f'expected {p["id"]}, got {current(page)}')
+        readonly = page.evaluate("[...document.querySelectorAll('.cell')].map(c => c.getAttribute('aria-readonly') === 'true')")
+        check(readonly == [d != '0' for d in p['puzzle']], f'{p["id"]}: board does not show its givens')
+        check(' '.join(page.locator('#cert-badge').inner_text().split()) == 'Certified Extreme', 'badge from data')
+        check(page.locator('#clues').inner_text() == f'{p["clues"]} clues', f'{p["id"]}: clue count')
+
+    def details_are(page, p):
+        page.locator('#cert-badge').tap()
+        rows = page.evaluate("Object.fromEntries([...document.querySelectorAll('#sheet-content .details > div')].map(d => [d.querySelector('dt').textContent, d.querySelector('dd').textContent]))")
+        cert, step = p['certification'], p['certification']['hardestStep']
+        rating = p['rating']
+        expected = {'Puzzle ID': p['id'], 'Difficulty': p['difficulty'], 'Certification': 'Certified Extreme', 'Clues': str(p['clues']),
+                    'Rating (project scale)': f'{rating:.0f}' if float(rating).is_integer() else f'{rating:.2f}',
+                    'Hardest step in certified path': f'{step["technique"]} ({step["rating"]:g})',
+                    'Genuine bottlenecks': str(cert['genuineBottlenecks']), 'Certification version': cert['version'], 'App version': APP_VERSION}
+        for key, value in expected.items():
+            check(rows.get(key) == value, f'{p["id"]} details {key}: {rows.get(key)!r} != {value!r}')
+        text = page.locator('#sheet-content').inner_text()
+        check(not [o['id'] for o in records if o['id'] != p['id'] and o['id'] in text], f'{p["id"]}: details mention another puzzle')
+        page.locator('#close-sheet').tap()
+
+    # A -> progress -> New Game -> B -> progress -> reload -> New Game back to A: states stay separate.
+    ctx = context_for([a, b])
+    page = ctx.new_page()
+    load(page, origin + '/web/')
+    board_is(page, a)
+    details_are(page, a)
+    ia = enter(page, a)
+    new_game(page, expect_available=1)
+    board_is(page, b)
+    details_are(page, b)
+    check(store(page)['games'][a['id']]['values'][ia] == int(a['solution'][ia]), 'A progress lost when switching')
+    ib = enter(page, b, 1)
+    check(saved(page)['values'] == only(b, ib), 'B board must hold only its givens and its own entry')
+    page.reload()
+    page.locator('#board [data-index]').nth(80).wait_for()
+    board_is(page, b)
+    check(saved(page)['values'][ib] == int(b['solution'][ib]), 'B progress lost on reload')
+    new_game(page, expect_available=1)
+    board_is(page, a)
+    check(saved(page)['values'][ia] == int(a['solution'][ia]), 'A progress not resumed')
+    check(saved(page)['values'] == only(a, ia), 'A board must hold only its givens and its own entry')
+    games = store(page)['games']
+    check(sorted(games) == sorted([a['id'], b['id']]) and games[b['id']]['values'][ib] == int(b['solution'][ib]), 'B progress lost after returning to A')
+    page.reload()
+    page.locator('#board [data-index]').nth(80).wait_for()
+    board_is(page, a)
+    ctx.close()
+
+    # New Game several times: a different puzzle every time, all of them before any repeat; details per puzzle.
+    ctx = context_for(records)
+    page = ctx.new_page()
+    load(page, origin + '/web/')
+    seen = [current(page)]
+    for step in range(len(records) - 1):
+        new_game(page, expect_available=len(records) - 1)
+        now = current(page)
+        check(now not in seen, f'New Game repeated {now} after {seen}')
+        board_is(page, next(p for p in records if p['id'] == now))
+        details_are(page, next(p for p in records if p['id'] == now))
+        seen.append(now)
+    check(sorted(seen) == sorted(p['id'] for p in records), 'not every puzzle was offered')
+    new_game(page)
+    check(current(page) != seen[-1], 'New Game repeated the current puzzle')
+    ctx.close()
+
+    # Completed state is per puzzle: solved A shows its result, New Game resumes in-progress B untouched.
+    solved_a = {**saved_snapshot_template(puzzle=a), 'values': [int(d) for d in a['solution']], 'status': 'completed'}
+    eb = empties(b)[0]
+    progress_b = saved_snapshot_template(puzzle=b)
+    progress_b['values'][eb] = int(b['solution'][eb])
+
+    def seeded(active, games, recent):
+        data = {'storageSchemaVersion': 2, 'activePuzzleId': active, 'games': {g['puzzleId']: g for g in games}}
+        return ("if(!localStorage.getItem('__seeded')){localStorage.setItem('__seeded','1');"
+                f"localStorage.setItem('{STORE}', {json.dumps(json.dumps(data))});"
+                f"localStorage.setItem('extreme-sudoku.recent.v1', {json.dumps(json.dumps(recent))});}}")
+
+    ctx = context_for([a, b], seeded(a['id'], [solved_a, progress_b], [a['id']]))
+    page = ctx.new_page()
+    load(page, origin + '/web/')
+    page.locator('#sheet-title').filter(has_text='Solved!').wait_for()
+    check(saved(page)['status'] == 'completed' and current(page) == a['id'], 'A completion not restored')
+    check(page.locator('#result-new').inner_text() == 'New Game', 'multi-puzzle completion button')
+    page.locator('#result-new').tap()
+    page.locator('#start-game').tap()
+    page.locator('#sheet').wait_for(state='hidden')
+    board_is(page, b)
+    check(saved(page)['status'] == 'playing' and saved(page)['values'][eb] == int(b['solution'][eb]), 'B progress not resumed after A was solved')
+    check(store(page)['games'][a['id']]['status'] == 'completed', 'A completion lost')
+    ctx.close()
+
+    # All solved: replay never picks the puzzle just finished; the replayed one starts fresh.
+    solved_b = {**saved_snapshot_template(puzzle=b), 'values': [int(d) for d in b['solution']], 'status': 'completed'}
+    ctx = context_for([a, b], seeded(b['id'], [solved_a, solved_b], [b['id'], a['id']]))
+    page = ctx.new_page()
+    load(page, origin + '/web/')
+    page.locator('#sheet-title').filter(has_text='Solved!').wait_for()
+    page.locator('#result-new').tap()
+    page.locator('#all-played-message').wait_for()
+    page.locator('#replay-puzzle').tap()
+    page.locator('#sheet').wait_for(state='hidden')
+    board_is(page, a)
+    check(saved(page)['status'] == 'playing' and saved(page)['values'] == [int(d) for d in a['puzzle']], 'replay did not start A fresh')
+    check(store(page)['games'][b['id']]['status'] == 'completed', 'B completion lost by the replay')
+    ctx.close()
+    results['checks'].append({'browser': engine, 'test': 'multi-puzzle-new-game-isolation-details', 'status': 'passed'})
+
+
+def saved_snapshot_template(elapsed_ms=1000, puzzle=None):
+    puzzle = puzzle or REAL
+    return {'version': 1, 'puzzleId': puzzle['id'], 'puzzleFingerprint': puzzle['puzzle'], 'values': [int(d) for d in puzzle['puzzle']],
+            'notes': [[] for _ in range(81)], 'selectedCell': puzzle['puzzle'].index('0') if elapsed_ms == 0 else 0, 'notesMode': False,
+            'elapsedMs': elapsed_ms, 'status': 'playing', 'mistakes': 0, 'hintsUsed': 0, 'history': []}
 
 
 def build_dist():
@@ -737,8 +929,16 @@ def build_dist():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--browser", choices=("all", "chromium", "webkit"), default="all")
+    parser.add_argument("--artifacts", type=Path, help="write screenshots/results here instead of web/artifacts")
+    parser.add_argument("--production-db", type=Path, help="serve this production database to the dev page instead of "
+                        "data/production/puzzles.json (e.g. a merge rehearsal); dist/ is still built from data/production")
     args = parser.parse_args()
-    ARTIFACTS.mkdir(exist_ok=True)
+    global ARTIFACTS
+    if args.artifacts:
+        ARTIFACTS = args.artifacts.resolve()
+    if args.production_db:
+        use_production(args.production_db.resolve())
+    ARTIFACTS.mkdir(parents=True, exist_ok=True)
     build_dist()
     results = {"browsers": [], "checks": [], "layouts": []}
     with server() as origin, sync_playwright() as playwright:

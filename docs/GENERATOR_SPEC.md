@@ -2768,3 +2768,16 @@ requirements; количество clues отдельно. Monster/17-clue hitti
 Strict output: `data/production/puzzles.json`; research: `data/candidates.json`.
 CLI, budgets, proof scope и acceptance gates полностью определены в
 [CERTIFICATION_SPEC.md](CERTIFICATION_SPEC.md).
+
+## Phase 9 implementation boundary
+
+Content expansion reuses the unchanged generator (`generate_many`, random minimal puzzles, Deep rating) and the
+unchanged certifier; it lives in `generator/production/` outside the fingerprinted folders. `production-batch`
+orchestrates generate → prefilter (invalid, NOT_UNIQUE, HUMAN_UNSOLVED, TOO_EASY, exact/ID duplicates, same-solution
+clue-mask distance ≤ 8, one puzzle per solution, symmetry-invariant fingerprint; technique-profile similarity is a
+warning only) → certification-suitability ordering (Deep 30 > 32 > 35; ≥ 36 outside the conclusive SSL scope and
+skipped from the quota) → probe certification (short budget, research only) → fresh default certification →
+research archive and batch report. `production-merge` is the only path into `data/production/puzzles.json` for new
+records: fresh default certification, verbatim existing records, verified backup, atomic write, post-validation with
+restore. The suitability score is prioritization, not proof. No Monster 17–21 search, no extension of the Stuck-State
+Lemma, no relaxation of certification gates or budgets. Formats: [DATA_FORMAT.md §57](DATA_FORMAT.md).

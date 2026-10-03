@@ -72,6 +72,11 @@
     },
     {
       "browser": "chromium",
+      "test": "multi-puzzle-new-game-isolation-details",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
       "test": "responsive-light-dark-28-layouts",
       "status": "passed"
     },
@@ -133,6 +138,11 @@
     {
       "browser": "webkit",
       "test": "dist-served-from-project-subpath",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "multi-puzzle-new-game-isolation-details",
       "status": "passed"
     },
     {
@@ -10505,32 +10515,32 @@
   ],
   "dist": {
     "chromium": {
-      "jsonTransferBytes": 1523,
-      "requests": 8
+      "jsonTransferBytes": 11113,
+      "requests": 9
     },
     "webkit": {
-      "jsonTransferBytes": 1523,
-      "requests": 8
+      "jsonTransferBytes": 11113,
+      "requests": 9
     }
   },
   "performance": {
     "chromium": {
-      "domContentLoadedMs": 16.899999998509884,
-      "loadEventMs": 17.699999999254942,
-      "jsonFetchAndParseMs": 20.399999998509884,
-      "jsonFetchMs": 3,
-      "firstRenderMs": 37.69999999925494,
-      "jsonBytes": 392745,
-      "selectMedianMs": 16.5,
-      "selectP95Ms": 17.90000000037253
+      "domContentLoadedMs": 26.5,
+      "loadEventMs": 26.600000001490116,
+      "jsonFetchAndParseMs": 39.79999999701977,
+      "jsonFetchMs": 9.900000005960464,
+      "firstRenderMs": 66.79999999701977,
+      "jsonBytes": 3138983,
+      "selectMedianMs": 17,
+      "selectP95Ms": 17.100000001490116
     },
     "webkit": {
-      "domContentLoadedMs": 20,
-      "loadEventMs": 21,
-      "jsonFetchAndParseMs": 10,
-      "jsonFetchMs": 2,
-      "firstRenderMs": 33,
-      "jsonBytes": 392745,
+      "domContentLoadedMs": 23,
+      "loadEventMs": 23,
+      "jsonFetchAndParseMs": 33,
+      "jsonFetchMs": 8,
+      "firstRenderMs": 58,
+      "jsonBytes": 3138983,
       "selectMedianMs": 8,
       "selectP95Ms": 9
     }

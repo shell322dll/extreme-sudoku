@@ -1,0 +1,85 @@
+{
+  "kind": "phase9-merge-report",
+  "finishedAt": "2026-10-03T05:25:50Z",
+  "production": "data\\production\\puzzles.json",
+  "dryRun": false,
+  "archives": [
+    "data\\research\\phase9_candidates.json"
+  ],
+  "runs": [],
+  "merged": [
+    {
+      "id": "puzzle-1f8654f0383f0475e8a9",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "clues": 25,
+      "elapsed": 2.557
+    },
+    {
+      "id": "puzzle-82d7ba971f8d1d590d21",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "clues": 24,
+      "elapsed": 1.205
+    },
+    {
+      "id": "puzzle-402277f36b14d1f25b38",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "clues": 22,
+      "elapsed": 1.402
+    },
+    {
+      "id": "puzzle-ef75603e05a5a50595b3",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "clues": 23,
+      "elapsed": 0.894
+    },
+    {
+      "id": "puzzle-fba1027eee1fe3122fba",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "clues": 25,
+      "elapsed": 0.587
+    },
+    {
+      "id": "puzzle-44ce36d87f6b23932fd1",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "clues": 25,
+      "elapsed": 0.786
+    },
+    {
+      "id": "puzzle-0880074738584f4bafaf",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 35.0,
+      "clues": 27,
+      "elapsed": 0.692
+    },
+    {
+      "id": "puzzle-72ebea8bd07cdf09c006",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "clues": 26,
+      "elapsed": 0.876
+    },
+    {
+      "id": "puzzle-f435769013cf93d845d9",
+      "status": "CERTIFIED_EXTREME",
+      "rating": 30.0,
+      "clues": 24,
+      "elapsed": 0.76
+    }
+  ],
+  "skipped": [],
+  "backup": "data\\research\\phase9\\backups\\puzzles-20261003T052537Z-ba44f37a58f4.json",
+  "backupSha256": "ba44f37a58f4d967f55e52b46bc70dcba268b217e64b68c22215cbfd055e0115",
+  "written": true,
+  "existingIds": [
+    "puzzle-8e2b144cecb50551d96b"
+  ],
+  "existingFormatCanonical": true,
+  "total": 10,
+  "archiveUpdate": "done"
+}

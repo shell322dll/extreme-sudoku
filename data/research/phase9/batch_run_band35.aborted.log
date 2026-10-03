@@ -1,0 +1,4 @@
+Archive reuse: 46 rated, non-final candidates re-evaluated without regeneration
+Prefilter: 46 entries, 46 rated candidates processed, 37 eligible, 10 shortlisted (by Deep band {'35.0': 10}), 0 already selected
+[1/10] probe puzzle-1f8654f0383f0475e8a9 deep 35 score 64.3 -> CERTIFIED_EXTREME (2.7 s)
+[1/10] certify puzzle-1f8654f0383f0475e8a9 -> CERTIFIED_EXTREME min 35.0 (2.7 s) SELECTED

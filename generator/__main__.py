@@ -149,6 +149,15 @@ def main(argv=None):
         return certify_main(argv[1:])
     if argv and argv[0] == "evolve":
         return _evolve(argv[1:])
+    if argv and argv[0] == "production-batch":
+        from .production.cli import batch_main
+        return batch_main(argv[1:])
+    if argv and argv[0] == "production-report":
+        from .production.cli import report_main
+        return report_main(argv[1:])
+    if argv and argv[0] == "production-merge":
+        from .production.cli import merge_main
+        return merge_main(argv[1:])
     return _generate(argv[1:]) if argv and argv[0] == "generate" else _demo(argv)
 
 

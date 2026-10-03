@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "datasetKind": "production-certified",
+ "derived": true,
+ "fixtureNote": "TEST FIXTURE ONLY (web/tests). Publish-style slim copies of certified records (proof evidence dropped); never production input.",
+ "generatedAt": "2026-10-02T20:00:00Z",
+ "generatorVersion": "0.5.0",
+ "stats": {
+  "total": 4,
+  "byDifficulty": {
+   "Extreme": 4
+  }
+ },
+ "puzzles": [
+  {
+   "id": "puzzle-8e2b144cecb50551d96b",
+   "puzzle": "009000001000050008010000640028004000000190000000002030002403000100000206000070003",
+   "solution": "289647351476351928513928647628734195347195862951862734762413589134589276895276413",
+   "clues": 22,
+   "difficulty": "Extreme",
+   "rating": 35,
+   "unique": true,
+   "minimal": true,
+   "techniques": {
+    "AIC": 11,
+    "Full House": 19,
+    "Grouped AIC": 4,
+    "Hidden Pair": 1,
+    "Hidden Single": 14,
+    "Locked Candidates": 6,
+    "Naked Single": 26,
+    "Naked Triple": 1,
+    "W-Wing": 1,
+    "XY-Wing": 1
+   },
+   "techniquesUsed": [
+    "AIC",
+    "Full House",
+    "Grouped AIC",
+    "Hidden Pair",
+    "Hidden Single",
+    "Locked Candidates",
+    "Naked Single",
+    "Naked Triple",
+    "W-Wing",
+    "XY-Wing"
+   ],
+   "certification": {
+    "status": "CERTIFIED_EXTREME",
+    "version": "1",
+    "requiredRating": 35,
+    "requiredTier": "EXTREME",
+    "searchConclusive": true,
+    "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+    "proofValidated": true,
+    "humanSolved": true,
+    "reproducible": true,
+    "genuineBottlenecks": 3,
+    "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+    "hardestStep": {
+     "technique": "Grouped AIC",
+     "rating": 35
+    }
+   }
+  },
+  {
+   "id": "puzzle-3f3131ea81afc72af5a7",
+   "puzzle": "500093008000000070003200000037800050060007200400060093000420006000009000080601000",
+   "solution": "516793428842516379793284165937842651165937284428165793379428516651379842284651937",
+   "clues": 25,
+   "difficulty": "Extreme",
+   "rating": 35,
+   "unique": true,
+   "minimal": true,
+   "techniques": {
+    "AIC": 3,
+    "Full House": 21,
+    "Grouped AIC": 1,
+    "Hidden Single": 4,
+    "Locked Candidates": 6,
+    "Naked Pair": 2,
+    "Naked Single": 31,
+    "XY-Chain": 1,
+    "XYZ-Wing": 2
+   },
+   "techniquesUsed": [
+    "AIC",
+    "Full House",
+    "Grouped AIC",
+    "Hidden Single",
+    "Locked Candidates",
+    "Naked Pair",
+    "Naked Single",
+    "XY-Chain",
+    "XYZ-Wing"
+   ],
+   "certification": {
+    "status": "CERTIFIED_EXTREME",
+    "version": "1",
+    "requiredRating": 35,
+    "requiredTier": "EXTREME",
+    "searchConclusive": true,
+    "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+    "proofValidated": true,
+    "humanSolved": true,
+    "reproducible": true,
+    "genuineBottlenecks": 5,
+    "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+    "hardestStep": {
+     "technique": "Grouped AIC",
+     "rating": 35
+    }
+   }
+  },
+  {
+   "id": "puzzle-16042cbcb8633fea9323",
+   "puzzle": "005034000340600900000000001080010060030007000007009000000000509000001700020908400",
+   "solution": "895134672341672958672895341589413267134267895267589134413726589958341726726958413",
+   "clues": 23,
+   "difficulty": "Extreme",
+   "rating": 30,
+   "unique": true,
+   "minimal": true,
+   "techniques": {
+    "2-String Kite": 1,
+    "AIC": 2,
+    "Full House": 19,
+    "Hidden Single": 15,
+    "Locked Candidates": 6,
+    "Naked Pair": 2,
+    "Naked Single": 24,
+    "Skyscraper": 1,
+    "W-Wing": 1,
+    "XY-Chain": 2
+   },
+   "techniquesUsed": [
+    "2-String Kite",
+    "AIC",
+    "Full House",
+    "Hidden Single",
+    "Locked Candidates",
+    "Naked Pair",
+    "Naked Single",
+    "Skyscraper",
+    "W-Wing",
+    "XY-Chain"
+   ],
+   "certification": {
+    "status": "CERTIFIED_EXTREME",
+    "version": "1",
+    "requiredRating": 30,
+    "requiredTier": "EXTREME",
+    "searchConclusive": true,
+    "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+    "proofValidated": true,
+    "humanSolved": true,
+    "reproducible": true,
+    "genuineBottlenecks": 3,
+    "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+    "hardestStep": {
+     "technique": "AIC",
+     "rating": 30
+    }
+   }
+  },
+  {
+   "id": "puzzle-3d691a3d3f12081348df",
+   "puzzle": "000007000005100003096000200800000004000003000000025760010600020040080517000000009",
+   "solution": "483257196275169483196438275852716934761943852934825761517694328649382517328571649",
+   "clues": 23,
+   "difficulty": "Extreme",
+   "rating": 30,
+   "unique": true,
+   "minimal": true,
+   "techniques": {
+    "2-String Kite": 1,
+    "AIC": 4,
+    "Full House": 20,
+    "Hidden Pair": 1,
+    "Hidden Single": 9,
+    "Locked Candidates": 6,
+    "Naked Single": 29,
+    "XY-Wing": 1
+   },
+   "techniquesUsed": [
+    "2-String Kite",
+    "AIC",
+    "Full House",
+    "Hidden Pair",
+    "Hidden Single",
+    "Locked Candidates",
+    "Naked Single",
+    "XY-Wing"
+   ],
+   "certification": {
+    "status": "CERTIFIED_EXTREME",
+    "version": "1",
+    "requiredRating": 30,
+    "requiredTier": "EXTREME",
+    "searchConclusive": true,
+    "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+    "proofValidated": true,
+    "humanSolved": true,
+    "reproducible": true,
+    "genuineBottlenecks": 2,
+    "configFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+    "hardestStep": {
+     "technique": "AIC",
+     "rating": 30
+    }
+   }
+  }
+ ]
+}

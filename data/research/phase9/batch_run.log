@@ -1,0 +1,32 @@
+[seed 9101] generating up to 12 Extreme (clues 22-30, timeout 600 s)
+[seed 9101] attempts 155, records 14, timed out False
+[seed 9102] generating up to 12 Extreme (clues 22-30, timeout 600 s)
+[seed 9102] attempts 101, records 15, timed out False
+[seed 9103] generating up to 12 Extreme (clues 22-30, timeout 600 s)
+[seed 9103] attempts 147, records 14, timed out False
+[seed 9104] generating up to 12 Extreme (clues 22-30, timeout 600 s)
+[seed 9104] attempts 97, records 14, timed out False
+Prefilter: 500 entries, 57 rated candidates processed, 48 eligible, 20 shortlisted, 0 already selected
+[1/20] probe puzzle-82d7ba971f8d1d590d21 deep 30 score 107.0 -> CERTIFIED_EXTREME (1.2 s)
+[1/20] certify puzzle-82d7ba971f8d1d590d21 -> CERTIFIED_EXTREME min 30.0 (1.2 s) SELECTED
+[2/20] probe puzzle-76e1ec32900e2925cb19 deep 30 score 106.3 -> CERTIFICATION_TIMEOUT (15.0 s)
+[3/20] probe puzzle-44ce36d87f6b23932fd1 deep 30 score 106.2 -> CERTIFIED_EXTREME (0.8 s)
+[3/20] certify puzzle-44ce36d87f6b23932fd1 -> CERTIFIED_EXTREME min 30.0 (0.9 s) SELECTED
+[4/20] probe puzzle-32b58e5e2bea86b099cf deep 30 score 105.9 -> CERTIFIED_EXTREME (1.4 s)
+[4/20] certify puzzle-32b58e5e2bea86b099cf -> CERTIFIED_EXTREME min 30.0 (1.4 s) SELECTED
+[5/20] probe puzzle-a60ef3350d0c5162839b deep 30 score 105.9 -> CERTIFIED_EXTREME (0.7 s)
+[5/20] certify puzzle-a60ef3350d0c5162839b -> CERTIFIED_EXTREME min 30.0 (0.7 s) SELECTED
+[6/20] probe puzzle-72ebea8bd07cdf09c006 deep 30 score 105.9 -> CERTIFIED_EXTREME (0.9 s)
+[6/20] certify puzzle-72ebea8bd07cdf09c006 -> CERTIFIED_EXTREME min 30.0 (0.9 s) SELECTED
+[7/20] probe puzzle-ef75603e05a5a50595b3 deep 30 score 105.6 -> CERTIFIED_EXTREME (0.8 s)
+[7/20] certify puzzle-ef75603e05a5a50595b3 -> CERTIFIED_EXTREME min 30.0 (0.9 s) SELECTED
+[8/20] probe puzzle-744bfb507141f09c98f3 deep 30 score 105.5 -> CERTIFICATION_TIMEOUT (15.0 s)
+[9/20] probe puzzle-a42bc89365f9d2c8e15f deep 30 score 105.5 -> CERTIFIED_EXTREME (0.8 s)
+[9/20] certify puzzle-a42bc89365f9d2c8e15f -> CERTIFIED_EXTREME min 30.0 (0.8 s) SELECTED
+[10/20] probe puzzle-f435769013cf93d845d9 deep 30 score 105.4 -> CERTIFIED_EXTREME (0.8 s)
+[10/20] certify puzzle-f435769013cf93d845d9 -> CERTIFIED_EXTREME min 30.0 (0.8 s) SELECTED
+[11/20] probe puzzle-7d168f0b529cfef39cce deep 30 score 105.2 -> CERTIFIED_EXTREME (1.1 s)
+[11/20] certify puzzle-7d168f0b529cfef39cce -> CERTIFIED_EXTREME min 30.0 (1.0 s) SELECTED
+Batch summary: {"generated": 500, "unique": 496, "rated": 140, "shortlisted": 20, "probed": 11, "certified": 9, "inconclusive": 0, "timeouts": 2, "selected": 9, "rejected": 491, "runtime": 453.3, "certificationYield": 0.818, "generationYield": 0.018}
+Run 20261002T205655Z: selected 9 certified candidates | report data\research\phase9\runs\20261002T205655Z\batch_report.json | archive data\research\phase9_candidates.json
+EXIT=0

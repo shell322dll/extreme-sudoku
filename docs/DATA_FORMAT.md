@@ -1169,3 +1169,76 @@ is a **publish-only derivative**, never an input or output of the generator:
 Because the proof evidence is gone, a derived file **cannot** be checked by `validate_production_database` (it would
 fail by design). Validate the source file `data/production/puzzles.json` (`python scripts/validate_production_database.py`);
 the Pages workflow does that before building. Never commit `dist/` or copy the derived file back into `data/production/`.
+
+
+# 57. Phase 9 research archive and batch report (not production data)
+
+`python -m generator production-batch` writes `data/research/phase9_candidates.json`. It is research data only:
+it has **no** `puzzles` array, no `schemaVersion` and no `datasetKind`, so `validate_database`, `load_candidates`
+and the frontend reject it. Root fields: `kind: "phase9-candidate-archive"`, `archiveVersion: 1`, `createdAt`,
+`updatedAt`, `certificationConfigFingerprint` (default policy), `probeConfigFingerprint`, `algorithmFingerprint`,
+`stats {total, selected, merged, byStatus, byRejection}` and `candidates` (one compact JSON object per line,
+unique content-hash `id`, merged by ID across runs):
+
+- `id`, `puzzle`, `clues`; `solution` and `minimal` for rated candidates (omitted for generator-rejected attempts,
+  reproducible with `generate_solution(source.attemptSeed)`);
+- `source {kind: "generate", seed, attemptSeed, attempt, runId, onTarget?}`;
+- `stage`: `generation` | `prefilter` | `shortlist` | `probe` | `certification`;
+- `deep` (preliminary Deep metrics: `requiredRating`, `difficulty`, `trueBottlenecks`, `advancedSteps`,
+  `longestChain`, `alsSteps`, `forcingSteps`, …), `suitability {score, version, eligible, components}` —
+  ordering only, never a status;
+- `diversity {symmetryFingerprint, nearestReferenceId, nearestMaskDistance, warnings?}`;
+- `probe` / `certification`: compact certifier summaries `{budget, timeBudget, configFingerprint,
+  algorithmFingerprint, status, failureReasons, productionEligible, minimumRequiredRating, observedUpperRating,
+  negativeProofKind, thresholds [[T, status, states, limits]], sslFailedGuards, sslG4Detail, certifiedBottlenecks,
+  advancedSteps, techniques, elapsed}`; `certification.status = "NOT_ATTEMPTED"` until a default-budget run happened;
+  full evidence is never stored here;
+- `rejection`: `null` or `{reason, detail, budget?}` with `reason` from `generator/production/models.py`
+  (`INVALID`, `NOT_UNIQUE`, `NOT_MINIMAL`, `OUTSIDE_CLUE_RANGE`, `TOO_EASY`, `HUMAN_UNSOLVED`, `DUPLICATE`,
+  `NEAR_DUPLICATE`, `OUT_OF_CONCLUSIVE_SCOPE`, `CERTIFICATION_INCONCLUSIVE`, `CERTIFICATION_TIMEOUT`,
+  `PROOF_INVALID`, `INSUFFICIENT_BOTTLENECKS`, `INSUFFICIENT_ADVANCED_STEPS`, `NOT_SHORTLISTED`,
+  `NOT_SELECTED_SLOW_CERTIFICATE`, `NOT_SELECTED_TARGET_REACHED`, `NOT_SELECTED_BUDGET`);
+- `selected` (default-certified, fast, diverse), `production {merged, mergedAt}` (set by `production-merge`).
+
+Per run, `data/research/phase9/runs/<run-id>/` holds `checkpoints/generate-<seed>.json` (resume input) and
+`batch_report.json` (`kind: "phase9-batch-report"`: options, fingerprints, git HEAD, `perSeed` and `total` counters,
+yields, runtime by stage, `selected` candidates, suitability calibration rows). `production-merge` writes a
+`phase9-merge-report` to `data/research/phase9/merges/` and hash-verified byte backups of the previous production
+file to `data/research/phase9/backups/`. Archive statuses are never trusted by the merge: every new production
+record comes from a fresh default-config certification in that merge run.
+
+## 57.1 Batch report counters (`reportVersion` 2)
+
+One definition (`generator/production/report.py`) serves live runs and recomputation. Rows in `perSeed` are one per
+seed plus, with `--reuse-archive`, a row `seed: "archive"`; `total` sums them. Funnel (generation rows):
+`generated ≥ unique ≥ rated ≥ extremeCandidates ≥ eligible ≥ shortlisted ≥ certificationAttempts ≥ certified ≥ selected`.
+
+- `generated` — generator attempts; `unique` — completed attempts that passed the exact uniqueness check (the generator
+  removes clues only while unique, so `NOT_UNIQUE` is rare; `OUTSIDE_CLUE_RANGE` is rejected before the check);
+- `rated` — puzzles that received a human rating (Quick and/or Deep) = generator `TOO_EASY` + `HUMAN_UNSOLVED` +
+  rated records; `deepRated` — number of Deep calls (informational); `reusedFromArchive` — candidates re-evaluated
+  from the archive (no generator counters in that row);
+- `extremeCandidates`, `inBand30to35`, `duplicatesInRun`, `alreadyArchived` (final archive result, skipped);
+- `eligible` — passed the prefilter; `shortlisted`; `probed` / `probeCertified`; `certificationAttempts` — any
+  certifier run; `certified` — default-budget production-eligible;
+- `inconclusive` — `CERTIFICATION_INCONCLUSIVE` **plus** `CERTIFICATION_TIMEOUT` (probe or default budget);
+  `timeouts` is its timeout sub-count;
+- `selected`; `rejected` — every non-selected outcome by reason across all stages, `rejectedByStage`
+  `{generation, prefilter, certification}` sums to the same total (generation-stage `TOO_EASY` are attempts rated
+  below Extreme, hence `TOO_EASY ≤ rated`);
+- `generationYield = certified / generated`, `certificationYield = certified / certificationAttempts`;
+- `diversity.selectedByRating` — selected candidates per certified minimum rating.
+
+Archive `stats.byStatus` is the latest certifier outcome per candidate: the default-budget status, else
+`PROBE:<status>` (research budget, never a production status), else `NOT_ATTEMPTED`; `byFinalStatus` and
+`byProbeStatus` keep both dimensions. Content verdicts (`NOT_UNIQUE`, `TOO_EASY`, `HUMAN_UNSOLVED`, …) carry
+`rejection.algorithmFingerprint` and `rejection.generatorVersion` and are final only while both match the current
+code. Entries processed by a run carry `evaluatedRunId` and `origin` (`generated` | `archive-reuse`).
+
+`python -m generator production-report --run-dir <run> [--archive <archive>] [--output <file>]` recomputes a report
+from the run's checkpoints and the archive's current state into `<run>/batch_report.recomputed.json` (default). It
+never overwrites `batch_report.json`; runtime, options and calibration are copied from the original.
+
+Concurrency: `production-batch` and `production-merge` hold `<archive>.lock` (created exclusively; it names PID, host,
+time and command). A second command fails with exit 2. A lock left by a killed process is stale: when no batch or
+merge is running, delete the file by hand.

@@ -1,6 +1,7 @@
 import { SudokuGame } from './lib/game.js';
 import { loadProductionPuzzles, certificationLabel, hardestStep, DIFFICULTIES } from './lib/data.js';
-import { loadSave, saveGame, activePuzzleId, reconcileStorage, loadSettings, saveSettings, loadRecent, rememberPuzzle } from './lib/storage.js';
+import { loadSave, saveGame, activePuzzleId, reconcileStorage, loadSettings, saveSettings, loadRecent, rememberPuzzle, startedPuzzleIds } from './lib/storage.js';
+import { nextPuzzle, startupPuzzle } from './lib/selection.js';
 
 const MESSAGES = Object.freeze({
   loadFailed: 'Не удалось загрузить базу Sudoku. Попробуйте обновить страницу.',
@@ -195,11 +196,8 @@ function showMenu(event) {
 }
 
 function solvedIds() { return new Set(loadRecent()); }
-function pickPuzzle(difficulty) {
-  const solved = solvedIds();
-  const pool = puzzles.filter((puzzle) => (!difficulty || puzzle.difficulty === difficulty) && puzzle.id !== game?.state.puzzle.id && !solved.has(puzzle.id));
-  return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
-}
+// Never the current puzzle while another exists; unopened before in-progress; solved ones only as a replay.
+const pickPuzzle = (difficulty = null) => nextPuzzle(puzzles, { currentId: game?.state.puzzle.id ?? null, solved: loadRecent(), started: startedPuzzleIds(), difficulty });
 
 function startGame(puzzle, { fresh = false } = {}) {
   const settings = game ? game.state.settings : loadSettings();
@@ -222,9 +220,12 @@ function showNewGame(event) {
   const solved = solvedIds();
   const remaining = puzzles.filter((puzzle) => puzzle.id !== game.state.puzzle.id && !solved.has(puzzle.id));
   if (!remaining.length) {
-    openSheet('New Game', `<p lang="ru" id="all-played-message">${MESSAGES.allPlayed}</p><p lang="ru" class="small-print">Будет выбрана случайная задача; её сохранённый прогресс будет сброшен.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Отмена</button><button id="replay-puzzle" class="primary">Решить ещё раз</button></div>`, opener);
+    openSheet('New Game', `<p lang="ru" id="all-played-message">${MESSAGES.allPlayed}</p><p lang="ru" class="small-print">Будет выбрана другая задача, решённая раньше остальных; её сохранённый прогресс будет сброшен.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Отмена</button><button id="replay-puzzle" class="primary">Решить ещё раз</button></div>`, opener);
     $('#cancel-new').addEventListener('click', closeSheet);
-    $('#replay-puzzle').addEventListener('click', () => replay(puzzles[Math.floor(Math.random() * puzzles.length)]));
+    $('#replay-puzzle').addEventListener('click', () => {
+      const choice = pickPuzzle();
+      if (choice) replay(choice.puzzle);
+    });
     return;
   }
   const counts = Object.fromEntries(DIFFICULTIES.map((difficulty) => [difficulty, remaining.filter((puzzle) => puzzle.difficulty === difficulty).length]));
@@ -236,10 +237,11 @@ function showNewGame(event) {
     sheetContent.querySelectorAll('[data-difficulty]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
   }));
   $('#start-game').addEventListener('click', () => {
-    const puzzle = pickPuzzle(chosen);
-    if (!puzzle) return;
+    const choice = pickPuzzle(chosen);
+    if (!choice) return;
+    const { puzzle } = choice;
     persist();
-    startGame(puzzle);
+    startGame(puzzle, { fresh: choice.replay });
     closeSheet();
     cells[game.state.selectedCell].focus({ preventScroll: true });
     announce(`New ${puzzle.difficulty} puzzle. ${puzzle.clues} clues.`);
@@ -247,6 +249,7 @@ function showNewGame(event) {
 }
 
 function replay(puzzle) {
+  persist(); // keep the progress of the puzzle being left when the replay is a different one
   startGame(puzzle, { fresh: true });
   closeSheet();
   cells[game.state.selectedCell].focus({ preventScroll: true });
@@ -400,12 +403,9 @@ async function start() {
       return;
     }
     reconcileStorage(puzzles.map((puzzle) => puzzle.id));
-    const solved = solvedIds();
     const active = puzzles.find((puzzle) => puzzle.id === activePuzzleId());
-    const unsolved = puzzles.filter((puzzle) => !solved.has(puzzle.id));
-    const pool = unsolved.length ? unsolved : puzzles;
     game = undefined;
-    startGame(active || pool[Math.floor(Math.random() * pool.length)]);
+    startGame(active || startupPuzzle(puzzles, { solved: loadRecent() }));
     $('#load-state').hidden = true;
     $('#game').hidden = false;
     $('#menu-button').disabled = false;

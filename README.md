@@ -465,16 +465,89 @@ python web/tests/browser_regression.py
 `certification.config` (≈99% размера), добавляется компактный `hardestStep`.
 Ручных копий нет; `dist/` в `.gitignore`.
 
+Несколько задач (0.2.0): New Game (`web/lib/selection.js`) никогда не выбирает текущую задачу, если есть
+другая; сначала нерешённые и ещё не открытые, затем нерешённые в процессе (продолжаются с их сохранения),
+и только когда решено всё — повтор задачи, решённой раньше остальных (с нуля). Прогресс и статус
+«решено» хранятся по ID задачи. `build_pages.mjs` добавляет к URL базы content-hash
+(`puzzles.json?v=<sha256[:16]>`), чтобы после деплоя кеш Pages не отдавал старый JSON.
+Browser suite: `--artifacts DIR` (не перезаписывать `web/artifacts/`), `--production-db FILE`
+(прогнать dev-страницу на другой базе, например репетиции merge); unit-тесты — переменная
+`EXTREME_SUDOKU_PRODUCTION_DB`. Мульти-задачная фикстура: `web/tests/fixtures/production_multi.json`.
+
 Деплой: `.github/workflows/pages.yml` (push в `main` или ручной запуск): frontend
 tests → `validate_production_database.py` (при ошибке сборка падает) → `build_pages.mjs`
 → `upload-pages-artifact` → `deploy-pages`. Генератор и сертификация в workflow не
 запускаются. Один раз в репозитории на GitHub: Settings → Pages → Source:
 **GitHub Actions**. Сайт будет доступен по адресу вида `https://<owner>.github.io/<repo>/`
 (корень — `dist/index.html`); URL репозитория в проекте не задан. Новые задачи
-добавляются только через `python -m generator certify ...` (Phase 7) и коммит
-`data/production/puzzles.json`.
+добавляются в существующую базу через `python -m generator production-merge ...` (Phase 9: свежая
+сертификация, существующие записи без изменений) и коммит `data/production/puzzles.json`.
 
 Подробности, измерения и ограничения: [docs/PHASE8_RELEASE_0_1_REPORT.md](docs/PHASE8_RELEASE_0_1_REPORT.md).
 
-Фактический деплой Release 0.1.0: репозиторий https://github.com/shell322dll/extreme-sudoku, ветка main, Pages (источник - GitHub Actions) публикуется workflow `pages.yml`: https://shell322dll.github.io/extreme-sudoku/. Источник данных - `data/production/puzzles.json` (1 задача, CERTIFIED_EXTREME). Файлы `*.py` хранятся без нормализации окончаний строк (`.gitattributes`): fingerprint сертификации хэширует их байты.
+Фактический деплой Release 0.1.0: репозиторий https://github.com/shell322dll/extreme-sudoku, ветка main, Pages (источник - GitHub Actions) публикуется workflow `pages.yml`: https://shell322dll.github.io/extreme-sudoku/. Источник данных - `data/production/puzzles.json` (в Release 0.1.0 — 1 задача; после Phase 9 — 10 задач, все CERTIFIED_EXTREME, см. [docs/PHASE9_CONTENT_EXPANSION_REPORT.md](docs/PHASE9_CONTENT_EXPANSION_REPORT.md)). Файлы `*.py` хранятся без нормализации окончаний строк (`.gitattributes`): fingerprint сертификации хэширует их байты.
 
+
+## Phase 9: Content Expansion (production-batch / production-merge)
+
+Пакет `generator/production/` (вне fingerprint-папок `certification|solver|sudoku|rating`) добавляет
+две команды. Ни одна эвристика не присваивает статус сертификации: статус в production даёт только
+свежий `certify_puzzle` с `CertificationConfig()` по умолчанию внутри `production-merge`.
+
+```console
+# 1) research-батч: generate -> Deep -> prefilter -> suitability shortlist -> probe (15 s) -> default certify
+python -m generator production-batch --seeds 9101,9102,9103,9104 --per-seed-count 12 \
+  --min-clues 22 --max-clues 30 --generation-seconds 600 --probe-seconds 15 --shortlist 20 \
+  --target-new 9 --runtime-budget 3600 --archive data/research/phase9_candidates.json
+# продолжить прерванный запуск (генерация берётся из checkpoints, терминальные ID пропускаются)
+python -m generator production-batch --seeds 9101,9102,9103,9104 ... --run-dir data/research/phase9/runs/<run-id> --resume
+
+# 2) безопасное добавление в production (сначала можно --dry-run)
+python -m generator production-merge --from-run data/research/phase9/runs/<run-id> --target-total 10
+python scripts/validate_production_database.py
+```
+
+`production-batch` пишет только research-данные: компактный архив `data/research/phase9_candidates.json`
+(все кандидаты, включая отклонённые/INCONCLUSIVE/TIMEOUT, со структурированными причинами `NOT_UNIQUE`,
+`TOO_EASY`, `HUMAN_UNSOLVED`, `DUPLICATE`, `NEAR_DUPLICATE`, `OUT_OF_CONCLUSIVE_SCOPE`,
+`CERTIFICATION_INCONCLUSIVE`, `CERTIFICATION_TIMEOUT`, `PROOF_INVALID`, … и seed), checkpoints генерации и
+`batch_report.json` в `data/research/phase9/runs/<run-id>/` (generated, unique, rated, shortlisted, probed,
+certified, inconclusive, timeouts, rejected, runtime по стадиям, certification yield = certified / attempts,
+generation yield = certified / generated). Suitability score (Deep 30 > 32 > 35; ≥ 36 пропускается из квоты как
+`OUT_OF_CONCLUSIVE_SCOPE`, `--include-high` для исследований) только упорядочивает кандидатов. Probe-бюджет не
+ослабляет сертификацию: TIMEOUT/лимиты остаются INCONCLUSIVE, а в production попадают только записи свежего
+default-прогона. Сертификат дольше 15 s (0.25 × 60 s) не выбирается (`NOT_SELECTED_SLOW_CERTIFICATE`), чтобы
+повторная проверка в CI не упиралась в бюджет.
+
+`production-merge` (источники: `--archive` и/или `--from-run`, фильтр `--ids`, лимит `--target-total`/`--max-new`):
+сначала полностью перепроверяет существующую базу, существующие записи сохраняет без изменений, каждого
+нового кандидата сертифицирует заново (только `CERTIFIED_EXTREME`/`CERTIFIED_ULTRA_EXTREME`), отсекает
+дубликаты (строка, ID, тот же solution, маска clues, symmetry fingerprint), делает побайтовую копию базы
+с проверкой SHA-256 в `data/research/phase9/backups/` (вне `data/production/`), пишет temp-файл + атомарный
+rename, затем снова запускает `validate_production_database` и при ошибке восстанавливает копию.
+Exit codes обеих команд: 0 — есть новые certified/merged, 1 — нет, 2 — ошибка (для merge — база не
+изменена или восстановлена). `production-merge` возвращает 3, если production уже записана и прошла
+повторную валидацию, но не удалось отметить кандидатов в архиве (`production.merged`): merge-отчёт
+(`archiveUpdate: "failed: …"`) записан до этого шага, базу трогать не нужно; повторный merge отсеет эти ID как
+`DUPLICATE`, флаги архива можно исправить позже.
+
+Обе команды держат lock-файл `<archive>.lock` (создаётся эксклюзивно, содержит PID/host/время/команду); второй
+запуск на том же архиве завершается с кодом 2. Если процесс был убит и lock остался (stale), удалите файл вручную,
+убедившись, что batch/merge не запущены.
+
+Нацеливание на полосы рейтинга (только приоритизация; сертификация не меняется):
+`--bands 35` (или `32,35`) сертифицирует только кандидатов с таким Deep required rating;
+`--min-per-band N` ставит лучшие N каждой полосы в начало очереди; `--reuse-archive` заново оценивает
+уже рейтингованных, но не завершённых кандидатов архива (например `NOT_SHORTLISTED`) без повторной генерации;
+`--seeds` при этом необязателен.
+
+```console
+# сертифицировать ~3-4 Deep-35 из архива, при нехватке — с новыми seeds
+python -m generator production-batch --reuse-archive --bands 35 --shortlist 12 --target-new 4 --runtime-budget 1800
+python -m generator production-batch --reuse-archive --seeds 9105,9106 --bands 35 --shortlist 12 --target-new 4
+# пересчитать счётчики существующего запуска в НОВЫЙ файл (оригинал не меняется)
+python -m generator production-report --run-dir data/research/phase9/runs/<run-id>
+```
+
+Определения счётчиков отчёта (`unique`, `rated`, `inconclusive` включает timeouts, `rejectedByStage`, …):
+[DATA_FORMAT.md §57.1](docs/DATA_FORMAT.md).
