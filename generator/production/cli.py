@@ -22,13 +22,13 @@ def _seeds(values):
 
 def batch_main(argv=None, *, run=run_batch):
     parser = argparse.ArgumentParser(prog="python -m generator production-batch",
-        description="Phase 9: generate, prioritize and certify Extreme candidates into the research "
-                    "archive. Never writes production data (use production-merge).")
+        description="Generate and verify Easy/Medium or certify Extreme candidates in research storage. "
+                    "Never writes production data (use production-merge).")
     parser.add_argument("--seeds", nargs="+", action="extend", default=[],
                         help="Seeds, e.g. 9101,9102 or 9101 9102 (optional with --reuse-archive)")
     parser.add_argument("--per-seed-count", "--target-count", dest="per_seed_count", type=int, default=12,
                         help="Accepted puzzles requested from the generator per seed")
-    parser.add_argument("--difficulty", choices=("Extreme", "Ultra Extreme"), default="Extreme")
+    parser.add_argument("--difficulty", choices=("Easy", "Medium", "Extreme", "Ultra Extreme"), default="Extreme")
     parser.add_argument("--min-clues", type=int, default=22)
     parser.add_argument("--max-clues", type=int, default=30)
     parser.add_argument("--minimal", action=argparse.BooleanOptionalAction, default=True)
@@ -69,9 +69,9 @@ def batch_main(argv=None, *, run=run_batch):
             min_per_band=args.min_per_band, reuse_archive=args.reuse_archive,
             command=["python", "-m", "generator", "production-batch", *(argv if argv is not None else sys.argv[2:])])
         report = run(options)
-        print(f"Run {report['runId']}: selected {len(report['selected'])} certified candidates | "
+        print(f"Run {report['runId']}: selected {len(report['selected'])} production candidates | "
               f"report {Path(report['runDir']) / 'batch_report.json'} | archive {report['archive']}")
-        return 0 if report["selected"] else 1
+        return 0 if report.get("complete", bool(report["selected"])) else 1
     except (ValueError, TypeError, OSError) as exc:
         print(f"Production batch failed: {exc}", file=sys.stderr)
         return 2
@@ -99,6 +99,8 @@ def report_main(argv=None):
 
 def _candidates_from_run(run_dir):
     report = read_json(Path(run_dir) / "batch_report.json")
+    if report.get("kind") == "standard-batch-report":
+        return [dict(item, selected=True) for item in report["selected"]], None
     if report.get("kind") != "phase9-batch-report":
         raise ValueError(f"{run_dir}: not a Phase 9 batch report")
     entries = []

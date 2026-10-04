@@ -28,9 +28,9 @@ const metaTarget = (version) => `<meta name="puzzle-database" content="./${DATAB
 const database = JSON.parse((await readFile(DATABASE_SOURCE, 'utf8')).replace(/^﻿/, ''));
 const playable = parseProductionDatabase(database, (...details) => console.warn('build:', ...details));
 if (playable.length !== database.puzzles.length) {
-  throw new Error(`Refusing to publish: ${database.puzzles.length - playable.length} record(s) are invalid or not certified. Run scripts/validate_production_database.py.`);
+  throw new Error(`Refusing to publish: ${database.puzzles.length - playable.length} record(s) are invalid or not production-verified. Run scripts/validate_production_database.py.`);
 }
-if (!playable.length) console.warn('build: the production database is empty; the site will show "no certified puzzles".');
+if (!playable.length) console.warn('build: the production database is empty; the site will show "no verified puzzles".');
 
 await rm(out, { recursive: true, force: true });
 await mkdir(path.join(out, 'data', 'production'), { recursive: true });
@@ -82,4 +82,4 @@ for (const file of (await walk(out)).filter((name) => /\.(html|css|js)$/.test(na
 if (offenders.length) throw new Error(`Root-absolute URLs would break GitHub Pages sub-paths:\n${offenders.join('\n')}`);
 
 const size = async (file) => (await stat(path.join(out, file))).size;
-console.log(`Built ${path.relative(root, out) || out}: ${playable.length} certified puzzle(s); app ?v=${appVersion}; ${DATABASE_TARGET}?v=${databaseVersion} ${await size(DATABASE_TARGET)} bytes (source ${(await stat(DATABASE_SOURCE)).size} bytes).`);
+console.log(`Built ${path.relative(root, out) || out}: ${playable.length} production puzzle(s); app ?v=${appVersion}; ${DATABASE_TARGET}?v=${databaseVersion} ${await size(DATABASE_TARGET)} bytes (source ${(await stat(DATABASE_SOURCE)).size} bytes).`);

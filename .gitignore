@@ -9,3 +9,11 @@ data/research/phase9/runs/*/checkpoints/
 data/research/phase9/merges/*.dry-run.json
 data/research/*.lock
 data/research/**/*.lock
+# Phase 10 local merge rehearsal and browser artifacts; summaries remain committable.
+data/research/phase10/rehearsal.json
+reports/phase10/rehearsal-backups/
+reports/phase10/browser/*.png
+reports/phase10/post-merge-browser/*.png
+reports/phase10/final-browser/*.png
+reports/phase10/public-smoke/*.png
+reports/phase10/mixed-snapshot-path.txt

@@ -75,8 +75,8 @@ class BatchOptions:
             raise ValueError("min_per_band must be a nonnegative integer")
         if len(set(self.seeds)) != len(self.seeds):
             raise ValueError("seeds must be distinct")
-        if self.difficulty not in ("Extreme", "Ultra Extreme"):
-            raise ValueError("difficulty must be Extreme or Ultra Extreme")
+        if self.difficulty not in ("Easy", "Medium", "Extreme", "Ultra Extreme"):
+            raise ValueError("difficulty must be Easy, Medium, Extreme or Ultra Extreme")
         for name in ("per_seed_count", "max_attempts", "target_new"):
             if type(getattr(self, name)) is not int or getattr(self, name) < 1:
                 raise ValueError(f"{name} must be a positive integer")
@@ -265,7 +265,10 @@ def _band_order(pool, options):
 
 
 def run_batch(options, *, certify=_certify_puzzle, log=None, clock=perf_counter):
-    """Execute one batch under the archive lock. Returns the report dict."""
+    """Execute a standard verification or Extreme certification research batch."""
+    if options.difficulty in ("Easy", "Medium"):
+        from .standard_batch import run_standard_batch
+        return run_standard_batch(options, log=log, clock=clock)
     options.validate()
     with archive_lock(options.archive, " ".join(map(str, options.command)) or "production-batch"):
         return _run_batch(options, certify=certify, log=log, clock=clock)

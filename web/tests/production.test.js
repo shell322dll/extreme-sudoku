@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { parseProductionDatabase, loadProductionPuzzles, certificationLabel, hardestStep, slimDatabase } from '../lib/data.js';
+import { parseProductionDatabase, loadProductionPuzzles, certificationLabel, hardestStep, slimDatabase, isProductionPuzzle } from '../lib/data.js';
 import { SudokuGame } from '../lib/game.js';
 import { STORAGE_KEYS, STORAGE_SCHEMA_VERSION, loadSave, saveGame, activePuzzleId, reconcileStorage } from '../lib/storage.js';
 
@@ -25,7 +25,7 @@ test('the production file loads every record; the original puzzle is the certifi
   assert.ok(original, `${REAL_ID} must stay in production`);
   assert.equal(certificationLabel(original), 'Certified Extreme');
   assert.equal(original.clues, 22);
-  for (const puzzle of puzzles) assert.match(certificationLabel(puzzle), /^Certified (Ultra )?Extreme$/);
+  for (const puzzle of puzzles) assert.ok(isProductionPuzzle(puzzle));
 });
 
 test('only CERTIFIED_EXTREME / CERTIFIED_ULTRA_EXTREME records are accepted', () => {
@@ -89,7 +89,7 @@ test('slimDatabase drops proof evidence/config and keeps a compact hardest step'
   assert.equal(cert.genuineBottlenecks, real.certification.genuineBottlenecks);
   assert.ok(JSON.stringify(slim).length < JSON.stringify(production).length / 20);
   assert.equal(parseProductionDatabase(slim, quiet).length, production.puzzles.length);
-  assert.ok(slim.puzzles.every(p => p.certification.evidence === undefined && hardestStep(p.certification)));
+  assert.ok(slim.puzzles.every(p => p.verification ? p.verification.evidence === undefined : p.certification.evidence === undefined && hardestStep(p.certification)));
   assert.notEqual(real.certification.evidence, undefined, 'input must not be mutated');
 });
 

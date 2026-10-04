@@ -13,7 +13,8 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from generator.certification.io import read_json, validate_production_database  # noqa: E402
+from generator.certification.io import read_json  # noqa: E402
+from generator.production.verification import validate_production_database  # noqa: E402
 
 
 def main(argv):
@@ -30,7 +31,7 @@ def main(argv):
         print(f"INVALID production database {path}: {error}", file=sys.stderr)
         return 1
     count = len(database.get("puzzles", []))
-    print(f"OK production database {path}: {count} certified puzzle(s) re-validated in {time.time() - started:.1f}s")
+    print(f"OK production database {path}: {count} production puzzle(s) re-validated in {time.time() - started:.1f}s")
     return 0
 
 

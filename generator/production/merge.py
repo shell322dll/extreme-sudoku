@@ -6,10 +6,12 @@ Guarantees (each enforced in code and covered by tests):
    nothing is merged into an invalid database.
 2. Existing records are kept verbatim (same JSON objects, canonical identity is
    re-checked on the temp file before the atomic replace).
-3. Every new record comes from a FRESH ``certify_puzzle`` run in this process with
+3. Every new Extreme record comes from a FRESH ``certify_puzzle`` run in this process with
    the default ``CertificationConfig()``; archive/probe statuses are only used to
    order candidates. Only CERTIFIED_EXTREME / CERTIFIED_ULTRA_EXTREME results
    that are production-eligible are admitted (``certification.io._record``).
+   Easy/Medium records instead undergo fresh standard threshold/proof/replay
+   verification; they never receive an Extreme certification status.
 4. Duplicates (exact puzzle string, ID, same-solution / clue-mask / symmetry
    near-duplicates) are skipped. IDs use the project's content-hash scheme.
 5. A byte copy of the current file is written OUTSIDE the production folder and
@@ -26,8 +28,9 @@ from pathlib import Path
 import tempfile
 
 from ..certification import CertificationConfig, certify_puzzle as _certify_puzzle
-from ..certification.io import (_canonical_json, _record, atomic_json, read_json,
-                                validate_production_database as _validate_production_database)
+from ..certification.io import _canonical_json, _record, atomic_json, read_json
+from .verification import (STANDARD_DIFFICULTIES, verify_standard,
+                           validate_production_database as _validate_production_database)
 from ..export import ExportValidationError, validate_database
 from .archive import content_id, utc_now
 from .diversity import DiversityIndex
@@ -171,6 +174,21 @@ def merge_production(path, candidates, *, backup_dir, max_new=None, dry_run=Fals
         if duplicate:
             outcome.skipped.append({"id": identifier, "reason": duplicate[0].value, "detail": duplicate[1]})
             continue
+        if candidate.get("difficulty") in STANDARD_DIFFICULTIES:
+            try:
+                record = verify_standard(puzzle, candidate.get("solution"), candidate["difficulty"],
+                                         puzzle_id=identifier)
+            except (ValueError, TypeError) as exc:
+                outcome.skipped.append({"id": identifier, "reason": Phase9Reason.INVALID.value,
+                                        "detail": str(exc)})
+                continue
+            new_records.append(record)
+            index.add(record, "new")
+            outcome.merged.append({"id": identifier, "difficulty": record["difficulty"],
+                                   "status": "VERIFIED", "rating": record["rating"],
+                                   "clues": record["clues"]})
+            log(f"verified {identifier}: {record['difficulty']} rating {record['rating']:.3f}")
+            continue
         # Never trust archive/probe/batch results: certify here, fresh, default policy.
         result = certify(puzzle, candidate.get("solution"), puzzle_id=identifier, config=config, fresh=True)
         reason = reason_for_result(result)
@@ -245,6 +263,9 @@ def merge_order(entries):
     from .archive import is_certified_summary
 
     def group(entry):
+        if (entry.get("selected") and entry.get("difficulty") in STANDARD_DIFFICULTIES
+                and (entry.get("verification") or {}).get("status") == "VERIFIED"):
+            return 0
         if entry.get("selected") and is_certified_summary(entry.get("certification")):
             return 0
         if is_certified_summary(entry.get("certification")):
@@ -258,7 +279,7 @@ def merge_order(entries):
         rank = group(entry)
         if rank is None or (entry.get("production") or {}).get("merged"):
             continue
-        evidence = entry.get("certification") if rank < 2 else entry.get("probe")
+        evidence = (entry.get("certification") if rank < 2 else entry.get("probe")) or {}
         usable.append((rank, evidence.get("elapsed", 0.0), entry["id"],
                        evidence.get("minimumRequiredRating") or 0.0, entry))
     usable.sort(key=lambda row: row[:3])

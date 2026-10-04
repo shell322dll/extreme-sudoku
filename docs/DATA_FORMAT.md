@@ -1099,6 +1099,9 @@ solution replay
 
 # 55. Phase 7 certified production dataset
 
+Этот раздел описывает неизменный контракт **Extreme/Ultra Extreme**. Phase 10 дополняет mixed production
+отдельным `verification` для Easy/Medium — см. §58. Сертификаты Extreme не изменяются.
+
 Обратная совместимость сохраняется: `schemaVersion=1`, обязательные puzzle поля
 не изменены. Текущий `data/puzzles.json` — demo/research collection Phase 5;
 strict certification output располагается в `data/production/puzzles.json`.
@@ -1162,6 +1165,7 @@ is a **publish-only derivative**, never an input or output of the generator:
 
 - root gets `derived: true` (the frontend ignores it; the schema is otherwise unchanged, `schemaVersion=1`);
 - `certification.evidence` and `certification.config` are removed (the bulk of each record);
+- for standard Easy/Medium records, `verification.evidence` is removed; all verification summary fields remain;
 - `certification.hardestStep` `{technique, rating}` is added: the highest-rated step of
   `evidence.certified_path`. It describes the recorded path only, not a mandatory technique;
 - all other fields (puzzle, solution, clues, rating, techniques, remaining certification fields) are unchanged.
@@ -1242,3 +1246,75 @@ never overwrites `batch_report.json`; runtime, options and calibration are copie
 Concurrency: `production-batch` and `production-merge` hold `<archive>.lock` (created exclusively; it names PID, host,
 time and command). A second command fails with exit 2. A lock left by a killed process is stale: when no batch or
 merge is running, delete the file by hand.
+
+# 58. Phase 10: mixed production and standard verification
+
+`schemaVersion: 1` и `datasetKind: "production-certified"` сохранены для совместимости.
+Теперь набор допускает две независимые формы admission:
+
+| difficulty | обязательный результат |
+| --- | --- |
+| Easy, Medium | `verification.status: "VERIFIED"`, версия 1, полный воспроизводимый proof |
+| Extreme | прежний `certification.status: "CERTIFIED_EXTREME"` |
+| Ultra Extreme | прежний `certification.status: "CERTIFIED_ULTRA_EXTREME"` |
+
+Для Easy/Medium поле `certification` отсутствует. Статус `VERIFIED` не является Extreme/minimax certification.
+Непроверенные research records, preliminary, inconclusive, invalid и ложная сложность не допускаются.
+Hard/Expert standard production admission в Phase 10 не реализован; пустых категорий frontend не показывает.
+
+Новые standard records содержат обычные `id/puzzle/solution/clues/difficulty/unique`, а также:
+
+```json
+{
+  "rating": 2.3918,
+  "hardestTechnique": "Locked Candidates",
+  "techniques": {"Full House": 21, "Hidden Single": 8, "Locked Candidates": 1, "Naked Single": 27},
+  "techniquesUsed": ["Full House", "Hidden Single", "Locked Candidates", "Naked Single"],
+  "solutionSteps": 57,
+  "difficultyData": {"hardestRating": 2, "totalScore": 43.78, "advancedSteps": 0, "trueBottlenecks": 0, "longestChain": 0},
+  "verification": {
+    "status": "VERIFIED",
+    "version": 1,
+    "method": "DETERMINISTIC_THRESHOLD_REPLAY",
+    "difficulty": "Medium",
+    "requiredRating": 2,
+    "techniqueCeiling": 5.2,
+    "humanSolved": true,
+    "proofValidated": true,
+    "reproducible": true,
+    "unique": true,
+    "guesses": 0,
+    "usedBacktracking": false,
+    "scope": "lowest successful tested threshold; bounded deterministic paths, not global necessity",
+    "evidence": {"thresholds": [], "path": []}
+  }
+}
+```
+
+Пример иллюстрирует форму, а не валидную запись: реальные числа пересчитываются, evidence не пустой.
+`evidence.thresholds` хранит dataclass-представления threshold attempts существующего DifficultyAnalyzer;
+`evidence.path` — полный список LogicStep. `solutionSteps` и `techniques` описывают этот путь.
+Stable ID — существующий `puzzle-<sha256(puzzle)[:20]>`.
+
+Источник classification — `DifficultyConfig.classification_thresholds` и registry, без изменений:
+Easy `0 <= requiredRating < 2`, Medium `2 <= requiredRating < 7`. Фактические потолки registry — 1.2 и 5.2.
+`rating` у standard records — агрегированный `DifficultyAnalyzer.deep.rating`, не порог категории;
+`difficultyData.hardestRating` равен `verification.requiredRating`. Extreme `rating` остаётся прежним
+certified minimum maximum step rating: существующие значения не переписываются.
+
+Mixed validator: `generator.production.verification.validate_production_database`, вызываемый CLI-скриптом
+`scripts/validate_production_database.py`. Он проверяет формат, уникальность, solution, ID, дубликаты и stats;
+для Easy/Medium заново выполняет threshold solve, Deep classification, независимый `validate_path` и replay,
+сравнивая все известные verification metadata/evidence. Standard запись должна иметь пустые клетки.
+Extreme subset передаётся неизменному `generator.certification.io.validate_production_database`.
+Unknown top-level metadata допускаются, frontend игнорирует дополнительные поля; новые поля не становятся
+основанием для admission. В браузерной derived базе evidence отсутствует (см. §56), и Python validator
+намеренно её отвергает. Frontend проверяет согласованность summary и формата, не исполняет Human Solver.
+
+Standard research report: `kind: "standard-batch-report"`, `difficulty`, `command`, `seeds` со статистикой
+каждого генератора, `attempts`, `elapsedSeconds`, `generationYield`, `targetNew`, `complete`, `selected`,
+`verifiedUnselected`, `rejected`, `diversity`. Для первой подготовленной партии `complete` отсутствует
+(полнота определяется как `len(selected) == targetNew`). `generationYield` = selected / generator attempts.
+Seeds и attemptSeed хранятся в research records; production merge создаёт свежую проверенную запись.
+Исходный отчёт immutable: сведения об admission находятся в merge report с `merged/skipped/total/written`.
+`production-merge --from-run` принимает оба вида batch reports и оставляет все existing records неизменными.

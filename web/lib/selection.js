@@ -1,9 +1,9 @@
-import { isCertifiedPuzzle } from './data.js';
+import { isProductionPuzzle } from './data.js';
 
 /**
  * Choose the puzzle for "New Game". Pure: storage facts and the random source are passed in.
  *
- *   puzzles   loaded production puzzles (re-checked here: only valid certified records are selectable)
+ *   puzzles   loaded production puzzles (re-checked here: only production-eligible records are selectable)
  *   currentId the puzzle on screen; never chosen while any other selectable puzzle exists
  *   solved    solved IDs, most recently solved first (storage `loadRecent()` order)
  *   started   IDs with saved progress (in progress or completed)
@@ -17,7 +17,7 @@ import { isCertifiedPuzzle } from './data.js';
 export function nextPuzzle(puzzles, { currentId = null, solved = [], started = [], difficulty = null, random = Math.random } = {}) {
   const solvedOrder = [...solved];
   const solvedSet = new Set(solvedOrder), startedSet = new Set(started);
-  const selectable = (Array.isArray(puzzles) ? puzzles : []).filter((puzzle) => isCertifiedPuzzle(puzzle) && (!difficulty || puzzle.difficulty === difficulty));
+  const selectable = (Array.isArray(puzzles) ? puzzles : []).filter((puzzle) => isProductionPuzzle(puzzle) && (!difficulty || puzzle.difficulty === difficulty));
   const others = selectable.filter((puzzle) => puzzle.id !== currentId);
   const unsolved = others.filter((puzzle) => !solvedSet.has(puzzle.id));
   const fresh = unsolved.filter((puzzle) => !startedSet.has(puzzle.id));
@@ -35,7 +35,7 @@ export function nextPuzzle(puzzles, { currentId = null, solved = [], started = [
 /** Puzzle to open on start-up when no active save exists: a random unsolved one, else a random one. */
 export function startupPuzzle(puzzles, { solved = [], random = Math.random } = {}) {
   const solvedSet = new Set(solved);
-  const selectable = (Array.isArray(puzzles) ? puzzles : []).filter(isCertifiedPuzzle);
+  const selectable = (Array.isArray(puzzles) ? puzzles : []).filter(isProductionPuzzle);
   const unsolved = selectable.filter((puzzle) => !solvedSet.has(puzzle.id));
   const pool = unsolved.length ? unsolved : selectable;
   return pool.length ? pickRandom(pool, random) : null;

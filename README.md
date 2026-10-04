@@ -6,6 +6,20 @@ frontend и база опубликованных задач независим�
 отдельный консервативный certification pipeline; его контракт описан в
 [CERTIFICATION_SPEC](docs/CERTIFICATION_SPEC.md).
 
+## Генерация новых Sudoku
+
+Новые задачи создаются **локальным Python-кодом проекта — ИИ для генерации не нужен**. Pipeline:
+`python -m generator production-batch` (генерация, рейтинг, сертификация → research archive) →
+`production-merge` (повторная сертификация и безопасное добавление в production) →
+`scripts/validate_production_database.py` → тесты → commit/push → GitHub Pages.
+Production-база `data/production/puzzles.json` принимает Easy/Medium со стандартной проверкой
+`verification.status=VERIFIED` и Extreme/Ultra Extreme с прежними `CERTIFIED_*` сертификатами.
+Research archive не является production. Phase 10 сохраняет все существующие Extreme без изменений;
+состояние подготовки и публикации: [PHASE10_EASY_MEDIUM_REPORT](docs/PHASE10_EASY_MEDIUM_REPORT.md).
+
+Пошаговая инструкция (команды, merge, backup, тесты, деплой, troubleshooting):
+**[docs/GENERATION_GUIDE.md](docs/GENERATION_GUIDE.md)**.
+
 Требуется Python 3.10+; внешних зависимостей нет. Команды из корня проекта:
 
 ```console
@@ -394,6 +408,8 @@ python -m generator certify --input docs/PHASE6_CANDIDATES.json --fresh --output
 python -m generator certify --input docs/PHASE6_CANDIDATES.json --puzzle-id puzzle-ca88d658a18eafb27c24 --fresh
 ```
 
+Внимание: `certify` по умолчанию пишет в `data/production/puzzles.json` (`--output`) и заменяет его. Для экспериментов всегда задавайте `--output`, `--research-output` и `--reports-dir`; добавлять задачи в production следует через `production-merge` (см. [GENERATION_GUIDE](docs/GENERATION_GUIDE.md)).
+
 Прямая строка задаётся через `--puzzle`, необязательное решение — `--solution`.
 `--config` читает CertificationConfig JSON; доступны overrides `--time-budget`,
 `--node-budget`, `--state-budget`, `--max-path-depth`,
@@ -428,17 +444,17 @@ CLI возвращает 0 при наличии certified, 1 при нуле, 2
 ## Phase 8 / Release 0.1: frontend и GitHub Pages
 
 Frontend (`web/`, статический, без сборки и зависимостей) играет **только**
-сертифицированные задачи из `data/production/puzzles.json` (`schemaVersion 1`,
+проверенные production-задачи из `data/production/puzzles.json` (`schemaVersion 1`,
 `datasetKind: production-certified`). `data/puzzles.json` (demo Phase 5) во
 frontend не загружается; он остаётся только фикстурой unit-тестов. Версия приложения
-(0.1.0) хранится единственный раз — `web/package.json`; UI читает её оттуда.
+(сейчас 0.2.0) хранится единственный раз — `web/package.json`; UI читает её оттуда.
 
-Принимаются только записи со статусом `CERTIFIED_EXTREME` или
-`CERTIFIED_ULTRA_EXTREME` (с совпадающей сложностью), валидными 81-символьными
+Принимаются Easy/Medium с полным summary стандартной проверки `VERIFIED` либо записи со статусом
+`CERTIFIED_EXTREME` / `CERTIFIED_ULTRA_EXTREME` (с совпадающей сложностью), валидными 81-символьными
 `puzzle`/`solution`, согласованными givens и числом clues. Остальное пропускается с
 `console.warn`. Ошибка загрузки показывает «Не удалось загрузить базу Sudoku.
 Попробуйте обновить страницу.» (без fallback на mock), пустая база — «Сейчас нет
-доступных сертифицированных Sudoku.»
+доступных проверенных Sudoku.»
 
 Команды (из корня проекта; Node 20+ и Python 3.10+):
 

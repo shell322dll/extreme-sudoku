@@ -1,6 +1,8 @@
 # Extreme Sudoku — web
 
-A mobile-first static Sudoku application with no frontend build step or runtime dependencies. Release 0.1 plays only the certified puzzles in `../data/production/puzzles.json` (statuses `CERTIFIED_EXTREME` / `CERTIFIED_ULTRA_EXTREME`); the demo `../data/puzzles.json` is test-fixture data and is never loaded by the app. There is no mock or silent fallback: a failed load shows an error message, an empty database shows "no certified puzzles".
+A mobile-first static Sudoku application with no frontend build step or runtime dependencies. Phase 10 admits verified Easy/Medium (`verification.status: VERIFIED`) and certified Extreme/Ultra Extreme from `../data/production/puzzles.json`; the demo `../data/puzzles.json` is test-fixture data and is never loaded by the app. There is no mock or silent fallback: a failed load shows an error message, an empty database shows "no verified puzzles".
+
+New Game offers only categories present in the database, keeps the current difficulty selected, and avoids an immediate repeat within that category when alternatives exist. Fully played categories remain available for confirmed replay. Progress remains isolated by puzzle ID. Easy/Medium Details show verification, rating, hardest technique and the logical technique summary without Extreme certification claims. Python validates full proof evidence before publishing; the browser checks the corresponding compact metadata and never solves or re-rates puzzles.
 
 Serve the repository root with a static HTTP server and open `/web/`:
 

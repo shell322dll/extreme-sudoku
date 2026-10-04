@@ -37,7 +37,7 @@ export function parseDatabase(database, warn = console.warn) {
 }
 
 export const PRODUCTION_DATASET_KIND = 'production-certified';
-/** Only these statuses may ever be played. PRELIMINARY, INCONCLUSIVE, SEARCH_TIMEOUT, REJECTED and UNRATED are excluded. */
+/** Extreme certification statuses. Standard verification never grants one of these labels. */
 export const CERTIFIED_STATUSES = Object.freeze({
   CERTIFIED_EXTREME: { difficulty: 'Extreme', label: 'Certified Extreme' },
   CERTIFIED_ULTRA_EXTREME: { difficulty: 'Ultra Extreme', label: 'Certified Ultra Extreme' },
@@ -76,9 +76,28 @@ export function isCertifiedPuzzle(puzzle) {
   return Boolean(status) && status.difficulty === puzzle.difficulty;
 }
 
+/** Cheap structural admission only; Python independently verifies the logical evidence before publication. */
+export function isVerifiedStandardPuzzle(puzzle) {
+  if (!isValidPuzzle(puzzle) || puzzle.clues === 81 || puzzle.certification != null || !isRecord(puzzle.verification)) return false;
+  const v = puzzle.verification;
+  const band = { Easy: [0, 2, 1.2], Medium: [2, 7, 5.2] }[puzzle.difficulty];
+  return Boolean(band) && v.status === 'VERIFIED' && v.version === 1 &&
+    v.method === 'DETERMINISTIC_THRESHOLD_REPLAY' && v.difficulty === puzzle.difficulty &&
+    Number.isFinite(v.requiredRating) && v.requiredRating >= band[0] && v.requiredRating < band[1] &&
+    v.techniqueCeiling === band[2] && v.requiredRating <= v.techniqueCeiling &&
+    v.humanSolved === true && v.proofValidated === true && v.reproducible === true && v.unique === true &&
+    v.guesses === 0 && v.usedBacktracking === false &&
+    Number.isFinite(puzzle.rating) && puzzle.rating >= 0 &&
+    puzzle.difficultyData?.hardestRating === v.requiredRating &&
+    typeof puzzle.hardestTechnique === 'string' && puzzle.hardestTechnique.length > 0 &&
+    Number.isInteger(puzzle.solutionSteps) && puzzle.solutionSteps > 0;
+}
+
+export const isProductionPuzzle = (puzzle) => isCertifiedPuzzle(puzzle) || isVerifiedStandardPuzzle(puzzle);
+
 /**
  * Parse a production database. Unlike parseDatabase it never throws for an empty/all-invalid list:
- * the caller shows "no certified puzzles". It throws only for an unusable file (wrong schema or kind).
+ * the caller shows "no verified puzzles". It throws only for an unusable file (wrong schema or kind).
  */
 export function parseProductionDatabase(database, warn = console.warn) {
   if (!isRecord(database)) throw new Error('Invalid puzzle database.');
@@ -87,8 +106,8 @@ export function parseProductionDatabase(database, warn = console.warn) {
   if (!Array.isArray(database.puzzles)) throw new Error('Invalid puzzle database.');
   const ids = new Set(), valid = [];
   for (const puzzle of database.puzzles) {
-    if (!isCertifiedPuzzle(puzzle) || ids.has(puzzle.id)) {
-      warn('Skipping invalid, uncertified or duplicate puzzle:', puzzle?.id ?? '(missing ID)', puzzle?.certification?.status ?? '(no certification)');
+    if (!isProductionPuzzle(puzzle) || ids.has(puzzle.id)) {
+      warn('Skipping invalid, unverified or duplicate puzzle:', puzzle?.id ?? '(missing ID)', puzzle?.certification?.status ?? puzzle?.verification?.status ?? '(no verification)');
       continue;
     }
     ids.add(puzzle.id);
@@ -107,6 +126,10 @@ export function slimDatabase(database) {
     // Marks a publish-only derivative: NOT valid input for validate_production_database (proof evidence is gone).
     derived: true,
     puzzles: database.puzzles.map((puzzle) => {
+      if (isRecord(puzzle.verification)) {
+        const { evidence, ...verification } = puzzle.verification;
+        return { ...puzzle, verification };
+      }
       if (!isRecord(puzzle.certification)) return puzzle;
       const { evidence, config, ...rest } = puzzle.certification;
       const step = hardestStep(puzzle.certification);
@@ -126,7 +149,7 @@ export async function loadPuzzles(url = new URL('../data/puzzles.json', document
   return parseDatabase(await fetchJson(url));
 }
 
-/** Load the certified production database from an explicit URL; there is no default and no fallback. */
+/** Load the verified production database from an explicit URL; there is no default and no fallback. */
 export async function loadProductionPuzzles(url, warn = console.warn) {
   return parseProductionDatabase(await fetchJson(url), warn);
 }

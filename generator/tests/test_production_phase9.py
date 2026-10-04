@@ -34,6 +34,7 @@ from generator.production.merge import MergeError, merge_order, merge_production
 from generator.production.models import (FAILURE_REASON, GENERATOR_REASON, NOT_ATTEMPTED, Phase9Reason,
                                          reason_for_result, reason_for_status)
 from generator.production.suitability import (SuitabilityAssessment, assess_suitability, priority_key)
+from generator.production.verification import verify_standard
 
 ROOT = Path(__file__).resolve().parents[2]
 # Frozen byte copy of the 1-record production DB at Phase 9 start (HEAD eb1b9b6).
@@ -689,8 +690,17 @@ class RealCertificationMergeTests(unittest.TestCase):
         self.assertEqual(live["stats"]["total"], len(live["puzzles"]))
         self.assertEqual(len(records), len(live["puzzles"]))
         for record in live["puzzles"]:
-            self.assertIn(record["certification"]["status"], ("CERTIFIED_EXTREME", "CERTIFIED_ULTRA_EXTREME"))
-            self.assertEqual(record["certification"]["config"], DEFAULT.to_dict())
+            with self.subTest(puzzle_id=record["id"]):
+                if record["difficulty"] in ("Easy", "Medium"):
+                    self.assertNotIn("certification", record)
+                    expected = verify_standard(record["puzzle"], record["solution"], record["difficulty"],
+                                               puzzle_id=record["id"])
+                    self.assertEqual({key: record[key] for key in expected}, expected)
+                elif record["difficulty"] in ("Extreme", "Ultra Extreme"):
+                    self.assertIn(record["certification"]["status"], ("CERTIFIED_EXTREME", "CERTIFIED_ULTRA_EXTREME"))
+                    self.assertEqual(record["certification"]["config"], DEFAULT.to_dict())
+                else:
+                    self.fail(f"Unsupported production difficulty: {record['difficulty']}")
         baseline = read_json(PRODUCTION)["puzzles"][0]
         block = json.dumps({"x": [baseline]}, ensure_ascii=False, indent=2)
         block = block[block.index("[") + 1:block.rindex("]")].strip("\n").rstrip()

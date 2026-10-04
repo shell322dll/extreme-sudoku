@@ -222,6 +222,7 @@ def run_browser(browser, origin, engine, results):
     extended_checks(browser, origin, engine, results)
     production_checks(browser, origin, engine, results)
     multi_puzzle_checks(browser, origin, engine, results)
+    mixed_difficulty_checks(browser, origin, engine, results)
 
     for theme in ('light', 'dark'):
         context = browser.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2, color_scheme=theme)
@@ -280,7 +281,7 @@ def extended_checks(browser, origin, engine, results):
             page.locator(f'[data-menu="{menu}"]').tap()
             modal_fits(page)
             if menu == 'new':
-                check(page.locator('#all-played-message').inner_text() == 'Все доступные Certified Sudoku уже сыграны. Можно решить эту задачу ещё раз.', 'single-puzzle message')
+                check(page.locator('#all-played-message').inner_text() == 'Все доступные Sudoku этой сложности уже сыграны. Можно решить задачу ещё раз.', 'single-puzzle message')
                 check(page.locator('[data-difficulty]').count() == 0, 'single puzzle must not offer a difficulty picker')
             page.locator('#close-sheet').tap()
     page.set_viewport_size({'width': 390, 'height': 844})
@@ -463,7 +464,7 @@ def functional_checks(page, origin, results, engine):
 
 CORRECT_PATH_MESSAGES = {
     'load': 'Не удалось загрузить базу Sudoku. Попробуйте обновить страницу.',
-    'empty': 'Сейчас нет доступных сертифицированных Sudoku.',
+    'empty': 'Сейчас нет доступных проверенных Sudoku.',
 }
 
 
@@ -613,7 +614,7 @@ def production_checks(browser, origin, engine, results):
     page.locator('#sheet-title').filter(has_text='Solved!').wait_for()
     check(page.locator('#sheet').is_visible(), 'closing details did not return to completion')
     page.locator('#result-new').tap()
-    check(page.locator('#all-played-message').inner_text() == 'Все доступные Certified Sudoku уже сыграны. Можно решить эту задачу ещё раз.', 'single puzzle message after completion')
+    check(page.locator('#all-played-message').inner_text() == 'Все доступные Sudoku этой сложности уже сыграны. Можно решить задачу ещё раз.', 'single puzzle message after completion')
     page.locator('#replay-puzzle').tap()
     check(saved(page)['status'] == 'playing' and saved(page)['values'][last] == 0, 'replay after completion')
     context.close()
@@ -907,6 +908,90 @@ def multi_puzzle_checks(browser, origin, engine, results):
     check(store(page)['games'][b['id']]['status'] == 'completed', 'B completion lost by the replay')
     ctx.close()
     results['checks'].append({'browser': engine, 'test': 'multi-puzzle-new-game-isolation-details', 'status': 'passed'})
+
+
+def mixed_difficulty_checks(browser, origin, engine, results):
+    """Actual verified records, full mixed database after merge, frozen verified fixture before merge."""
+    standards = [p for p in PRODUCTION['puzzles'] if p['difficulty'] in ('Easy', 'Medium')]
+    if not standards:
+        standards = json.loads((ROOT / 'web/tests/fixtures/production_standard.json').read_text(encoding='utf-8'))['puzzles']
+    records = standards + [p for p in PRODUCTION['puzzles'] if p['difficulty'] == 'Extreme']
+    by_id = {p['id']: p for p in records}
+    check(all(sum(p['difficulty'] == d for p in records) >= 2 for d in ('Easy', 'Medium', 'Extreme')), 'mixed fixture must offer alternatives')
+    for _, width, height in TARGETS[:4]:
+        context = browser.new_context(viewport={'width': width, 'height': height}, has_touch=True)
+        context.add_init_script(pin_real())
+        context.route(DB_ROUTE, lambda route: route.fulfill(content_type='application/json', body=json.dumps(production_payload(*records))))
+        page = context.new_page()
+        errors = []
+        page.on('pageerror', lambda e: errors.append(str(e)))
+        page.on('console', lambda m: errors.append(m.text) if m.type == 'error' else None)
+        load(page, origin + '/web/')
+        snapshots = {}
+
+        def choose(difficulty=None):
+            page.locator('#menu-button').tap()
+            page.locator('[data-menu="new"]').tap()
+            modal_fits(page)
+            offered = page.locator('[data-difficulty]').evaluate_all('(nodes) => nodes.map(n => n.dataset.difficulty)')
+            check(offered == ['Easy', 'Medium', 'Extreme'], f'wrong categories {offered}')
+            if difficulty:
+                page.locator(f'[data-difficulty="{difficulty}"]').tap()
+            else:
+                check(page.locator('[data-difficulty][aria-pressed="true"]').get_attribute('data-difficulty') == by_id[saved(page)['puzzleId']]['difficulty'], 'New Game forgot active difficulty')
+            page.locator('#start-game').tap()
+
+        for difficulty in ('Easy', 'Medium', 'Extreme'):
+            choose(difficulty)
+            page.locator('#sheet').wait_for(state='hidden')
+            first = saved(page)['puzzleId']
+            choose()  # No second choice: defaults to the category of the game on screen.
+            page.locator('#sheet').wait_for(state='hidden')
+            current = saved(page)['puzzleId']
+            record = by_id[current]
+            check(current != first and record['difficulty'] == difficulty, f'{difficulty} New Game repeated or crossed category')
+            badge = ' '.join(page.locator('#cert-badge').inner_text().split())
+            check(badge == ('Certified Extreme' if difficulty == 'Extreme' else difficulty), f'wrong badge {badge}')
+            page.locator('#cert-badge').tap()
+            modal_fits(page)
+            details = page.locator('#sheet-content').inner_text()
+            for needle in (record['id'], difficulty, str(record['clues']), 'Rating (project scale)'):
+                check(needle in details, f'{difficulty} details missing {needle}')
+            if difficulty != 'Extreme':
+                for needle in ('Verified logical solution', record['hardestTechnique'], 'Techniques in the verified path'):
+                    check(needle in details, f'{difficulty} details missing {needle}')
+                for forbidden in ('Certified Extreme', 'Certified tier', 'Certification version', 'Genuine bottlenecks', 'альтернативных путей'):
+                    check(forbidden not in details, f'{difficulty} false certification claim {forbidden}')
+            else:
+                check('Certified Extreme' in details and 'Genuine bottlenecks' in details, 'Extreme certification detail lost')
+            page.locator('#close-sheet').tap()
+            empty = record['puzzle'].index('0')
+            page.locator(f'.cell[data-index="{empty}"]').tap()
+            page.locator(f'.number-button[data-digit="{record["solution"][empty]}"]').tap()
+            snapshots[current] = saved(page)
+            check(page.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'{width}x{height}: horizontal scroll')
+        page.reload()
+        page.locator('#board [data-index]').nth(80).wait_for()
+        store = page.evaluate(f"JSON.parse(localStorage.getItem('{STORE}'))")
+        for pid, snapshot in snapshots.items():
+            for key in ('values', 'notes', 'history', 'mistakes', 'hintsUsed'):
+                check(store['games'][pid][key] == snapshot[key], f'{pid}: mixed progress lost {key}')
+        # Fully played categories stay selectable; replay never leaks into another category.
+        page.evaluate('(ids) => localStorage.setItem("extreme-sudoku.recent.v1", JSON.stringify(ids))', list(by_id))
+        before = saved(page)['puzzleId']
+        choose('Medium')
+        page.locator('#replay-puzzle').wait_for()
+        check(saved(page)['puzzleId'] == before, 'replay reset progress before confirmation')
+        page.locator('#cancel-new').tap()
+        check(saved(page)['puzzleId'] == before, 'cancel changed current puzzle')
+        choose('Medium')
+        page.locator('#replay-puzzle').tap()
+        page.locator('#sheet').wait_for(state='hidden')
+        check(by_id[saved(page)['puzzleId']]['difficulty'] == 'Medium', 'all-solved replay crossed category')
+        page.screenshot(path=str(ARTIFACTS / f'{engine}-mixed-{width}x{height}.png'), scale='css')
+        check(not errors, f'mixed browser errors: {errors}')
+        context.close()
+    results['checks'].append({'browser': engine, 'test': 'mixed-difficulty-new-game-details-storage-replay-responsive', 'viewports': [[w, h] for _, w, h in TARGETS[:4]], 'status': 'passed'})
 
 
 def saved_snapshot_template(elapsed_ms=1000, puzzle=None):

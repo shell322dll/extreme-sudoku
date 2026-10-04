@@ -5,8 +5,8 @@ import { nextPuzzle, startupPuzzle } from './lib/selection.js';
 
 const MESSAGES = Object.freeze({
   loadFailed: 'Не удалось загрузить базу Sudoku. Попробуйте обновить страницу.',
-  noPuzzles: 'Сейчас нет доступных сертифицированных Sudoku.',
-  allPlayed: 'Все доступные Certified Sudoku уже сыграны. Можно решить эту задачу ещё раз.',
+  noPuzzles: 'Сейчас нет доступных проверенных Sudoku.',
+  allPlayed: 'Все доступные Sudoku этой сложности уже сыграны. Можно решить задачу ещё раз.',
   certificationNote: 'Эта задача прошла проверку уникальности, логических доказательств и альтернативных путей в текущей версии системы Extreme Sudoku.',
 });
 const mark = (name) => { try { performance.mark(`es:${name}`); } catch { /* optional instrumentation */ } };
@@ -219,19 +219,19 @@ function showNewGame(event) {
   }
   const solved = solvedIds();
   const remaining = puzzles.filter((puzzle) => puzzle.id !== game.state.puzzle.id && !solved.has(puzzle.id));
-  if (!remaining.length) {
+  const offered = DIFFICULTIES.filter((difficulty) => puzzles.some((puzzle) => puzzle.difficulty === difficulty));
+  if (!remaining.length && offered.length === 1) {
     openSheet('New Game', `<p lang="ru" id="all-played-message">${MESSAGES.allPlayed}</p><p lang="ru" class="small-print">Будет выбрана другая задача, решённая раньше остальных; её сохранённый прогресс будет сброшен.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Отмена</button><button id="replay-puzzle" class="primary">Решить ещё раз</button></div>`, opener);
     $('#cancel-new').addEventListener('click', closeSheet);
     $('#replay-puzzle').addEventListener('click', () => {
-      const choice = pickPuzzle();
+      const choice = pickPuzzle(game.state.puzzle.difficulty);
       if (choice) replay(choice.puzzle);
     });
     return;
   }
   const counts = Object.fromEntries(DIFFICULTIES.map((difficulty) => [difficulty, remaining.filter((puzzle) => puzzle.difficulty === difficulty).length]));
-  const offered = DIFFICULTIES.filter((difficulty) => counts[difficulty]);
   let chosen = offered.includes(game.state.puzzle.difficulty) ? game.state.puzzle.difficulty : offered[0];
-  openSheet('New Game', `<p>Your progress on the current puzzle stays saved.</p><div class="difficulty-list">${offered.map((difficulty) => `<button class="difficulty-choice" data-difficulty="${escapeHTML(difficulty)}" aria-pressed="${difficulty === chosen}"><strong>${escapeHTML(difficulty)}</strong><span>${counts[difficulty]} available</span></button>`).join('')}</div><div class="dialog-actions"><button id="start-game" class="primary">Start puzzle</button></div>`, opener);
+  openSheet('New Game', `<p>Your progress on the current puzzle stays saved.</p><div class="difficulty-list">${offered.map((difficulty) => `<button class="difficulty-choice" data-difficulty="${escapeHTML(difficulty)}" aria-pressed="${difficulty === chosen}"><strong>${escapeHTML(difficulty)}</strong><span>${counts[difficulty] ? `${counts[difficulty]} available` : 'Replay available'}</span></button>`).join('')}</div><div class="dialog-actions"><button id="start-game" class="primary">Start puzzle</button></div>`, opener);
   sheetContent.querySelectorAll('[data-difficulty]').forEach((button) => button.addEventListener('click', () => {
     chosen = button.dataset.difficulty;
     sheetContent.querySelectorAll('[data-difficulty]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
@@ -240,6 +240,12 @@ function showNewGame(event) {
     const choice = pickPuzzle(chosen);
     if (!choice) return;
     const { puzzle } = choice;
+    if (choice.replay) {
+      openSheet('Replay puzzle?', `<p>All available ${escapeHTML(chosen)} puzzles have been played. This puzzle’s saved progress will be reset.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Cancel</button><button id="replay-puzzle" class="primary">Replay puzzle</button></div>`);
+      $('#cancel-new').addEventListener('click', closeSheet);
+      $('#replay-puzzle').addEventListener('click', () => replay(puzzle));
+      return;
+    }
     persist();
     startGame(puzzle, { fresh: choice.replay });
     closeSheet();
@@ -291,6 +297,8 @@ function showSettings() {
 function showDetails(event) {
   const puzzle = game.state.puzzle;
   const certification = isRecord(puzzle.certification) ? puzzle.certification : {};
+  const verification = isRecord(puzzle.verification) ? puzzle.verification : {};
+  const certified = Boolean(certificationLabel(puzzle));
   const numeric = (value) => typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
   const text = (value) => typeof value === 'string' && value ? value : null;
   const hardest = hardestStep(certification);
@@ -299,17 +307,20 @@ function showDetails(event) {
     ['Puzzle ID', puzzle.id],
     ['Difficulty', puzzle.difficulty],
     ['Certification', certificationLabel(puzzle)],
+    ['Verification', verification.status === 'VERIFIED' ? 'Verified logical solution' : null],
     ['Clues', puzzle.clues],
     ['Rating (project scale)', rating === null ? null : rating.toFixed(rating % 1 ? 2 : 0)],
     ['Certified tier', text(certification.requiredTier)],
     ['Hardest step in certified path', hardest ? `${hardest.technique} (${hardest.rating})` : null],
+    ['Hardest technique in verified path', certified ? null : text(puzzle.hardestTechnique)],
+    ['Solution steps', certified ? null : numeric(puzzle.solutionSteps)],
     ['Genuine bottlenecks', numeric(certification.genuineBottlenecks)],
     ['Certification version', text(certification.version)],
     ['App version', appVersion],
   ].filter(([, value]) => value != null);
   const techniques = Object.entries(isRecord(puzzle.techniques) ? puzzle.techniques : {}).filter(([, count]) => Number.isInteger(count) && count > 0);
-  const techniquesHTML = techniques.length ? `<h3>Techniques in the certified path</h3><ul class="techniques">${techniques.map(([name, count]) => `<li>${escapeHTML(name)} <span class="small-print">× ${escapeHTML(count)}</span></li>`).join('')}</ul>` : '';
-  const note = certificationLabel(puzzle) ? `<p lang="ru" class="certification-note">${MESSAGES.certificationNote}</p><p class="small-print">Rating is the Extreme Sudoku project's internal scale.</p>` : '';
+  const techniquesHTML = techniques.length ? `<h3>Techniques in the ${certified ? 'certified' : 'verified'} path</h3><ul class="techniques">${techniques.map(([name, count]) => `<li>${escapeHTML(name)} <span class="small-print">× ${escapeHTML(count)}</span></li>`).join('')}</ul>` : '';
+  const note = `${certified ? `<p lang="ru" class="certification-note">${MESSAGES.certificationNote}</p>` : '<p>Verified unique solution, logical solving and deterministic replay.</p>'}<p class="small-print">Rating is the Extreme Sudoku project's internal scale.</p>`;
   openSheet('Puzzle Details', `${note}<dl class="details">${rows.map(([key, value]) => `<div><dt>${escapeHTML(key)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('')}</dl>${techniquesHTML}`, event?.currentTarget);
 }
 
