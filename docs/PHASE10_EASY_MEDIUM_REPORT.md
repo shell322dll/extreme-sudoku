@@ -1,9 +1,8 @@
 # Phase 10 — Difficulty Expansion: Easy & Medium
 
-Обновлено: 2026-10-04 (Europe/Moscow). **Состояние: production merge выполнен, финальные проверки
-успешны, изменения готовы к публикации.** Пользователь явно одобрил merge, commit, push в существующий
-`origin/main`, Pages deployment и public smoke. Commit, push, Pages deployment и public smoke ещё не выполнены;
-завершение публичного релиза пока не заявляется.
+Обновлено: 2026-10-04 (Europe/Moscow). **Phase 10 завершена: production содержит 9 Easy, 9 Medium
+и все прежние 10 Extreme; финальные проверки, push, Pages deployment и public smoke успешны.**
+Production merge и публикация выполнены после явного подтверждения пользователя. Следующая фаза не начата.
 
 ## Production и неизменность Extreme
 
@@ -214,7 +213,7 @@ Production records и certification engine при исправлении тес�
 `d5ce2f329526d117a5bf1f7b20f62fc07241e34d1ee37da13515d5501b576046`.
 Актуальный локальный build: database `?v=3fa96923daea0a39`, application `?v=7282131a32219dcc`.
 Изменение database hash относительно rehearsal связано с новым `generatedAt` при реальном merge.
-Эти результаты относятся к локальному build; публичный Pages ещё не проверен.
+Это локальные build hashes; совпадение опубликованной базы подтверждено public smoke ниже.
 
 ## Frontend и документация
 
@@ -257,9 +256,33 @@ Backup: `data/research/phase9/backups/puzzles-20261003T151048Z-859e581c3f7c.json
 `reports/phase10/post-merge-content-qc.json` подтверждает exact selected IDs, равенство rehearsal records,
 28 unique IDs/puzzles/solutions и неизменность всех прежних Extreme blocks.
 
-После успешно завершённых запусковых проверок остаются commit нужных файлов → push `origin/main` → Pages workflow →
-public smoke (категории, New Game, Details, clean console). **Deployment и public smoke пока pending**;
-реальные commit/workflow/public результаты будут добавлены после выполнения.
+### GitHub Pages deployment
+
+Implementation commit [`aa0c7eec2f1abcebb6e2dd9b19ec01573eda3efc`](https://github.com/shell322dll/extreme-sudoku/commit/aa0c7eec2f1abcebb6e2dd9b19ec01573eda3efc)
+(`Phase 10: add verified Easy and Medium Sudoku`) успешно отправлен в существующий `origin/main`.
+[Workflow «Deploy to GitHub Pages», run 37176301757](https://github.com/shell322dll/extreme-sudoku/actions/runs/37176301757)
+для этого commit завершился **success**: **2026-10-04 07:11:57–07:12:58 Europe/Moscow**, 61 s.
+Локальная копия ответа GitHub: `reports/phase10/pages-release-run.json`.
+
+### Public smoke
+
+Публичная проверка выполнена **2026-10-04 07:13:44–07:14:02 Europe/Moscow**.
+[GitHub Pages URL](https://shell322dll.github.io/extreme-sudoku/) перенаправил на
+[http://extreme.onedesire.ru/](http://extreme.onedesire.ru/). Проверен фактически загруженный сайт:
+**4/4 PASS** — Chromium 153 и WebKit 26.6, каждый при **390×844** и **1440×900**.
+
+- Публичный JSON целиком, побайтно совпадает с локальным `dist`: **28 задач = 9 Easy + 9 Medium +
+  10 Extreme**, все 28 IDs совпадают.
+- Database URL содержит `?v=3fa96923daea0a39`; SHA-256 опубликованного JSON:
+  `3fa96923daea0a397c74685a1a207637fe25f70410c1e80bb7f532b4c1a6db65`.
+- Easy, Medium и Extreme доступны. Для каждой категории New Game выбирает другую задачу той же
+  сложности; повторное открытие chooser сохраняет выбранной текущую категорию.
+- Details показывают стандартную verification для Easy/Medium и certification для Extreme без ложных claims.
+- Прогресс разных задач сохраняется отдельно после переключений и reload.
+- Console errors, page errors, failed requests и HTTP errors: **0** во всех четырёх запусках.
+
+Локальная сводка: `reports/phase10/public-smoke/summary.json`; скриншоты лежат рядом и исключены из git.
+Эта финализация отчёта публикуется отдельным docs-only commit; приложение и production data при ней не меняются.
 
 ## Ограничения
 
@@ -268,4 +291,5 @@ pattern с перестановками, поэтому разные строк�
 Выбранная Medium партия не содержит triples: в registry они допустимы, но выбранные реальные уровни —
 2/3/3.2. Standard batch не реализует Extreme resume/reuse/bands options. Timeout существующего pipeline
 проверяется между solver calls и может превышаться внутри дорогого вызова. Browser WebKit emulation
-не заменяет физический iOS Safari. Публикация разрешена пользователем, но ещё не выполнена.
+не заменяет физический iOS Safari. Public smoke проверил фактический HTTP endpoint custom domain;
+доступность HTTPS custom domain в эту проверку не входила.
