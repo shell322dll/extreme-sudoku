@@ -1310,6 +1310,11 @@ Mixed validator: `generator.production.verification.validate_production_database
 `scripts/validate_production_database.py`. Он проверяет формат, уникальность, solution, ID, дубликаты и stats;
 для Easy/Medium/Hard/Expert заново выполняет threshold solve, Deep classification, независимый `validate_path` и replay,
 сравнивая все известные verification metadata/evidence. Standard запись должна иметь пустые клетки.
+Единственное межплатформенное допущение сравнения — верхнеуровневый агрегированный `rating`:
+два конечных неотрицательных `float` могут отличаться ровно на соседнее представимое число IEEE-754.
+Это учитывает последнее двоичное округление `log1p` в системной математической библиотеке.
+`requiredRating`, `techniqueCeiling`, `difficultyData.totalScore`, пороги и весь proof сравниваются строго;
+целые/булевы значения не приводятся к `float`, сохранённые записи не округляются и не переписываются.
 Extreme subset передаётся неизменному `generator.certification.io.validate_production_database`.
 Unknown top-level metadata допускаются, frontend игнорирует дополнительные поля; новые поля не становятся
 основанием для admission. В браузерной derived базе evidence отсутствует (см. §56), и Python validator

@@ -5,7 +5,9 @@ existing DifficultyAnalyzer. It is not a proof about every logical path.
 """
 from collections import Counter
 from dataclasses import asdict
+from itertools import islice
 import json
+from math import isfinite, nextafter
 
 from ..certification.io import (_canonical_json, validate_production_database as
                                 validate_certified_database)
@@ -19,25 +21,49 @@ from .archive import content_id
 STANDARD_DIFFICULTIES = ("Easy", "Medium", "Hard", "Expert")
 
 
-def _first_metadata_difference(actual, expected, path="$"):
-    """Explain a strict JSON mismatch without dumping complete logical proofs."""
+def _metadata_differences(actual, expected, path="$"):
+    """Yield leaf diagnostics; callers cap output rather than dumping proofs."""
     if _canonical_json(actual) == _canonical_json(expected):
-        return None
+        return
     if isinstance(actual, dict) and isinstance(expected, dict):
         if actual.keys() != expected.keys():
-            return f"{path}: saved keys {sorted(actual)}; fresh keys {sorted(expected)}"
+            yield f"{path}: saved keys {sorted(actual)}; fresh keys {sorted(expected)}"
+            return
         for key in expected:
-            difference = _first_metadata_difference(actual[key], expected[key], f"{path}.{key}")
-            if difference:
-                return difference
+            yield from _metadata_differences(actual[key], expected[key], f"{path}.{key}")
     elif isinstance(actual, list) and isinstance(expected, list):
         if len(actual) != len(expected):
-            return f"{path}: saved length {len(actual)}; fresh length {len(expected)}"
+            yield f"{path}: saved length {len(actual)}; fresh length {len(expected)}"
+            return
         for index, (saved, fresh) in enumerate(zip(actual, expected)):
-            difference = _first_metadata_difference(saved, fresh, f"{path}[{index}]")
-            if difference:
-                return difference
-    return f"{path}: saved {repr(actual)[:160]}; fresh {repr(expected)[:160]}"
+            yield from _metadata_differences(saved, fresh, f"{path}[{index}]")
+    else:
+        yield f"{path}: saved {repr(actual)[:160]}; fresh {repr(expected)[:160]}"
+
+
+def _first_metadata_difference(actual, expected, path="$"):
+    return next(_metadata_differences(actual, expected, path), None)
+
+
+def _standard_metadata_equal(actual, expected):
+    """Strict proof identity, allowing one adjacent float only for aggregate rating.
+
+    Windows/Linux libm log1p can change the final descriptive Deep score by one
+    representable float. This field is not the difficulty threshold or proof.
+    The fresh logical verification has already run; every other field, including
+    requiredRating, totalScore and the entire evidence, remains JSON-exact.
+    Stored data is never rounded, rewritten, or otherwise normalized in place.
+    """
+    if _canonical_json(actual) == _canonical_json(expected):
+        return True
+    saved_rating, fresh_rating = actual.get("rating"), expected.get("rating")
+    if (type(saved_rating) is not float or type(fresh_rating) is not float
+            or not isfinite(saved_rating) or not isfinite(fresh_rating)
+            or saved_rating < 0 or fresh_rating < 0
+            or nextafter(saved_rating, fresh_rating) != fresh_rating):
+        return False
+    adjusted = dict(actual, rating=fresh_rating)
+    return _canonical_json(adjusted) == _canonical_json(expected)
 
 
 def technique_ceiling(difficulty, config=None):
@@ -130,10 +156,10 @@ def validate_production_database(database):
             # Unknown future top-level fields remain compatible. Every field in
             # the standard verification contract, including proof, is checked.
             actual = {key: record.get(key) for key in expected}
-            if _canonical_json(actual) != _canonical_json(expected):
-                difference = _first_metadata_difference(actual, expected)
+            if not _standard_metadata_equal(actual, expected):
+                differences = "; ".join(islice(_metadata_differences(actual, expected), 5))
                 raise ExportValidationError(
-                    f"{record['id']}: metadata differs from fresh standard verification ({difference})")
+                    f"{record['id']}: metadata differs from fresh standard verification ({differences})")
         else:
             certified.append(record)
     subset = dict(database, puzzles=certified, stats=_stats(certified))

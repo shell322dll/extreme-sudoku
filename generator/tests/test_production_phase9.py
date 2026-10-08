@@ -34,7 +34,7 @@ from generator.production.merge import MergeError, merge_order, merge_production
 from generator.production.models import (FAILURE_REASON, GENERATOR_REASON, NOT_ATTEMPTED, Phase9Reason,
                                          reason_for_result, reason_for_status)
 from generator.production.suitability import (SuitabilityAssessment, assess_suitability, priority_key)
-from generator.production.verification import STANDARD_DIFFICULTIES, verify_standard
+from generator.production.verification import STANDARD_DIFFICULTIES, _standard_metadata_equal, verify_standard
 
 ROOT = Path(__file__).resolve().parents[2]
 # Frozen byte copy of the 1-record production DB at Phase 9 start (HEAD eb1b9b6).
@@ -695,7 +695,7 @@ class RealCertificationMergeTests(unittest.TestCase):
                     self.assertNotIn("certification", record)
                     expected = verify_standard(record["puzzle"], record["solution"], record["difficulty"],
                                                puzzle_id=record["id"])
-                    self.assertEqual({key: record[key] for key in expected}, expected)
+                    self.assertTrue(_standard_metadata_equal({key: record[key] for key in expected}, expected))
                 elif record["difficulty"] in ("Extreme", "Ultra Extreme"):
                     self.assertIn(record["certification"]["status"], ("CERTIFIED_EXTREME", "CERTIFIED_ULTRA_EXTREME"))
                     self.assertEqual(record["certification"]["config"], DEFAULT.to_dict())
