@@ -19,6 +19,27 @@ from .archive import content_id
 STANDARD_DIFFICULTIES = ("Easy", "Medium", "Hard", "Expert")
 
 
+def _first_metadata_difference(actual, expected, path="$"):
+    """Explain a strict JSON mismatch without dumping complete logical proofs."""
+    if _canonical_json(actual) == _canonical_json(expected):
+        return None
+    if isinstance(actual, dict) and isinstance(expected, dict):
+        if actual.keys() != expected.keys():
+            return f"{path}: saved keys {sorted(actual)}; fresh keys {sorted(expected)}"
+        for key in expected:
+            difference = _first_metadata_difference(actual[key], expected[key], f"{path}.{key}")
+            if difference:
+                return difference
+    elif isinstance(actual, list) and isinstance(expected, list):
+        if len(actual) != len(expected):
+            return f"{path}: saved length {len(actual)}; fresh length {len(expected)}"
+        for index, (saved, fresh) in enumerate(zip(actual, expected)):
+            difference = _first_metadata_difference(saved, fresh, f"{path}[{index}]")
+            if difference:
+                return difference
+    return f"{path}: saved {repr(actual)[:160]}; fresh {repr(expected)[:160]}"
+
+
 def technique_ceiling(difficulty, config=None):
     if difficulty not in STANDARD_DIFFICULTIES:
         raise ExportValidationError("Unknown standard difficulty")
@@ -110,7 +131,9 @@ def validate_production_database(database):
             # the standard verification contract, including proof, is checked.
             actual = {key: record.get(key) for key in expected}
             if _canonical_json(actual) != _canonical_json(expected):
-                raise ExportValidationError(f"{record['id']}: metadata differs from fresh standard verification")
+                difference = _first_metadata_difference(actual, expected)
+                raise ExportValidationError(
+                    f"{record['id']}: metadata differs from fresh standard verification ({difference})")
         else:
             certified.append(record)
     subset = dict(database, puzzles=certified, stats=_stats(certified))
