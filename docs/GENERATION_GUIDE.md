@@ -734,3 +734,28 @@ Standard run report остаётся неизменяемым источнико
 Далее review → commit → push → Pages workflow → public smoke (разделы 16–17).
 Дополнительно проверьте Easy → New Game → Easy, Medium → New Game → Medium, Extreme → New Game → Extreme,
 корректные Puzzle Details и отсутствие ошибок консоли. Генерация Extreme остаётся в разделах 3–19.
+
+## 21. Hard и Expert (Phase 11)
+
+Оба уровня используют существующий генератор и стандартную проверку версии 1, как Easy/Medium.
+Hard: `7 <= requiredRating < 12`, потолок применяемых техник 11. Expert: `requiredRating >= 12`,
+потолок текущего registry 55 и обязательная свежая Deep-классификация именно Expert.
+Expert не ограничивается рейтингом 29: сложный шаг сам по себе не выполняет остальные условия Extreme.
+Уникальность, независимая проверка логического proof и два детерминированных replay обязательны.
+Рейтинг, solver и Extreme certification не меняются; `VERIFIED` не означает minimax-сертификат.
+
+Пример подготовки десяти задач каждого уровня (каждый новый запуск требует новый `--run-dir`):
+
+```powershell
+python -m generator production-batch --difficulty Hard --seeds 11101,11102,11103 --per-seed-count 5 --target-new 10 --min-clues 22 --max-clues 30 --minimal --max-attempts 100000 --generation-seconds 600 --runtime-budget 1800 --run-dir data/research/phase11/hard
+python -m generator production-batch --difficulty Expert --seeds 11201,11202,11203 --per-seed-count 5 --target-new 10 --min-clues 22 --max-clues 30 --minimal --max-attempts 100000 --generation-seconds 600 --runtime-budget 1800 --run-dir data/research/phase11/expert
+python -m generator production-merge --from-run data/research/phase11/hard --from-run data/research/phase11/expert --max-new 20 --dry-run --report reports/phase11/merge-dry-run.json
+python -m generator production-merge --from-run data/research/phase11/hard --from-run data/research/phase11/expert --max-new 20 --backup-dir data/research/phase11/backups --report reports/phase11/merge.json
+python scripts/validate_production_database.py
+```
+
+Сначала проверьте `complete`, количество `selected` и результаты dry-run. Бюджет/число попыток не гарантируют
+квоту: при недостатке создайте следующую партию с новыми seeds, сохраняя критерии проверки. `--runtime-budget`
+проверяется между seeds; отдельная Deep-проверка не прерывается жёстко по времени. Не выдавайте partial run
+за завершённый выпуск. Existing production records и их IDs сохраняются; backup находится вне production.
+Публикация выполняется отдельным release workflow после review, тестов и проверки итоговой базы.

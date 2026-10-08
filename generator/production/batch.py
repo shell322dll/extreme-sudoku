@@ -25,6 +25,7 @@ from .diversity import DiversityIndex, mask_distance, symmetry_fingerprint
 from .models import (GENERATOR_REASON, NOT_ATTEMPTED, REPORT_KIND, Phase9Reason,
                      reason_for_result, rejection)
 from .report import compute_counters
+from .verification import STANDARD_DIFFICULTIES
 from .suitability import (CONCLUSIVE_SCOPE_LIMIT, EXTREME_FLOOR, assess_suitability,
                           features_from_generated, priority_key)
 
@@ -75,8 +76,8 @@ class BatchOptions:
             raise ValueError("min_per_band must be a nonnegative integer")
         if len(set(self.seeds)) != len(self.seeds):
             raise ValueError("seeds must be distinct")
-        if self.difficulty not in ("Easy", "Medium", "Extreme", "Ultra Extreme"):
-            raise ValueError("difficulty must be Easy, Medium, Extreme or Ultra Extreme")
+        if self.difficulty not in (*STANDARD_DIFFICULTIES, "Extreme", "Ultra Extreme"):
+            raise ValueError("difficulty must be Easy, Medium, Hard, Expert, Extreme or Ultra Extreme")
         for name in ("per_seed_count", "max_attempts", "target_new"):
             if type(getattr(self, name)) is not int or getattr(self, name) < 1:
                 raise ValueError(f"{name} must be a positive integer")
@@ -266,7 +267,7 @@ def _band_order(pool, options):
 
 def run_batch(options, *, certify=_certify_puzzle, log=None, clock=perf_counter):
     """Execute a standard verification or Extreme certification research batch."""
-    if options.difficulty in ("Easy", "Medium"):
+    if options.difficulty in STANDARD_DIFFICULTIES:
         from .standard_batch import run_standard_batch
         return run_standard_batch(options, log=log, clock=clock)
     options.validate()

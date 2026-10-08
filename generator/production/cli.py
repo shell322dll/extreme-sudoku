@@ -9,6 +9,7 @@ from ..certification.io import read_json
 from .archive import Archive, ArchiveLockedError, archive_lock, atomic_write_text, utc_now
 from .batch import BatchOptions, recompute_report, run_batch
 from .merge import MergeError, merge_order, merge_production
+from .verification import STANDARD_DIFFICULTIES
 
 
 def _seeds(values):
@@ -22,13 +23,13 @@ def _seeds(values):
 
 def batch_main(argv=None, *, run=run_batch):
     parser = argparse.ArgumentParser(prog="python -m generator production-batch",
-        description="Generate and verify Easy/Medium or certify Extreme candidates in research storage. "
+        description="Generate and verify Easy/Medium/Hard/Expert or certify Extreme candidates in research storage. "
                     "Never writes production data (use production-merge).")
     parser.add_argument("--seeds", nargs="+", action="extend", default=[],
                         help="Seeds, e.g. 9101,9102 or 9101 9102 (optional with --reuse-archive)")
     parser.add_argument("--per-seed-count", "--target-count", dest="per_seed_count", type=int, default=12,
                         help="Accepted puzzles requested from the generator per seed")
-    parser.add_argument("--difficulty", choices=("Easy", "Medium", "Extreme", "Ultra Extreme"), default="Extreme")
+    parser.add_argument("--difficulty", choices=(*STANDARD_DIFFICULTIES, "Extreme", "Ultra Extreme"), default="Extreme")
     parser.add_argument("--min-clues", type=int, default=22)
     parser.add_argument("--max-clues", type=int, default=30)
     parser.add_argument("--minimal", action=argparse.BooleanOptionalAction, default=True)

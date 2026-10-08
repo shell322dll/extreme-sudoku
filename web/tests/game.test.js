@@ -124,7 +124,7 @@ test('completion checking catches a wrong full board and off mode suppresses mis
   }
 });
 
-test('timer uses real time, explicit pause freezes it, restore adds the wall-clock time since the save', () => {
+test('active timer freezes on pause and restore never includes offline time', () => {
   let now = 100000;
   const game = new SudokuGame(puzzle, { now: () => now });
   now += 6500;
@@ -139,16 +139,20 @@ test('timer uses real time, explicit pause freezes it, restore adds the wall-clo
   const saved = game.snapshot();
   now += 60000;
   const restored = new SudokuGame(puzzle, { saved, now: () => now });
-  assert.equal(restored.elapsedSeconds(), 67);
+  assert.equal(restored.state.status, 'paused');
+  assert.equal(restored.elapsedSeconds(), 7);
   now += 1000;
-  assert.equal(restored.elapsedSeconds(), 68);
+  assert.equal(restored.elapsedSeconds(), 7);
+  restored.resume();
+  now += 1000;
+  assert.equal(restored.elapsedSeconds(), 8);
   restored.pause();
   const paused = new SudokuGame(puzzle, { saved: restored.snapshot(), now: () => now + 100000 });
   assert.equal(paused.state.status, 'paused');
-  assert.equal(paused.elapsedSeconds(), 68);
+  assert.equal(paused.elapsedSeconds(), 8);
 });
 
-test('correct completion freezes timer; undo reopens game; completed progress restores', () => {
+test('correct completion freezes timer and cannot be reopened or restarted', () => {
   let now = 10000;
   const game = new SudokuGame(puzzle, { now: () => now });
   now += 9000;
@@ -163,10 +167,11 @@ test('correct completion freezes timer; undo reopens game; completed progress re
   const restored = new SudokuGame(puzzle, { saved: game.snapshot(), now: () => now });
   assert.equal(restored.state.status, 'completed');
   assert.equal(restored.elapsedSeconds(), 9);
-  restored.undo();
-  assert.equal(restored.state.status, 'playing');
+  assert.equal(restored.undo(), false);
+  assert.equal(restored.restart(), false);
+  assert.equal(restored.state.status, 'completed');
   now += 1000;
-  assert.equal(restored.elapsedSeconds(), 10);
+  assert.equal(restored.elapsedSeconds(), 9);
 });
 
 test('restoration preserves notes, selection and history without allowing clue tampering', () => {
@@ -179,6 +184,7 @@ test('restoration preserves notes, selection and history without allowing clue t
   assert.equal(restored.state.selectedCell, empty[1]);
   assert.equal(restored.state.notesMode, true);
   assert.deepEqual(restored.state.notes[empty[1]], [3]);
+  restored.resume();
   restored.undo();
   assert.deepEqual(restored.state.notes[empty[1]], []);
   saved.values[given] = 0;

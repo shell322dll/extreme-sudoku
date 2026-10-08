@@ -10,7 +10,7 @@ Guarantees (each enforced in code and covered by tests):
    the default ``CertificationConfig()``; archive/probe statuses are only used to
    order candidates. Only CERTIFIED_EXTREME / CERTIFIED_ULTRA_EXTREME results
    that are production-eligible are admitted (``certification.io._record``).
-   Easy/Medium records instead undergo fresh standard threshold/proof/replay
+   Easy/Medium/Hard/Expert records instead undergo fresh standard threshold/proof/replay
    verification; they never receive an Extreme certification status.
 4. Duplicates (exact puzzle string, ID, same-solution / clue-mask / symmetry
    near-duplicates) are skipped. IDs use the project's content-hash scheme.

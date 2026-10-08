@@ -1254,13 +1254,13 @@ merge is running, delete the file by hand.
 
 | difficulty | обязательный результат |
 | --- | --- |
-| Easy, Medium | `verification.status: "VERIFIED"`, версия 1, полный воспроизводимый proof |
+| Easy, Medium, Hard, Expert | `verification.status: "VERIFIED"`, версия 1, полный воспроизводимый proof |
 | Extreme | прежний `certification.status: "CERTIFIED_EXTREME"` |
 | Ultra Extreme | прежний `certification.status: "CERTIFIED_ULTRA_EXTREME"` |
 
-Для Easy/Medium поле `certification` отсутствует. Статус `VERIFIED` не является Extreme/minimax certification.
+Для Easy/Medium/Hard/Expert поле `certification` отсутствует. Статус `VERIFIED` не является Extreme/minimax certification.
 Непроверенные research records, preliminary, inconclusive, invalid и ложная сложность не допускаются.
-Hard/Expert standard production admission в Phase 10 не реализован; пустых категорий frontend не показывает.
+Phase 11 расширяет стандартный допуск на Hard/Expert; пустых категорий frontend не показывает.
 
 Новые standard records содержат обычные `id/puzzle/solution/clues/difficulty/unique`, а также:
 
@@ -1297,14 +1297,18 @@ Hard/Expert standard production admission в Phase 10 не реализован;
 Stable ID — существующий `puzzle-<sha256(puzzle)[:20]>`.
 
 Источник classification — `DifficultyConfig.classification_thresholds` и registry, без изменений:
-Easy `0 <= requiredRating < 2`, Medium `2 <= requiredRating < 7`. Фактические потолки registry — 1.2 и 5.2.
+Easy `0 <= requiredRating < 2`, Medium `2 <= requiredRating < 7`, Hard `7 <= requiredRating < 12`.
+Фактические потолки registry — 1.2, 5.2 и 11 соответственно.
+Expert требует `requiredRating >= 12` и свежую Deep-классификацию именно Expert. Его потолок —
+максимальный поддерживаемый рейтинг registry (сейчас 55), а не искусственная граница 30:
+один сложный шаг без остальных условий Extreme может оставаться Expert. Полный proof и replay обязательны.
 `rating` у standard records — агрегированный `DifficultyAnalyzer.deep.rating`, не порог категории;
 `difficultyData.hardestRating` равен `verification.requiredRating`. Extreme `rating` остаётся прежним
 certified minimum maximum step rating: существующие значения не переписываются.
 
 Mixed validator: `generator.production.verification.validate_production_database`, вызываемый CLI-скриптом
 `scripts/validate_production_database.py`. Он проверяет формат, уникальность, solution, ID, дубликаты и stats;
-для Easy/Medium заново выполняет threshold solve, Deep classification, независимый `validate_path` и replay,
+для Easy/Medium/Hard/Expert заново выполняет threshold solve, Deep classification, независимый `validate_path` и replay,
 сравнивая все известные verification metadata/evidence. Standard запись должна иметь пустые клетки.
 Extreme subset передаётся неизменному `generator.certification.io.validate_production_database`.
 Unknown top-level metadata допускаются, frontend игнорирует дополнительные поля; новые поля не становятся

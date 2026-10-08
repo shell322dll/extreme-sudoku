@@ -16,13 +16,20 @@ from ..rating.difficulty import DifficultyAnalyzer
 from ..rating.profiles import solve_with_max_rating
 from .archive import content_id
 
-STANDARD_DIFFICULTIES = ("Easy", "Medium")
+STANDARD_DIFFICULTIES = ("Easy", "Medium", "Hard", "Expert")
 
 
 def technique_ceiling(difficulty, config=None):
+    if difficulty not in STANDARD_DIFFICULTIES:
+        raise ExportValidationError("Unknown standard difficulty")
     config = config or DifficultyConfig()
     thresholds = dict(config.classification_thresholds)
-    upper = thresholds["Medium" if difficulty == "Easy" else "Hard"]
+    # Expert is the final standard class, including high-rated paths which do
+    # not meet Extreme's additional gates. Fresh Deep classification below is
+    # authoritative; imposing a ceiling of 29 would redefine the existing class.
+    if difficulty == "Expert":
+        return max(entry.base_rating for entry in config.registry.entries)
+    upper = thresholds[STANDARD_DIFFICULTIES[STANDARD_DIFFICULTIES.index(difficulty) + 1]]
     return max(entry.base_rating for entry in config.registry.entries if entry.base_rating < upper)
 
 
@@ -33,7 +40,7 @@ def verify_standard(puzzle, solution, difficulty, *, puzzle_id=None):
     Exact solving is used only by validate_puzzle for uniqueness.
     """
     if difficulty not in STANDARD_DIFFICULTIES:
-        raise ExportValidationError("Standard verification supports only Easy and Medium")
+        raise ExportValidationError("Standard verification supports Easy, Medium, Hard and Expert")
     if not isinstance(puzzle, str):
         raise ExportValidationError("puzzle must be an ASCII digit string")
     identifier = content_id(puzzle)

@@ -16,10 +16,12 @@
   <main class="app">
     <header class="header">
       <h1><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Extreme <span class="brand-light">Sudoku</span></h1>
-      <button id="menu-button" class="icon-button" aria-label="Game menu" aria-haspopup="dialog" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button>
+      <div class="header-actions"><button id="home-button" class="text-button" hidden>My games</button><button id="menu-button" class="icon-button" aria-label="Game menu" aria-haspopup="dialog" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></div>
     </header>
     <section id="load-state" class="load-state" role="status"><span class="loading-dot"></span><p lang="ru">Загрузка…</p></section>
     <noscript><p class="load-state">Extreme Sudoku requires JavaScript.</p></noscript>
+    <p id="storage-warning" class="storage-warning" role="alert" hidden></p>
+    <section id="home" class="player-home" aria-label="Player profile and games" hidden></section>
     <section id="game" class="game" aria-label="Sudoku game" hidden>
       <div class="game-info">
         <div class="puzzle-meta"><button id="cert-badge" class="cert-badge" aria-haspopup="dialog"><span class="cert-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span id="cert-prefix">Certified&nbsp;</span><span id="difficulty" class="difficulty"></span></span></button><span class="meta-dot" aria-hidden="true">·</span><span id="clues"></span></div>

@@ -34,7 +34,7 @@ from generator.production.merge import MergeError, merge_order, merge_production
 from generator.production.models import (FAILURE_REASON, GENERATOR_REASON, NOT_ATTEMPTED, Phase9Reason,
                                          reason_for_result, reason_for_status)
 from generator.production.suitability import (SuitabilityAssessment, assess_suitability, priority_key)
-from generator.production.verification import verify_standard
+from generator.production.verification import STANDARD_DIFFICULTIES, verify_standard
 
 ROOT = Path(__file__).resolve().parents[2]
 # Frozen byte copy of the 1-record production DB at Phase 9 start (HEAD eb1b9b6).
@@ -691,7 +691,7 @@ class RealCertificationMergeTests(unittest.TestCase):
         self.assertEqual(len(records), len(live["puzzles"]))
         for record in live["puzzles"]:
             with self.subTest(puzzle_id=record["id"]):
-                if record["difficulty"] in ("Easy", "Medium"):
+                if record["difficulty"] in STANDARD_DIFFICULTIES:
                     self.assertNotIn("certification", record)
                     expected = verify_standard(record["puzzle"], record["solution"], record["difficulty"],
                                                puzzle_id=record["id"])

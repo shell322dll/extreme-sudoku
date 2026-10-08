@@ -1,0 +1,231 @@
+{
+  "validatedAt": "2026-10-08 Europe/Moscow",
+  "python": {
+    "tests": 489,
+    "passed": 489,
+    "seconds": 281.935
+  },
+  "frontend": {
+    "tests": 59,
+    "passed": 59
+  },
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6"
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0"
+    }
+  ],
+  "browserChecks": [
+    {
+      "browser": "chromium",
+      "test": "touch-keyboard-notes-undo-givens-rotation-reload-pause",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "github-pages-project-prefix",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "mandatory-local-profile-edit-reload-preparation-all-levels",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "all-production-levels-details-isolation-explicit-paused-resume",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "active-time-hidden-pause-new-only-exhaustion-explicit-continue",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "reveal-undo-restart-attempt-history-completion-idempotent-statistics-layout",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "exclusive-writer-wait-navigation-back-close-reread-takeover",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "incorrect-correct-full-board-all-three-error-modes",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "legacy-completion-migration-unknown-metadata-no-new-time-record",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "blocked-storage-missing-web-locks-corrupt-state-recovery",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "production-network-retry-empty-database-no-fallback",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "built-pages-project-prefix-profile-playable",
+      "status": "passed"
+    },
+    {
+      "browser": "chromium",
+      "test": "responsive-light-dark-28-layouts",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "touch-keyboard-notes-undo-givens-rotation-reload-pause",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "github-pages-project-prefix",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "mandatory-local-profile-edit-reload-preparation-all-levels",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "all-production-levels-details-isolation-explicit-paused-resume",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "active-time-hidden-pause-new-only-exhaustion-explicit-continue",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "reveal-undo-restart-attempt-history-completion-idempotent-statistics-layout",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "exclusive-writer-wait-navigation-back-close-reread-takeover",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "incorrect-correct-full-board-all-three-error-modes",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "legacy-completion-migration-unknown-metadata-no-new-time-record",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "blocked-storage-missing-web-locks-corrupt-state-recovery",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "production-network-retry-empty-database-no-fallback",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "built-pages-project-prefix-profile-playable",
+      "status": "passed"
+    },
+    {
+      "browser": "webkit",
+      "test": "responsive-light-dark-28-layouts",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "mandatory-local-profile-edit-reload-preparation-all-levels",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "all-production-levels-details-isolation-explicit-paused-resume",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "active-time-hidden-pause-new-only-exhaustion-explicit-continue",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "reveal-undo-restart-attempt-history-completion-idempotent-statistics-layout",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "exclusive-writer-wait-navigation-back-close-reread-takeover",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "incorrect-correct-full-board-all-three-error-modes",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "legacy-completion-migration-unknown-metadata-no-new-time-record",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "blocked-storage-missing-web-locks-corrupt-state-recovery",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "production-network-retry-empty-database-no-fallback",
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "test": "built-pages-project-prefix-profile-playable",
+      "status": "passed"
+    }
+  ],
+  "responsiveCases": 56,
+  "integrity": {
+    "userFilesChecked": 411,
+    "userFilesChanged": [],
+    "oldRecords": 28,
+    "preservedOldRecords": 28,
+    "productionTotal": 48,
+    "byDifficulty": {
+      "Easy": 9,
+      "Expert": 10,
+      "Extreme": 10,
+      "Hard": 10,
+      "Medium": 9
+    },
+    "uniqueIds": 48,
+    "productionSha256": "0eb52e596bbe2c5cab344ebf86e40590c7ef88ee4228e02dfb20bd0c94731274",
+    "fingerprintSourceChanges": []
+  },
+  "limitations": [
+    "No installed Chrome or Edge",
+    "WebKit on Windows is not physical Safari/iOS"
+  ],
+  "published": false
+}

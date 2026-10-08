@@ -80,7 +80,9 @@ export function isCertifiedPuzzle(puzzle) {
 export function isVerifiedStandardPuzzle(puzzle) {
   if (!isValidPuzzle(puzzle) || puzzle.clues === 81 || puzzle.certification != null || !isRecord(puzzle.verification)) return false;
   const v = puzzle.verification;
-  const band = { Easy: [0, 2, 1.2], Medium: [2, 7, 5.2] }[puzzle.difficulty];
+  // Expert has no category ceiling below Extreme: Python confirms its fresh
+  // classification, including Extreme's additional path requirements.
+  const band = { Easy: [0, 2, 1.2], Medium: [2, 7, 5.2], Hard: [7, 12, 11], Expert: [12, Infinity, 55] }[puzzle.difficulty];
   return Boolean(band) && v.status === 'VERIFIED' && v.version === 1 &&
     v.method === 'DETERMINISTIC_THRESHOLD_REPLAY' && v.difficulty === puzzle.difficulty &&
     Number.isFinite(v.requiredRating) && v.requiredRating >= band[0] && v.requiredRating < band[1] &&

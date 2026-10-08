@@ -1,4 +1,4 @@
-> **Superseded for data source and test counts by [Phase 8 report](../docs/PHASE8_RELEASE_0_1_REPORT.md).** Since Release 0.1 the app loads `data/production/puzzles.json`; the measurements below describe the Phase 7 demo-data build and layout engine.
+> **Historical measurements below.** Current profile/active-time changes are covered by `tests/player.test.js`, updated game/selection tests and the current browser regression suite. The full Node suite passed 59/59 on 2026-10-08, including the Pages build. Historical screenshots and numbers below are not fresh device validation of the profile UI.
 
 # Frontend validation
 

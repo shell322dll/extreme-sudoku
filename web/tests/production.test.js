@@ -116,15 +116,18 @@ test('version comes from package.json only (0.2.0)', async () => {
   }
 });
 
-test('timer is wall-clock: keeps running in the background, survives reload, never goes negative, pause freezes', () => {
+test('active timer pauses on leave, restores paused without offline time and never goes negative', () => {
   let now = 1000000;
   const game = new SudokuGame(real, { now: () => now });
   now += 5000;
   assert.equal(game.elapsedSeconds(), 5);
-  const saved = game.snapshot(); // e.g. saved when the page was hidden or unloaded
+  game.pause(); // app pauses on visibilitychange/pagehide before saving
+  const saved = game.snapshot();
   now += 600000; // browser backgrounded / closed for 10 minutes
-  assert.equal(game.elapsedSeconds(), 605, 'a live hidden page keeps counting');
-  assert.equal(new SudokuGame(real, { saved, now: () => now }).elapsedSeconds(), 605, 'reload adds the elapsed wall-clock time');
+  assert.equal(game.elapsedSeconds(), 5, 'a paused hidden page stays frozen');
+  const restored = new SudokuGame(real, { saved, now: () => now });
+  assert.equal(restored.state.status, 'paused');
+  assert.equal(restored.elapsedSeconds(), 5, 'reload excludes offline time');
   now -= 3600000; // system clock moved back an hour
   assert.equal(new SudokuGame(real, { saved, now: () => now }).elapsedSeconds(), 5, 'restore never subtracts');
   assert.ok(game.elapsedMilliseconds() >= 5000, 'a live game never goes below its accumulated time');

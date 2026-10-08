@@ -66,7 +66,7 @@ test('New Game never repeats the current puzzle while alternatives exist (any ra
     }
   }
   const two = nextPuzzle([A, B], { currentId: A.id, started: [A.id, B.id], random: () => 0.99 });
-  assert.equal(two.puzzle.id, B.id);
+  assert.equal(two, null);
 });
 
 test('random selection is injectable: same seed, same choice; different values reach different puzzles', () => {
@@ -81,20 +81,19 @@ test('random selection is injectable: same seed, same choice; different values r
   for (const bad of [NaN, -1, 1, 7, Infinity]) assert.ok(puzzles.includes(nextPuzzle(puzzles, { currentId: A.id, random: () => bad }).puzzle));
 });
 
-test('preference: unopened unsolved → in-progress unsolved → least recently solved replay', () => {
+test('only unopened puzzles qualify; neither unfinished nor solved puzzles are new', () => {
   // B is in progress, C and D were never opened: one of the unopened ones is chosen.
   for (const r of RANDOMS) assert.ok([C.id, D.id].includes(nextPuzzle(puzzles, { currentId: A.id, started: [A.id, B.id], random: () => r }).puzzle.id));
-  // Everything opened: an unsolved one (in progress) is resumed rather than a solved one replayed.
+  // Everything opened: explicit Continue is required; New Game is exhausted.
   const resume = nextPuzzle(puzzles, { currentId: A.id, started: ids(puzzles), solved: [C.id, D.id] });
-  assert.deepEqual([resume.puzzle.id, resume.replay], [B.id, false]);
-  // All others solved: replay the one solved longest ago (recent list is most-recent first), never the just-solved one.
+  assert.equal(resume, null);
   const replay = nextPuzzle(puzzles, { currentId: A.id, started: ids(puzzles), solved: [A.id, D.id, B.id, C.id] });
-  assert.deepEqual([replay.puzzle.id, replay.replay], [C.id, true]);
+  assert.equal(replay, null);
   const justSolved = nextPuzzle(puzzles, { currentId: D.id, solved: [D.id, A.id, B.id, C.id] });
-  assert.equal(justSolved.puzzle.id, C.id);
+  assert.equal(justSolved, null);
 });
 
-test('repeated New Game walks through every puzzle before repeating one', () => {
+test('repeated New Game walks through every puzzle then stops', () => {
   const started = [A.id];
   let current = A.id;
   const seen = [A.id];
@@ -104,12 +103,12 @@ test('repeated New Game walks through every puzzle before repeating one', () => 
     seen.push(puzzle.id); started.push(puzzle.id); current = puzzle.id;
   }
   assert.deepEqual([...seen].sort(), ids(puzzles).sort());
-  assert.notEqual(nextPuzzle(puzzles, { currentId: current, started }).puzzle.id, current);
+  assert.equal(nextPuzzle(puzzles, { currentId: current, started }), null);
 });
 
-test('single-puzzle database: the only puzzle is offered again as a replay; empty or invalid lists give nothing', () => {
-  assert.deepEqual(nextPuzzle([A], { currentId: A.id }), { puzzle: A, replay: true });
-  assert.deepEqual(nextPuzzle([A], { currentId: A.id, solved: [A.id] }), { puzzle: A, replay: true });
+test('single-puzzle database: a previously started puzzle is exhausted', () => {
+  assert.equal(nextPuzzle([A], { currentId: A.id }), null);
+  assert.equal(nextPuzzle([A], { currentId: A.id, solved: [A.id] }), null);
   assert.equal(nextPuzzle([], { currentId: A.id }), null);
   assert.equal(nextPuzzle(undefined), null);
   assert.equal(startupPuzzle([]), null);
@@ -121,7 +120,7 @@ test('invalid or uncertified entries are never selectable, even if passed in dir
   const noCert = { ...D, id: 'no-cert', certification: undefined };
   const pool = [A, prelim, broken, noCert, null, { id: 'junk' }];
   for (const r of RANDOMS) {
-    assert.deepEqual(nextPuzzle(pool, { currentId: A.id, random: () => r }), { puzzle: A, replay: true });
+    assert.equal(nextPuzzle(pool, { currentId: A.id, random: () => r }), null);
     assert.equal(startupPuzzle(pool, { random: () => r }).id, A.id);
   }
   assert.equal(nextPuzzle([prelim, broken], { currentId: null }), null);
@@ -169,7 +168,7 @@ test('completed state is isolated per puzzle ID and feeds the New Game choice', 
     const b = new SudokuGame(B);
     saveGame(b.snapshot());
     assert.equal(new SudokuGame(A, { saved: loadSave(A.id) }).state.status, 'completed');
-    assert.equal(new SudokuGame(B, { saved: loadSave(B.id) }).state.status, 'playing');
+    assert.equal(new SudokuGame(B, { saved: loadSave(B.id) }).state.status, 'paused');
     assert.deepEqual(loadRecent(), [A.id]);
     assert.ok(memory.has(STORAGE_KEYS.recent));
     // From B: A is solved, C/D unopened → never A, never B.

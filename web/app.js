@@ -1,7 +1,7 @@
 import { SudokuGame } from './lib/game.js';
 import { loadProductionPuzzles, certificationLabel, hardestStep, DIFFICULTIES } from './lib/data.js';
-import { loadSave, saveGame, activePuzzleId, reconcileStorage, loadSettings, saveSettings, loadRecent, rememberPuzzle, startedPuzzleIds } from './lib/storage.js';
-import { nextPuzzle, startupPuzzle } from './lib/selection.js';
+import { loadSave, saveGame, loadSettings, saveSettings, startedPuzzleIds, loadProfile, saveProfile, normalizeProfile, PREPARATIONS, migratePlayerData, savedGames, playerStatistics, restartSummary } from './lib/storage.js';
+import { nextPuzzle } from './lib/selection.js';
 
 const MESSAGES = Object.freeze({
   loadFailed: 'Не удалось загрузить базу Sudoku. Попробуйте обновить страницу.',
@@ -25,7 +25,11 @@ let completionShown = false;
 let appVersion = null;
 let persistTimer = 0;
 let reopenCompletion = false;
-const settings = loadSettings();
+let settings = loadSettings();
+let writer = false;
+let lockPending = false;
+let lockAbort;
+let releaseWriter;
 const systemTheme = matchMedia('(prefers-color-scheme: dark)');
 const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -47,14 +51,19 @@ applyTheme();
 systemTheme.addEventListener('change', applyTheme);
 
 function announce(message) { $('#announcement').textContent = message; }
+function storageFailure() {
+  storageAvailable = false;
+  $('#storage-warning').hidden = false;
+  $('#storage-warning').textContent = 'Progress could not be saved. Keep this tab open and allow site storage. New games and restarts are unavailable until saving works.';
+}
 function persist() {
   clearTimeout(persistTimer);
-  if (!game) return;
-  if (!saveGame(game.snapshot())) {
-    if (storageAvailable) announce('Device storage is unavailable. You can keep playing, but progress may not survive a reload.');
-    storageAvailable = false;
-  }
+  if (!writer || !game) return false;
+  storageAvailable = saveGame(game.snapshot());
+  if (!storageAvailable) storageFailure();
+  else $('#storage-warning').hidden = true;
   $('#save-status').textContent = storageAvailable ? 'Saved on this device' : 'Progress cannot be saved';
+  return storageAvailable;
 }
 // Selection taps only move the cursor: defer the (large) save so a tap stays instant. Flushed when hidden.
 function persistSoon() { clearTimeout(persistTimer); persistTimer = setTimeout(persist, 400); }
@@ -149,12 +158,11 @@ function render() {
 }
 
 function act(action) {
-  if (!game || !action()) return;
+  if (!writer || !game || !action()) return;
   render();
   persist();
   if (game.state.status === 'completed' && !completionShown) {
     completionShown = true;
-    rememberPuzzle(game.state.puzzle.id);
     announce('Puzzle solved!');
     showCompletion();
   }
@@ -164,7 +172,7 @@ function openSheet(title, content, opener) {
   if (!sheet.open) {
     const active = opener || document.activeElement;
     // Safari touch activation does not necessarily focus the pressed button.
-    sheetReturnFocus = active && active !== document.body && active !== document.documentElement ? active : cells[game.state.selectedCell];
+    sheetReturnFocus = active && active !== document.body && active !== document.documentElement ? active : game ? cells[game.state.selectedCell] : $('#home-button');
   }
   $('#sheet-title').textContent = title;
   sheetContent.innerHTML = content;
@@ -191,87 +199,153 @@ sheet.addEventListener('click', (event) => {
 });
 
 function showMenu(event) {
-  openSheet('Game', '<div class="menu-list"><button data-menu="new">New Game <span aria-hidden="true">↗</span></button><button data-menu="restart">Restart this puzzle</button><button data-menu="settings">Settings</button><button data-menu="details">Puzzle Details</button><button data-menu="help">How to play & keyboard</button></div>', event?.currentTarget);
-  sheetContent.querySelectorAll('[data-menu]').forEach((button) => button.addEventListener('click', () => ({ new: showNewGame, restart: showRestart, settings: showSettings, details: showDetails, help: showHelp })[button.dataset.menu]()));
+  openSheet('Game', `<div class="menu-list"><button data-menu="home">My games & profile</button><button data-menu="new">New Game <span aria-hidden="true">↗</span></button><button data-menu="stats">Statistics & history</button>${game ? `${game.state.status !== 'completed' ? '<button data-menu="restart">Restart this puzzle</button>' : ''}<button data-menu="settings">Settings</button><button data-menu="details">Puzzle Details</button>` : ''}<button data-menu="help">How to play & keyboard</button></div>`, event?.currentTarget);
+  sheetContent.querySelectorAll('[data-menu]').forEach((button) => button.addEventListener('click', () => ({ home: showHome, new: showNewGame, stats: showStatistics, restart: showRestart, settings: showSettings, details: showDetails, help: showHelp })[button.dataset.menu]()));
 }
 
-function solvedIds() { return new Set(loadRecent()); }
-// Never the current puzzle while another exists; unopened before in-progress; solved ones only as a replay.
-const pickPuzzle = (difficulty = null) => nextPuzzle(puzzles, { currentId: game?.state.puzzle.id ?? null, solved: loadRecent(), started: startedPuzzleIds(), difficulty });
+const pickPuzzle = (difficulty = null) => nextPuzzle(puzzles, { currentId: game?.state.puzzle.id ?? null, started: startedPuzzleIds(), difficulty });
 
-function startGame(puzzle, { fresh = false } = {}) {
-  const settings = game ? game.state.settings : loadSettings();
-  game = new SudokuGame(puzzle, { saved: fresh ? null : loadSave(puzzle.id), settings });
+function startGame(puzzle, { fresh = false, restartedAttempt = null } = {}) {
+  if (!writer || !loadProfile()) return false;
+  if (game) { game.pause(); if (!persist()) return false; }
+  const candidate = new SudokuGame(puzzle, { saved: fresh ? null : loadSave(puzzle.id), settings: loadSettings() });
+  if (restartedAttempt) candidate.state.restartedAttempt = restartSummary(restartedAttempt);
+  if (!fresh && !loadSave(puzzle.id)) return false;
+  if (document.hidden) candidate.pause();
+  if (!saveGame(candidate.snapshot())) {
+    storageFailure();
+    // A committed board is authoritative even if its secondary history write failed.
+    // Its embedded restart summary lets the next save/migration repair the history.
+    if (loadSave(puzzle.id)?.attemptId !== candidate.state.attemptId) return false;
+    candidate.pause();
+  }
+  game = candidate;
   hintedCell = -1;
   completionShown = game.state.status === 'completed';
+  $('#home').hidden = true;
+  $('#game').hidden = false;
+  $('#home-button').hidden = false;
   render();
-  persist();
+  closeSheet();
+  if (completionShown) showCompletion();
+  return true;
 }
 
 function showNewGame(event) {
-  const opener = event?.currentTarget;
-  if (puzzles.length <= 1) {
-    // One certified puzzle: say so plainly instead of silently reloading the same board.
-    openSheet('New Game', `<p lang="ru" id="all-played-message">${MESSAGES.allPlayed}</p><p lang="ru" class="small-print">Текущий прогресс по этой задаче будет сброшен.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Отмена</button><button id="replay-puzzle" class="primary">Решить ещё раз</button></div>`, opener);
-    $('#cancel-new').addEventListener('click', closeSheet);
-    $('#replay-puzzle').addEventListener('click', () => replay(game.state.puzzle));
-    return;
-  }
-  const solved = solvedIds();
-  const remaining = puzzles.filter((puzzle) => puzzle.id !== game.state.puzzle.id && !solved.has(puzzle.id));
+  if (!writer || !loadProfile()) return;
+  if (game) { game.pause(); render(); persist(); }
+  const seen = new Set(startedPuzzleIds());
+  const remaining = puzzles.filter(puzzle => !seen.has(puzzle.id));
   const offered = DIFFICULTIES.filter((difficulty) => puzzles.some((puzzle) => puzzle.difficulty === difficulty));
-  if (!remaining.length && offered.length === 1) {
-    openSheet('New Game', `<p lang="ru" id="all-played-message">${MESSAGES.allPlayed}</p><p lang="ru" class="small-print">Будет выбрана другая задача, решённая раньше остальных; её сохранённый прогресс будет сброшен.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Отмена</button><button id="replay-puzzle" class="primary">Решить ещё раз</button></div>`, opener);
-    $('#cancel-new').addEventListener('click', closeSheet);
-    $('#replay-puzzle').addEventListener('click', () => {
-      const choice = pickPuzzle(game.state.puzzle.difficulty);
-      if (choice) replay(choice.puzzle);
-    });
-    return;
-  }
   const counts = Object.fromEntries(DIFFICULTIES.map((difficulty) => [difficulty, remaining.filter((puzzle) => puzzle.difficulty === difficulty).length]));
-  let chosen = offered.includes(game.state.puzzle.difficulty) ? game.state.puzzle.difficulty : offered[0];
-  openSheet('New Game', `<p>Your progress on the current puzzle stays saved.</p><div class="difficulty-list">${offered.map((difficulty) => `<button class="difficulty-choice" data-difficulty="${escapeHTML(difficulty)}" aria-pressed="${difficulty === chosen}"><strong>${escapeHTML(difficulty)}</strong><span>${counts[difficulty] ? `${counts[difficulty]} available` : 'Replay available'}</span></button>`).join('')}</div><div class="dialog-actions"><button id="start-game" class="primary">Start puzzle</button></div>`, opener);
+  const recommended = PREPARATIONS[loadProfile().preparation];
+  let chosen = offered.includes(recommended) ? recommended : offered[0];
+  openSheet('New Game', `<p>Recommended for your preparation: <strong>${escapeHTML(recommended)}</strong>. You can choose any available level.</p><p class="small-print">Only puzzles you have never started appear here. Your unfinished games stay saved.</p><div class="difficulty-list">${offered.map((difficulty) => `<button class="difficulty-choice" data-difficulty="${escapeHTML(difficulty)}" aria-pressed="${difficulty === chosen}"><strong>${escapeHTML(difficulty)}</strong><span>${counts[difficulty]} new</span></button>`).join('')}</div><p id="exhausted-message" role="status"></p><div class="dialog-actions"><button id="continue-games" class="secondary">My unfinished games</button><button id="start-game" class="primary">Start puzzle</button></div>`, event?.currentTarget);
+  const refresh = () => {
+    $('#start-game').disabled = !counts[chosen];
+    $('#exhausted-message').textContent = counts[chosen] ? '' : 'No new puzzles at this level yet. Choose another level or continue an unfinished game.';
+  };
+  refresh();
+  $('#continue-games').addEventListener('click', showHome);
   sheetContent.querySelectorAll('[data-difficulty]').forEach((button) => button.addEventListener('click', () => {
     chosen = button.dataset.difficulty;
     sheetContent.querySelectorAll('[data-difficulty]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+    refresh();
   }));
   $('#start-game').addEventListener('click', () => {
     const choice = pickPuzzle(chosen);
     if (!choice) return;
-    const { puzzle } = choice;
-    if (choice.replay) {
-      openSheet('Replay puzzle?', `<p>All available ${escapeHTML(chosen)} puzzles have been played. This puzzle’s saved progress will be reset.</p><div class="dialog-actions"><button id="cancel-new" class="secondary">Cancel</button><button id="replay-puzzle" class="primary">Replay puzzle</button></div>`);
-      $('#cancel-new').addEventListener('click', closeSheet);
-      $('#replay-puzzle').addEventListener('click', () => replay(puzzle));
-      return;
+    if (startGame(choice.puzzle, { fresh: true })) {
+      cells[game.state.selectedCell].focus({ preventScroll: true });
+      announce(`New ${choice.puzzle.difficulty} puzzle. ${choice.puzzle.clues} clues.`);
     }
-    persist();
-    startGame(puzzle, { fresh: choice.replay });
-    closeSheet();
-    cells[game.state.selectedCell].focus({ preventScroll: true });
-    announce(`New ${puzzle.difficulty} puzzle. ${puzzle.clues} clues.`);
   });
-}
-
-function replay(puzzle) {
-  persist(); // keep the progress of the puzzle being left when the replay is a different one
-  startGame(puzzle, { fresh: true });
-  closeSheet();
-  cells[game.state.selectedCell].focus({ preventScroll: true });
-  announce('Puzzle restarted.');
 }
 
 function showRestart() {
-  openSheet('Start again?', '<p>Your entries, notes, time, and counts will be reset. You’ll keep the same puzzle.</p><div class="dialog-actions"><button id="cancel-restart" class="secondary">Keep playing</button><button id="confirm-restart" class="primary">Restart puzzle</button></div>');
+  if (!writer || !game || game.state.status === 'completed') return;
+  game.pause(); render(); persist();
+  openSheet('Start again?', '<p>This unfinished attempt will be archived. A new attempt of the same puzzle starts with empty entries, notes and time. The puzzle remains used and cannot appear as a new game.</p><div class="dialog-actions"><button id="cancel-restart" class="secondary">Keep playing</button><button id="confirm-restart" class="primary">Restart puzzle</button></div>');
   $('#cancel-restart').addEventListener('click', closeSheet);
   $('#confirm-restart').addEventListener('click', () => {
-    game.restart(); hintedCell = -1; completionShown = false;
-    render(); persist(); closeSheet(); announce('Puzzle restarted.');
+    if (!writer || !persist()) { storageFailure(); return; }
+    if (startGame(game.state.puzzle, { fresh: true, restartedAttempt: game.snapshot() })) announce('New attempt started.');
   });
 }
 
+function profileForm(profile = null) {
+  const labels = { beginner: 'Beginner', amateur: 'Amateur', experienced: 'Experienced', expert: 'Expert' };
+  return `<form id="profile-form" class="profile-form"><label for="player-name">Your name</label><input id="player-name" name="name" autocomplete="nickname" maxlength="64" required value="${escapeHTML(profile?.name ?? '')}" aria-describedby="profile-note"><label for="player-preparation">Sudoku preparation</label><select id="player-preparation" name="preparation" required><option value="">Choose your preparation</option>${Object.entries(labels).map(([value, label]) => `<option value="${value}" ${profile?.preparation === value ? 'selected' : ''}>${label} · recommended ${PREPARATIONS[value]}</option>`).join('')}</select><p id="profile-note" class="small-print">Use 1–32 characters for your name. Preparation suggests a starting level; every available level remains open.</p><p class="small-print">One profile, saved only in this browser. Clearing site data removes your profile, games and results. There is no account or sync between devices.</p><p id="profile-error" role="alert"></p><button id="save-profile" class="primary" type="submit">${profile ? 'Save profile' : 'Save and choose a puzzle'}</button></form>`;
+}
+
+function bindProfileForm() {
+  $('#profile-form').addEventListener('submit', event => {
+    event.preventDefault();
+    if (!writer) return;
+    const profile = normalizeProfile({ name: $('#player-name').value, preparation: $('#player-preparation').value });
+    if (!profile) { $('#profile-error').textContent = 'Enter a name of 1–32 characters and choose your preparation.'; return; }
+    if (!saveProfile(profile)) { $('#profile-error').textContent = 'Your profile could not be saved. Allow storage for this site and try again.'; return; }
+    showHome();
+  });
+}
+
+function showProfile() {
+  if (game) { game.pause(); render(); persist(); }
+  openSheet('Your profile', profileForm(loadProfile()));
+  bindProfileForm();
+  $('#player-name').focus();
+}
+
+function showHome() {
+  if (!writer) return;
+  reopenCompletion = false;
+  if (game) { game.pause(); render(); persist(); }
+  closeSheet();
+  $('#game').hidden = true;
+  $('#load-state').hidden = true;
+  $('#home').hidden = false;
+  $('#home-button').hidden = true;
+  const profile = loadProfile();
+  $('#menu-button').disabled = !profile;
+  if (!profile) {
+    $('#home').innerHTML = `<span class="eyebrow">YOUR PLACE TO THINK</span><h2>Welcome to Extreme Sudoku</h2><p>Create your local player profile before your first puzzle.</p>${profileForm()}`;
+    bindProfileForm();
+    return;
+  }
+  const saves = savedGames().filter(saved => saved.status !== 'completed');
+  const stats = playerStatistics();
+  $('#home').innerHTML = `<div class="home-heading"><div><span class="eyebrow">YOUR SUDOKU SPACE</span><h2>Hello, ${escapeHTML(profile.name)}</h2></div><button id="edit-profile" class="secondary">Edit profile</button></div><p class="small-print">${escapeHTML(profile.preparation)} · recommended ${PREPARATIONS[profile.preparation]}. Your progress stays in this browser.</p><div class="home-actions"><button id="home-new" class="primary">New Game</button><button id="home-stats" class="secondary">Statistics & history · ${stats.solved} solved</button></div><h3>Unfinished games</h3><p class="small-print">Opening a saved game keeps it paused until you press Resume.</p><div class="saved-list">${saves.length ? saves.map(saved => {
+    const puzzle = puzzles.find(item => item.id === saved.puzzleId);
+    return `<div class="saved-card"><div><strong>${escapeHTML(puzzle?.difficulty ?? saved.difficulty ?? 'Unavailable puzzle')}</strong><p>${escapeHTML(saved.puzzleId)}</p><span class="small-print">${timeString((saved.elapsedMs ?? 0) / 1000)}${saved.timingMode !== 'active-v1' ? ' · includes legacy time' : ' active time'}</span></div><button class="secondary" data-continue="${escapeHTML(saved.puzzleId)}" ${puzzle ? '' : 'disabled'}>${puzzle ? 'Continue' : 'Unavailable'}</button></div>`;
+  }).join('') : '<p>No unfinished games. Choose a new puzzle when you are ready.</p>'}</div>`;
+  $('#edit-profile').addEventListener('click', showProfile);
+  $('#home-new').addEventListener('click', showNewGame);
+  $('#home-stats').addEventListener('click', showStatistics);
+  $('#home').querySelectorAll('[data-continue]').forEach(button => button.addEventListener('click', () => {
+    const puzzle = puzzles.find(item => item.id === button.dataset.continue);
+    if (puzzle) startGame(puzzle);
+  }));
+}
+
+const modeLabel = mode => ({ immediate: 'Immediate checks', completion: 'Check when full', off: 'Checks off' })[mode] ?? 'Unknown checks';
+function showStatistics() {
+  if (game) { game.pause(); render(); persist(); }
+  const stats = playerStatistics();
+  const history = [...stats.history].sort((a, b) => (b.completedAt ?? 0) - (a.completedAt ?? 0));
+  const date = value => Number.isFinite(value) ? new Date(value).toLocaleString() : 'Date unknown';
+  const resultTime = value => Number.isFinite(value) ? timeString(value / 1000) : 'Unknown';
+  const recordRows = Object.values(stats.records).map(result => `<tr><td>${escapeHTML(result.difficulty)}<small>${result.hintsUsed === 0 ? 'No reveals' : 'With reveals'} · ${modeLabel(result.errorModesUsed[0])} · ${result.autoNotesUsed ? 'auto notes' : 'manual notes'}</small></td><td>${resultTime(result.elapsedMs)}</td></tr>`).join('');
+  const levels = DIFFICULTIES.map(difficulty => {
+    const completed = history.filter(result => result.status === 'completed' && result.difficulty === difficulty);
+    if (!completed.length) return '';
+    const active = completed.filter(result => result.timingMode === 'active-v1' && Number.isFinite(result.elapsedMs));
+    return `<tr><td>${escapeHTML(difficulty)}</td><td>${completed.length}</td><td>${active.length ? resultTime(active.reduce((sum, result) => sum + result.elapsedMs, 0) / active.length) : '—'}</td></tr>`;
+  }).join('');
+  openSheet('Statistics & history', `<div class="result-stats"><div><strong>${stats.solved}</strong><span>Unique puzzles solved</span></div><div><strong>${stats.noReveal}</strong><span>Completions without reveals</span></div><div><strong>${stats.inProgress}</strong><span>Unfinished</span></div></div><p class="small-print">${stats.completed} recorded completions. ${stats.legacyUnknown ? `${stats.legacyUnknown} older solved puzzle(s) have no detailed result. ` : ''}A reveal remains counted even after Undo.</p>${levels ? `<h3>By difficulty</h3><table class="history-table"><thead><tr><th>Level</th><th>Completed</th><th>Mean active time</th></tr></thead><tbody>${levels}</tbody></table>` : ''}<h3>Personal time records</h3><p class="small-print">Active time only. Records are separated by reveals, error-check mode and automatic notes. Mixed check modes and legacy timing are excluded. Mean times above include all assistance settings.</p>${recordRows ? `<table class="history-table"><thead><tr><th>Playing conditions</th><th>Best time</th></tr></thead><tbody>${recordRows}</tbody></table>` : '<p>No comparable active-time records yet.</p>'}<h3>Attempt history</h3><div class="history-list">${history.length ? history.map(result => `<article class="history-card"><strong>${escapeHTML(result.difficulty ?? 'Unknown level')} · ${result.status === 'completed' ? 'Solved' : 'Restarted'}</strong><p>${escapeHTML(result.puzzleId)}</p><p>${escapeHTML(date(result.completedAt))} · ${resultTime(result.elapsedMs)}${result.timingMode !== 'active-v1' ? ' (legacy / mixed time)' : ' active time'}</p><p class="small-print">Reveals: ${result.hintsUsed ?? 'unknown'} · Error counter: ${result.mistakes ?? 'unknown'}<br>${result.errorModesUsed.length ? result.errorModesUsed.map(modeLabel).join(' → ') : 'Earlier check modes unknown'} · Auto notes: ${result.autoNotesUsed == null ? 'unknown' : result.autoNotesUsed ? 'used' : 'off'}</p></article>`).join('') : '<p>Your completed attempts will appear here.</p>'}</div><p class="small-print">Error counters depend on check mode. Zero with checks off does not mean an error-free solution. All results are local to this browser.</p>`);
+}
+
 function updateSettings(patch) {
+  if (!writer) return;
   game.updateSettings(patch);
   if (!saveSettings(game.state.settings)) storageAvailable = false;
   render(); persist();
@@ -343,10 +417,11 @@ function showHint(event) {
 function showCompletion() {
   const { puzzle, mistakes, hintsUsed } = game.state;
   const label = certificationLabel(puzzle) ?? puzzle.difficulty;
-  openSheet('Solved!', `<div class="result-mark" aria-hidden="true">✓</div><p class="result-summary"><strong>${escapeHTML(label)}</strong><br>${puzzle.clues} clues</p><div class="result-stats"><div><strong>${timeString(game.elapsedSeconds())}</strong><span>Time</span></div><div><strong>${mistakes}</strong><span>Mistakes</span></div><div><strong>${hintsUsed}</strong><span>Hints</span></div></div><div class="dialog-actions"><button id="result-details" class="secondary">Puzzle Details</button><button id="result-new" class="primary">${puzzles.length > 1 ? 'New Game' : 'Available Puzzles'}</button></div><div class="dialog-actions"><button id="result-restart" class="secondary">Restart</button></div>`);
+  openSheet('Solved!', `<div class="result-mark" aria-hidden="true">✓</div><p class="result-summary"><strong>${escapeHTML(label)}</strong><br>${puzzle.clues} clues</p><div class="result-stats"><div><strong>${timeString(game.elapsedSeconds())}</strong><span>${game.state.timingMode === 'active-v1' ? 'Active time' : 'Legacy / mixed time'}</span></div><div><strong>${mistakes}</strong><span>Error counter</span></div><div><strong>${game.state.hintsKnown ? hintsUsed : '?'}</strong><span>Reveals</span></div></div><p class="small-print">${game.state.errorModesUsed.length ? game.state.errorModesUsed.map(modeLabel).join(' → ') : 'Earlier checks unknown'}. Error counts depend on the check mode.</p><div class="dialog-actions"><button id="result-details" class="secondary">Puzzle Details</button><button id="result-new" class="primary">New Game</button></div><div class="dialog-actions"><button id="result-stats" class="secondary">Statistics & history</button><button id="result-home" class="secondary">My games</button></div>`);
   $('#result-new').addEventListener('click', showNewGame);
   $('#result-details').addEventListener('click', (event) => { reopenCompletion = true; showDetails(event); });
-  $('#result-restart').addEventListener('click', showRestart);
+  $('#result-stats').addEventListener('click', showStatistics);
+  $('#result-home').addEventListener('click', showHome);
 }
 
 function showHelp() {
@@ -354,6 +429,7 @@ function showHelp() {
 }
 
 $('#menu-button').addEventListener('click', showMenu);
+$('#home-button').addEventListener('click', showHome);
 $('#desktop-new').addEventListener('click', showNewGame);
 $('#cert-badge').addEventListener('click', showDetails);
 $('#notes-button').addEventListener('click', () => { act(() => game.toggleNotes()); announce(game.state.notesMode ? 'Notes on' : 'Notes off'); });
@@ -363,7 +439,7 @@ $('#hint-button').addEventListener('click', showHint);
 $('#pause-button').addEventListener('click', () => act(() => game.state.status === 'paused' ? game.resume() : game.pause()));
 $('#resume-button').addEventListener('click', () => { act(() => game.resume()); cells[game.state.selectedCell].focus({ preventScroll: true }); });
 document.addEventListener('keydown', (event) => {
-  if (!game || sheet.open || game.state.status !== 'playing' || event.altKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+  if (!writer || !game || sheet.open || game.state.status !== 'playing' || event.altKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
   const key = event.key.toLowerCase();
   if ((event.ctrlKey || event.metaKey) && key === 'z' && !event.shiftKey) { event.preventDefault(); act(() => game.undo()); return; }
   if (event.ctrlKey || event.metaKey) return;
@@ -386,6 +462,9 @@ document.addEventListener('keydown', (event) => {
 
 function showLoadMessage(message, { retry = false } = {}) {
   $('#game').hidden = true;
+  $('#home').hidden = true;
+  $('#home-button').hidden = true;
+  $('#menu-button').disabled = true;
   $('#load-state').hidden = false;
   $('#load-state').innerHTML = `<p lang="ru" class="load-message">${message}</p>${retry ? '<button id="retry-loading" class="primary" lang="ru">Попробовать снова</button>' : ''}`;
   if (retry) $('#retry-loading').addEventListener('click', start);
@@ -403,25 +482,28 @@ async function loadAppVersion() {
 }
 
 async function start() {
+  if (!writer) return;
   $('#load-state').hidden = false;
   $('#load-state').innerHTML = '<span class="loading-dot"></span><p lang="ru">Загрузка…</p>';
   try {
     mark('json-start');
     [puzzles] = await Promise.all([loadProductionPuzzles(puzzleDatabaseUrl()), loadAppVersion()]);
+    if (!writer) return;
     mark('json-end');
     if (!puzzles.length) {
       showLoadMessage(MESSAGES.noPuzzles);
       return;
     }
-    reconcileStorage(puzzles.map((puzzle) => puzzle.id));
-    const active = puzzles.find((puzzle) => puzzle.id === activePuzzleId());
+    settings = loadSettings();
     game = undefined;
-    startGame(active || startupPuzzle(puzzles, { solved: loadRecent() }));
-    $('#load-state').hidden = true;
-    $('#game').hidden = false;
-    $('#menu-button').disabled = false;
+    if (!migratePlayerData(puzzles)) {
+      showLoadMessage('Не удалось сохранить данные. Разрешите хранилище для сайта и повторите попытку. Старые сохранения не удалены.', { retry: true });
+      return;
+    }
+    storageAvailable = true;
+    $('#storage-warning').hidden = true;
+    showHome();
     mark('first-render');
-    if (completionShown) showCompletion();
   } catch (error) {
     console.error('Puzzle database loading failed:', error);
     showLoadMessage(MESSAGES.loadFailed, { retry: true });
@@ -432,11 +514,43 @@ const updateTimer = () => { if (game) $('#timer').textContent = timeString(game.
 // Time comes from timestamps (see SudokuGame), so these ticks only repaint; throttled timers cannot skew it.
 setInterval(updateTimer, 1000);
 setInterval(persist, 10000);
-// The timer keeps running while the page is hidden (wall clock); these hooks only flush the save and repaint.
-function onVisibility() { persist(); updateTimer(); }
+function pauseForLeave() {
+  if (!writer || !game) return;
+  game.pause(); render(); persist();
+}
+function onVisibility() { if (document.hidden) pauseForLeave(); updateTimer(); }
 document.addEventListener('visibilitychange', onVisibility);
-window.addEventListener('pagehide', persist);
-window.addEventListener('pageshow', updateTimer);
+window.addEventListener('pagehide', () => {
+  pauseForLeave();
+  writer = false;
+  lockAbort?.abort();
+  releaseWriter?.();
+});
+window.addEventListener('pageshow', event => { if (event.persisted) acquireWriter(); updateTimer(); });
 // Long press on the board must not open the iOS callout / context menu.
 $('#board').addEventListener('contextmenu', (event) => event.preventDefault());
-start();
+async function acquireWriter() {
+  if (writer || lockPending) return;
+  if (!navigator.locks?.request) {
+    showLoadMessage('Для безопасного сохранения нужен современный браузер с Web Locks и защищённое соединение HTTPS. Обновите браузер или откройте HTTPS-адрес сайта.');
+    return;
+  }
+  lockPending = true;
+  lockAbort = new AbortController();
+  showLoadMessage('Ожидание доступа к профилю. Если игра открыта в другой вкладке, закройте её. Эта вкладка пока ничего не сохраняет.');
+  try {
+    await navigator.locks.request('extreme-sudoku.player.v1', { signal: lockAbort.signal }, async () => {
+      lockPending = false;
+      writer = true;
+      const held = new Promise(resolve => { releaseWriter = resolve; });
+      await start(); // Re-read all saved data only after acquiring ownership.
+      await held;
+      releaseWriter = undefined;
+    });
+  } catch (error) {
+    if (error.name !== 'AbortError') showLoadMessage('Не удалось получить безопасный доступ к профилю. Закройте другие вкладки игры и обновите страницу.');
+  } finally {
+    lockPending = false;
+  }
+}
+acquireWriter();

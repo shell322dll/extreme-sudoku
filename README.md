@@ -12,10 +12,12 @@ frontend и база опубликованных задач независим�
 `python -m generator production-batch` (генерация, рейтинг, сертификация → research archive) →
 `production-merge` (повторная сертификация и безопасное добавление в production) →
 `scripts/validate_production_database.py` → тесты → commit/push → GitHub Pages.
-Production-база `data/production/puzzles.json` принимает Easy/Medium со стандартной проверкой
+Production-база `data/production/puzzles.json` принимает Easy/Medium/Hard/Expert со стандартной проверкой
 `verification.status=VERIFIED` и Extreme/Ultra Extreme с прежними `CERTIFIED_*` сертификатами.
 Research archive не является production. Phase 10 сохраняет все существующие Extreme без изменений;
 состояние подготовки и публикации: [PHASE10_EASY_MEDIUM_REPORT](docs/PHASE10_EASY_MEDIUM_REPORT.md).
+Phase 11 добавляет по 10 Hard и Expert с сохранением исходных 28 записей:
+[PHASE11_HARD_EXPERT_REPORT](docs/PHASE11_HARD_EXPERT_REPORT.md).
 
 Пошаговая инструкция (команды, merge, backup, тесты, деплой, troubleshooting):
 **[docs/GENERATION_GUIDE.md](docs/GENERATION_GUIDE.md)**.

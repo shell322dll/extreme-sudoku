@@ -1,4 +1,4 @@
-"""Research-only Easy/Medium branch of the existing production-batch command."""
+"""Research-only standard difficulty branch of production-batch."""
 from itertools import combinations
 import json
 from pathlib import Path
