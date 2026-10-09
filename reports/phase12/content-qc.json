@@ -1,0 +1,519 @@
+{
+  "baselineGitHead": "c824f1c6513ab525a34af89dbde729aa63fccae3",
+  "baselineDatabaseSha256": "f25541c34e2c03e38ead28b2b57df0cd0e5156080b10226f71903e80b6918676",
+  "productionSha256": "31f6633fedb14f603e7385acd2234fa53978cccc8168b52170cb31474925d663",
+  "algorithmFingerprint": "3ccb7aa047be7ecb90b09da5e40e080e99727c85970e94463b5d697169cee805",
+  "certificationConfigFingerprint": "bdf36558d8bce796429d3cd1abf393b0eadb08d4739ed7c1076817a58feed4e1",
+  "oldRecordsUnchanged": 48,
+  "total": 58,
+  "counts": {
+    "Easy": 9,
+    "Expert": 10,
+    "Extreme": 20,
+    "Hard": 10,
+    "Medium": 9
+  },
+  "newCount": 10,
+  "newDifficulty": "Extreme",
+  "newStatus": "CERTIFIED_EXTREME",
+  "uniqueIds": 58,
+  "uniquePuzzles": 58,
+  "uniqueSolutions": 58,
+  "uniqueSymmetryFingerprints": 58,
+  "diversityIndexAllNewAccepted": true,
+  "backupSha256Verified": true,
+  "dryRun": {
+    "merged": 10,
+    "skipped": 0,
+    "written": false
+  },
+  "merge": {
+    "merged": 10,
+    "skipped": 0,
+    "written": true
+  },
+  "generation": {
+    "runId": "20261009T003955Z",
+    "command": [
+      "python",
+      "-m",
+      "generator",
+      "production-batch",
+      "--difficulty",
+      "Extreme",
+      "--seeds",
+      "120901,120902,120903,120904",
+      "--per-seed-count",
+      "12",
+      "--target-new",
+      "10",
+      "--min-clues",
+      "22",
+      "--max-clues",
+      "30",
+      "--minimal",
+      "--max-attempts",
+      "100000",
+      "--generation-seconds",
+      "600",
+      "--probe-seconds",
+      "15",
+      "--shortlist",
+      "24",
+      "--min-per-band",
+      "3",
+      "--runtime-budget",
+      "3600",
+      "--archive",
+      "data/research/phase12/candidates.json",
+      "--run-dir",
+      "data/research/phase12/run-01"
+    ],
+    "perSeed": [
+      {
+        "seed": 120901,
+        "generated": 153,
+        "unique": 151,
+        "rated": 151,
+        "deepRated": 40,
+        "reusedFromArchive": 0,
+        "extremeCandidates": 13,
+        "inBand30to35": 12,
+        "duplicatesInRun": 0,
+        "alreadyArchived": 0,
+        "eligible": 12,
+        "shortlisted": 5,
+        "probed": 2,
+        "probeCertified": 2,
+        "certificationAttempts": 2,
+        "certified": 2,
+        "inconclusive": 0,
+        "timeouts": 0,
+        "selected": 2,
+        "rejected": {
+          "NOT_SELECTED_TARGET_REACHED": 3,
+          "NOT_SHORTLISTED": 7,
+          "OUTSIDE_CLUE_RANGE": 2,
+          "OUT_OF_CONCLUSIVE_SCOPE": 1,
+          "TOO_EASY": 138
+        },
+        "rejectedByStage": {
+          "generation": 140,
+          "prefilter": 8,
+          "certification": 3
+        },
+        "generationYield": 0.013071895424836602,
+        "certificationYield": 1.0,
+        "fromCheckpoint": false,
+        "timedOut": false,
+        "complete": true,
+        "generationSeconds": 110.52
+      },
+      {
+        "seed": 120902,
+        "generated": 95,
+        "unique": 95,
+        "rated": 95,
+        "deepRated": 25,
+        "reusedFromArchive": 0,
+        "extremeCandidates": 14,
+        "inBand30to35": 12,
+        "duplicatesInRun": 0,
+        "alreadyArchived": 0,
+        "eligible": 12,
+        "shortlisted": 7,
+        "probed": 3,
+        "probeCertified": 3,
+        "certificationAttempts": 3,
+        "certified": 3,
+        "inconclusive": 0,
+        "timeouts": 0,
+        "selected": 3,
+        "rejected": {
+          "NOT_SELECTED_TARGET_REACHED": 4,
+          "NOT_SHORTLISTED": 5,
+          "OUT_OF_CONCLUSIVE_SCOPE": 2,
+          "TOO_EASY": 81
+        },
+        "rejectedByStage": {
+          "generation": 81,
+          "prefilter": 7,
+          "certification": 4
+        },
+        "generationYield": 0.031578947368421054,
+        "certificationYield": 1.0,
+        "fromCheckpoint": false,
+        "timedOut": false,
+        "complete": true,
+        "generationSeconds": 86.921
+      },
+      {
+        "seed": 120903,
+        "generated": 118,
+        "unique": 118,
+        "rated": 118,
+        "deepRated": 34,
+        "reusedFromArchive": 0,
+        "extremeCandidates": 14,
+        "inBand30to35": 11,
+        "duplicatesInRun": 0,
+        "alreadyArchived": 0,
+        "eligible": 11,
+        "shortlisted": 5,
+        "probed": 4,
+        "probeCertified": 3,
+        "certificationAttempts": 4,
+        "certified": 3,
+        "inconclusive": 1,
+        "timeouts": 1,
+        "selected": 3,
+        "rejected": {
+          "CERTIFICATION_TIMEOUT": 1,
+          "NOT_SELECTED_TARGET_REACHED": 1,
+          "NOT_SHORTLISTED": 6,
+          "OUT_OF_CONCLUSIVE_SCOPE": 3,
+          "TOO_EASY": 104
+        },
+        "rejectedByStage": {
+          "generation": 104,
+          "prefilter": 9,
+          "certification": 2
+        },
+        "generationYield": 0.025423728813559324,
+        "certificationYield": 0.75,
+        "fromCheckpoint": false,
+        "timedOut": false,
+        "complete": true,
+        "generationSeconds": 98.321
+      },
+      {
+        "seed": 120904,
+        "generated": 93,
+        "unique": 90,
+        "rated": 90,
+        "deepRated": 26,
+        "reusedFromArchive": 0,
+        "extremeCandidates": 14,
+        "inBand30to35": 12,
+        "duplicatesInRun": 0,
+        "alreadyArchived": 0,
+        "eligible": 12,
+        "shortlisted": 7,
+        "probed": 3,
+        "probeCertified": 2,
+        "certificationAttempts": 3,
+        "certified": 2,
+        "inconclusive": 1,
+        "timeouts": 1,
+        "selected": 2,
+        "rejected": {
+          "CERTIFICATION_TIMEOUT": 1,
+          "NOT_SELECTED_TARGET_REACHED": 4,
+          "NOT_SHORTLISTED": 5,
+          "OUTSIDE_CLUE_RANGE": 3,
+          "OUT_OF_CONCLUSIVE_SCOPE": 2,
+          "TOO_EASY": 76
+        },
+        "rejectedByStage": {
+          "generation": 79,
+          "prefilter": 7,
+          "certification": 5
+        },
+        "generationYield": 0.021505376344086023,
+        "certificationYield": 0.6666666666666666,
+        "fromCheckpoint": false,
+        "timedOut": false,
+        "complete": true,
+        "generationSeconds": 73.089
+      }
+    ],
+    "total": {
+      "generated": 459,
+      "unique": 454,
+      "rated": 454,
+      "deepRated": 125,
+      "reusedFromArchive": 0,
+      "extremeCandidates": 55,
+      "inBand30to35": 47,
+      "duplicatesInRun": 0,
+      "alreadyArchived": 0,
+      "eligible": 47,
+      "shortlisted": 24,
+      "probed": 12,
+      "probeCertified": 10,
+      "certificationAttempts": 12,
+      "certified": 10,
+      "inconclusive": 2,
+      "timeouts": 2,
+      "selected": 10,
+      "rejected": {
+        "CERTIFICATION_TIMEOUT": 2,
+        "NOT_SELECTED_TARGET_REACHED": 12,
+        "NOT_SHORTLISTED": 23,
+        "OUTSIDE_CLUE_RANGE": 5,
+        "OUT_OF_CONCLUSIVE_SCOPE": 8,
+        "TOO_EASY": 399
+      },
+      "rejectedByStage": {
+        "generation": 404,
+        "prefilter": 31,
+        "certification": 14
+      },
+      "generationYield": 0.02178649237472767,
+      "certificationYield": 0.8333333333333334,
+      "runtimeSeconds": {
+        "archive": 0.3,
+        "certification": 13.342,
+        "generation": 368.938,
+        "prefilter": 0.03,
+        "probe": 43.429,
+        "total": 426.168
+      }
+    },
+    "diversity": {
+      "selectedSameSolutionPairs": 0,
+      "minSameSolutionMaskDistance": null,
+      "selectedByRating": {
+        "30.0": 9,
+        "35.0": 1
+      }
+    },
+    "freshGenerationOnly": true
+  },
+  "mergeCommand": [
+    "python",
+    "-m",
+    "generator",
+    "production-merge",
+    "--from-run",
+    "data/research/phase12/run-01",
+    "--max-new",
+    "10",
+    "--backup-dir",
+    "data/research/phase12/backups",
+    "--report",
+    "reports/phase12/merge.json"
+  ],
+  "newRecords": [
+    {
+      "id": "puzzle-178dda6a7a271cc89d94",
+      "clues": 26,
+      "source": {
+        "kind": "generate",
+        "seed": 120901,
+        "attemptSeed": 4156455336372915646,
+        "attempt": 32,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 6,
+      "advancedSteps": 8,
+      "certificationSeconds": 0.813,
+      "canonicalProductionSha256": "db72fef9b13b18b006dfda831bd7f3d515b58d4a24f0f3156dff3ba023a6d7b6"
+    },
+    {
+      "id": "puzzle-524d16c2bf8075ff51c8",
+      "clues": 25,
+      "source": {
+        "kind": "generate",
+        "seed": 120901,
+        "attemptSeed": 10427265902753531068,
+        "attempt": 8,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 6,
+      "advancedSteps": 12,
+      "certificationSeconds": 0.878,
+      "canonicalProductionSha256": "763de6495ac8b0fcf09cd68fb7573d430fe02ddcd8c3bbfbe39d9f9a39e4c022"
+    },
+    {
+      "id": "puzzle-5beac1e2be948e07ba0e",
+      "clues": 22,
+      "source": {
+        "kind": "generate",
+        "seed": 120903,
+        "attemptSeed": 18243096420724918725,
+        "attempt": 98,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 10,
+      "advancedSteps": 23,
+      "certificationSeconds": 2.062,
+      "canonicalProductionSha256": "9c2ae24aa18939ef3408df3425bcaa5271c9ba5341b9605815859c244ea53ec5"
+    },
+    {
+      "id": "puzzle-5cd814e24669234cc64f",
+      "clues": 24,
+      "source": {
+        "kind": "generate",
+        "seed": 120902,
+        "attemptSeed": 6998185081250828801,
+        "attempt": 84,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 7,
+      "advancedSteps": 15,
+      "certificationSeconds": 1.131,
+      "canonicalProductionSha256": "f015179a4274ae2becdef5fdac6dc421d96071a328d917e8495506970bd835c6"
+    },
+    {
+      "id": "puzzle-71baaef268ddb2a3f064",
+      "clues": 25,
+      "source": {
+        "kind": "generate",
+        "seed": 120904,
+        "attemptSeed": 11512058182373029948,
+        "attempt": 29,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 35.0,
+      "certifiedRequiredRating": 35.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 10,
+      "advancedSteps": 19,
+      "certificationSeconds": 1.582,
+      "canonicalProductionSha256": "4af3ac45892c2084847ee8fe31bae57c4913b76bd34d5553d140f4d8ae732f8a"
+    },
+    {
+      "id": "puzzle-815dbb405ed14ecaab8f",
+      "clues": 25,
+      "source": {
+        "kind": "generate",
+        "seed": 120902,
+        "attemptSeed": 15061524908974696947,
+        "attempt": 86,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 6,
+      "advancedSteps": 7,
+      "certificationSeconds": 0.839,
+      "canonicalProductionSha256": "b91729d07217d71a5e436e09f77bbf0c600df9a94154cee8ad8b57a1658e7384"
+    },
+    {
+      "id": "puzzle-820afd8d58b16becdb48",
+      "clues": 23,
+      "source": {
+        "kind": "generate",
+        "seed": 120903,
+        "attemptSeed": 11085194101415835244,
+        "attempt": 86,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 6,
+      "advancedSteps": 16,
+      "certificationSeconds": 1.739,
+      "canonicalProductionSha256": "4279f9e235536d227a198afca39c0b4638a4c1852db46c9004a7745ee7179f18"
+    },
+    {
+      "id": "puzzle-9a6b8032f50995f11a69",
+      "clues": 27,
+      "source": {
+        "kind": "generate",
+        "seed": 120903,
+        "attemptSeed": 4298497331676322172,
+        "attempt": 38,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 6,
+      "advancedSteps": 13,
+      "certificationSeconds": 1.112,
+      "canonicalProductionSha256": "ce33598ded2390181a3e1b40dbde3f1e4289f771818f591142201f8be3df55a5"
+    },
+    {
+      "id": "puzzle-a1a131614d6198c412fa",
+      "clues": 25,
+      "source": {
+        "kind": "generate",
+        "seed": 120904,
+        "attemptSeed": 4226178911586453005,
+        "attempt": 37,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 5,
+      "advancedSteps": 15,
+      "certificationSeconds": 1.33,
+      "canonicalProductionSha256": "c32fedc7b6fcb0555c4a93e4b6445ba61eb2f44ee7ca243cfa95c749230a0416"
+    },
+    {
+      "id": "puzzle-c8f361de263cc6a7eb88",
+      "clues": 25,
+      "source": {
+        "kind": "generate",
+        "seed": 120902,
+        "attemptSeed": 8349586631017025448,
+        "attempt": 2,
+        "runId": "20261009T003955Z",
+        "onTarget": true
+      },
+      "preliminaryRequiredRating": 30.0,
+      "certifiedRequiredRating": 30.0,
+      "status": "CERTIFIED_EXTREME",
+      "negativeProofKind": "STUCK_STATE_SUPERSET_LEMMA",
+      "certifiedBottlenecks": 10,
+      "advancedSteps": 21,
+      "certificationSeconds": 1.769,
+      "canonicalProductionSha256": "84a74b767839e9fdab2ff38df808e1935ad4b7e8ea559706a0fddce908960168"
+    }
+  ],
+  "independentReleaseQA": {
+    "strictValidator": {
+      "passed": true,
+      "puzzleCount": 58,
+      "elapsedSeconds": 62.7
+    },
+    "nodeTests": {
+      "passed": 59,
+      "failed": 0
+    },
+    "buildPuzzleCount": 58,
+    "localSmoke": {
+      "newExtremeId": "puzzle-815dbb405ed14ecaab8f",
+      "saveReload": true,
+      "writerLock": true,
+      "javascriptErrors": 0
+    },
+    "oldRecordsPreserved": 48,
+    "preExistingUntrackedFilesUnchanged": true
+  }
+}
