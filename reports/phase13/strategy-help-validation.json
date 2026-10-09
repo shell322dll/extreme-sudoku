@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-09",
+  "status": "passed",
+  "baselineCommit": "aa364b9fd40466b5b3b7f800c6c31a32afd030a9",
+  "scope": "Nine illustrated Russian educational strategies, 27 original step diagrams",
+  "node": { "passed": 77, "failed": 0, "deductionTests": 14, "rendererTests": 4 },
+  "build": { "status": "passed", "puzzles": 58, "appVersionHash": "7a1a50634a6389e2", "databaseVersionHash": "06dbd2a5094c5bb2" },
+  "chromiumMatrix": { "version": "153.0.8010.12", "widths": [320, 390, 1280], "themes": ["light", "dark"], "layoutCases": 174, "status": "passed" },
+  "focusedBrowsers": [
+    { "engine": "chromium", "version": "153.0.8010.12", "width": 320, "theme": "light", "status": "passed" },
+    { "engine": "chromium", "version": "153.0.8010.12", "width": 390, "theme": "dark", "status": "passed" },
+    { "engine": "webkit", "version": "26.6", "width": 320, "theme": "dark", "status": "passed" },
+    { "engine": "firefox", "version": "155.0", "width": 390, "theme": "light", "status": "passed" }
+  ],
+  "landscape": { "engine": "chromium", "viewport": [844, 390], "theme": "dark", "status": "passed" },
+  "reusableHarness": { "path": "web/tests/browser_strategy_help.py", "adaptationSmoke": "Chromium 390px dark, 29 layout checks passed" },
+  "behavior": ["Help before profile creation", "Nine lessons and all steps", "Keyboard entry and Escape focus restoration", "Internal diagram zoom and pan", "Back navigation", "Game remains paused on return", "Values, notes, hints, attempts and statistics unchanged"],
+  "javascriptErrors": 0,
+  "externalAssetRequests": 0,
+  "originalLocalFilesUnchanged": 340,
+  "productionBytesUnchangedSha256": "4bf19f3506ee39f897d33da52bcd5633df27dcfe3e8bddac3dd88793d0b5f52b",
+  "algorithmFingerprintUnchanged": "3ccb7aa047be7ecb90b09da5e40e080e99727c85970e94463b5d697169cee805",
+  "limitations": ["Managed WebKit is not physical Safari", "Actual installed Chrome and Edge were unavailable", "Large screenshots and tool packages remain local"],
+  "publication": "Deployment result is recorded separately after the release gate"
+}

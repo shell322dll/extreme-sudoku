@@ -20,7 +20,7 @@ Run `node ../scripts/build_pages.mjs` (from the project root: `node scripts/buil
 
 ## Layout and controls
 
-- Phones: compact title and information, near-full-width board, 5 + 4 number pad, permanently visible Undo / Erase / Notes / Hint. Secondary actions live in the menu.
+- Phones: compact title and information, near-full-width board, 5 + 4 number pad, permanently visible Undo / Erase / Notes / «Открыть цифру», with «Помощь» above the number pad. Secondary actions live in the menu.
 - Short landscape: board limited by the safe viewport height; information and controls sit to its right.
 - Tablet portrait: a 600 px board above a single-row number pad and actions.
 - Tablet landscape and desktop: a board up to 600 px beside the control panel.
@@ -36,12 +36,22 @@ Statistics show unique solved puzzles, completed attempts without reveals, unfin
 
 Hints explicitly confirm revealing one correct cell. These are basic reveals, not logical technique deductions. The certification badge opens Puzzle Details (ID, certification, clues, project rating, hardest recorded step, bottlenecks, techniques, versions). Generator, Human Solver, and the data contract are independent and unchanged.
 
+## Illustrated strategy help
+
+The Russian «Помощь» button is available during play, while paused, and on the home screen before or after profile setup. The menu also offers the library and a separate keyboard-controls page. Opening either help page pauses active play; closing it requires explicit Resume. Studying does not change values, notes, undo history, mistakes, reveal counts or results. The existing reveal action is labelled «Открыть цифру» to distinguish it from learning.
+
+Rules and candidate notation introduce nine lessons, ordered from basic deductions to advanced patterns: Full House, Naked Single, Hidden Single, Pointing, Claiming, Naked Pair, Hidden Pair, X-Wing and XY-Wing. Each lesson has three navigable steps, when to apply it, why it works and a common mistake. Original SVG examples highlight cells and groups, draw arrows, cross out eliminated candidates and circle placements. These are fixed educational examples, not analysis of the current puzzle. Partial diagrams label omitted cells; digit-only views explicitly hide other candidates.
+
+The library has Russian language metadata, text descriptions for every diagram, keyboard navigation, Escape dismissal and focus restoration. Schemes fit the dialog and can be enlarged within their own scroll area. Light and dark themes use the existing palette. No external images, runtime dependencies or new persistence keys are required; optional source links open separately. Existing application text outside this feature is not fully localized.
+
 ## Files
 
 - `index.html`, `styles.css`, `app.js`: accessible page, responsive styles, DOM rendering and interaction.
 - `lib/game.js`: game state and operations.
 - `lib/data.js`: data loading and validation.
 - `lib/storage.js`: persistence.
+- `lib/strategy-content.js`: standalone Russian lessons and illustrative snapshots.
+- `lib/strategy-help.js`: accessible SVG rendering and library navigation, without game or storage dependencies.
 - `tests/` and `VALIDATION.md`: automated checks and browser verification, when present.
 
 The viewport matrix and measured board / cell / note sizes are recorded in `VALIDATION.md`. Desktop WebKit emulation checks layout and engine behavior; physical iOS Safari testing remains a separate device check.

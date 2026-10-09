@@ -1,4 +1,8 @@
-> **Historical measurements below.** Current profile/active-time changes are covered by `tests/player.test.js`, updated game/selection tests and the current browser regression suite. The full Node suite passed 59/59 on 2026-10-08, including the Pages build. Historical screenshots and numbers below are not fresh device validation of the profile UI.
+> **Current strategy-help verification (2026-10-09).** All 77 Node tests passed, including 14 independent checks of the lesson deductions and four renderer tests. The Pages build includes all 58 unchanged puzzles and the new modules. Chromium passed 174 lesson/layout checks across 320, 390 and 1280 pixels in both themes. Focused Chromium, Firefox 155 and WebKit 26.6 checks passed for SVG, zoom, keyboard focus, pre-profile access and returning to a paused game; 844 × 390 landscape also passed. Reading help preserves entries, notes, reveal counts and statistics. No external assets or JavaScript errors were observed. Physical Safari, Chrome and Edge were not available; managed engines were tested.
+>
+> Reproduce after `node scripts/build_pages.mjs` with `python web/tests/browser_strategy_help.py --engine chromium --matrix`. The optional Playwright Python package and corresponding browser are required. Use `--engine webkit` or `--engine firefox` for a focused run, `--base-url` for an existing site and `--artifacts` to choose the report directory. [Compact strategy-help report](../reports/phase13/strategy-help-validation.json).
+>
+> **Historical measurements below.** Earlier profile/active-time changes are covered by `tests/player.test.js`, updated game/selection tests and the broader browser regression suite. Historical screenshots and numbers below are not fresh validation of this strategy-help release.
 
 # Frontend validation
 

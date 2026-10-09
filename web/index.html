@@ -33,13 +33,13 @@
       </div>
       <aside class="controls" aria-label="Game controls">
         <div class="panel-heading"><span class="eyebrow">A MOMENT TO FOCUS</span><h2>One cell at a time.</h2><p>Find your rhythm. Follow the logic.</p></div>
-        <div class="input-status"><span id="input-mode">Enter a number</span><span id="selection-label">r1 · c1</span></div>
+        <div class="input-status"><span id="input-mode">Enter a number</span><button id="strategy-help-button" class="study-button" lang="ru" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v15M3 4h5a4 4 0 0 1 4 2 4 4 0 0 1 4-2h5v15h-5a5 5 0 0 0-4 1 5 5 0 0 0-4-1H3V4Z"/></svg>Помощь</button><span id="selection-label">r1 · c1</span></div>
         <div id="number-pad" class="number-pad" role="group" aria-label="Number pad"></div>
         <div class="actions" role="group" aria-label="Puzzle actions">
           <button id="undo-button" class="action-button" title="Undo (Ctrl or ⌘ Z)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14" transform="translate(0 -2)"/></svg><span>Undo</span></button>
           <button id="erase-button" class="action-button" title="Erase (Backspace)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 3 7 7-10 11H7l-5-5L14 3Zm-8 9 8 8M11 21h11"/></svg><span>Erase</span></button>
           <button id="notes-button" class="action-button" aria-pressed="false" title="Toggle notes (N)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 3 5 5L9 20l-6 1 1-6L16 3ZM13 6l5 5"/></svg><span id="notes-label">Notes</span></button>
-          <button id="hint-button" class="action-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7H8Zm0 3h8m-6 3h4"/></svg><span>Hint</span></button>
+          <button id="hint-button" class="action-button" lang="ru" aria-label="Открыть цифру — подсказка для текущей партии"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7H8Zm0 3h8m-6 3h4"/></svg><span>Открыть цифру</span></button>
         </div>
         <div class="game-foot"><span id="mistakes">Mistakes 0</span><span id="save-status">Saved on this device</span></div>
         <button id="desktop-new" class="secondary desktop-new">New Game <span aria-hidden="true">↗</span></button>

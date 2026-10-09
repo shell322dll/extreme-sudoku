@@ -2,6 +2,7 @@ import { SudokuGame } from './lib/game.js';
 import { loadProductionPuzzles, certificationLabel, hardestStep, DIFFICULTIES } from './lib/data.js';
 import { loadSave, saveGame, loadSettings, saveSettings, startedPuzzleIds, loadProfile, saveProfile, normalizeProfile, PREPARATIONS, migratePlayerData, savedGames, playerStatistics, restartSummary } from './lib/storage.js';
 import { nextPuzzle } from './lib/selection.js';
+import { openStrategyLibrary } from './lib/strategy-help.js';
 
 const MESSAGES = Object.freeze({
   loadFailed: 'Не удалось загрузить базу Sudoku. Попробуйте обновить страницу.',
@@ -168,13 +169,16 @@ function act(action) {
   }
 }
 
-function openSheet(title, content, opener) {
+function openSheet(title, content, opener, { strategy = false } = {}) {
   if (!sheet.open) {
     const active = opener || document.activeElement;
     // Safari touch activation does not necessarily focus the pressed button.
     sheetReturnFocus = active && active !== document.body && active !== document.documentElement ? active : game ? cells[game.state.selectedCell] : $('#home-button');
   }
   $('#sheet-title').textContent = title;
+  sheet.classList.toggle('strategy-sheet', strategy);
+  sheet.lang = strategy ? 'ru' : 'en';
+  $('#close-sheet').setAttribute('aria-label', strategy ? 'Закрыть справку' : 'Close dialog');
   sheetContent.innerHTML = content;
   if (!sheet.open) sheet.showModal();
   sheet.scrollTop = 0;
@@ -199,8 +203,8 @@ sheet.addEventListener('click', (event) => {
 });
 
 function showMenu(event) {
-  openSheet('Game', `<div class="menu-list"><button data-menu="home">My games & profile</button><button data-menu="new">New Game <span aria-hidden="true">↗</span></button><button data-menu="stats">Statistics & history</button>${game ? `${game.state.status !== 'completed' ? '<button data-menu="restart">Restart this puzzle</button>' : ''}<button data-menu="settings">Settings</button><button data-menu="details">Puzzle Details</button>` : ''}<button data-menu="help">How to play & keyboard</button></div>`, event?.currentTarget);
-  sheetContent.querySelectorAll('[data-menu]').forEach((button) => button.addEventListener('click', () => ({ home: showHome, new: showNewGame, stats: showStatistics, restart: showRestart, settings: showSettings, details: showDetails, help: showHelp })[button.dataset.menu]()));
+  openSheet('Game', `<div class="menu-list"><button data-menu="home">My games & profile</button><button data-menu="new">New Game <span aria-hidden="true">↗</span></button><button data-menu="stats">Statistics & history</button>${game ? `${game.state.status !== 'completed' ? '<button data-menu="restart">Restart this puzzle</button>' : ''}<button data-menu="settings">Settings</button><button data-menu="details">Puzzle Details</button>` : ''}<button data-menu="strategies" lang="ru">Помощь: способы решения</button><button data-menu="help" lang="ru">Управление и клавиатура</button></div>`, event?.currentTarget);
+  sheetContent.querySelectorAll('[data-menu]').forEach((button) => button.addEventListener('click', () => ({ home: showHome, new: showNewGame, stats: showStatistics, restart: showRestart, settings: showSettings, details: showDetails, help: showHelp, strategies: showStrategies })[button.dataset.menu]()));
 }
 
 const pickPuzzle = (difficulty = null) => nextPuzzle(puzzles, { currentId: game?.state.puzzle.id ?? null, started: startedPuzzleIds(), difficulty });
@@ -308,8 +312,9 @@ function showHome() {
   const profile = loadProfile();
   $('#menu-button').disabled = !profile;
   if (!profile) {
-    $('#home').innerHTML = `<span class="eyebrow">YOUR PLACE TO THINK</span><h2>Welcome to Extreme Sudoku</h2><p>Create your local player profile before your first puzzle.</p>${profileForm()}`;
+    $('#home').innerHTML = `<span class="eyebrow">YOUR PLACE TO THINK</span><h2>Welcome to Extreme Sudoku</h2><p>Create your local player profile before your first puzzle.</p><button id="home-strategy-help" class="secondary home-study-button" lang="ru" aria-haspopup="dialog">Помощь: как решать судоку</button>${profileForm()}`;
     bindProfileForm();
+    $('#home-strategy-help').addEventListener('click', showStrategies);
     return;
   }
   const saves = savedGames().filter(saved => saved.status !== 'completed');
@@ -321,6 +326,14 @@ function showHome() {
   $('#edit-profile').addEventListener('click', showProfile);
   $('#home-new').addEventListener('click', showNewGame);
   $('#home-stats').addEventListener('click', showStatistics);
+  const help = document.createElement('button');
+  help.id = 'home-strategy-help';
+  help.className = 'secondary';
+  help.lang = 'ru';
+  help.setAttribute('aria-haspopup', 'dialog');
+  help.textContent = 'Помощь: как решать судоку';
+  help.addEventListener('click', showStrategies);
+  $('#home .home-actions').append(help);
   $('#home').querySelectorAll('[data-continue]').forEach(button => button.addEventListener('click', () => {
     const puzzle = puzzles.find(item => item.id === button.dataset.continue);
     if (puzzle) startGame(puzzle);
@@ -424,11 +437,30 @@ function showCompletion() {
   $('#result-home').addEventListener('click', showHome);
 }
 
-function showHelp() {
-  openSheet('One rule. Many possibilities.', '<p>Fill every row, column, and 3 × 3 box with the numbers 1–9, without repeating a number.</p><p>Select a cell, then use the number pad. Original clues have a heavier weight; your entries appear in green. Use Notes to pencil in candidates.</p><dl class="details"><div><dt>Enter a number</dt><dd>1–9</dd></div><div><dt>Move between cells</dt><dd>Arrow keys</dd></div><div><dt>Toggle notes</dt><dd>N</dd></div><div><dt>Erase</dt><dd>Delete / Backspace / 0</dd></div><div><dt>Undo</dt><dd>Ctrl / ⌘ + Z</dd></div><div><dt>Close a dialog</dt><dd>Escape</dd></div></dl><p class="small-print">Your game saves automatically on this device. Use the pause button when you take a break.</p>');
+function pauseForHelp() {
+  if (!writer) return false;
+  if (game) { game.pause(); render(); persist(); }
+  return true;
+}
+
+function showStrategies(event) {
+  if (!pauseForHelp()) return;
+  openStrategyLibrary({
+    root: sheetContent,
+    show: (title, html) => openSheet(title, html, event?.currentTarget, { strategy: true }),
+    onKeyboard: back => showHelp(undefined, back),
+  });
+}
+
+function showHelp(event, back = null) {
+  if (!pauseForHelp()) return;
+  openSheet('Управление и клавиатура', `<div lang="ru">${back ? '<button id="strategy-controls-back" class="secondary">← К списку способов</button>' : '<button id="controls-strategies" class="secondary">Помощь: способы решения</button>'}<p>Выберите клетку и нажмите цифру на панели. Исходные цифры выделены жирным, введённые вами — зелёным. Notes («Заметки») включает запись кандидатов.</p><p>«Помощь» открывает учебные примеры без штрафа. «Открыть цифру» показывает ответ в одной клетке текущей партии и увеличивает счётчик подсказок.</p><dl class="details"><div><dt>Ввести цифру</dt><dd>1–9</dd></div><div><dt>Перейти к соседней клетке</dt><dd>Стрелки на клавиатуре</dd></div><div><dt>Включить или выключить заметки</dt><dd>N</dd></div><div><dt>Стереть</dt><dd>Delete / Backspace / 0</dd></div><div><dt>Отменить ход</dt><dd>Ctrl / ⌘ + Z</dd></div><div><dt>Закрыть окно</dt><dd>Escape</dd></div></dl><p class="small-print">Буквенные сочетания работают в английской раскладке. Прогресс сохраняется в этом браузере. Пока вы читаете, открытая партия на паузе. Чтобы вернуться к решению, закройте окно и нажмите Resume game («Продолжить игру»).</p></div>`, event?.currentTarget, { strategy: true });
+  if (back) $('#strategy-controls-back').addEventListener('click', back);
+  else $('#controls-strategies').addEventListener('click', showStrategies);
 }
 
 $('#menu-button').addEventListener('click', showMenu);
+$('#strategy-help-button').addEventListener('click', showStrategies);
 $('#home-button').addEventListener('click', showHome);
 $('#desktop-new').addEventListener('click', showNewGame);
 $('#cert-badge').addEventListener('click', showDetails);
